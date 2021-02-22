@@ -1,0 +1,1328 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="renderer" content="webkit">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="renderer" content="webkit"/>
+    <title>《Docker基础》学习笔记</title>
+    <link rel="stylesheet" href="data:text/css;base64,CiAgICBoMSwgaDIsIGgzLCBoNSwgaDYsICBpbWcsIHN2ZywgcHJlLCB0YWJsZSwgdHJ7cGFnZS1icmVhay1pbnNpZGU6IGF2b2lkfQoKCiAgICBib2R5IHsKICAgICAgICBiYWNrZ3JvdW5kOiAjRkZGRkZGOwogICAgICAgIGZvbnQtc2l6ZTogMTZweDsKICAgICAgICBsaW5lLWhlaWdodDoyLjM7CiAgICAgICAgZm9udC1mYW1pbHk6ICJIZWx2ZXRpY2EiOwogICAgICAgIGZvbnQtd2VpZ2h0OiBub3JtYWw7CiAgICAgICAgY29sb3I6ICMzQzNDM0M7CiAgICAgICAgcGFkZGluZzogMCAzOHB4OwogICAgICAgIG1heC13aWR0aDogODIwcHg7CiAgICAgICAgbWFyZ2luOiAwIGF1dG87CgogICAgICAgIHdvcmQtd3JhcDpicmVhay13b3JkOwogICAgICAgIHdvcmQtYnJlYWs6IG5vcm1hbDsKICAgICAgICBvdmVyZmxvdy13cmFwOmJyZWFrLXdvcmQ7CgoKICAgICAgICBvdmVyZmxvdy14OiBoaWRkZW47CiAgICAgICAgdGV4dC1yZW5kZXJpbmc6IG9wdGltaXplTGVnaWJpbGl0eTsKICAgICAgICAtd2Via2l0LXRleHQtc2l6ZS1hZGp1c3Q6IG5vbmU7CiAgICB9CgogICAgYnJ7CiAgICAgICAgbGluZS1oZWlnaHQ6IDIuMzsKICAgIH0KCgoKICAgIEBtZWRpYSAobWF4LXdpZHRoOiA2MDBweCkgewogICAgICAgIGJvZHl7CiAgICAgICAgICAgIHBhZGRpbmc6IDAgMzBweDsKICAgICAgICB9CiAgICB9CgogICAgQG1lZGlhIChtYXgtd2lkdGg6IDQ4MHB4KSB7CiAgICAgICAgYm9keXsKICAgICAgICAgICAgcGFkZGluZzogMCAyMHB4OwogICAgICAgIH0KICAgIH0KCiAgICAuZ2lzdHsKICAgICAgICB3b3JkLWJyZWFrOiBub3JtYWw7CiAgICB9CgogICAgLnBvc3R7CiAgICAgICAgbWFyZ2luLXRvcDogMTBweDsKICAgICAgICBtYXJnaW4tYm90dG9tOiA1MHB4OwogICAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTsKICAgIH0KCgoKICAgIGltZ3sKICAgICAgICBtYXgtd2lkdGg6IDk4JTsKICAgICAgICBtYXJnaW46IDAuOGVtIGF1dG8gMC44ZW0gYXV0bzsKICAgIH0KCiAgICBoMSBpbWcsIGgyIGltZywgaDMgaW1nLCBoNCBpbWcsIGg1IGltZywgaDYgaW1newogICAgICAgIG1hcmdpbjogYXV0bzsKICAgIH0KCiAgICAueDJfaW1hZ2V7CiAgICAgICAgem9vbTogNTAlOwogICAgfQoKICAgIC54M19pbWFnZXsKICAgICAgICB6b29tOiAzMy4zMyU7CiAgICB9CgogICAgLng0X2ltYWdlewogICAgICAgIHpvb206IDI1JTsKICAgIH0KCgogICAgcCBpbWd7CiAgICAgICAgbWFyZ2luOiAwIGF1dG87CiAgICB9CgogICAgcHsKICAgICAgICAvKm92ZXJmbG93OmhpZGRlbjsqLwogICAgICAgIG1hcmdpbjogMS4wZW0gMCAxLjhlbSAwOwogICAgfQoKICAgIHAubWRfYmxvY2tfYXNfb3BlbmluZ3sKICAgICAgICBtYXJnaW4tYm90dG9tOiAtMC41ZW0gIWltcG9ydGFudDsKICAgIH0KCiAgICBsaSBwewogICAgICAgIGxpbmUtaGVpZ2h0OiAyLjA3OwogICAgICAgIG1hcmdpbjogMDsKICAgIH0KCiAgICAucF9wYXJ0IHsKICAgICAgICBtYXJnaW46IDEwcHggMDsKICAgIH0KCiAgICAucF9wYXJ0IHB7CiAgICAgICAgbWFyZ2luOiAwIDAgMC42ZW0gMDsKICAgIH0KCiAgICAvKiB0ZXh0IGluZGVudCBmb3IgY2hpbmVzZSBzdGFydHMqLwogICAgLypoMiwgaDMsIGg0LCBoNSwgaDYsIC5wX3BhcnQgcCwgLnRvZG9faXRlbSwgcHsKICAgICAgICB0ZXh0LWluZGVudDogMHB4OwogICAgfSovCiAgICB0YWJsZSwgcHJlLCBzdmcsIC5jb2RlaGlsaXRldGFibGV7CiAgICAgICAgbWFyZ2luLWxlZnQ6IDBweDsKICAgICAgICBtYXJnaW4tcmlnaHQ6IDBweDsKICAgIH0KICAgIAogICAgc3BhbiBzdmd7CiAgICAgICAgbWFyZ2luLWxlZnQ6IDA7CiAgICAgICAgbWFyZ2luLXJpZ2h0OiAwOwogICAgfQoKICAgIC5jb2RlaGlsaXRldGFibGUgcHJlewogICAgICAgIG1hcmdpbi1sZWZ0OiAwOwogICAgICAgIG1hcmdpbi1yaWdodDogMDsKCiAgICB9CgogICAgLmNvZGVoaWxpdGV0YWJsZSAuY29kZWhpbGl0ZSBwcmV7CiAgICAgICAgYm9yZGVyLWxlZnQ6IG5vbmU7CiAgICB9CgogICAgLyogdGV4dCBpbmRlbnQgZm9yIGNoaW5lc2UgZW5kcyovCgoKICAgIGJsb2NrcXVvdGUgLnBfcGFydCBwLCBsaSAucF9wYXJ0IHB7CiAgICAgICAgdGV4dC1pbmRlbnQ6IDAgIWltcG9ydGFudDsKICAgIH0KCgogICAgaHJ7CiAgICAgICAgbWFyZ2luOiAzOHB4IDA7CiAgICAgICAgYm9yZGVyOiBub25lOwogICAgICAgIGJvcmRlci1ib3R0b206IDFweCBkYXNoZWQgcmdiYSgyMDUsIDIwNSwgMjA1LCAwLjM1KTsKICAgICAgICBjb2xvcjogcmdiYSgyMDUsIDIwNSwgMjA1LCAwLjM1KTsKICAgICAgICBoZWlnaHQ6IDFweDsKICAgICAgICBsaW5lLWhlaWdodDoxcHg7CiAgICAgICAgZm9udC1zaXplOjFweDsKICAgICAgICBvdmVyZmxvdy15OiBoaWRkZW47CiAgICB9CgoKICAgIGgxewogICAgICAgIGNvbG9yOiAjMTBBM0VFOwogICAgICAgIGZvbnQtc2l6ZTogMS43ZW07CiAgICAgICAgdGV4dC1hbGlnbjogbGVmdDsKICAgICAgICBtYXJnaW46IDA7CiAgICAgICAgcGFkZGluZzogMDsKICAgICAgICBsaW5lLWhlaWdodDogMS43ZW07CiAgICAgICAgbWFyZ2luLXRvcDogMC44ZW07CiAgICAgICAgbWFyZ2luLWJvdHRvbTogMC42ZW07CiAgICB9CgogICAgaDEsIGgyLCBoMywgaDR7CiAgICAgICAgY29sb3I6ICMxMEEzRUU7CiAgICB9CiAgICAKICAgIGgxe2NvbG9yOiMxMEEzRUV9CgoKCiAgICBoMiwgaDN7CiAgICAgICAgbGluZS1oZWlnaHQ6IDEuNWVtOwogICAgICAgIG1hcmdpbi10b3A6IDEuOGVtOwogICAgICAgIG1hcmdpbi1ib3R0b206IDAuNWVtOwogICAgfQoKICAgIC5oMTYubWRfZmlyc3RfaC5tZF9maXJzdF9wYXJ0IHsKICAgICAgICBtYXJnaW4tdG9wOiA1cHg7CiAgICB9CgogICAgaDIgewogICAgICAgIGZvbnQtc2l6ZTogMS41ZW07CiAgICB9CgogICAgaDMgewogICAgICAgIGZvbnQtc2l6ZTogMS4yNWVtCiAgICB9CgogICAgaDQgewogICAgICAgIGZvbnQtc2l6ZTogMS4xNWVtOwogICAgfQoKICAgIGg1IHsKICAgICAgICBmb250LXNpemU6IDEuMWVtOwogICAgfQoKICAgIGg2IHtmb250LXNpemU6IDFlbX0KCgogICAgaDEsIGgyLCBoMywgaDQsIGg1LCBoNnsKICAgICAgICBmb250LWZhbWlseTogIkhlaXRpIFNDIjsKICAgIH0KCgogICAgb2wgewogICAgICAgIG1hcmdpbjogMDsKICAgIH0KCiAgICB1bHsKICAgICAgICBwYWRkaW5nOiA1cHggMzhweDsKICAgICAgICBtYXJnaW46IDA7CiAgICB9CgogICAgdWwgbGksIGxpewogICAgICAgIHBhZGRpbmc6IDA7CiAgICAgICAgbWFyZ2luOiAwOwogICAgfQoKICAgIHVsIHAsIG9sIHB7CiAgICAgICAgb3ZlcmZsb3c6IHZpc2libGU7CiAgICB9CgoKICAgIGJsb2NrcXVvdGUgewogICAgICAgIC1tb3otYm94LXNpemluZzogYm9yZGVyLWJveDsKICAgICAgICBib3gtc2l6aW5nOiBib3JkZXItYm94OwogICAgICAgIG1hcmdpbjogMS42ZW0gMDsKICAgICAgICBwYWRkaW5nOiAwIDAgMCAxLjJlbTsKICAgICAgICBib3JkZXItbGVmdDogMC40ZW0gc29saWQgIzE2QjBGRjsKICAgICAgICBjb2xvcjogIzg4ODg4ODsKICAgICAgICBtaW4taGVpZ2h0OjIwcHg7CiAgICB9CgoKICAgIGJsb2NrcXVvdGUgcCB7CiAgICAgICAgbWFyZ2luOiAwLjhlbSAwOwogICAgfQoKICAgIGJsb2NrcXVvdGUgc3Bhbi5tZF9saW5lIHsKICAgICAgICBtYXJnaW4tYm90dG9tOiAwLjI1ZW07CiAgICAgICAgbWFyZ2luLXRvcDogMC4yNWVtOwogICAgfQoKICAgIGJsb2NrcXVvdGUgdWx7CiAgICAgICAgcGFkZGluZzogMCAxNXB4OwogICAgfQoKICAgIGJsb2NrcXVvdGUgc21hbGwgewogICAgICAgIGRpc3BsYXk6IGlubGluZS1ibG9jazsKICAgICAgICBtYXJnaW46IDAuOGVtIDAgMC44ZW0gMS41ZW07CiAgICAgICAgZm9udC1zaXplOiAwLjllbTsKICAgICAgICBjb2xvcjogI2NjYzsKICAgIH0KCgoKCgoKICAgIHRhYmxlIHsKICAgICAgICBsaW5lLWhlaWdodDogMS43OwogICAgICAgIC1tb3otYm94LXNpemluZzogYm9yZGVyLWJveDsKICAgICAgICBib3gtc2l6aW5nOiBib3JkZXItYm94OwogICAgICAgIG1hcmdpbjogMWVtIDA7CiAgICAgICAgd2lkdGg6IDEwMCU7CiAgICAgICAgbWF4LXdpZHRoOiAxMDAlOwogICAgICAgIGJvcmRlci13aWR0aDogMXB4OwogICAgICAgIGJvcmRlci1zdHlsZTogc29saWQ7CiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogdHJhbnNwYXJlbnQ7CiAgICAgICAgYm9yZGVyLXNwYWNpbmc6IDA7CiAgICAgICAgd29yZC1icmVhazogbm9ybWFsOwogICAgfQogICAgCiAgICAvKiBmb3Igd2VjaGF0IG9ubHkgc3RhcnRzICovCiAgICB0YWJsZSB0cnsKICAgICAgICBib3JkZXItcmlnaHQtc3R5bGU6IHNvbGlkOwogICAgICAgIGJvcmRlci1yaWdodC13aWR0aDogMXB4OwogICAgfQogICAgCiAgICB0YWJsZSB0Ym9keXsKICAgICAgICBib3JkZXItYm90dG9tLXdpZHRoOiAxcHg7CiAgICAgICAgYm9yZGVyLWJvdHRvbS1zdHlsZTogc29saWQ7CiAgICB9CiAgICAvKiBmb3Igd2VjaGF0IG9ubHkgZW5kcyAqLwoKCiAgICB0YWJsZSwgdGFibGUgdHIsIHRhYmxlIHRyIHRkLCB0YWJsZSB0ciB0aCwgdGFibGUgdGJvZHkgewogICAgICAgIGJvcmRlci1jb2xvcjogcmdiYSgyMDUsIDIwNSwgMjA1LCAwLjM1KTsKICAgIH0KCiAgICB0YWJsZSB0aCB7CiAgICAgICAgZm9udC13ZWlnaHQ6IGJvbGQ7CiAgICB9CgogICAgdHIgdGggewogICAgICAgIGJvcmRlci1ib3R0b20td2lkdGg6IDFweDsKICAgICAgICBib3JkZXItYm90dG9tLXN0eWxlOiBzb2xpZDsKICAgICAgICB0ZXh0LWFsaWduOiBsZWZ0OwogICAgfQoKICAgIHRyIHRoLCB0ciB0ZCB7CiAgICAgICAgcGFkZGluZzogMTBweCAyMHB4OwogICAgICAgIGJvcmRlci1yaWdodDogMXB4IHNvbGlkOwogICAgICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCByZ2JhKDIwNSwgMjA1LCAyMDUsIDAuMzUpOwogICAgfQoKICAgIHRib2R5IHRyOmxhc3QtY2hpbGQgdGR7CiAgICAgICAgYm9yZGVyLWJvdHRvbTogMDsKICAgIH0KCiAgICB0ciB0aDpsYXN0LWNoaWxkLCB0ciB0ZDpsYXN0LWNoaWxkIHsKICAgICAgICBib3JkZXItcmlnaHQ6IDA7CiAgICB9CgogICAgdGFibGUgdGJvZHkgPiB0cjpudGgtY2hpbGQob2RkKSA+IHRkLCB0YWJsZSB0Ym9keSA+IHRyOm50aC1jaGlsZChvZGQpID4gdGggewogICAgICAgIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMjM1LCAyMzUsIDIzNSwgMC4yKTsKICAgIH0KCgoKCiAgICBjb2RlewogICAgICAgIGJhY2tncm91bmQ6IHJnYmEoMjM1LCAyMzUsIDIzNSwgMC4zNSk7CiAgICAgICAgY29sb3I6ICM0OEI0NTY7CiAgICAgICAgcGFkZGluZzogMCA1cHg7CiAgICAgICAgbWFyZ2luOiAwIDJweDsKICAgIH0KCiAgICBwcmV7CiAgICAgICAgbWFyZ2luLXRvcDogMS4yZW07CiAgICAgICAgbWFyZ2luLWJvdHRvbTogMS4yZW07CiAgICAgICAgcGFkZGluZzogMTVweCAxMHB4OwogICAgICAgIGRpc3BsYXk6IGJsb2NrOwogICAgICAgIC8qIG92ZXJmbG93OiBhdXRvOyAqLwogICAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHJnYmEoMjA1LCAyMDUsIDIwNSwgMC4zNSk7CiAgICAgICAgLypiYWNrZ3JvdW5kOiByZ2JhKDIzNSwgMjM1LCAyMzUsIDAuMzUpOyovCiAgICAgICAgZm9udC1zaXplOiA5MCU7CiAgICAgICAgbGluZS1oZWlnaHQ6Mi4zOwogICAgICAgIHdoaXRlLXNwYWNlOiBwcmUtd3JhcDsKICAgIH0KCiAgICAuaGlnaGxpZ2h0dGFibGUgdGR7CiAgICAgICAgLypiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDIzNSwgMjM1LCAyMzUsIDAuMzUpICFpbXBvcnRhbnQ7Ki8KICAgIH0KCiAgICAud2l0aF9saW5lcyBwcmV7CiAgICAgICAgYm9yZGVyOm5vbmU7CiAgICAgICAgbWFyZ2luLXRvcDogMC4yZW07CiAgICAgICAgbWFyZ2luLWJvdHRvbTogMC4yZW07CiAgICAgICAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7CiAgICB9CgogICAgLmlzX2NvZGVfZmlsZSBwcmV7CiAgICAgICAgYm9yZGVyOiBub25lOwogICAgICAgIGJhY2tncm91bmQ6IHRyYW5zcGFyZW50OwogICAgfQoKICAgIC5jb2RlaGlsaXRlIHByZXsKICAgICAgICAvKndvcmQtd3JhcDogbm9ybWFsOyovCiAgICAgICAgZm9udC1zaXplOiAxM3B4OwogICAgfQoKICAgIHByZSBjb2RlewogICAgICAgIGJvcmRlcjpub25lOwogICAgICAgIGJhY2tncm91bmQ6IG5vbmU7CiAgICAgICAgcGFkZGluZzogMDsKICAgICAgICBtYXJnaW46IDA7CiAgICB9CgogICAgcHJlIHB7CiAgICAgICAgbWFyZ2luOiAwOwogICAgICAgIHBhZGRpbmc6IDA7CiAgICB9CgogICAgLmNvZGVoaWxpdGUgdGgsIC5jb2RlaGlsaXRlIHRkewogICAgICAgIGxpbmUtaGVpZ2h0OiAxLjhlbTsKICAgIH0KCgogICAgYXsKICAgICAgICBjb2xvcjogIzQwODNDNDsKICAgICAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7CiAgICAgICAgLy9ib3JkZXItYm90dG9tOiAxcHggc29saWQgdHJhbnNwYXJlbnQ7CiAgICB9CgogICAgYTpob3ZlcnsKICAgICAgICB0ZXh0LWRlY29yYXRpb246IHVuZGVybGluZTsKICAgICAgICAvL2JvcmRlci1ib3R0b206IDFweCBzb2xpZCAjNDA4M0M0OwogICAgfQoKICAgIHN0cm9uZyB7CiAgICAgICAgY29sb3I6ICMwMDAwMDA7CiAgICAgICAgZm9udC13ZWlnaHQ6IGJvbGQ7CiAgICB9CgoKICAgIC8qIGZvciBtYXJrZG93biAqLwoKICAgIC5saW5lbm9zIHByZXsKCQliYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDsKCQlib3JkZXI6IG5vbmU7Cgl9CgoJLmxpbmVub3N7CgkgICAgcGFkZGluZzogMCA1cHggMCA1cHg7CgkgICAgd2lkdGg6IDAuMDAxJTsKCX0KCgkuaGlnaGxpZ2h0dGFibGUgcHJlewoJICAgIHBhZGRpbmc6IDVweCAxMHB4OwoJfQoKICAgIC50b2N7CiAgICAgICAgYmFja2dyb3VuZDogTm9uZTsKICAgICAgICBib3JkZXItcmFkaXVzOiA1cHg7CiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgTm9uZTsKICAgICAgICBtYXJnaW46IDI3cHggMCA0N3B4IDA7CiAgICAgICAgcGFkZGluZzogMTBweCAwOwogICAgfQoKICAgIC50b2MgdWx7CiAgICAgICAgLy9wYWRkaW5nOiA1cHggNDJweDsKICAgIH0KCiAgICAudG9jIHVsIGxpewogICAgICAgIHBhZGRpbmc6IDA7CiAgICAgICAgbWFyZ2luOiAwOwogICAgfQogICAgLnRvYyBhewogICAgICAgIGNvbG9yOiAjM0MzQzNDOwogICAgfQoKCgogICAgLnRvZG9faXRlbXsKICAgICAgICBsaXN0LXN0eWxlOiBub25lOwogICAgICAgIG1hcmdpbi1sZWZ0OiAtMS41ZW0KICAgIH0KICAgIC50b2RvX2l0ZW0gLnRvZG9faXRlbSB7CiAgICAgICAgbWFyZ2luLWxlZnQ6IGF1dG87CiAgICB9CgogICAgLnRvZG9fZG9uZV9pdGVtewogICAgICAgIGNvbG9yOiAjOTk5OTk5OwogICAgfQoKICAgIC50b2RvX3VuZG9uZV9pdGVtewogICAgICAgIGNvbG9yOiAjQzg1QTU3OwogICAgfQoKCiAgICB1bCBsaS50b2RvX2l0ZW17CglsaXN0LXN0eWxlLXR5cGU6IG5vbmU7CiAgICB9CgogICAgdWwgbGkudG9kb19pdGVtOmJlZm9yZXsKICAgICAgICBjb250ZW50OiAn4piQJzsKICAgICAgICAvKnBhZGRpbmctcmlnaHQ6IDAuMmVtOyovCiAgICAgICAgZm9udC1mYW1pbHk6IGFyaWFsOwogICAgfQoKICAgIHVsIGxpLnRvZG9fZG9uZV9pdGVtOmJlZm9yZXsKICAgICAgICBjb250ZW50OiAn4piRJzsKICAgICAgICAvKnBhZGRpbmctcmlnaHQ6IDAuMmVtOyovCiAgICAgICAgZm9udC1mYW1pbHk6IGFyaWFsOwogICAgfQoKICAgIHVsIGxpLnRvZG9faXRlbSBpbnB1dHsKICAgICAgICBkaXNwbGF5Om5vbmUKICAgIH0KCgogICAgLypweWdtZW50cyovCgogICAgLmNvZGVoaWxpdGV7CiAgICAgICAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQgIWltcG9ydGFudDsKICAgIH0KCiAgICB0YWJsZS5jb2RlaGlsaXRldGFibGV7IGJvcmRlcjpub25lOyB9CgoKICAgIC5jb2RlaGlsaXRldGFibGUgdGR7IGJvcmRlcjogbm9uZTsgcGFkZGluZzogMDt9CgogICAgLmZsb3ctZ3JhcGhpYywgLm1kX2Jsb2NrX3NlY3Rpb25fZm9yX2Zsb3dfZ3JhcGhpY3t0ZXh0LWFsaWduOiBjZW50ZXJ9CiAgICAuZmxvdy1ncmFwaGljIHsgb3ZlcmZsb3cteDogYXV0bzt9CiAgICAubWVybWFpZCwgLm1kX2Jsb2NrX3NlY3Rpb25fZm9yX21lcm1haWR7dGV4dC1hbGlnbjogY2VudGVyfQogICAgCiAgICAuZmxvdy1ncmFwaGljLCAubWVybWFpZHsKICAgICAgICBiYWNrZ3JvdW5kOiAjZmZmZmZmOwogICAgfQoKCiAgICB0YWJsZSwgdHIsIHRkLCB0aCwgdGJvZHksIHRoZWFkLCB0Zm9vdCwgLm1kX2VjaGFydHMsIGJsb2NrcXVvdGUgLm1kX2xpbmV7CiAgICAgICAgcGFnZS1icmVhay1pbnNpZGU6IGF2b2lkICFpbXBvcnRhbnQ7CiAgICB9CgogICAgLmZvb3Rub3RlcyAubWRfbGluZXsKICAgICAgICBkaXNwbGF5OiBpbmxpbmUgIWltcG9ydGFudDsKICAgIH0KCgogICAgLmltZ19ydF85MHsKICAgICAgICB0cmFuc2Zvcm06cm90YXRlKDkwZGVnKTsKICAgICAgICAtbXMtdHJhbnNmb3JtOnJvdGF0ZSg5MGRlZyk7CiAgICAgICAgLW1vei10cmFuc2Zvcm06cm90YXRlKDkwZGVnKTsKICAgICAgICAtd2Via2l0LXRyYW5zZm9ybTpyb3RhdGUoOTBkZWcpOwogICAgICAgIC1vLXRyYW5zZm9ybTpyb3RhdGUoOTBkZWcpOwogICAgfQogICAgLmltZ19ydF8xODB7CiAgICAgICAgdHJhbnNmb3JtOnJvdGF0ZSgxODBkZWcpOwogICAgICAgIC1tcy10cmFuc2Zvcm06cm90YXRlKDE4MGRlZyk7CiAgICAgICAgLW1vei10cmFuc2Zvcm06cm90YXRlKDE4MGRlZyk7CiAgICAgICAgLXdlYmtpdC10cmFuc2Zvcm06cm90YXRlKDE4MGRlZyk7CiAgICAgICAgLW8tdHJhbnNmb3JtOnJvdGF0ZSgxODBkZWcpOwogICAgfQogICAgLmltZ19ydF8yNzB7CiAgICAgICAgdHJhbnNmb3JtOnJvdGF0ZSgyNzBkZWcpOwogICAgICAgIC1tcy10cmFuc2Zvcm06cm90YXRlKDI3MGRlZyk7CiAgICAgICAgLW1vei10cmFuc2Zvcm06cm90YXRlKDI3MGRlZyk7CiAgICAgICAgLXdlYmtpdC10cmFuc2Zvcm06cm90YXRlKDI3MGRlZyk7CiAgICAgICAgLW8tdHJhbnNmb3JtOnJvdGF0ZSgyNzBkZWcpOwogICAgfQoKICAgIC5tZF9oYXNfYmxvY2tfYmVsb3d7CiAgICAgICAgbWFyZ2luLWJvdHRvbTogMC4xZW0gIWltcG9ydGFudDsKICAgIH0KICAgIC5tZF9oYXNfYmxvY2tfYmVsb3dfaW1newogICAgICAgIG1hcmdpbi1ib3R0b206IC0wLjZlbSAhaW1wb3J0YW50OwogICAgfQoKCiAgICAuY29kZWhpbGl0ZSAuZXJyewogICAgICAgIGJvcmRlcjogbm9uZSAhaW1wb3J0YW50OwogICAgICAgIGJhY2tncm91bmQtY29sb3I6IHRyYW5zcGFyZW50ICFpbXBvcnRhbnQ7CiAgICB9CgoKCiAgICAgICAgc3Bhbi5tZF9saW5le21hcmdpbi1ib3R0b206MC41ZW07IGRpc3BsYXk6YmxvY2s7IGxpbmUtaGVpZ2h0OjEuOTg5NX0KICAgICAgICAubWRfbGluZSBicnsgZGlzcGxheTogbm9uZTt9CiAgICAgICAgLmNvZGVoaWxpdGUgLmhsbCB7IGJhY2tncm91bmQtY29sb3I6ICB9Ci5jb2RlaGlsaXRlICB7IGJhY2tncm91bmQ6ICNlZWVlZGQ7IGNvbG9yOiAjNTU1NTU1IH0KLmNvZGVoaWxpdGUgLmMgeyBjb2xvcjogIzk5OTk5OSB9IC8qIENvbW1lbnQgKi8KLmNvZGVoaWxpdGUgLmVyciB7IGNvbG9yOiAjYTYxNzE3OyBiYWNrZ3JvdW5kLWNvbG9yOiAjZTNkMmQyIH0gLyogRXJyb3IgKi8KLmNvZGVoaWxpdGUgLmsgeyBjb2xvcjogIzhCMDA4QjsgZm9udC13ZWlnaHQ6IGJvbGQgfSAvKiBLZXl3b3JkICovCi5jb2RlaGlsaXRlIC5sIHsgY29sb3I6ICNhZTgxZmYgfSAvKiBMaXRlcmFsICovCi5jb2RlaGlsaXRlIC5uIHsgY29sb3I6ICM1NTU1NTUgfSAvKiBOYW1lICovCi5jb2RlaGlsaXRlIC5vIHsgY29sb3I6ICM1NTU1NTUgfSAvKiBPcGVyYXRvciAqLwouY29kZWhpbGl0ZSAucCB7IGNvbG9yOiAjNTU1NTU1IH0gLyogUHVuY3R1YXRpb24gKi8KLmNvZGVoaWxpdGUgLmNoIHsgY29sb3I6ICM5OTk5OTkgfSAvKiBDb21tZW50Lkhhc2hiYW5nICovCi5jb2RlaGlsaXRlIC5jbSB7IGNvbG9yOiAjOTk5OTk5IH0gLyogQ29tbWVudC5NdWx0aWxpbmUgKi8KLmNvZGVoaWxpdGUgLmNwIHsgY29sb3I6ICMxZTg4OWIgfSAvKiBDb21tZW50LlByZXByb2MgKi8KLmNvZGVoaWxpdGUgLmNwZiB7IGNvbG9yOiAjOTk5OTk5IH0gLyogQ29tbWVudC5QcmVwcm9jRmlsZSAqLwouY29kZWhpbGl0ZSAuYzEgeyBjb2xvcjogIzk5OTk5OSB9IC8qIENvbW1lbnQuU2luZ2xlICovCi5jb2RlaGlsaXRlIC5jcyB7IGNvbG9yOiAjOEIwMDhCOyBmb250LXdlaWdodDogYm9sZCB9IC8qIENvbW1lbnQuU3BlY2lhbCAqLwouY29kZWhpbGl0ZSAuZ2QgeyBjb2xvcjogI2FhMDAwMCB9IC8qIEdlbmVyaWMuRGVsZXRlZCAqLwouY29kZWhpbGl0ZSAuZ2UgeyBmb250LXN0eWxlOiBpdGFsaWMgfSAvKiBHZW5lcmljLkVtcGggKi8KLmNvZGVoaWxpdGUgLmdyIHsgY29sb3I6ICNhYTAwMDAgfSAvKiBHZW5lcmljLkVycm9yICovCi5jb2RlaGlsaXRlIC5naCB7IGNvbG9yOiAjMDAwMDgwOyBmb250LXdlaWdodDogYm9sZCB9IC8qIEdlbmVyaWMuSGVhZGluZyAqLwouY29kZWhpbGl0ZSAuZ2kgeyBjb2xvcjogIzAwYWEwMCB9IC8qIEdlbmVyaWMuSW5zZXJ0ZWQgKi8KLmNvZGVoaWxpdGUgLmdvIHsgY29sb3I6ICM4ODg4ODggfSAvKiBHZW5lcmljLk91dHB1dCAqLwouY29kZWhpbGl0ZSAuZ3AgeyBjb2xvcjogIzU1NTU1NSB9IC8qIEdlbmVyaWMuUHJvbXB0ICovCi5jb2RlaGlsaXRlIC5ncyB7IGZvbnQtd2VpZ2h0OiBib2xkIH0gLyogR2VuZXJpYy5TdHJvbmcgKi8KLmNvZGVoaWxpdGUgLmd1IHsgY29sb3I6ICM4MDAwODA7IGZvbnQtd2VpZ2h0OiBib2xkIH0gLyogR2VuZXJpYy5TdWJoZWFkaW5nICovCi5jb2RlaGlsaXRlIC5ndCB7IGNvbG9yOiAjYWEwMDAwIH0gLyogR2VuZXJpYy5UcmFjZWJhY2sgKi8KLmNvZGVoaWxpdGUgLmtjIHsgY29sb3I6ICM4QjAwOEI7IGZvbnQtd2VpZ2h0OiBib2xkIH0gLyogS2V5d29yZC5Db25zdGFudCAqLwouY29kZWhpbGl0ZSAua2QgeyBjb2xvcjogIzhCMDA4QjsgZm9udC13ZWlnaHQ6IGJvbGQgfSAvKiBLZXl3b3JkLkRlY2xhcmF0aW9uICovCi5jb2RlaGlsaXRlIC5rbiB7IGNvbG9yOiAjOEIwMDhCOyBmb250LXdlaWdodDogYm9sZCB9IC8qIEtleXdvcmQuTmFtZXNwYWNlICovCi5jb2RlaGlsaXRlIC5rcCB7IGNvbG9yOiAjOEIwMDhCOyBmb250LXdlaWdodDogYm9sZCB9IC8qIEtleXdvcmQuUHNldWRvICovCi5jb2RlaGlsaXRlIC5rciB7IGNvbG9yOiAjOEIwMDhCOyBmb250LXdlaWdodDogYm9sZCB9IC8qIEtleXdvcmQuUmVzZXJ2ZWQgKi8KLmNvZGVoaWxpdGUgLmt0IHsgY29sb3I6ICNhN2E3YTc7IGZvbnQtd2VpZ2h0OiBib2xkIH0gLyogS2V5d29yZC5UeXBlICovCi5jb2RlaGlsaXRlIC5sZCB7IGNvbG9yOiAjZTZkYjc0IH0gLyogTGl0ZXJhbC5EYXRlICovCi5jb2RlaGlsaXRlIC5tIHsgY29sb3I6ICNCNDUyQ0QgfSAvKiBMaXRlcmFsLk51bWJlciAqLwouY29kZWhpbGl0ZSAucyB7IGNvbG9yOiAjQ0Q1NTU1IH0gLyogTGl0ZXJhbC5TdHJpbmcgKi8KLmNvZGVoaWxpdGUgLm5hIHsgY29sb3I6ICM2NThiMDAgfSAvKiBOYW1lLkF0dHJpYnV0ZSAqLwouY29kZWhpbGl0ZSAubmIgeyBjb2xvcjogIzY1OGIwMCB9IC8qIE5hbWUuQnVpbHRpbiAqLwouY29kZWhpbGl0ZSAubmMgeyBjb2xvcjogIzAwOGI0NTsgZm9udC13ZWlnaHQ6IGJvbGQgfSAvKiBOYW1lLkNsYXNzICovCi5jb2RlaGlsaXRlIC5ubyB7IGNvbG9yOiAjMDA2ODhCIH0gLyogTmFtZS5Db25zdGFudCAqLwouY29kZWhpbGl0ZSAubmQgeyBjb2xvcjogIzcwN2E3YyB9IC8qIE5hbWUuRGVjb3JhdG9yICovCi5jb2RlaGlsaXRlIC5uaSB7IGNvbG9yOiAjNTU1NTU1IH0gLyogTmFtZS5FbnRpdHkgKi8KLmNvZGVoaWxpdGUgLm5lIHsgY29sb3I6ICMwMDhiNDU7IGZvbnQtd2VpZ2h0OiBib2xkIH0gLyogTmFtZS5FeGNlcHRpb24gKi8KLmNvZGVoaWxpdGUgLm5mIHsgY29sb3I6ICMwMDhiNDUgfSAvKiBOYW1lLkZ1bmN0aW9uICovCi5jb2RlaGlsaXRlIC5ubCB7IGNvbG9yOiAjNTU1NTU1IH0gLyogTmFtZS5MYWJlbCAqLwouY29kZWhpbGl0ZSAubm4geyBjb2xvcjogIzAwOGI0NTsgdGV4dC1kZWNvcmF0aW9uOiB1bmRlcmxpbmUgfSAvKiBOYW1lLk5hbWVzcGFjZSAqLwouY29kZWhpbGl0ZSAubnggeyBjb2xvcjogIzU1NTU1NSB9IC8qIE5hbWUuT3RoZXIgKi8KLmNvZGVoaWxpdGUgLnB5IHsgY29sb3I6ICM1NTU1NTUgfSAvKiBOYW1lLlByb3BlcnR5ICovCi5jb2RlaGlsaXRlIC5udCB7IGNvbG9yOiAjOEIwMDhCOyBmb250LXdlaWdodDogYm9sZCB9IC8qIE5hbWUuVGFnICovCi5jb2RlaGlsaXRlIC5udiB7IGNvbG9yOiAjMDA2ODhCIH0gLyogTmFtZS5WYXJpYWJsZSAqLwouY29kZWhpbGl0ZSAub3cgeyBjb2xvcjogIzhCMDA4QiB9IC8qIE9wZXJhdG9yLldvcmQgKi8KLmNvZGVoaWxpdGUgLncgeyBjb2xvcjogI2JiYmJiYiB9IC8qIFRleHQuV2hpdGVzcGFjZSAqLwouY29kZWhpbGl0ZSAubWIgeyBjb2xvcjogI0I0NTJDRCB9IC8qIExpdGVyYWwuTnVtYmVyLkJpbiAqLwouY29kZWhpbGl0ZSAubWYgeyBjb2xvcjogI0I0NTJDRCB9IC8qIExpdGVyYWwuTnVtYmVyLkZsb2F0ICovCi5jb2RlaGlsaXRlIC5taCB7IGNvbG9yOiAjQjQ1MkNEIH0gLyogTGl0ZXJhbC5OdW1iZXIuSGV4ICovCi5jb2RlaGlsaXRlIC5taSB7IGNvbG9yOiAjQjQ1MkNEIH0gLyogTGl0ZXJhbC5OdW1iZXIuSW50ZWdlciAqLwouY29kZWhpbGl0ZSAubW8geyBjb2xvcjogI0I0NTJDRCB9IC8qIExpdGVyYWwuTnVtYmVyLk9jdCAqLwouY29kZWhpbGl0ZSAuc2EgeyBjb2xvcjogI0NENTU1NSB9IC8qIExpdGVyYWwuU3RyaW5nLkFmZml4ICovCi5jb2RlaGlsaXRlIC5zYiB7IGNvbG9yOiAjQ0Q1NTU1IH0gLyogTGl0ZXJhbC5TdHJpbmcuQmFja3RpY2sgKi8KLmNvZGVoaWxpdGUgLnNjIHsgY29sb3I6ICNDRDU1NTUgfSAvKiBMaXRlcmFsLlN0cmluZy5DaGFyICovCi5jb2RlaGlsaXRlIC5kbCB7IGNvbG9yOiAjQ0Q1NTU1IH0gLyogTGl0ZXJhbC5TdHJpbmcuRGVsaW1pdGVyICovCi5jb2RlaGlsaXRlIC5zZCB7IGNvbG9yOiAjQ0Q1NTU1IH0gLyogTGl0ZXJhbC5TdHJpbmcuRG9jICovCi5jb2RlaGlsaXRlIC5zMiB7IGNvbG9yOiAjQ0Q1NTU1IH0gLyogTGl0ZXJhbC5TdHJpbmcuRG91YmxlICovCi5jb2RlaGlsaXRlIC5zZSB7IGNvbG9yOiAjYWU4MWZmIH0gLyogTGl0ZXJhbC5TdHJpbmcuRXNjYXBlICovCi5jb2RlaGlsaXRlIC5zaCB7IGNvbG9yOiAjMWM3ZTcxOyBmb250LXN0eWxlOiBpdGFsaWMgfSAvKiBMaXRlcmFsLlN0cmluZy5IZXJlZG9jICovCi5jb2RlaGlsaXRlIC5zaSB7IGNvbG9yOiAjQ0Q1NTU1IH0gLyogTGl0ZXJhbC5TdHJpbmcuSW50ZXJwb2wgKi8KLmNvZGVoaWxpdGUgLnN4IHsgY29sb3I6ICNjYjZjMjAgfSAvKiBMaXRlcmFsLlN0cmluZy5PdGhlciAqLwouY29kZWhpbGl0ZSAuc3IgeyBjb2xvcjogIzFjN2U3MSB9IC8qIExpdGVyYWwuU3RyaW5nLlJlZ2V4ICovCi5jb2RlaGlsaXRlIC5zMSB7IGNvbG9yOiAjQ0Q1NTU1IH0gLyogTGl0ZXJhbC5TdHJpbmcuU2luZ2xlICovCi5jb2RlaGlsaXRlIC5zcyB7IGNvbG9yOiAjQ0Q1NTU1IH0gLyogTGl0ZXJhbC5TdHJpbmcuU3ltYm9sICovCi5jb2RlaGlsaXRlIC5icCB7IGNvbG9yOiAjNjU4YjAwIH0gLyogTmFtZS5CdWlsdGluLlBzZXVkbyAqLwouY29kZWhpbGl0ZSAuZm0geyBjb2xvcjogIzAwOGI0NSB9IC8qIE5hbWUuRnVuY3Rpb24uTWFnaWMgKi8KLmNvZGVoaWxpdGUgLnZjIHsgY29sb3I6ICMwMDY4OEIgfSAvKiBOYW1lLlZhcmlhYmxlLkNsYXNzICovCi5jb2RlaGlsaXRlIC52ZyB7IGNvbG9yOiAjMDA2ODhCIH0gLyogTmFtZS5WYXJpYWJsZS5HbG9iYWwgKi8KLmNvZGVoaWxpdGUgLnZpIHsgY29sb3I6ICMwMDY4OEIgfSAvKiBOYW1lLlZhcmlhYmxlLkluc3RhbmNlICovCi5jb2RlaGlsaXRlIC52bSB7IGNvbG9yOiAjMDA2ODhCIH0gLyogTmFtZS5WYXJpYWJsZS5NYWdpYyAqLwouY29kZWhpbGl0ZSAuaWwgeyBjb2xvcjogI0I0NTJDRCB9IC8qIExpdGVyYWwuTnVtYmVyLkludGVnZXIuTG9uZyAqLwogICAgLyogcGFnZV9jc3MgKi8KCiAgICAKICAgIGh0bWx7CiAgICAgICAgYmFja2dyb3VuZDogI0VFRUVFRTsKICAgIH0KICAgIGJvZHl7CiAgICAgICAgd2lkdGg6IDkwJTsKICAgICAgICBtYXgtd2lkdGg6IDk2MHB4OwogICAgICAgIGJhY2tncm91bmQ6ICNGRkZGRkY7CiAgICAgICAgbWFyZ2luOiAzZW0gYXV0byAwOwogICAgICAgIHBhZGRpbmctdG9wOiAyZW07CiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgI0VFRUVFRTsKICAgICAgICBib3JkZXItd2lkdGg6IDAgMXB4OwogICAgfQoKICAgIC5wb3N0ewogICAgICAgIHBhZGRpbmc6IDUlIDEwJTsKICAgICAgICBtYXJnaW4tdG9wOiAwOwogICAgICAgIG1hcmdpbi1ib3R0b206IDA7CiAgICB9CiAgICAKCiAgICAudGl0bGVfY29udGFpbmVyewogICAgICAgIG1hcmdpbjogLTJlbSAwIDMuNWVtOwogICAgICAgIHBhZGRpbmctYm90dG9tOiAyZW07CiAgICAgICAgYm9yZGVyLWJvdHRvbTogM3B4IGRvdWJsZSAjRUVFRUVFOwogICAgfQogICAgLnRpdGxlX2NvbnRhaW5lciBoMXsKICAgICAgICBtYXJnaW4tdG9wOiAxLjJlbTsKICAgICAgICBtYXJnaW4tYm90dG9tOiAwLjZlbTsKICAgICAgICBsaW5lLWhlaWdodDogMS4zNTsKICAgICAgICBmb250LXNpemU6IDIuMjVlbTsKICAgIH0KICAgIC50aXRsZV9jb250YWluZXIgaDJ7CiAgICAgICAgY29sb3I6ICM4ODg4ODg7CiAgICAgICAgZm9udC1zaXplOiAxZW07CiAgICAgICAgZm9udC13ZWlnaHQ6IG5vcm1hbDsKICAgICAgICBwYWRkaW5nLWJvdHRvbTogMmVtOwogICAgICAgIGxpbmUtaGVpZ2h0OiAxLjM1OwogICAgICAgIG1hcmdpbi1ib3R0b206IC0yZW07CiAgICB9CgogICAgQG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiA3NjBweCl7CiAgICAgICAgaHRtbHsKICAgICAgICAgICAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7CiAgICAgICAgfQogICAgICAgIGJvZHl7CiAgICAgICAgICAgIG1hcmdpbjogMDsKICAgICAgICB9CiAgICAgICAgLnBvc3R7CiAgICAgICAgICAgIHBhZGRpbmc6IDA7CiAgICAgICAgfQogICAgfQogICAgLyogcGFnZV9jc3MgKi8KCiAgICA=">
+    <!--header_scripts-->
+</head>
+<body>
+    <div class="post">
+        <div class="post_body">
+            
+            <h1 style='display:block; text-align:center;text-indent:0;font-family:b;color:black'  id="toc_0" class="h16 md_first_h">《Docker基础》学习笔记</h1>
+
+<p class="md_block  md_has_block_below md_has_block_below_blockquote">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/2021-01-08-01-03-48.jpg" alt="" title="" ></span>
+</p>
+
+
+<blockquote><div class="toc_container">
+<div class="toc"><ul>
+<li>
+<a href="#toc_0">《Docker基础》学习笔记</a>
+<ul>
+<li>
+<a href="#toc_1">一、Docker简介</a>
+<ul>
+<li>
+<a href="#toc_2">1、docker是什么</a>
+</li>
+<li>
+<a href="#toc_3">2、docker与虚拟机的区别</a>
+</li>
+<li>
+<a href="#toc_4">3、Docker下载</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_5">二、Docker初步</a>
+<ul>
+<li>
+<a href="#toc_6">1、docker基本组成</a>
+</li>
+<li>
+<a href="#toc_7">2、永远的Hello World</a>
+</li>
+<li>
+<a href="#toc_8">3、底层原理</a>
+<ul>
+<li>
+<a href="#toc_9">（1）Docker是怎么工作的</a>
+</li>
+<li>
+<a href="#toc_10">（2）为什么Docker比虚拟机快</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_11">三、Docker常用命令</a>
+<ul>
+<li>
+<a href="#toc_12">1、帮助命令</a>
+</li>
+<li>
+<a href="#toc_13">2、镜像命令</a>
+<ul>
+<li>
+<a href="#toc_14">（1）docker images</a>
+</li>
+<li>
+<a href="#toc_15">（2）docker search</a>
+</li>
+<li>
+<a href="#toc_16">（3）docker pull</a>
+</li>
+<li>
+<a href="#toc_17">（4）docker rmi</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_18">3、容器命令</a>
+<ul>
+<li>
+<a href="#toc_19">（1）新建并启动容器</a>
+</li>
+<li>
+<a href="#toc_20">（2）列出当前所有正在运行的容器</a>
+</li>
+<li>
+<a href="#toc_21">（3）退出容器</a>
+</li>
+<li>
+<a href="#toc_22">（4）启动容器</a>
+</li>
+<li>
+<a href="#toc_23">（5）重启容器</a>
+</li>
+<li>
+<a href="#toc_24">（6）停止容器</a>
+</li>
+<li>
+<a href="#toc_25">（7）强行停止容器</a>
+</li>
+<li>
+<a href="#toc_26">（8）删除已停止的容器</a>
+</li>
+<li>
+<a href="#toc_27">（9）启动守护式容器</a>
+</li>
+<li>
+<a href="#toc_28">（10）查看容器日志</a>
+</li>
+<li>
+<a href="#toc_29">（11）查看容器内运行的进程</a>
+</li>
+<li>
+<a href="#toc_30">（12）查看容器内部细节</a>
+</li>
+<li>
+<a href="#toc_31">（13）进入正在运行的容器并以命令行交互</a>
+</li>
+<li>
+<a href="#toc_32">（14）从容器内拷贝文件到主机上</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_33">4、常用命令总结</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_34">四、Docker镜像</a>
+<ul>
+<li>
+<a href="#toc_35">1、UnionFS（联合文件系统）</a>
+</li>
+<li>
+<a href="#toc_36">2、Docker镜像加载原理</a>
+</li>
+<li>
+<a href="#toc_37">3、镜像的分层</a>
+</li>
+<li>
+<a href="#toc_38">4、Docker采用分层结构的原因</a>
+</li>
+<li>
+<a href="#toc_39">5、Docker镜像特点</a>
+</li>
+<li>
+<a href="#toc_40">6、Docker镜像的修改与Commit</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_41">五、Docker容器数据卷</a>
+<ul>
+<li>
+<a href="#toc_42">1、容器内添加数据卷</a>
+<ul>
+<li>
+<a href="#toc_43">（1）直接命令添加</a>
+</li>
+<li>
+<a href="#toc_44">（2）DockerFile添加</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_45">2、数据卷容器</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_46">六、DockerFile解析</a>
+<ul>
+<li>
+<a href="#toc_47">1、DockerFile简介</a>
+</li>
+<li>
+<a href="#toc_48">2、DockerFile构建过程解析</a>
+<ul>
+<li>
+<a href="#toc_49">（1）脚本规范</a>
+</li>
+<li>
+<a href="#toc_50">（2）执行流程</a>
+</li>
+<li>
+<a href="#toc_51">（3）小结</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_52">3、DockerFile体系结构(保留字指令)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div></blockquote>
+<h2 style='font-family:b;color:black'  id="toc_1" class="h16">一、Docker简介</h2>
+<h3 style='font-family:b;color:black'  id="toc_2" class="h16">1、docker是什么</h3>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">Docker是基于Go语言实现的云开源项目，主要目标是“Build, Ship and Run Any App, Anywhere”，也就是通过对应用组件的封装、分发、部署、运行等生命周期的管理，使用户的APP（可以是一个WEB应用或数据库应用等等）及其运行环境能够做到  “一次封装，到处运行”。 Linux 容器技术的出现就解决了这样一个问题，而 Docker 就是在它的基础上发展过来的。将应用运行在 Docker 容器上面，而 Docker 容器在任何操作系统上都是一致的，这就实现了跨平台、跨服务器。  只需要一次配置好环境，换到别的机子上就可以一键部署好，大大简化了操作 </span>
+</p>
+
+<h3 style='font-family:b;color:black'  id="toc_3" class="h16">2、docker与虚拟机的区别</h3>
+
+<ul>
+<li class="md_li"><span>虚拟机（virtual machine）是带环境安装的一种解决方案。它可以在一种操作系统里面运行另一种操作系统，比如在Windows 系统里面运行Linux 系统。应用程序对此毫无感知，因为虚拟机看上去跟真实系统一模一样，而对于底层系统来说，虚拟机就是一个普通文件，不需要了就删掉，对其他部分毫无影响。这类虚拟机完美的运行了另一套系统，能够使应用程序，操作系统和硬件三者之间的逻辑不变。 虚拟机的缺点有： 1、资源占用多，2、冗余步骤多  3、启动慢 （分钟级）
+
+</span></li>
+<li class="md_li"><span>由于前面虚拟机存在这些缺点，Linux 发展出了另一种虚拟化技术：Linux 容器（Linux Containers，缩写为 LXC）； Linux 容器不是模拟一个完整的操作系统  ，而是对进程进行隔离。有了容器，就可以将软件运行所需的所有资源打包到一个隔离的容器中。容器与虚拟机不同，不需要捆绑一整套操作系统，只需要软件工作所需的库资源和设置。系统因此而变得高效轻量并保证部署在任何环境中的软件都能始终如一地运行。 
+
+</span></li>
+<li class="md_li"><span>比较Docker 和传统虚拟化方式的不同之处： 
+
+
+<ul>
+<li class="md_li"><span>传统虚拟机技术是虚拟出一套硬件后，在其上运行一个完整操作系统，在该系统上再运行所需应用进程； 
+
+</span></li>
+<li class="md_li"><span>而容器内的应用进程直接运行于宿主的内核，容器内没有自己的内核，  而且也没有进行硬件虚拟  。因此容器要比传统虚拟机更为轻便
+
+</span></li>
+<li class="md_li"><span>每个容器之间互相隔离，每个容器有自己的文件系统 ，容器之间进程不会相互影响，能区分计算资源。
+
+</span></li>
+</ul>
+</span></li>
+</ul>
+<h3 style='font-family:b;color:black'  id="toc_4" class="h16">3、Docker下载</h3>
+
+<ul>
+<li class="md_li"><span>docker官网：http://www.docker.com
+
+</span></li>
+<li class="md_li"><span>docker中文网站：https://www.docker-cn.com/
+
+</span></li>
+<li class="md_li"><span>Docker Hub官网: https://hub.docker.com/
+
+</span></li>
+</ul>
+
+<hr>
+<h2 style='font-family:b;color:black'  id="toc_5" class="h16">二、Docker初步</h2>
+<h3 style='font-family:b;color:black'  id="toc_6" class="h16">1、docker基本组成</h3>
+
+<p class="md_block  md_has_block_below md_has_block_below_ul">
+    <span class="md_line md_line_start md_line_end">docker主要由三部分组成：镜像（image）、容器（container）、仓库（repository）</span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>镜像：Docker 镜像（Image）就是一个只读的模板，可以用来创建 Docker 容器，  一个镜像可以创建很多容器 
+
+</span></li>
+<li class="md_li"><span>容器：Docker 利用容器（Container）独立运行的一个或一组应用。  容器是用镜像创建的运行实例，它可以被启动、开始、停止、删除。每个容器都是相互隔离的、保证安全的平台。可以把容器看做是一个简易版的 Linux 环境  （包括root用户权限、进程空间、用户空间和网络空间等）和运行在其中的应用程序。 容器的定义和镜像几乎一模一样，也是一堆层的统一视角，唯一区别在于容器的最上面那一层是可读可写的。 
+
+</span></li>
+<li class="md_li"><span>仓库：仓库（Repository）是集中存放镜像文件的场所。 仓库(Repository)和仓库注册服务器（Registry）是有区别的。仓库注册服务器上往往存放着多个仓库，每个仓库中又包含了多个镜像，每个镜像有不同的标签（tag）。仓库分为公开仓库（Public）和私有仓库（Private）两种形式。 最大的公开仓库是 Docker Hub(https://hub.docker.com/) ， 存放了数量庞大的镜像供用户下载。国内的公开仓库包括阿里云 、网易云 等 
+
+</span></li>
+</ul>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">&nbsp;需要正确的理解仓储/镜像/容器这几个概念: </span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end"> <strong>小结</strong>：Docker 本身是一个容器运行载体或称之为管理引擎。我们把应用程序和配置依赖打包好形成一个可交付的运行环境，这个打包好的运行环境就似乎 image镜像文件。只有通过这个镜像文件才能生成 Docker 容器。image 文件可以看作是容器的模板。Docker 根据 image 文件生成容器的实例。同一个 image 文件，可以生成多个同时运行的容器实例。image 文件生成的容器实例，本身也是一个文件，称为镜像文件。 一个容器运行一种服务，当我们需要的时候，就可以通过docker客户端创建一个对应的运行实例，也就是我们的容器。至于仓储，就是放了一堆镜像的地方，我们可以把镜像发布到仓储中，需要的时候从仓储中拉下来就可以了。 </span>
+</p>
+
+<h3 style='font-family:b;color:black'  id="toc_7" class="h16">2、永远的Hello World</h3>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">我们使用命令<code>docker run hello-word</code>，得到的界面为：</span>
+</p>
+
+
+<p class="md_block">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start"><img class="md_compiled " src="assets/截屏2021-01-0801.15.43.png?r=70" alt="" title="" style="width:70%;"><br /></span>
+    <span class="md_line img_before md_line_end">可以看出，docker先尝试在本地寻找时候有hello-world这个镜像，如果没有，则从Hub上拉下Hello-world的镜像并运行</span>
+</p>
+
+<h3 style='font-family:b;color:black'  id="toc_8" class="h16">3、底层原理</h3>
+<h4 style='font-family:b;color:black'  id="toc_9" class="h16">（1）Docker是怎么工作的</h4>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">Docker是一个Client-Server结构的系统，Docker守护进程运行在主机上， 然后通过Socket连接从客户端访问，守护进程从客户端接受命令并管理运行在主机上的容器，而容器是一个运行时环境，就是我们前面说到的集装箱</span>
+</p>
+
+<h4 style='font-family:b;color:black'  id="toc_10" class="h16">（2）为什么Docker比虚拟机快</h4>
+
+<ul>
+<li class="md_li"><span>docker有着比虚拟机更少的抽象层。由亍docker不需要Hypervisor实现硬件资源虚拟化,运行在docker容器上的程序直接使用的都是实际物理机的硬件资源。因此在CPU、内存利用率上docker将会在效率上有明显优势。 
+
+</span></li>
+<li class="md_li"><span>docker利用的是宿主机的内核,而不需要Guest OS。因此,当新建一个容器时,docker不需要和虚拟机一样重新加载一个操作系统内核。仍而避免引寻、加载操作系统内核返个比较费时费资源的过程,当新建一个虚拟机时,虚拟机软件需要加载Guest OS,返个新建过程是分钟级别的。而docker由于直接利用宿主机的操作系统,则省略了返个过程,因此新建一个docker容器只需要几秒钟。 
+
+</span></li>
+</ul>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">&nbsp;&nbsp;</span>
+</p>
+
+
+<hr>
+<h2 style='font-family:b;color:black'  id="toc_11" class="h16">三、Docker常用命令</h2>
+<h3 style='font-family:b;color:black'  id="toc_12" class="h16">1、帮助命令</h3>
+
+<ul>
+<li class="md_li"><span><code>docker version</code>：查看docker版本
+</span></li>
+</ul>
+
+<p class="md_block  md_has_block_below md_has_block_below_ul">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/截屏2021-01-0801.38.12.png?r=60" alt="" title="" style="width:60%;"></span>
+</p>
+
+
+<ul>
+<li class="md_li"><span><code>docker info</code>：查看docker的详细信息：
+</span></li>
+</ul>
+
+<p class="md_block  md_has_block_below md_has_block_below_ul">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/截屏2021-01-0801.39.34.png?r=60" alt="" title="" style="width:60%;"></span>
+</p>
+
+
+<ul>
+<li class="md_li"><span><code>docker --help</code>：docker帮助文档
+</span></li>
+</ul>
+
+<p class="md_block">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/截屏2021-01-0801.40.18.png?r=60" alt="" title="" style="width:60%;"></span>
+</p>
+
+<h3 style='font-family:b;color:black'  id="toc_13" class="h16">2、镜像命令</h3>
+<h4 style='font-family:b;color:black'  id="toc_14" class="h16">（1）docker images</h4>
+
+<ul>
+<li class="md_li"><span>作用：列出本地主机上的镜像
+
+
+<ul>
+<li class="md_li"><span>REPOSITORY：表示镜像的仓库源  
+
+</span></li>
+<li class="md_li"><span>TAG：镜像的标签
+
+</span></li>
+<li class="md_li"><span>IMAGE ID：镜像ID
+
+</span></li>
+<li class="md_li"><span>CREATED：镜像创建时间
+
+</span></li>
+<li class="md_li"><span>SIZE：镜像大小   
+
+</span></li>
+</ul>
+</span></li>
+</ul>
+
+<p class="md_block  md_has_block_below md_has_block_below_ul">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/截屏2021-01-0801.42.30.png?r=60" alt="" title="" style="width:60%;"></span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>选项：
+
+
+<ul>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end"><code>-a</code>：列出本地所有的镜像（含中间映像层）</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end"><code>-q</code>：只显示镜像ID</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end"><code>--digests</code>：显示镜像的摘要信息</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end"><code>--no-trunc</code>：显示完整的镜像信息</span>
+</p>
+
+</span></li>
+</ul>
+</span></li>
+</ul>
+<h4 style='font-family:b;color:black'  id="toc_15" class="h16">（2）docker search</h4>
+
+<ul>
+<li class="md_li"><span>作用：从Docker Hub上查找镜像
+
+
+<ul>
+<li class="md_li"><span>NAME：镜像名字
+
+</span></li>
+<li class="md_li"><span>DESCRIPTION：镜像描述
+
+</span></li>
+<li class="md_li"><span>STARS：类似于Github上的Star
+
+</span></li>
+<li class="md_li"><span>OFFICIAL：是否官方发布
+
+</span></li>
+<li class="md_li"><span>AUTOMATED：表示是否是自动构建的镜像仓库
+
+</span></li>
+</ul>
+</span></li>
+</ul>
+
+<p class="md_block  md_has_block_below md_has_block_below_ul">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/截屏2021-01-0814.56.28.png?r=80" alt="" title="" style="width:80%;"></span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>选项：
+
+
+<ul>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end"><code>--limit</code>：限制展示的行数</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end"><code>--no-trunc</code>：显示完整的镜像信息</span>
+</p>
+
+</span></li>
+</ul>
+</span></li>
+</ul>
+<h4 style='font-family:b;color:black'  id="toc_16" class="h16">（3）docker pull</h4>
+
+<ul>
+<li class="md_li"><span>作用：从Docker Hub上下载镜像
+</span></li>
+</ul>
+
+<p class="md_block  md_has_block_below md_has_block_below_ul">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/截屏2021-01-0820.55.28.png?r=70" alt="" title="" style="width:70%;"></span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>选项：
+
+
+<ul>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end"><code>-a</code>：下载所有的仓库中所有镜像</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end"><code>-q</code>：不输出详细信息，只输出精简信息</span>
+</p>
+
+</span></li>
+</ul>
+</span></li>
+</ul>
+<h4 style='font-family:b;color:black'  id="toc_17" class="h16">（4）docker rmi</h4>
+
+<ul>
+<li class="md_li"><span>作用：删除镜像
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">删除单个镜像：<code>docker rmi  -f 镜像ID</code></span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">删除多个镜像：<code>docker rmi -f 镜像名1:TAG 镜像名2:TAG</code></span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">删除全部镜像：<code>docker rmi -f $(docker images -qa)</code></span>
+</p>
+
+</span></li>
+</ul>
+<h3 style='font-family:b;color:black'  id="toc_18" class="h16">3、容器命令</h3>
+<h4 style='font-family:b;color:black'  id="toc_19" class="h16">（1）新建并启动容器</h4>
+
+<ul>
+<li class="md_li"><span>
+<p class="md_block">
+    <span style='font-family:arg...'  class="md_line md_line_start md_line_end">命令：<code>docker run [OPTIONS] IMAGE [COMMAND] </code></span>
+</p>
+
+</span></li>
+<li class="md_li"><span>选项：
+
+
+<ul>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end"> <code>--name="容器新名字"</code>：为容器指定一个名称；</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end"> <code>-d</code>：后台运行容器，并返回容器ID，也即启动守护式容器；</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end"> <code>-i</code>：以交互模式运行容器，通常与<code>-t</code>同时使用； </span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end"><code>-t</code>：为容器重新分配一个伪输入终端，通常与<code>-i</code>同时使用； </span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end"><code>-P</code>：随机端口映射； </span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block  md_has_block_below md_has_block_below_ul">
+    <span class="md_line md_line_start md_line_end"><code>-p</code>：指定端口映射，有以下四种格式 </span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>ip:hostPort:containerPort 
+
+</span></li>
+<li class="md_li"><span>ip::containerPort 
+
+</span></li>
+<li class="md_li"><span>hostPort:containerPort 
+
+</span></li>
+<li class="md_li"><span>containerPort 
+
+</span></li>
+</ul>
+</span></li>
+</ul>
+</span></li>
+</ul>
+<h4 style='font-family:b;color:black'  id="toc_20" class="h16">（2）列出当前所有正在运行的容器</h4>
+
+<ul>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">命令：<code>docker ps [OPTIONS]</code>；</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>选项：
+
+
+<ul>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end"><code>-a</code>：列出当前所有正在运行的容器和历史上运行过的容器 </span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end"><code>-l</code>：显示最近创建的容器</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end"><code>-n</code>：显示最近n个创建的容器</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end"><code>-q</code>：静默模式，只显示容器编号</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end"><code>--no-trunc</code>：不截断输出</span>
+</p>
+
+</span></li>
+</ul>
+</span></li>
+</ul>
+<h4 style='font-family:b;color:black'  id="toc_21" class="h16">（3）退出容器</h4>
+
+<ul>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end"><code>exit</code>：容器停止运行并退出</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end"><code>ctrl+P+Q</code>：容器不停止运行并退出</span>
+</p>
+
+</span></li>
+</ul>
+<h4 style='font-family:b;color:black'  id="toc_22" class="h16">（4）启动容器</h4>
+
+<ul>
+<li class="md_li"><span><code>docker start 容器ID或者容器名</code>
+</span></li>
+</ul>
+<h4 style='font-family:b;color:black'  id="toc_23" class="h16">（5）重启容器</h4>
+
+<ul>
+<li class="md_li"><span><code>docker restart 容器ID或者容器名</code>
+</span></li>
+</ul>
+<h4 style='font-family:b;color:black'  id="toc_24" class="h16">（6）停止容器</h4>
+
+<ul>
+<li class="md_li"><span><code>docker stop 容器ID或者容器名</code>
+</span></li>
+</ul>
+<h4 style='font-family:b;color:black'  id="toc_25" class="h16">（7）强行停止容器</h4>
+
+<ul>
+<li class="md_li"><span><code>docker kill 容器ID或者容器名</code>
+</span></li>
+</ul>
+<h4 style='font-family:b;color:black'  id="toc_26" class="h16">（8）删除已停止的容器</h4>
+
+<ul>
+<li class="md_li"><span><code>docker rm 容器ID</code></span></li>
+<li class="md_li"><span>一次性删除多个容器：
+
+
+<ul>
+<li class="md_li"><span><code>docker rm -f $(docker ps -a -q)</code></span></li>
+<li class="md_li"><span><code>docker ps -a -q | xargs docker rm</code></span></li>
+</ul>
+</span></li>
+</ul>
+<h4 style='font-family:b;color:black'  id="toc_27" class="h16">（9）启动守护式容器</h4>
+
+<ul>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">命令：<code>docker run -d xxx</code></span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">注意：如果我们使用<code>docker run -d centos</code>运行Centos，然后用<code>docker ps -a</code>进行查看，会发现容器已经退出 ，这是因为Docker容器后台运行，就必须有一个前台进程；容器运行的命令如果不是那些 一直挂起的命令（比如运行top，tail），就是会自动退出的。 这个是docker的机制问题，比如你的web容器,我们以nginx为例，正常情况下，我们配置启动服务只需要启动响应的service即可。例如<code>service nginx start</code>，但是这样做，nginx为后台进程模式运行,就导致docker前台没有运行的应用。 这样的容器后台启动后,会立即自杀因为他觉得他没事可做了；所以，最佳的解决方案是,将你要运行的程序以前台进程的形式运行 </span>
+</p>
+
+</span></li>
+</ul>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">&nbsp;</span>
+</p>
+
+<h4 style='font-family:b;color:black'  id="toc_28" class="h16">（10）查看容器日志</h4>
+
+<ul>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">命令：<code>docker logs -f -t --tail 容器ID</code></span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">作用：我们用<code>docker -d</code>运行容器后，如果容器内有输出，我们可以用<code>docker logs</code>进行查询</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>选项：
+
+
+<ul>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end"><code>-t</code>：加入时间戳 </span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end"><code>-f</code>：跟随最新的日志打印 </span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end"><code>--tail 数字</code>：显示最后多少条 </span>
+</p>
+
+</span></li>
+</ul>
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">举例：先用命令<code>docker run -d centos /bin/sh -c "while true;do echo hello zzyy;sleep 2;done"</code>运行Centos，然后就可以利用<code>docker logs -t/-f/--tail 容器ID</code>查询</span>
+</p>
+
+</span></li>
+</ul>
+<h4 style='font-family:b;color:black'  id="toc_29" class="h16">（11）查看容器内运行的进程</h4>
+
+<ul>
+<li class="md_li"><span>命令：<code>docker top 容器ID</code>
+</span></li>
+</ul>
+
+<p class="md_block">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/截屏2021-01-0822.59.45.png?r=70" alt="" title="" style="width:70%;"></span>
+</p>
+
+<span class="md_repeated_n md_repeated_n_1"></span><h4 style='font-family:b;color:black'  id="toc_30" class="h16">（12）查看容器内部细节</h4>
+
+<ul>
+<li class="md_li"><span>命令：<code>docker inspect 容器ID</code>
+</span></li>
+</ul>
+
+<p class="md_block">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/截屏2021-01-0823.00.52.png?r=70" alt="" title="" style="width:70%;"></span>
+</p>
+
+<h4 style='font-family:b;color:black'  id="toc_31" class="h16">（13）进入正在运行的容器并以命令行交互</h4>
+
+<ul>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">说明：如果我们使用<code>docker run -d</code>或者退出了容器，而容器还在运行，并且我们想进入容器进行交互，这时候就需要下面两个命令进入容器的交互式界面</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>命令：
+
+
+<ul>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end"><code>docker attach 容器ID</code>：直接进入容器启动命令的终端，不会启动新的进程</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end"><code>docker exec -it 容器ID bashShell</code>：是在容器中打开新的终端，并且可以启动新的进程</span>
+</p>
+
+</span></li>
+</ul>
+</span></li>
+</ul>
+<h4 style='font-family:b;color:black'  id="toc_32" class="h16">（14）从容器内拷贝文件到主机上</h4>
+
+<ul>
+<li class="md_li"><span>命令：<code>docker cp  容器ID:容器内路径 目的主机路径</code>
+</span></li>
+</ul>
+<h3 style='font-family:b;color:black'  id="toc_33" class="h16">4、常用命令总结</h3>
+<table>
+ <thead><tr><th style="text-align:left">命令</th>
+<th style="text-align:left">作用</th>
+ </tr>
+</thead>
+ <tbody><tr><td style="text-align:left">attach </td>
+<td style="text-align:left"> 当前 shell 下 attach 连接指定运行镜像</td>
+</tr>
+<tr><td style="text-align:left">build </td>
+<td style="text-align:left"> 通过 Dockerfile 定制镜像</td>
+</tr>
+<tr><td style="text-align:left">commit </td>
+<td style="text-align:left"> 提交当前容器为新的镜像</td>
+</tr>
+<tr><td style="text-align:left">cp </td>
+<td style="text-align:left"> 从容器中拷贝指定文件或者目录到宿主机中</td>
+</tr>
+<tr><td style="text-align:left">create </td>
+<td style="text-align:left"> 创建一个新的容器，同 run，但不启动容器</td>
+</tr>
+<tr><td style="text-align:left">diff </td>
+<td style="text-align:left"> 查看 docker 容器变化</td>
+</tr>
+<tr><td style="text-align:left">events </td>
+<td style="text-align:left"> 从 docker 服务获取容器实时事件</td>
+</tr>
+<tr><td style="text-align:left">exec </td>
+<td style="text-align:left"> 在已存在的容器上运行命令</td>
+</tr>
+<tr><td style="text-align:left">export </td>
+<td style="text-align:left"> 导出容器的内容流作为一个 tar 归档文件[对应 import ]</td>
+</tr>
+<tr><td style="text-align:left">history </td>
+<td style="text-align:left"> 展示一个镜像形成历史</td>
+</tr>
+<tr><td style="text-align:left">images </td>
+<td style="text-align:left"> 列出系统当前镜像</td>
+</tr>
+<tr><td style="text-align:left">import </td>
+<td style="text-align:left"> 从tar包中的内容创建一个新的文件系统映像[对应export]</td>
+</tr>
+<tr><td style="text-align:left">info  </td>
+<td style="text-align:left"> 显示系统相关信息</td>
+</tr>
+<tr><td style="text-align:left">inspect </td>
+<td style="text-align:left"> 查看容器详细信息</td>
+</tr>
+<tr><td style="text-align:left">kill  </td>
+<td style="text-align:left"> kill 指定 docker 容器</td>
+</tr>
+<tr><td style="text-align:left">load  </td>
+<td style="text-align:left"> 从一个 tar 包中加载一个镜像[对应 save]</td>
+</tr>
+<tr><td style="text-align:left">login </td>
+<td style="text-align:left"> 注册或者登陆一个 docker 源服务器</td>
+</tr>
+<tr><td style="text-align:left">logout </td>
+<td style="text-align:left"> 从当前 Docker registry 退出</td>
+</tr>
+<tr><td style="text-align:left">logs </td>
+<td style="text-align:left"> 输出当前容器日志信息</td>
+</tr>
+<tr><td style="text-align:left">port </td>
+<td style="text-align:left"> 查看映射端口对应的容器内部源端口</td>
+</tr>
+<tr><td style="text-align:left">pause </td>
+<td style="text-align:left"> 暂停容器</td>
+</tr>
+<tr><td style="text-align:left">ps </td>
+<td style="text-align:left"> 列出容器列表</td>
+</tr>
+<tr><td style="text-align:left">pull </td>
+<td style="text-align:left"> 从docker镜像源服务器拉取指定镜像或者库镜像</td>
+</tr>
+<tr><td style="text-align:left">push </td>
+<td style="text-align:left"> 推送指定镜像或者库镜像至docker源服务器</td>
+</tr>
+<tr><td style="text-align:left">restart </td>
+<td style="text-align:left"> 重启运行的容器</td>
+</tr>
+<tr><td style="text-align:left">rm </td>
+<td style="text-align:left"> 移除一个或者多个容器</td>
+</tr>
+<tr><td style="text-align:left">rmi </td>
+<td style="text-align:left"> 移除一个或多个镜像[无容器使用该镜像才可删除，否则需删除相关容器才可继续或 -f 强制删除]</td>
+</tr>
+<tr><td style="text-align:left">run </td>
+<td style="text-align:left"> 创建一个新的容器并运行一个命令</td>
+</tr>
+<tr><td style="text-align:left">save </td>
+<td style="text-align:left"> 保存一个镜像为一个 tar 包[对应 load]</td>
+</tr>
+<tr><td style="text-align:left">search </td>
+<td style="text-align:left"> 在 docker hub 中搜索镜像</td>
+</tr>
+<tr><td style="text-align:left">start </td>
+<td style="text-align:left"> 启动容器</td>
+</tr>
+<tr><td style="text-align:left">stop  </td>
+<td style="text-align:left"> 停止容器</td>
+</tr>
+<tr><td style="text-align:left">tag  </td>
+<td style="text-align:left"> 给源中镜像打标签</td>
+</tr>
+<tr><td style="text-align:left">top  </td>
+<td style="text-align:left"> 查看容器中运行的进程信息</td>
+</tr>
+<tr><td style="text-align:left">unpause </td>
+<td style="text-align:left"> 取消暂停容器</td>
+</tr>
+<tr><td style="text-align:left">version </td>
+<td style="text-align:left"> 查看 docker 版本号</td>
+</tr>
+<tr><td style="text-align:left">wait  </td>
+<td style="text-align:left"> 截取容器停止时的退出状态值</td>
+</tr>
+</tbody> 
+</table>
+<!--block_code_end-->
+<hr>
+<h2 style='font-family:b;color:black'  id="toc_34" class="h16">四、Docker镜像</h2>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">镜像是一种轻量级、可执行的独立软件包，用来打包软件运行环境和基于运行环境开发的软件，它包含运行某个软件所需的所有内容，包括代码、运行时、库、环境变量和配置文件</span>
+</p>
+
+<h3 style='font-family:b;color:black'  id="toc_35" class="h16">1、UnionFS（联合文件系统）</h3>
+
+<ul>
+<li class="md_li"><span>UnionFS（联合文件系统）：Union文件系统（UnionFS）是一种分层、轻量级并且高性能的文件系统，它支持 对文件系统的修改作为一次提交来一层层的叠加，同时可以将不同目录挂载到同一个虚拟文件系统下(unite several directories into a single virtual filesystem)；Union文件系统是Docker镜像的基础；镜像可以通过分层来进行继承，基于基础镜像（没有父镜像），可以制作各种具体的应用镜像
+
+</span></li>
+<li class="md_li"><span>特性：一次同时加载多个文件系统，但从外面看起来，只能看到一个文件系统，联合加载会把各层文件系统叠加起来，这样最终的文件系统会包含所有底层的文件和目录 
+
+</span></li>
+</ul>
+<h3 style='font-family:b;color:black'  id="toc_36" class="h16">2、Docker镜像加载原理</h3>
+
+<ul>
+<li class="md_li"><span>docker的镜像实际上由一层一层的文件系统组成，这种层级的文件系统UnionFS，而UnionFS可以分为以下两类：
+
+
+<ul>
+<li class="md_li"><span>bootfs(boot file system)：主要包含bootloader和kernel，bootloader主要是引导加载kernel, Linux刚启动时会加载bootfs文件系统，  在Docker镜像的最底层是bootfs。  这一层与我们典型的Linux/Unix系统是一样的，包含boot加载器和内核。当boot加载完成之后整个内核就都在内存中了，此时内存的使用权已由bootfs转交给内核，此时系统也会卸载bootfs
+
+</span></li>
+<li class="md_li"><span>rootfs (root file system) ：在bootfs之上 包含的就是典型 Linux 系统中的 /dev, /proc, /bin, /etc 等标准目录和文件，rootfs就是各种不同的操作系统发行版，比如Ubuntu，Centos等等。  。
+
+</span></li>
+</ul>
+</span></li>
+<li class="md_li"><span>这也是为什么平时我们安装进虚拟机的CentOS都是好几个G，而docker里CentOS才几百M，这是由于对于一个精简的操作系统，rootfs可以很小，只需要包括最基本的命令、工具和程序库就可以了，因为底层直接用宿主机的kernel，自己只需要提供rootfs就行了。由此可见对于不同的linux发行版，bootfs基本是一致的，rootfs会有差别, 因此不同的发行版可以公用bootfs
+
+</span></li>
+</ul>
+
+<p class="md_block">
+    <span class="md_line md_line_start">&nbsp;<br /></span>
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_end"> <img class="md_compiled " src="assets/截屏2021-01-0901.23.21.png?r=60" alt="" title="" style="width:60%;"></span>
+</p>
+
+<h3 style='font-family:b;color:black'  id="toc_37" class="h16">3、镜像的分层</h3>
+
+<p class="md_block">
+    <span class="md_line md_line_start">我们以docker中的tomcat为例，详细解释docker镜像分层的概念，首先在<code>docker pull tomcat</code>的过程中，如下图所示，我们可以看到下载的过程是分层下载的<br /></span>
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image"><img class="md_compiled " src="assets/截屏2021-01-0901.37.40.png?r=50" alt="" title="" style="width:50%;"><br /></span>
+    <span class="md_line img_before">而最后的tomcat有649MB，之所以这么多，正是由于docker的分层的特点决定的，从下图中可以看出，tomcat要运行，必须有一个kernel，即bootfs，在kernel之上，必须有一个操作系统，例如：CentOS或者Ubuntu，由于tomcat的运行依赖于Java，因此还必须有Java环境，而我们能看到的只是最外面的一个tomcat镜像，而实际上，这个镜像是被docker自下而上进行打包得到的，因此才会有649MB.<br /></span>
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_end"><img class="md_compiled " src="assets/截屏2021-01-0901.35.46.png?r=60" alt="" title="" style="width:60%;"></span>
+</p>
+
+<h3 style='font-family:b;color:black'  id="toc_38" class="h16">4、Docker采用分层结构的原因</h3>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">这种结构最大的一个好处就是共享资源；比如：有多个镜像都从相同的 base 镜像构建而来，那么宿主机只需在磁盘上保存一份base镜像，同时内存中也只需加载一份base镜像，就可以为所有容器服务了。而且镜像的每一层都可以被共享，这也是为什么我们在<code>docker pull</code>第一次往往比较慢，而后面我们删除后再<code>docker pull</code>相同的镜像非常快的原因</span>
+</p>
+
+<h3 style='font-family:b;color:black'  id="toc_39" class="h16">5、Docker镜像特点</h3>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">Docker镜像都是只读的，当容器启动时，一个新的可写层被加载到镜像的顶部。这一层通常被称作“容器层”，“容器层”之下的都叫“镜像层”</span>
+</p>
+
+<h3 style='font-family:b;color:black'  id="toc_40" class="h16">6、Docker镜像的修改与Commit</h3>
+
+<p class="md_block md_block_as_opening md_has_block_below md_has_block_below_code_block">
+    <span class="md_line md_line_start md_line_end">类似于Git，Docker也有<code>commit</code>操作，作用是提交容器副本使之成为一个新的镜像，用法为：</span>
+</p>
+
+<div class="codehilite code_lang_bash  highlight"><pre><span></span>docker commit -m<span class="o">=</span>“提交的描述信息” -a<span class="o">=</span>“作者” 容器ID 要创建的目标镜像名:<span class="o">[</span>标签名<span class="o">]</span>
+</pre></div>
+
+<!--block_code_end--><h2 style='font-family:b;color:black'  id="toc_41" class="h16">五、Docker容器数据卷</h2>
+
+<p class="md_block md_block_as_opening md_has_block_below md_has_block_below_ul">
+    <span class="md_line md_line_start md_line_end">Docker的理念： </span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>将运用与运行的环境打包形成容器运行 ，运行可以伴随着容器，但是我们对数据的要求希望是持久化的 
+
+</span></li>
+<li class="md_li"><span>容器之间希望有可能共享数据 
+
+</span></li>
+</ul>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">但是，Docker容器产生的数据，如果不通过<code>docker commit</code>生成新的镜像，使得数据做为镜像的一部分保存下来，那么当容器删除后，数据自然也就没有了，所以，为了能保存数据，在docker中我们使用<strong>数据卷</strong></span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">所谓的卷，就是目录或文件，存在于一个或多个容器中，由docker挂载到容器，但不属于联合文件系统，因此能够绕过Union File System提供一些用于持续存储或共享数据的特性，卷的设计目的就是数据的持久化，完全独立于容器的生存周期，因此Docker不会在容器删除时删除其挂载的数据卷 </span>
+</p>
+
+
+<p class="md_block md_block_as_opening md_has_block_below md_has_block_below_ul">
+    <span class="md_line md_line_start md_line_end"><strong>容器卷特点</strong>： </span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>数据卷可在容器之间共享或重用数据 
+
+</span></li>
+<li class="md_li"><span>卷中的更改可以直接生效 
+
+</span></li>
+<li class="md_li"><span>数据卷中的更改不会包含在镜像的更新中 
+
+</span></li>
+<li class="md_li"><span>数据卷的生命周期一直持续到没有容器使用它为止 
+
+</span></li>
+</ul>
+<h3 style='font-family:b;color:black'  id="toc_42" class="h16">1、容器内添加数据卷</h3>
+<h4 style='font-family:b;color:black'  id="toc_43" class="h16">（1）直接命令添加</h4>
+
+<ul>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">命令：<code>docker run -it -v /宿主机目录:/容器内目录 镜像名</code>，本质是加上一个<code>-v</code>的参数，使得容器内的指定目录挂在到宿主机的目录中</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">查看数据卷是否挂载成功：<code>docker inspect 容器ID</code></span>
+</p>
+
+</span></li>
+<li class="md_li"><span> 如果数据卷挂在成功，则两者之间的任何操作都可以被同步，即便是容器停止退出后，主机修改数据后，再启动容器，容器的数据也会被同步
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">命令(带权限)：<code>docker run -it -v /宿主机绝对路径目录:/容器内目录:ro 镜像名</code>，这里我们加入了一个参数<code>ro</code>，是read only的缩写，表示容器内目录下的文件只能读，不能修改，同时也不能在容器内目录下创建文件，相当于只允许在宿主机上修改文件并单向同步到容器内</span>
+</p>
+
+</span></li>
+</ul>
+<h4 style='font-family:b;color:black'  id="toc_44" class="h16">（2）DockerFile添加</h4>
+
+<p class="md_block  md_has_block_below md_has_block_below_ul">
+    <span class="md_line md_line_start md_line_end">DockerFile相当于是镜像的描述性文件，我们可以通过新建一个DockerFile，然后构建为新的镜像，这样在运行我们新构建的镜像时，就能自动使用数据卷了，下面以Centos这个官方镜像为例，说明如何通过DockerFile添加数据卷</span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>第一步：新建一个名为mydocker的目录并进入该目录
+
+</span></li>
+<li class="md_li"><span>第二步：在mydocker这个目录中新建一个名为DockerFile的文件，并输入以下内容：
+
+
+<ul>
+<li class="md_li"><span>注意：说明：出于可移植和分享的考虑，之前使用的命令：<code>docker run -v 主机目录:容器目录</code>这种方法不能够直接在Dockerfile中实现，这是因为宿主机目录是依赖于特定宿主机的，并不能够保证在所有的宿主机上都存在这样的特定目录，而在DockerFile中可在Dockerfile中使用<code>VOLUME</code>指令来给镜像添加一个或多个数据卷，并且会在宿主机上新建与docker内数据卷相同名称的目录，从而解决这个问题，例如下面的命令，就会新建<code>"/dataVolumeContainer1"</code>和<code>"/dataVolumeContainer2"</code>这样两个目录
+</span></li>
+</ul>
+</span></li>
+</ul>
+<div class="codehilite code_lang_bash  highlight"><pre><span></span><span class="c1"># volume test </span>
+FROM centos <span class="c1"># 父镜像</span>
+VOLUME <span class="o">[</span><span class="s2">&quot;/dataVolumeContainer1&quot;</span>,<span class="s2">&quot;/dataVolumeContainer2&quot;</span><span class="o">]</span> <span class="c1"># 添加数据卷</span>
+CMD <span class="nb">echo</span> <span class="s2">&quot;finished---------success1&quot;</span> <span class="c1"># 提示信息</span>
+CMD /bin/bash
+</pre></div>
+
+<!--block_code_end-->
+<ul>
+<li class="md_li"><span>第三步：利用<code>docker bulid</code>打包为新的镜像
+</span></li>
+</ul>
+
+<p class="md_block  md_has_block_below md_has_block_below_ul">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start"><img class="md_compiled " src="assets/截屏2021-01-0923.24.22.png?r=70" alt="" title="" style="width:70%;"><br /></span>
+    <span class="md_line img_before md_line_end">可以看出，在<code>docker build</code>的过程中，<code>docker</code>是按照Dockerfile中的命令一层一层的打包，最后构建出名为<code>lizhe/centos</code>的镜像，构建完成后，使用<code>docker images</code>命令查看可以看出的确出现了<code>lizhe/centos</code>这个镜像</span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>第四步：运行新构建的镜像，验证数据卷是否挂载成功；从下图中，可以看到docker内的centos已经有我们想要的两个数据卷了，那么宿主机上对应的容器卷应该在哪个位置呢？
+</span></li>
+</ul>
+
+<p class="md_block  md_has_block_below md_has_block_below_ul">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/截屏2021-01-0923.30.24.png?r=60" alt="" title="" style="width:60%;"></span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>第五步：查找宿主机容器卷的位置：如下图所示，利用<code>docker inspect 容器ID</code>可以得到宿主机上容器卷的挂载位置，<code>dataVolumnContainer1</code>和<code>dataVolumnContainer2</code>分别挂载到了宿主机不同的文件夹下，说明挂载成功，可以实现宿主机与Docker容器之间数据的同步
+</span></li>
+</ul>
+
+<p class="md_block">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/截屏2021-01-0923.41.12.png?r=75" alt="" title="" style="width:75%;"></span>
+</p>
+
+<span class="md_repeated_n md_repeated_n_1"></span><h3 style='font-family:b;color:black'  id="toc_45" class="h16">2、数据卷容器</h3>
+
+<ul>
+<li class="md_li"><span>命名的容器挂载数据卷，其它容器通过挂载这个(父容器)实现数据共享，挂载数据卷的容器，称之为数据卷容器
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">功能的实现是通过<code>--volumes-from</code>这个参数实现的，例如，如果我们已经启动了一个父容器dc01，并且挂载了两个数据卷<code>dataVolumnContainer1</code>和<code>dataVolumnContainer2</code>，然后我们在<code>dataVolumnContainer2</code>中修改文件后，再启动两个容器dc02和dc03，启动命令为<code>docker run -it --name dc02/dc03 --volumes-from dc01 centos</code>，这样在dc02或dc03的<code>dataVolumnContainer2</code>中，就可以看到在dc01中修改的文件，同时如果我们在dc2或dc03中修改文件，然后进入dc01中，也会看到在dc02或dc03中修改的文件</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>容器之间配置信息的传递，数据卷的生命周期一直持续到没有容器使用它为止. 什么意思呢？就是
+
+
+<ul>
+<li class="md_li"><span>删除dc01后，在dc02中修改，那么dc03也能访问
+
+</span></li>
+<li class="md_li"><span>再删除dc02后dc03也能访问
+
+</span></li>
+<li class="md_li"><span>新建dc04继承dc03后再删除dc03，dc04也能访问
+
+</span></li>
+</ul>
+</span></li>
+</ul>
+
+<hr>
+<h2 style='font-family:b;color:black'  id="toc_46" class="h16">六、DockerFile解析</h2>
+<h3 style='font-family:b;color:black'  id="toc_47" class="h16">1、DockerFile简介</h3>
+
+<p class="md_block md_block_as_opening md_has_block_below md_has_block_below_ul">
+    <span class="md_line md_line_start md_line_end">Dockerfile是用来构建Docker镜像的构建文件，是由一系列命令和参数构成的脚本，类似与Linux中的Shell脚本，利用DockerFile构建的步骤为：</span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>编写Dockerfile文件
+
+</span></li>
+<li class="md_li"><span><code>docker build</code></span></li>
+<li class="md_li"><span><code>docker run</code></span></li>
+</ul>
+
+<p class="md_block md_block_as_opening md_has_block_below md_has_block_below_code_block">
+    <span class="md_line md_line_start md_line_end">以<a class="md_compiled" href="https://github.com/CentOS/sig-cloud-instance-images/blob/ccd17799397027acf9ee6d660e75b8fce4c852e8/docker/Dockerfile">DockerHub</a>上的官方版Centos为例，其Dockerfile为：</span>
+</p>
+
+<div class="codehilite code_lang_bash  highlight"><pre><span></span>FROM scratch
+ADD centos-8-x86_64.tar.xz /
+LABEL org.label-schema.schema-version<span class="o">=</span><span class="s2">&quot;1.0&quot;</span>     org.label-schema.name<span class="o">=</span><span class="s2">&quot;CentOS Base Image&quot;</span>     org.label-schema.vendor<span class="o">=</span><span class="s2">&quot;CentOS&quot;</span>     org.label-schema.license<span class="o">=</span><span class="s2">&quot;GPLv2&quot;</span>     org.label-schema.build-date<span class="o">=</span><span class="s2">&quot;20201204&quot;</span>
+CMD <span class="o">[</span><span class="s2">&quot;/bin/bash&quot;</span><span class="o">]</span>
+</pre></div>
+
+<!--block_code_end--><h3 style='font-family:b;color:black'  id="toc_48" class="h16">2、DockerFile构建过程解析</h3>
+<h4 style='font-family:b;color:black'  id="toc_49" class="h16">（1）脚本规范</h4>
+
+<ul>
+<li class="md_li"><span>每条保留字指令都必须为大写字母且后面要跟随至少一个参数
+
+</span></li>
+<li class="md_li"><span>指令按照从上到下，顺序执行
+
+</span></li>
+<li class="md_li"><span>#表示注释
+
+</span></li>
+<li class="md_li"><span>每条指令都会创建一个新的镜像层，并对镜像进行提交
+
+</span></li>
+</ul>
+<h4 style='font-family:b;color:black'  id="toc_50" class="h16">（2）执行流程</h4>
+
+<ul>
+<li class="md_li"><span>docker从基础镜像运行一个容器
+
+</span></li>
+<li class="md_li"><span>执行一条指令并对容器作出修改
+
+</span></li>
+<li class="md_li"><span>执行类似docker commit的操作提交一个新的镜像层
+
+</span></li>
+<li class="md_li"><span>docker再基于刚提交的镜像运行一个新容器
+
+</span></li>
+<li class="md_li"><span>执行dockerfile中的下一条指令直到所有指令都执行完成
+
+</span></li>
+</ul>
+<h4 style='font-family:b;color:black'  id="toc_51" class="h16">（3）小结</h4>
+
+<ul>
+<li class="md_li"><span>从应用软件的角度来看，Dockerfile、Docker镜像与Docker容器分别代表软件的三个不同阶段：
+
+
+<ul>
+<li class="md_li"><span>Dockerfile是软件的原材料 
+
+</span></li>
+<li class="md_li"><span>Docker镜像是软件的交付品 
+
+</span></li>
+<li class="md_li"><span>Docker容器则可以认为是软件的运行态
+
+</span></li>
+</ul>
+</span></li>
+<li class="md_li"><span>Dockerfile面向开发，Docker镜像成为交付标准，Docker容器则涉及部署与运维，三者缺一不可，合力充当Docker体系的基石 
+
+
+<ul>
+<li class="md_li"><span>Dockerfile：需要定义一个Dockerfile，Dockerfile定义了进程需要的一切东西；Dockerfile涉及的内容包括执行代码或者是文件、环境变量、依赖包、运行时环境、动态链接库、操作系统的发行版、服务进程和内核进程(当应用进程需要和系统服务和内核进程打交道，这时需要考虑如何设计namespace的权限控制)等等;
+
+</span></li>
+<li class="md_li"><span>Docker镜像：在用Dockerfile定义一个文件之后，docker build时会产生一个Docker镜像，当运行 Docker镜像时，会真正开始提供服务;
+
+</span></li>
+<li class="md_li"><span>Docker容器，容器是直接提供服务的
+
+</span></li>
+</ul>
+</span></li>
+</ul>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">&nbsp;&nbsp;</span>
+</p>
+
+<h3 style='font-family:b;color:black'  id="toc_52" class="h16">3、DockerFile体系结构(保留字指令)</h3>
+
+<ul>
+<li class="md_li"><span>DockerFile共有12个常用的保留字指令：
+</span></li>
+</ul>
+<table>
+ <thead><tr><th style="text-align:left">字指令</th>
+<th style="text-align:left">功能</th>
+ </tr>
+</thead>
+ <tbody><tr><td style="text-align:left">FROM </td>
+<td style="text-align:left"> 基础镜像，当前新镜像是基于哪个镜像的</td>
+</tr>
+<tr><td style="text-align:left">MAINTAINER </td>
+<td style="text-align:left"> 镜像维护者的姓名和邮箱地址</td>
+</tr>
+<tr><td style="text-align:left">RUN </td>
+<td style="text-align:left"> 容器构建时需要运行的命令</td>
+</tr>
+<tr><td style="text-align:left">EXPOSE </td>
+<td style="text-align:left"> 当前容器对外暴露出的端口</td>
+</tr>
+<tr><td style="text-align:left">WORKDIR </td>
+<td style="text-align:left"> 指定在创建容器后，终端默认登陆的进来工作目录，一个落脚点</td>
+</tr>
+<tr><td style="text-align:left">ENV </td>
+<td style="text-align:left"> 用来在构建镜像过程中设置环境变量</td>
+</tr>
+<tr><td style="text-align:left">ADD </td>
+<td style="text-align:left"> 将宿主机目录下的文件拷贝进镜像且ADD命令会自动处理URL和解压tar压缩包</td>
+</tr>
+<tr><td style="text-align:left">COPY </td>
+<td style="text-align:left"> 类似ADD，拷贝文件和目录到镜像中。将从构建上下文目录中 <源路径> 的文件/目录复制到新的一层的镜像内的 <目标路径> 位置</td>
+</tr>
+<tr><td style="text-align:left">VOLUME </td>
+<td style="text-align:left"> 容器数据卷，用于数据保存和持久化工作</td>
+</tr>
+<tr><td style="text-align:left">CMD </td>
+<td style="text-align:left"> 指定一个容器启动时要运行的命令，Dockerfile中可以有多个CMD指令，但只有最后一个生效，CMD会被docker run之后的参数替换</td>
+</tr>
+<tr><td style="text-align:left">ENTRYPOINT </td>
+<td style="text-align:left"> 指定一个容器启动时要运行的命令，ENTRYPOINT的目的和CMD一样，都是在指定容器启动程序及参数，但ENTERPOINT不会像CMD一样被docker run之后的参数覆盖</td>
+</tr>
+<tr><td style="text-align:left">ONBUILD </td>
+<td style="text-align:left"> 当构建一个被继承的Dockerfile时运行命令，父镜像在被子继承后父镜像的onbuild被触发</td>
+</tr>
+</tbody> 
+</table>
+<!--block_code_end-->
+        </div>
+    </div>
+    <!--mathjax-->
+    <!--mermaid-->
+</body>
+</html>

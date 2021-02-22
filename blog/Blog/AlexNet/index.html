@@ -1,0 +1,722 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="renderer" content="webkit">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="renderer" content="webkit"/>
+    <title></title>
+    <link rel="stylesheet" href="data:text/css;base64,CiAgICBoMSwgaDIsIGgzLCBoNSwgaDYsICBpbWcsIHN2ZywgcHJlLCB0YWJsZSwgdHJ7cGFnZS1icmVhay1pbnNpZGU6IGF2b2lkfQoKCiAgICBib2R5IHsKICAgICAgICBiYWNrZ3JvdW5kOiAjRkZGRkZGOwogICAgICAgIGZvbnQtc2l6ZTogMTZweDsKICAgICAgICBsaW5lLWhlaWdodDoyLjM7CiAgICAgICAgZm9udC1mYW1pbHk6ICJIZWx2ZXRpY2EiOwogICAgICAgIGZvbnQtd2VpZ2h0OiBub3JtYWw7CiAgICAgICAgY29sb3I6ICMzQzNDM0M7CiAgICAgICAgcGFkZGluZzogMCAzOHB4OwogICAgICAgIG1heC13aWR0aDogODIwcHg7CiAgICAgICAgbWFyZ2luOiAwIGF1dG87CgogICAgICAgIHdvcmQtd3JhcDpicmVhay13b3JkOwogICAgICAgIHdvcmQtYnJlYWs6IG5vcm1hbDsKICAgICAgICBvdmVyZmxvdy13cmFwOmJyZWFrLXdvcmQ7CgoKICAgICAgICBvdmVyZmxvdy14OiBoaWRkZW47CiAgICAgICAgdGV4dC1yZW5kZXJpbmc6IG9wdGltaXplTGVnaWJpbGl0eTsKICAgICAgICAtd2Via2l0LXRleHQtc2l6ZS1hZGp1c3Q6IG5vbmU7CiAgICB9CgogICAgYnJ7CiAgICAgICAgbGluZS1oZWlnaHQ6IDIuMzsKICAgIH0KCgoKICAgIEBtZWRpYSAobWF4LXdpZHRoOiA2MDBweCkgewogICAgICAgIGJvZHl7CiAgICAgICAgICAgIHBhZGRpbmc6IDAgMzBweDsKICAgICAgICB9CiAgICB9CgogICAgQG1lZGlhIChtYXgtd2lkdGg6IDQ4MHB4KSB7CiAgICAgICAgYm9keXsKICAgICAgICAgICAgcGFkZGluZzogMCAyMHB4OwogICAgICAgIH0KICAgIH0KCiAgICAuZ2lzdHsKICAgICAgICB3b3JkLWJyZWFrOiBub3JtYWw7CiAgICB9CgogICAgLnBvc3R7CiAgICAgICAgbWFyZ2luLXRvcDogMTBweDsKICAgICAgICBtYXJnaW4tYm90dG9tOiA1MHB4OwogICAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTsKICAgIH0KCgoKICAgIGltZ3sKICAgICAgICBtYXgtd2lkdGg6IDk4JTsKICAgICAgICBtYXJnaW46IDAuOGVtIGF1dG8gMC44ZW0gYXV0bzsKICAgIH0KCiAgICBoMSBpbWcsIGgyIGltZywgaDMgaW1nLCBoNCBpbWcsIGg1IGltZywgaDYgaW1newogICAgICAgIG1hcmdpbjogYXV0bzsKICAgIH0KCiAgICAueDJfaW1hZ2V7CiAgICAgICAgem9vbTogNTAlOwogICAgfQoKICAgIC54M19pbWFnZXsKICAgICAgICB6b29tOiAzMy4zMyU7CiAgICB9CgogICAgLng0X2ltYWdlewogICAgICAgIHpvb206IDI1JTsKICAgIH0KCgogICAgcCBpbWd7CiAgICAgICAgbWFyZ2luOiAwIGF1dG87CiAgICB9CgogICAgcHsKICAgICAgICAvKm92ZXJmbG93OmhpZGRlbjsqLwogICAgICAgIG1hcmdpbjogMS4wZW0gMCAxLjhlbSAwOwogICAgfQoKICAgIHAubWRfYmxvY2tfYXNfb3BlbmluZ3sKICAgICAgICBtYXJnaW4tYm90dG9tOiAtMC41ZW0gIWltcG9ydGFudDsKICAgIH0KCiAgICBsaSBwewogICAgICAgIGxpbmUtaGVpZ2h0OiAyLjA3OwogICAgICAgIG1hcmdpbjogMDsKICAgIH0KCiAgICAucF9wYXJ0IHsKICAgICAgICBtYXJnaW46IDEwcHggMDsKICAgIH0KCiAgICAucF9wYXJ0IHB7CiAgICAgICAgbWFyZ2luOiAwIDAgMC42ZW0gMDsKICAgIH0KCiAgICAvKiB0ZXh0IGluZGVudCBmb3IgY2hpbmVzZSBzdGFydHMqLwogICAgLypoMiwgaDMsIGg0LCBoNSwgaDYsIC5wX3BhcnQgcCwgLnRvZG9faXRlbSwgcHsKICAgICAgICB0ZXh0LWluZGVudDogMHB4OwogICAgfSovCiAgICB0YWJsZSwgcHJlLCBzdmcsIC5jb2RlaGlsaXRldGFibGV7CiAgICAgICAgbWFyZ2luLWxlZnQ6IDBweDsKICAgICAgICBtYXJnaW4tcmlnaHQ6IDBweDsKICAgIH0KICAgIAogICAgc3BhbiBzdmd7CiAgICAgICAgbWFyZ2luLWxlZnQ6IDA7CiAgICAgICAgbWFyZ2luLXJpZ2h0OiAwOwogICAgfQoKICAgIC5jb2RlaGlsaXRldGFibGUgcHJlewogICAgICAgIG1hcmdpbi1sZWZ0OiAwOwogICAgICAgIG1hcmdpbi1yaWdodDogMDsKCiAgICB9CgogICAgLmNvZGVoaWxpdGV0YWJsZSAuY29kZWhpbGl0ZSBwcmV7CiAgICAgICAgYm9yZGVyLWxlZnQ6IG5vbmU7CiAgICB9CgogICAgLyogdGV4dCBpbmRlbnQgZm9yIGNoaW5lc2UgZW5kcyovCgoKICAgIGJsb2NrcXVvdGUgLnBfcGFydCBwLCBsaSAucF9wYXJ0IHB7CiAgICAgICAgdGV4dC1pbmRlbnQ6IDAgIWltcG9ydGFudDsKICAgIH0KCgogICAgaHJ7CiAgICAgICAgbWFyZ2luOiAzOHB4IDA7CiAgICAgICAgYm9yZGVyOiBub25lOwogICAgICAgIGJvcmRlci1ib3R0b206IDFweCBkYXNoZWQgcmdiYSgyMDUsIDIwNSwgMjA1LCAwLjM1KTsKICAgICAgICBjb2xvcjogcmdiYSgyMDUsIDIwNSwgMjA1LCAwLjM1KTsKICAgICAgICBoZWlnaHQ6IDFweDsKICAgICAgICBsaW5lLWhlaWdodDoxcHg7CiAgICAgICAgZm9udC1zaXplOjFweDsKICAgICAgICBvdmVyZmxvdy15OiBoaWRkZW47CiAgICB9CgoKICAgIGgxewogICAgICAgIGNvbG9yOiAjMTBBM0VFOwogICAgICAgIGZvbnQtc2l6ZTogMS43ZW07CiAgICAgICAgdGV4dC1hbGlnbjogbGVmdDsKICAgICAgICBtYXJnaW46IDA7CiAgICAgICAgcGFkZGluZzogMDsKICAgICAgICBsaW5lLWhlaWdodDogMS43ZW07CiAgICAgICAgbWFyZ2luLXRvcDogMC44ZW07CiAgICAgICAgbWFyZ2luLWJvdHRvbTogMC42ZW07CiAgICB9CgogICAgaDEsIGgyLCBoMywgaDR7CiAgICAgICAgY29sb3I6ICMxMEEzRUU7CiAgICB9CiAgICAKICAgIGgxe2NvbG9yOiMxMEEzRUV9CgoKCiAgICBoMiwgaDN7CiAgICAgICAgbGluZS1oZWlnaHQ6IDEuNWVtOwogICAgICAgIG1hcmdpbi10b3A6IDEuOGVtOwogICAgICAgIG1hcmdpbi1ib3R0b206IDAuNWVtOwogICAgfQoKICAgIC5oMTYubWRfZmlyc3RfaC5tZF9maXJzdF9wYXJ0IHsKICAgICAgICBtYXJnaW4tdG9wOiA1cHg7CiAgICB9CgogICAgaDIgewogICAgICAgIGZvbnQtc2l6ZTogMS41ZW07CiAgICB9CgogICAgaDMgewogICAgICAgIGZvbnQtc2l6ZTogMS4yNWVtCiAgICB9CgogICAgaDQgewogICAgICAgIGZvbnQtc2l6ZTogMS4xNWVtOwogICAgfQoKICAgIGg1IHsKICAgICAgICBmb250LXNpemU6IDEuMWVtOwogICAgfQoKICAgIGg2IHtmb250LXNpemU6IDFlbX0KCgogICAgaDEsIGgyLCBoMywgaDQsIGg1LCBoNnsKICAgICAgICBmb250LWZhbWlseTogIkhlaXRpIFNDIjsKICAgIH0KCgogICAgb2wgewogICAgICAgIG1hcmdpbjogMDsKICAgIH0KCiAgICB1bHsKICAgICAgICBwYWRkaW5nOiA1cHggMzhweDsKICAgICAgICBtYXJnaW46IDA7CiAgICB9CgogICAgdWwgbGksIGxpewogICAgICAgIHBhZGRpbmc6IDA7CiAgICAgICAgbWFyZ2luOiAwOwogICAgfQoKICAgIHVsIHAsIG9sIHB7CiAgICAgICAgb3ZlcmZsb3c6IHZpc2libGU7CiAgICB9CgoKICAgIGJsb2NrcXVvdGUgewogICAgICAgIC1tb3otYm94LXNpemluZzogYm9yZGVyLWJveDsKICAgICAgICBib3gtc2l6aW5nOiBib3JkZXItYm94OwogICAgICAgIG1hcmdpbjogMS42ZW0gMDsKICAgICAgICBwYWRkaW5nOiAwIDAgMCAxLjJlbTsKICAgICAgICBib3JkZXItbGVmdDogMC40ZW0gc29saWQgIzE2QjBGRjsKICAgICAgICBjb2xvcjogIzg4ODg4ODsKICAgICAgICBtaW4taGVpZ2h0OjIwcHg7CiAgICB9CgoKICAgIGJsb2NrcXVvdGUgcCB7CiAgICAgICAgbWFyZ2luOiAwLjhlbSAwOwogICAgfQoKICAgIGJsb2NrcXVvdGUgc3Bhbi5tZF9saW5lIHsKICAgICAgICBtYXJnaW4tYm90dG9tOiAwLjI1ZW07CiAgICAgICAgbWFyZ2luLXRvcDogMC4yNWVtOwogICAgfQoKICAgIGJsb2NrcXVvdGUgdWx7CiAgICAgICAgcGFkZGluZzogMCAxNXB4OwogICAgfQoKICAgIGJsb2NrcXVvdGUgc21hbGwgewogICAgICAgIGRpc3BsYXk6IGlubGluZS1ibG9jazsKICAgICAgICBtYXJnaW46IDAuOGVtIDAgMC44ZW0gMS41ZW07CiAgICAgICAgZm9udC1zaXplOiAwLjllbTsKICAgICAgICBjb2xvcjogI2NjYzsKICAgIH0KCgoKCgoKICAgIHRhYmxlIHsKICAgICAgICBsaW5lLWhlaWdodDogMS43OwogICAgICAgIC1tb3otYm94LXNpemluZzogYm9yZGVyLWJveDsKICAgICAgICBib3gtc2l6aW5nOiBib3JkZXItYm94OwogICAgICAgIG1hcmdpbjogMWVtIDA7CiAgICAgICAgd2lkdGg6IDEwMCU7CiAgICAgICAgbWF4LXdpZHRoOiAxMDAlOwogICAgICAgIGJvcmRlci13aWR0aDogMXB4OwogICAgICAgIGJvcmRlci1zdHlsZTogc29saWQ7CiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogdHJhbnNwYXJlbnQ7CiAgICAgICAgYm9yZGVyLXNwYWNpbmc6IDA7CiAgICAgICAgd29yZC1icmVhazogbm9ybWFsOwogICAgfQogICAgCiAgICAvKiBmb3Igd2VjaGF0IG9ubHkgc3RhcnRzICovCiAgICB0YWJsZSB0cnsKICAgICAgICBib3JkZXItcmlnaHQtc3R5bGU6IHNvbGlkOwogICAgICAgIGJvcmRlci1yaWdodC13aWR0aDogMXB4OwogICAgfQogICAgCiAgICB0YWJsZSB0Ym9keXsKICAgICAgICBib3JkZXItYm90dG9tLXdpZHRoOiAxcHg7CiAgICAgICAgYm9yZGVyLWJvdHRvbS1zdHlsZTogc29saWQ7CiAgICB9CiAgICAvKiBmb3Igd2VjaGF0IG9ubHkgZW5kcyAqLwoKCiAgICB0YWJsZSwgdGFibGUgdHIsIHRhYmxlIHRyIHRkLCB0YWJsZSB0ciB0aCwgdGFibGUgdGJvZHkgewogICAgICAgIGJvcmRlci1jb2xvcjogcmdiYSgyMDUsIDIwNSwgMjA1LCAwLjM1KTsKICAgIH0KCiAgICB0YWJsZSB0aCB7CiAgICAgICAgZm9udC13ZWlnaHQ6IGJvbGQ7CiAgICB9CgogICAgdHIgdGggewogICAgICAgIGJvcmRlci1ib3R0b20td2lkdGg6IDFweDsKICAgICAgICBib3JkZXItYm90dG9tLXN0eWxlOiBzb2xpZDsKICAgICAgICB0ZXh0LWFsaWduOiBsZWZ0OwogICAgfQoKICAgIHRyIHRoLCB0ciB0ZCB7CiAgICAgICAgcGFkZGluZzogMTBweCAyMHB4OwogICAgICAgIGJvcmRlci1yaWdodDogMXB4IHNvbGlkOwogICAgICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCByZ2JhKDIwNSwgMjA1LCAyMDUsIDAuMzUpOwogICAgfQoKICAgIHRib2R5IHRyOmxhc3QtY2hpbGQgdGR7CiAgICAgICAgYm9yZGVyLWJvdHRvbTogMDsKICAgIH0KCiAgICB0ciB0aDpsYXN0LWNoaWxkLCB0ciB0ZDpsYXN0LWNoaWxkIHsKICAgICAgICBib3JkZXItcmlnaHQ6IDA7CiAgICB9CgogICAgdGFibGUgdGJvZHkgPiB0cjpudGgtY2hpbGQob2RkKSA+IHRkLCB0YWJsZSB0Ym9keSA+IHRyOm50aC1jaGlsZChvZGQpID4gdGggewogICAgICAgIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMjM1LCAyMzUsIDIzNSwgMC4yKTsKICAgIH0KCgoKCiAgICBjb2RlewogICAgICAgIGJhY2tncm91bmQ6IHJnYmEoMjM1LCAyMzUsIDIzNSwgMC4zNSk7CiAgICAgICAgY29sb3I6ICM0OEI0NTY7CiAgICAgICAgcGFkZGluZzogMCA1cHg7CiAgICAgICAgbWFyZ2luOiAwIDJweDsKICAgIH0KCiAgICBwcmV7CiAgICAgICAgbWFyZ2luLXRvcDogMS4yZW07CiAgICAgICAgbWFyZ2luLWJvdHRvbTogMS4yZW07CiAgICAgICAgcGFkZGluZzogMTVweCAxMHB4OwogICAgICAgIGRpc3BsYXk6IGJsb2NrOwogICAgICAgIC8qIG92ZXJmbG93OiBhdXRvOyAqLwogICAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHJnYmEoMjA1LCAyMDUsIDIwNSwgMC4zNSk7CiAgICAgICAgLypiYWNrZ3JvdW5kOiByZ2JhKDIzNSwgMjM1LCAyMzUsIDAuMzUpOyovCiAgICAgICAgZm9udC1zaXplOiA5MCU7CiAgICAgICAgbGluZS1oZWlnaHQ6Mi4zOwogICAgICAgIHdoaXRlLXNwYWNlOiBwcmUtd3JhcDsKICAgIH0KCiAgICAuaGlnaGxpZ2h0dGFibGUgdGR7CiAgICAgICAgLypiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDIzNSwgMjM1LCAyMzUsIDAuMzUpICFpbXBvcnRhbnQ7Ki8KICAgIH0KCiAgICAud2l0aF9saW5lcyBwcmV7CiAgICAgICAgYm9yZGVyOm5vbmU7CiAgICAgICAgbWFyZ2luLXRvcDogMC4yZW07CiAgICAgICAgbWFyZ2luLWJvdHRvbTogMC4yZW07CiAgICAgICAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7CiAgICB9CgogICAgLmlzX2NvZGVfZmlsZSBwcmV7CiAgICAgICAgYm9yZGVyOiBub25lOwogICAgICAgIGJhY2tncm91bmQ6IHRyYW5zcGFyZW50OwogICAgfQoKICAgIC5jb2RlaGlsaXRlIHByZXsKICAgICAgICAvKndvcmQtd3JhcDogbm9ybWFsOyovCiAgICAgICAgZm9udC1zaXplOiAxM3B4OwogICAgfQoKICAgIHByZSBjb2RlewogICAgICAgIGJvcmRlcjpub25lOwogICAgICAgIGJhY2tncm91bmQ6IG5vbmU7CiAgICAgICAgcGFkZGluZzogMDsKICAgICAgICBtYXJnaW46IDA7CiAgICB9CgogICAgcHJlIHB7CiAgICAgICAgbWFyZ2luOiAwOwogICAgICAgIHBhZGRpbmc6IDA7CiAgICB9CgogICAgLmNvZGVoaWxpdGUgdGgsIC5jb2RlaGlsaXRlIHRkewogICAgICAgIGxpbmUtaGVpZ2h0OiAxLjhlbTsKICAgIH0KCgogICAgYXsKICAgICAgICBjb2xvcjogIzQwODNDNDsKICAgICAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7CiAgICAgICAgLy9ib3JkZXItYm90dG9tOiAxcHggc29saWQgdHJhbnNwYXJlbnQ7CiAgICB9CgogICAgYTpob3ZlcnsKICAgICAgICB0ZXh0LWRlY29yYXRpb246IHVuZGVybGluZTsKICAgICAgICAvL2JvcmRlci1ib3R0b206IDFweCBzb2xpZCAjNDA4M0M0OwogICAgfQoKICAgIHN0cm9uZyB7CiAgICAgICAgY29sb3I6ICMwMDAwMDA7CiAgICAgICAgZm9udC13ZWlnaHQ6IGJvbGQ7CiAgICB9CgoKICAgIC8qIGZvciBtYXJrZG93biAqLwoKICAgIC5saW5lbm9zIHByZXsKCQliYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDsKCQlib3JkZXI6IG5vbmU7Cgl9CgoJLmxpbmVub3N7CgkgICAgcGFkZGluZzogMCA1cHggMCA1cHg7CgkgICAgd2lkdGg6IDAuMDAxJTsKCX0KCgkuaGlnaGxpZ2h0dGFibGUgcHJlewoJICAgIHBhZGRpbmc6IDVweCAxMHB4OwoJfQoKICAgIC50b2N7CiAgICAgICAgYmFja2dyb3VuZDogTm9uZTsKICAgICAgICBib3JkZXItcmFkaXVzOiA1cHg7CiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgTm9uZTsKICAgICAgICBtYXJnaW46IDI3cHggMCA0N3B4IDA7CiAgICAgICAgcGFkZGluZzogMTBweCAwOwogICAgfQoKICAgIC50b2MgdWx7CiAgICAgICAgLy9wYWRkaW5nOiA1cHggNDJweDsKICAgIH0KCiAgICAudG9jIHVsIGxpewogICAgICAgIHBhZGRpbmc6IDA7CiAgICAgICAgbWFyZ2luOiAwOwogICAgfQogICAgLnRvYyBhewogICAgICAgIGNvbG9yOiAjM0MzQzNDOwogICAgfQoKCgogICAgLnRvZG9faXRlbXsKICAgICAgICBsaXN0LXN0eWxlOiBub25lOwogICAgICAgIG1hcmdpbi1sZWZ0OiAtMS41ZW0KICAgIH0KICAgIC50b2RvX2l0ZW0gLnRvZG9faXRlbSB7CiAgICAgICAgbWFyZ2luLWxlZnQ6IGF1dG87CiAgICB9CgogICAgLnRvZG9fZG9uZV9pdGVtewogICAgICAgIGNvbG9yOiAjOTk5OTk5OwogICAgfQoKICAgIC50b2RvX3VuZG9uZV9pdGVtewogICAgICAgIGNvbG9yOiAjQzg1QTU3OwogICAgfQoKCiAgICB1bCBsaS50b2RvX2l0ZW17CglsaXN0LXN0eWxlLXR5cGU6IG5vbmU7CiAgICB9CgogICAgdWwgbGkudG9kb19pdGVtOmJlZm9yZXsKICAgICAgICBjb250ZW50OiAn4piQJzsKICAgICAgICAvKnBhZGRpbmctcmlnaHQ6IDAuMmVtOyovCiAgICAgICAgZm9udC1mYW1pbHk6IGFyaWFsOwogICAgfQoKICAgIHVsIGxpLnRvZG9fZG9uZV9pdGVtOmJlZm9yZXsKICAgICAgICBjb250ZW50OiAn4piRJzsKICAgICAgICAvKnBhZGRpbmctcmlnaHQ6IDAuMmVtOyovCiAgICAgICAgZm9udC1mYW1pbHk6IGFyaWFsOwogICAgfQoKICAgIHVsIGxpLnRvZG9faXRlbSBpbnB1dHsKICAgICAgICBkaXNwbGF5Om5vbmUKICAgIH0KCgogICAgLypweWdtZW50cyovCgogICAgLmNvZGVoaWxpdGV7CiAgICAgICAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQgIWltcG9ydGFudDsKICAgIH0KCiAgICB0YWJsZS5jb2RlaGlsaXRldGFibGV7IGJvcmRlcjpub25lOyB9CgoKICAgIC5jb2RlaGlsaXRldGFibGUgdGR7IGJvcmRlcjogbm9uZTsgcGFkZGluZzogMDt9CgogICAgLmZsb3ctZ3JhcGhpYywgLm1kX2Jsb2NrX3NlY3Rpb25fZm9yX2Zsb3dfZ3JhcGhpY3t0ZXh0LWFsaWduOiBjZW50ZXJ9CiAgICAuZmxvdy1ncmFwaGljIHsgb3ZlcmZsb3cteDogYXV0bzt9CiAgICAubWVybWFpZCwgLm1kX2Jsb2NrX3NlY3Rpb25fZm9yX21lcm1haWR7dGV4dC1hbGlnbjogY2VudGVyfQogICAgCiAgICAuZmxvdy1ncmFwaGljLCAubWVybWFpZHsKICAgICAgICBiYWNrZ3JvdW5kOiAjZmZmZmZmOwogICAgfQoKCiAgICB0YWJsZSwgdHIsIHRkLCB0aCwgdGJvZHksIHRoZWFkLCB0Zm9vdCwgLm1kX2VjaGFydHMsIGJsb2NrcXVvdGUgLm1kX2xpbmV7CiAgICAgICAgcGFnZS1icmVhay1pbnNpZGU6IGF2b2lkICFpbXBvcnRhbnQ7CiAgICB9CgogICAgLmZvb3Rub3RlcyAubWRfbGluZXsKICAgICAgICBkaXNwbGF5OiBpbmxpbmUgIWltcG9ydGFudDsKICAgIH0KCgogICAgLmltZ19ydF85MHsKICAgICAgICB0cmFuc2Zvcm06cm90YXRlKDkwZGVnKTsKICAgICAgICAtbXMtdHJhbnNmb3JtOnJvdGF0ZSg5MGRlZyk7CiAgICAgICAgLW1vei10cmFuc2Zvcm06cm90YXRlKDkwZGVnKTsKICAgICAgICAtd2Via2l0LXRyYW5zZm9ybTpyb3RhdGUoOTBkZWcpOwogICAgICAgIC1vLXRyYW5zZm9ybTpyb3RhdGUoOTBkZWcpOwogICAgfQogICAgLmltZ19ydF8xODB7CiAgICAgICAgdHJhbnNmb3JtOnJvdGF0ZSgxODBkZWcpOwogICAgICAgIC1tcy10cmFuc2Zvcm06cm90YXRlKDE4MGRlZyk7CiAgICAgICAgLW1vei10cmFuc2Zvcm06cm90YXRlKDE4MGRlZyk7CiAgICAgICAgLXdlYmtpdC10cmFuc2Zvcm06cm90YXRlKDE4MGRlZyk7CiAgICAgICAgLW8tdHJhbnNmb3JtOnJvdGF0ZSgxODBkZWcpOwogICAgfQogICAgLmltZ19ydF8yNzB7CiAgICAgICAgdHJhbnNmb3JtOnJvdGF0ZSgyNzBkZWcpOwogICAgICAgIC1tcy10cmFuc2Zvcm06cm90YXRlKDI3MGRlZyk7CiAgICAgICAgLW1vei10cmFuc2Zvcm06cm90YXRlKDI3MGRlZyk7CiAgICAgICAgLXdlYmtpdC10cmFuc2Zvcm06cm90YXRlKDI3MGRlZyk7CiAgICAgICAgLW8tdHJhbnNmb3JtOnJvdGF0ZSgyNzBkZWcpOwogICAgfQoKICAgIC5tZF9oYXNfYmxvY2tfYmVsb3d7CiAgICAgICAgbWFyZ2luLWJvdHRvbTogMC4xZW0gIWltcG9ydGFudDsKICAgIH0KICAgIC5tZF9oYXNfYmxvY2tfYmVsb3dfaW1newogICAgICAgIG1hcmdpbi1ib3R0b206IC0wLjZlbSAhaW1wb3J0YW50OwogICAgfQoKCiAgICAuY29kZWhpbGl0ZSAuZXJyewogICAgICAgIGJvcmRlcjogbm9uZSAhaW1wb3J0YW50OwogICAgICAgIGJhY2tncm91bmQtY29sb3I6IHRyYW5zcGFyZW50ICFpbXBvcnRhbnQ7CiAgICB9CgoKCiAgICAgICAgc3Bhbi5tZF9saW5le21hcmdpbi1ib3R0b206MC41ZW07IGRpc3BsYXk6YmxvY2s7IGxpbmUtaGVpZ2h0OjEuOTg5NX0KICAgICAgICAubWRfbGluZSBicnsgZGlzcGxheTogbm9uZTt9CiAgICAgICAgLmNvZGVoaWxpdGUgLmhsbCB7IGJhY2tncm91bmQtY29sb3I6ICB9Ci5jb2RlaGlsaXRlICB7IGJhY2tncm91bmQ6ICNlZWVlZGQ7IGNvbG9yOiAjNTU1NTU1IH0KLmNvZGVoaWxpdGUgLmMgeyBjb2xvcjogIzk5OTk5OSB9IC8qIENvbW1lbnQgKi8KLmNvZGVoaWxpdGUgLmVyciB7IGNvbG9yOiAjYTYxNzE3OyBiYWNrZ3JvdW5kLWNvbG9yOiAjZTNkMmQyIH0gLyogRXJyb3IgKi8KLmNvZGVoaWxpdGUgLmsgeyBjb2xvcjogIzhCMDA4QjsgZm9udC13ZWlnaHQ6IGJvbGQgfSAvKiBLZXl3b3JkICovCi5jb2RlaGlsaXRlIC5sIHsgY29sb3I6ICNhZTgxZmYgfSAvKiBMaXRlcmFsICovCi5jb2RlaGlsaXRlIC5uIHsgY29sb3I6ICM1NTU1NTUgfSAvKiBOYW1lICovCi5jb2RlaGlsaXRlIC5vIHsgY29sb3I6ICM1NTU1NTUgfSAvKiBPcGVyYXRvciAqLwouY29kZWhpbGl0ZSAucCB7IGNvbG9yOiAjNTU1NTU1IH0gLyogUHVuY3R1YXRpb24gKi8KLmNvZGVoaWxpdGUgLmNoIHsgY29sb3I6ICM5OTk5OTkgfSAvKiBDb21tZW50Lkhhc2hiYW5nICovCi5jb2RlaGlsaXRlIC5jbSB7IGNvbG9yOiAjOTk5OTk5IH0gLyogQ29tbWVudC5NdWx0aWxpbmUgKi8KLmNvZGVoaWxpdGUgLmNwIHsgY29sb3I6ICMxZTg4OWIgfSAvKiBDb21tZW50LlByZXByb2MgKi8KLmNvZGVoaWxpdGUgLmNwZiB7IGNvbG9yOiAjOTk5OTk5IH0gLyogQ29tbWVudC5QcmVwcm9jRmlsZSAqLwouY29kZWhpbGl0ZSAuYzEgeyBjb2xvcjogIzk5OTk5OSB9IC8qIENvbW1lbnQuU2luZ2xlICovCi5jb2RlaGlsaXRlIC5jcyB7IGNvbG9yOiAjOEIwMDhCOyBmb250LXdlaWdodDogYm9sZCB9IC8qIENvbW1lbnQuU3BlY2lhbCAqLwouY29kZWhpbGl0ZSAuZ2QgeyBjb2xvcjogI2FhMDAwMCB9IC8qIEdlbmVyaWMuRGVsZXRlZCAqLwouY29kZWhpbGl0ZSAuZ2UgeyBmb250LXN0eWxlOiBpdGFsaWMgfSAvKiBHZW5lcmljLkVtcGggKi8KLmNvZGVoaWxpdGUgLmdyIHsgY29sb3I6ICNhYTAwMDAgfSAvKiBHZW5lcmljLkVycm9yICovCi5jb2RlaGlsaXRlIC5naCB7IGNvbG9yOiAjMDAwMDgwOyBmb250LXdlaWdodDogYm9sZCB9IC8qIEdlbmVyaWMuSGVhZGluZyAqLwouY29kZWhpbGl0ZSAuZ2kgeyBjb2xvcjogIzAwYWEwMCB9IC8qIEdlbmVyaWMuSW5zZXJ0ZWQgKi8KLmNvZGVoaWxpdGUgLmdvIHsgY29sb3I6ICM4ODg4ODggfSAvKiBHZW5lcmljLk91dHB1dCAqLwouY29kZWhpbGl0ZSAuZ3AgeyBjb2xvcjogIzU1NTU1NSB9IC8qIEdlbmVyaWMuUHJvbXB0ICovCi5jb2RlaGlsaXRlIC5ncyB7IGZvbnQtd2VpZ2h0OiBib2xkIH0gLyogR2VuZXJpYy5TdHJvbmcgKi8KLmNvZGVoaWxpdGUgLmd1IHsgY29sb3I6ICM4MDAwODA7IGZvbnQtd2VpZ2h0OiBib2xkIH0gLyogR2VuZXJpYy5TdWJoZWFkaW5nICovCi5jb2RlaGlsaXRlIC5ndCB7IGNvbG9yOiAjYWEwMDAwIH0gLyogR2VuZXJpYy5UcmFjZWJhY2sgKi8KLmNvZGVoaWxpdGUgLmtjIHsgY29sb3I6ICM4QjAwOEI7IGZvbnQtd2VpZ2h0OiBib2xkIH0gLyogS2V5d29yZC5Db25zdGFudCAqLwouY29kZWhpbGl0ZSAua2QgeyBjb2xvcjogIzhCMDA4QjsgZm9udC13ZWlnaHQ6IGJvbGQgfSAvKiBLZXl3b3JkLkRlY2xhcmF0aW9uICovCi5jb2RlaGlsaXRlIC5rbiB7IGNvbG9yOiAjOEIwMDhCOyBmb250LXdlaWdodDogYm9sZCB9IC8qIEtleXdvcmQuTmFtZXNwYWNlICovCi5jb2RlaGlsaXRlIC5rcCB7IGNvbG9yOiAjOEIwMDhCOyBmb250LXdlaWdodDogYm9sZCB9IC8qIEtleXdvcmQuUHNldWRvICovCi5jb2RlaGlsaXRlIC5rciB7IGNvbG9yOiAjOEIwMDhCOyBmb250LXdlaWdodDogYm9sZCB9IC8qIEtleXdvcmQuUmVzZXJ2ZWQgKi8KLmNvZGVoaWxpdGUgLmt0IHsgY29sb3I6ICNhN2E3YTc7IGZvbnQtd2VpZ2h0OiBib2xkIH0gLyogS2V5d29yZC5UeXBlICovCi5jb2RlaGlsaXRlIC5sZCB7IGNvbG9yOiAjZTZkYjc0IH0gLyogTGl0ZXJhbC5EYXRlICovCi5jb2RlaGlsaXRlIC5tIHsgY29sb3I6ICNCNDUyQ0QgfSAvKiBMaXRlcmFsLk51bWJlciAqLwouY29kZWhpbGl0ZSAucyB7IGNvbG9yOiAjQ0Q1NTU1IH0gLyogTGl0ZXJhbC5TdHJpbmcgKi8KLmNvZGVoaWxpdGUgLm5hIHsgY29sb3I6ICM2NThiMDAgfSAvKiBOYW1lLkF0dHJpYnV0ZSAqLwouY29kZWhpbGl0ZSAubmIgeyBjb2xvcjogIzY1OGIwMCB9IC8qIE5hbWUuQnVpbHRpbiAqLwouY29kZWhpbGl0ZSAubmMgeyBjb2xvcjogIzAwOGI0NTsgZm9udC13ZWlnaHQ6IGJvbGQgfSAvKiBOYW1lLkNsYXNzICovCi5jb2RlaGlsaXRlIC5ubyB7IGNvbG9yOiAjMDA2ODhCIH0gLyogTmFtZS5Db25zdGFudCAqLwouY29kZWhpbGl0ZSAubmQgeyBjb2xvcjogIzcwN2E3YyB9IC8qIE5hbWUuRGVjb3JhdG9yICovCi5jb2RlaGlsaXRlIC5uaSB7IGNvbG9yOiAjNTU1NTU1IH0gLyogTmFtZS5FbnRpdHkgKi8KLmNvZGVoaWxpdGUgLm5lIHsgY29sb3I6ICMwMDhiNDU7IGZvbnQtd2VpZ2h0OiBib2xkIH0gLyogTmFtZS5FeGNlcHRpb24gKi8KLmNvZGVoaWxpdGUgLm5mIHsgY29sb3I6ICMwMDhiNDUgfSAvKiBOYW1lLkZ1bmN0aW9uICovCi5jb2RlaGlsaXRlIC5ubCB7IGNvbG9yOiAjNTU1NTU1IH0gLyogTmFtZS5MYWJlbCAqLwouY29kZWhpbGl0ZSAubm4geyBjb2xvcjogIzAwOGI0NTsgdGV4dC1kZWNvcmF0aW9uOiB1bmRlcmxpbmUgfSAvKiBOYW1lLk5hbWVzcGFjZSAqLwouY29kZWhpbGl0ZSAubnggeyBjb2xvcjogIzU1NTU1NSB9IC8qIE5hbWUuT3RoZXIgKi8KLmNvZGVoaWxpdGUgLnB5IHsgY29sb3I6ICM1NTU1NTUgfSAvKiBOYW1lLlByb3BlcnR5ICovCi5jb2RlaGlsaXRlIC5udCB7IGNvbG9yOiAjOEIwMDhCOyBmb250LXdlaWdodDogYm9sZCB9IC8qIE5hbWUuVGFnICovCi5jb2RlaGlsaXRlIC5udiB7IGNvbG9yOiAjMDA2ODhCIH0gLyogTmFtZS5WYXJpYWJsZSAqLwouY29kZWhpbGl0ZSAub3cgeyBjb2xvcjogIzhCMDA4QiB9IC8qIE9wZXJhdG9yLldvcmQgKi8KLmNvZGVoaWxpdGUgLncgeyBjb2xvcjogI2JiYmJiYiB9IC8qIFRleHQuV2hpdGVzcGFjZSAqLwouY29kZWhpbGl0ZSAubWIgeyBjb2xvcjogI0I0NTJDRCB9IC8qIExpdGVyYWwuTnVtYmVyLkJpbiAqLwouY29kZWhpbGl0ZSAubWYgeyBjb2xvcjogI0I0NTJDRCB9IC8qIExpdGVyYWwuTnVtYmVyLkZsb2F0ICovCi5jb2RlaGlsaXRlIC5taCB7IGNvbG9yOiAjQjQ1MkNEIH0gLyogTGl0ZXJhbC5OdW1iZXIuSGV4ICovCi5jb2RlaGlsaXRlIC5taSB7IGNvbG9yOiAjQjQ1MkNEIH0gLyogTGl0ZXJhbC5OdW1iZXIuSW50ZWdlciAqLwouY29kZWhpbGl0ZSAubW8geyBjb2xvcjogI0I0NTJDRCB9IC8qIExpdGVyYWwuTnVtYmVyLk9jdCAqLwouY29kZWhpbGl0ZSAuc2EgeyBjb2xvcjogI0NENTU1NSB9IC8qIExpdGVyYWwuU3RyaW5nLkFmZml4ICovCi5jb2RlaGlsaXRlIC5zYiB7IGNvbG9yOiAjQ0Q1NTU1IH0gLyogTGl0ZXJhbC5TdHJpbmcuQmFja3RpY2sgKi8KLmNvZGVoaWxpdGUgLnNjIHsgY29sb3I6ICNDRDU1NTUgfSAvKiBMaXRlcmFsLlN0cmluZy5DaGFyICovCi5jb2RlaGlsaXRlIC5kbCB7IGNvbG9yOiAjQ0Q1NTU1IH0gLyogTGl0ZXJhbC5TdHJpbmcuRGVsaW1pdGVyICovCi5jb2RlaGlsaXRlIC5zZCB7IGNvbG9yOiAjQ0Q1NTU1IH0gLyogTGl0ZXJhbC5TdHJpbmcuRG9jICovCi5jb2RlaGlsaXRlIC5zMiB7IGNvbG9yOiAjQ0Q1NTU1IH0gLyogTGl0ZXJhbC5TdHJpbmcuRG91YmxlICovCi5jb2RlaGlsaXRlIC5zZSB7IGNvbG9yOiAjYWU4MWZmIH0gLyogTGl0ZXJhbC5TdHJpbmcuRXNjYXBlICovCi5jb2RlaGlsaXRlIC5zaCB7IGNvbG9yOiAjMWM3ZTcxOyBmb250LXN0eWxlOiBpdGFsaWMgfSAvKiBMaXRlcmFsLlN0cmluZy5IZXJlZG9jICovCi5jb2RlaGlsaXRlIC5zaSB7IGNvbG9yOiAjQ0Q1NTU1IH0gLyogTGl0ZXJhbC5TdHJpbmcuSW50ZXJwb2wgKi8KLmNvZGVoaWxpdGUgLnN4IHsgY29sb3I6ICNjYjZjMjAgfSAvKiBMaXRlcmFsLlN0cmluZy5PdGhlciAqLwouY29kZWhpbGl0ZSAuc3IgeyBjb2xvcjogIzFjN2U3MSB9IC8qIExpdGVyYWwuU3RyaW5nLlJlZ2V4ICovCi5jb2RlaGlsaXRlIC5zMSB7IGNvbG9yOiAjQ0Q1NTU1IH0gLyogTGl0ZXJhbC5TdHJpbmcuU2luZ2xlICovCi5jb2RlaGlsaXRlIC5zcyB7IGNvbG9yOiAjQ0Q1NTU1IH0gLyogTGl0ZXJhbC5TdHJpbmcuU3ltYm9sICovCi5jb2RlaGlsaXRlIC5icCB7IGNvbG9yOiAjNjU4YjAwIH0gLyogTmFtZS5CdWlsdGluLlBzZXVkbyAqLwouY29kZWhpbGl0ZSAuZm0geyBjb2xvcjogIzAwOGI0NSB9IC8qIE5hbWUuRnVuY3Rpb24uTWFnaWMgKi8KLmNvZGVoaWxpdGUgLnZjIHsgY29sb3I6ICMwMDY4OEIgfSAvKiBOYW1lLlZhcmlhYmxlLkNsYXNzICovCi5jb2RlaGlsaXRlIC52ZyB7IGNvbG9yOiAjMDA2ODhCIH0gLyogTmFtZS5WYXJpYWJsZS5HbG9iYWwgKi8KLmNvZGVoaWxpdGUgLnZpIHsgY29sb3I6ICMwMDY4OEIgfSAvKiBOYW1lLlZhcmlhYmxlLkluc3RhbmNlICovCi5jb2RlaGlsaXRlIC52bSB7IGNvbG9yOiAjMDA2ODhCIH0gLyogTmFtZS5WYXJpYWJsZS5NYWdpYyAqLwouY29kZWhpbGl0ZSAuaWwgeyBjb2xvcjogI0I0NTJDRCB9IC8qIExpdGVyYWwuTnVtYmVyLkludGVnZXIuTG9uZyAqLwogICAgLyogcGFnZV9jc3MgKi8KCiAgICAKICAgIGh0bWx7CiAgICAgICAgYmFja2dyb3VuZDogI0VFRUVFRTsKICAgIH0KICAgIGJvZHl7CiAgICAgICAgd2lkdGg6IDkwJTsKICAgICAgICBtYXgtd2lkdGg6IDk2MHB4OwogICAgICAgIGJhY2tncm91bmQ6ICNGRkZGRkY7CiAgICAgICAgbWFyZ2luOiAzZW0gYXV0byAwOwogICAgICAgIHBhZGRpbmctdG9wOiAyZW07CiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgI0VFRUVFRTsKICAgICAgICBib3JkZXItd2lkdGg6IDAgMXB4OwogICAgfQoKICAgIC5wb3N0ewogICAgICAgIHBhZGRpbmc6IDUlIDEwJTsKICAgICAgICBtYXJnaW4tdG9wOiAwOwogICAgICAgIG1hcmdpbi1ib3R0b206IDA7CiAgICB9CiAgICAKCiAgICAudGl0bGVfY29udGFpbmVyewogICAgICAgIG1hcmdpbjogLTJlbSAwIDMuNWVtOwogICAgICAgIHBhZGRpbmctYm90dG9tOiAyZW07CiAgICAgICAgYm9yZGVyLWJvdHRvbTogM3B4IGRvdWJsZSAjRUVFRUVFOwogICAgfQogICAgLnRpdGxlX2NvbnRhaW5lciBoMXsKICAgICAgICBtYXJnaW4tdG9wOiAxLjJlbTsKICAgICAgICBtYXJnaW4tYm90dG9tOiAwLjZlbTsKICAgICAgICBsaW5lLWhlaWdodDogMS4zNTsKICAgICAgICBmb250LXNpemU6IDIuMjVlbTsKICAgIH0KICAgIC50aXRsZV9jb250YWluZXIgaDJ7CiAgICAgICAgY29sb3I6ICM4ODg4ODg7CiAgICAgICAgZm9udC1zaXplOiAxZW07CiAgICAgICAgZm9udC13ZWlnaHQ6IG5vcm1hbDsKICAgICAgICBwYWRkaW5nLWJvdHRvbTogMmVtOwogICAgICAgIGxpbmUtaGVpZ2h0OiAxLjM1OwogICAgICAgIG1hcmdpbi1ib3R0b206IC0yZW07CiAgICB9CgogICAgQG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiA3NjBweCl7CiAgICAgICAgaHRtbHsKICAgICAgICAgICAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7CiAgICAgICAgfQogICAgICAgIGJvZHl7CiAgICAgICAgICAgIG1hcmdpbjogMDsKICAgICAgICB9CiAgICAgICAgLnBvc3R7CiAgICAgICAgICAgIHBhZGRpbmc6IDA7CiAgICAgICAgfQogICAgfQogICAgLyogcGFnZV9jc3MgKi8KCiAgICA=">
+    <!--header_scripts-->
+</head>
+<body>
+    <div class="post">
+        <div class="post_body">
+            
+            <h2 style='display:block; text-align:center;text-indent:0'  id="toc_0" class="h16 md_first_h">AlexNet</h2>
+
+<p class="md_block">
+
+<div class="toc"><ul>
+<li>
+<a href="#toc_0">AlexNet</a>
+<ul>
+<li>
+<a href="#toc_1">一、论文学习</a>
+<ul>
+<li>
+<a href="#toc_2">1、论文简介</a>
+</li>
+<li>
+<a href="#toc_3">2、论文重点</a>
+<ul>
+<li>
+<a href="#toc_4">（1）ReLU激活函数</a>
+</li>
+<li>
+<a href="#toc_5">（2）多GPU训练</a>
+</li>
+<li>
+<a href="#toc_6">（3）Local Response Normaliza（LRN）</a>
+</li>
+<li>
+<a href="#toc_7">（4）Overlapping Pooling</a>
+</li>
+<li>
+<a href="#toc_8">（5）数据增强方法（Data Augmentation）</a>
+</li>
+<li>
+<a href="#toc_9">（6）Dropout</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_10">3、AlexNet结构</a>
+</li>
+<li>
+<a href="#toc_11">4、实验分析</a>
+<ul>
+<li>
+<a href="#toc_12">（1）卷积可视化</a>
+</li>
+<li>
+<a href="#toc_13">（2）高级特征的相似性</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_14">3、论文总结与启发</a>
+<ul>
+<li>
+<a href="#toc_15">（1）关键点</a>
+</li>
+<li>
+<a href="#toc_16">（2）创新点</a>
+</li>
+<li>
+<a href="#toc_17">（3）启发点</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_18">二、代码实现</a>
+<ul>
+<li>
+<a href="#toc_19">1、构建<code>DataLoader</code></a>
+</li>
+<li>
+<a href="#toc_20">2、构建模型</a>
+</li>
+<li>
+<a href="#toc_21">3、构建损失函数</a>
+</li>
+<li>
+<a href="#toc_22">4、构建优化器</a>
+</li>
+<li>
+<a href="#toc_23">5、迭代训练</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+    <span class="md_line md_line_end">AlexNet最早是由 <em>Alex Krizhevsky</em> 等人于2012年提出的，论文标题为<a class="md_compiled" href="http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf">《Imagenet classification with deep convolutional neural networks》</a></span>
+</p>
+
+<h3 id="toc_1" class="h16">一、论文学习</h3>
+<h4 id="toc_2" class="h16">1、论文简介</h4>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">本篇本文提出了采用了关键技术，例如$ReLU$激活函数，$Dropout$等技术，同时使用了双GPU进行模型的训练，这些技术在当下的深度学习模型中也经常使用，因此这篇文章具有非常高的学习价值</span>
+</p>
+
+<span class="md_repeated_n md_repeated_n_1"></span><h4 id="toc_3" class="h16">2、论文重点</h4>
+<h5 id="toc_4" class="h16">（1）ReLU激活函数</h5>
+
+<p class="md_block md_block_as_opening md_has_block_below md_has_block_below_ul">
+    <span class="md_line md_line_start md_line_end">一般的模型训练使用的是<strong>饱和非线性</strong>激活函数，例如$f(x)=tanh(x)=(1+e^{-x})^{-1}$，本文使用的是$ReLU$激活函数，即：$f(x)=\max(0,x)$，是一种<strong>不饱和</strong>的激活函数，主要有以下三个优点：</span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>使网络训练更快
+
+</span></li>
+<li class="md_li"><span>防止梯度消失(弥散)
+
+</span></li>
+<li class="md_li"><span>使网络具有稀疏性
+
+</span></li>
+</ul>
+
+<p class="md_block">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/截屏2020-06-2222.58.58.png?r=50" alt="" title="" style="width:50%;"></span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">上图为论文中的插图，从上图可以看出，使用$ReLU$激活函数（实线）比$tanh$激活函数训练速度更快</span>
+</p>
+
+<h5 id="toc_5" class="h16">（2）多GPU训练</h5>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">本文采用了双GPU对模型进行并行训练，提高了模型训练的速度。双GPU或多GPU训练都会涉及到不同GPU数据的交流问题，本文中的这个交流问题在介绍AlexNet结构时着重讲解</span>
+</p>
+
+<span class="md_repeated_n md_repeated_n_1"></span><h5 id="toc_6" class="h16">（3）Local Response Normaliza（LRN）</h5>
+
+<ul>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">LRN翻译为局部响应标准化，有助于$AlexNet$泛化能力的提升，是收到了真实神经元<strong>侧抑制现象</strong>(lateral inhibition)启发而提出的一种方法，所谓的<strong>侧抑制</strong>，是一种生物学上的概念，指的是细胞分化变为不同时，它会对周围细胞产生抑制信号，阻止它们向相同方向分化，最终表现为细胞命运的不同</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>$LRN$公式：
+
+</span></li>
+</ul>
+
+<section class="mathjax_script" id="MathPrvbiu3CFy6ocaJSfcdhhB">$$
+b_{x, y}^{i}=a_{x, y}^{i} /\left(k+\alpha \sum_{j=\max (0, i-n / 2)}^{\min (N-1, i+n / 2)}\left(a_{x, y}^{j}\right)^{2}\right)^{\beta}$$
+</section>
+
+<!--block_code_end-->
+<ul>
+<li class="md_li"><span>公式参数介绍：
+
+
+<ul>
+<li class="md_li"><span>$a^i$：代表第$i$个神经元的激活值
+
+</span></li>
+<li class="md_li"><span>$b^i$：代表第$i$个神经元通过LRN操作后的激活值
+
+</span></li>
+<li class="md_li"><span>$k$：超参数，由原型中的bias指定
+
+</span></li>
+<li class="md_li"><span>$\alpha$：超参数，由原型中的alpha指定
+
+</span></li>
+<li class="md_li"><span>$\beta$：超参数，由原型中的beta指定
+
+</span></li>
+<li class="md_li"><span>$n/2$：超参数，由原型中的deepth_radius指定
+
+</span></li>
+<li class="md_li"><span>$x,y$：像素的位置，公式中用不到
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">$i,j$：代表通道 <em>channel</em></span>
+</p>
+
+</span></li>
+</ul>
+</span></li>
+<li class="md_li"><span>示意图：
+
+</span></li>
+</ul>
+
+<p class="md_block">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/截屏2020-06-2223.58.24.png?r=59" alt="" title="" style="width:59%;"></span>
+</p>
+
+
+<p class="md_block  md_has_block_below md_has_block_below_ul">
+    <span class="md_line md_line_start md_line_end">从上图中可以看出，$x,y$分别代表的是 <em>width</em> 和 <em>height</em> ，而$i,j$代表的是 <em>channel</em> 的索引，这里假设的 <em>channel</em> 索引为0到$N-1$，因此可以看出公式中的求和符号$\Sigma$的上下限求最大和最小的目的就是为了防止索引超过 <em>channel</em> 的范围，而$n/2$表示只有在距离第$i$个神经元$n/2$范围内的神经元才会对第$i$个神经元有抑制作用</span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>局限性：在本文的数据集上，通过$LRN$方法，使得模型准确率提高了1%，但是2014年的一篇文章证明了$LRN$并不是一种通用的方法，是无效的，而且现阶段有更好的正则化方法，例如 <em>Batch Normalization</em> 等，因此 <em>LRN</em> 方法逐渐被淘汰
+</span></li>
+</ul>
+<h5 id="toc_7" class="h16">（4）Overlapping Pooling</h5>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">如果定义$z$为 <em>kernel size</em> 的大小，$s$为步长大小（ <em>stride</em> ），则通常情况下是$s=z$，这种情况下是没有重叠的，但是如果$s&lt;z$，就会出现重叠的情况，我们称这种情况为 <em>Overlapping Pooling</em> ，论文中是采用了$s=2,z=3$的池化层，提升了模型精度。</span>
+</p>
+
+<h5 id="toc_8" class="h16">（5）数据增强方法（Data Augmentation）</h5>
+
+<p class="md_block  md_has_block_below md_has_block_below_ul">
+    <span class="md_line md_line_start md_line_end">数据增强能够有效地避免过拟合，论文中主要针对图片的<strong>位置</strong>和<strong>色彩</strong>进行数据增强，文章通过这两个方面的数据增强，能够从一张图片得到了2048张图片。</span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>方法一：针对位置
+
+
+<ul>
+<li class="md_li"><span>训练阶段：
+
+
+<ol>
+<li class="md_li"><span>图片统一缩放至$256\times256$
+
+</span></li>
+<li class="md_li"><span>随机位置裁剪出$224\times224$区域
+
+</span></li>
+<li class="md_li"><span>随机进行水平翻转
+
+</span></li>
+</ol>
+</span></li>
+<li class="md_li"><span>测试阶段：
+
+
+<ol>
+<li class="md_li"><span>图片统一缩放至$256\times256$
+
+</span></li>
+<li class="md_li"><span>裁剪出5个$224\times224$区域
+
+</span></li>
+<li class="md_li"><span>均进行水平翻转，共得到10张$224\times224$图片
+
+</span></li>
+</ol>
+</span></li>
+</ul>
+</span></li>
+<li class="md_li"><span>方法二：针对色彩
+
+
+<ul>
+<li class="md_li"><span>通过PCA方法修改RGB通道的像素值，实现颜色扰动，但是这种方法效果有限
+</span></li>
+</ul>
+</span></li>
+</ul>
+
+<p class="md_block md_block_as_opening md_has_block_below md_has_block_below_ul">
+    <span class="md_line md_line_start md_line_end">几点说明：</span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>从上面对位置的操作可以得到为什么能够从一张图片得到了2048张图片，由于裁剪过程是随机选择，因此有$(256 - 244)^2 =1024$种可能，同时又进行水平翻转，因此再乘2，得到2048
+
+</span></li>
+<li class="md_li"><span>训练阶段的裁剪是随机裁剪，并且论文中提到，是需要先将短边裁剪到224像素，然后再在长边中心裁剪得到$224\times224$；在测试阶段的裁剪并不是随机的，而是在左上、左下、右上、右下以及中心这五个位置进行裁剪，然后翻转得到10张图片，并且这10张图片都要输入到模型中得到的概率值再取平均
+
+</span></li>
+<li class="md_li"><span>对色彩的处理提升效果并不明显，并且涉及到矩阵的分解（PCA），因此现阶段很少用到这种方法对图像色彩进行扰动
+
+</span></li>
+</ul>
+<h5 id="toc_9" class="h16">（6）Dropout</h5>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">Dropout技术是一个非常实用的减轻过拟合现象的一种技术，在现阶段的深度学习中也是一种非常常用的技术</span>
+</p>
+
+
+<p class="md_block">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/截屏2020-06-2301.43.52.png?r=60" alt="" title="" style="width:60%;"></span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">如上图所示，左边为不使用Dropout的情况，下一层的某一神经元与上一层的每个神经元都保持连接，而右边是使用了Dropout的情况，可以看出下一层的某一神经元只与上一层的某些神经元保持连接，具体与哪些神经元连接并不是固定不变的，这就体现出了<strong>随机</strong>的效果，通常会设置 <em>dropout probability</em> 来实现<strong>“随机”</strong>，一般设置为0.5，这里需要注意的是，Dropout是用于训练过程中，因此在测试过程中，为了保证数据尺度的一致性，我们必须对测试过程中的神经元输出值乘以 <em>dropout probability</em> ，这一点是非常关键的</span>
+</p>
+
+<h4 id="toc_10" class="h16">3、AlexNet结构</h4>
+
+<ul>
+<li class="md_li"><span>论文中提到AlexNet包含有八个带权值的层，其中有5个是卷基层，有3个是全连接层，这仅仅是带权值的层，如果加上不带权值的层，例如池化层，就不止8个层了
+
+</span></li>
+<li class="md_li"><span>在5个卷积层中，第2、4、5个卷积层均只与在同一GPU上的前一层进行连接，而 第3层是对双GPU上的所有前一层的神经元都进行了连接，完成了不同GPU上信息的交流
+
+</span></li>
+<li class="md_li"><span>LRN的位置在第一和第二个卷积层中间，而池化层的位置在第1、2、5卷积层后面，ReLU用于所有的卷积层和全连接层
+
+</span></li>
+</ul>
+
+<p class="md_block  md_has_block_below md_has_block_below_ul">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/截屏2020-06-2313.38.50.png?r=80" alt="" title="" style="width:80%;"></span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>从上图中可以看出，整个网络的结构分为上下两层，表示两个GPU上的训练（注意，上下两层应该是完全一样的，但是原文的图片上层是不完整的，理论上应该是与下层结构完全一致），输入的是一个$224\times224\times3 = 150528$维的向量，输出的是一个1000维的向量，代表的是1000类的分类结果
+
+</span></li>
+<li class="md_li"><span>从上图中可以看出，图中并没有包含到ReLU、LRN等操作，只有卷积层和全连接层，每一层后的后续操作如下：
+
+
+<ul>
+<li class="md_li"><span> $Conv1\  \rightarrow \ ReLU \  \rightarrow \ Pool \  \rightarrow \ LRN$
+
+</span></li>
+<li class="md_li"><span> $Conv2\  \rightarrow \ ReLU \  \rightarrow \ Pool \  \rightarrow \ LRN$
+
+</span></li>
+<li class="md_li"><span> $Conv3\  \rightarrow \ ReLU $
+
+</span></li>
+<li class="md_li"><span> $Conv4\  \rightarrow \ ReLU $
+
+</span></li>
+<li class="md_li"><span> $Conv5\  \rightarrow \ ReLU \  \rightarrow \ Pool$
+
+</span></li>
+</ul>
+</span></li>
+</ul>
+
+<p class="md_block  md_has_block_below md_has_block_below_ul">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/截屏2020-06-2313.56.07.png?r=80" alt="" title="" style="width:80%;"></span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>AlexNet中，每个阶段特征图的变化情况如下图所示，这里与论文不同的是输入的像素为$227\times227$，其实在早期的AlexNet中，就是$227\times227$的输入，这对于结果是没有任何影响的，因为根据卷积输出特征图大小公式：$F_{o}=\left \lfloor \frac{F_{\mathrm{in}}-k_{s}+2 p}{s}\right \rfloor+1$，如果是$227\times227$，则$padding = 0$即$p=0$，因此输出的特征图大小为$\lfloor \frac{227-11}{4} \rfloor+1 = 55$，如果是$224\times224$，则需要加入$padding$，通常$padding=2$，因此输出的特征图大小为$\lfloor \frac{224-11+2\times 2}{4} \rfloor+1 = 55$，因此两种情况下卷积后得到的特征图大小相同，都为$55\times55$，而通道数都是96，这是因为卷积核的个数为96个，因此通道数为96，后面的特征图大小的计算都可以通过计算得到。而论文中提到了AlexNet结构一共有六千万的参数，这里的计算方式是将每一层的参数个数计算出来再相加，而对某一层的参数个数的计算公式为：$count = F_{i} \times\left(K_{\mathrm{s}} \times K_{\mathrm{s}}\right) \times K_{n}+K_{n}$，其中$F_{i}$为通道数，$K_s$为卷积核的大小，$K_n$为卷积核的个数，最后加上的$K_n$称之为偏置（$bias$），以第一层为例，第一层的参数个数为$3\times(11\times11)\times96+96 = 34944$，每一层的参数个数计算如下图所示：
+</span></li>
+</ul>
+
+<p class="md_block">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/截屏2020-06-2314.22.33.png?r=70" alt="" title="" style="width:70%;"></span>
+</p>
+
+<strong>从上图中可以看出，FC1这个全连接层的参数个数占到了总参数个数的一半以上，因此到了后期的神经网络模型，FC层使用率大大下降，因为全连接层会占据大量的内存</strong><span class="md_repeated_n md_repeated_n_1"></span><h4 id="toc_11" class="h16">4、实验分析</h4>
+<h5 id="toc_12" class="h16">（1）卷积可视化</h5>
+
+<p class="md_block">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/截屏2020-06-2314.45.34.png?r=60" alt="" title="" style="width:60%;"></span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">论文将第一个卷积层后的特征图进行了可视化，一共是2个GPU上的96个卷积核，前3行为第一个GPU学习到的特征，主要学习到了图片的纹路等结构特征，而后3行为第二个GPU学习到的特征，主要学习到了图片色彩方面的特征，可以看出，两个GPU上的学习到的特征并不相同</span>
+</p>
+
+<h5 id="toc_13" class="h16">（2）高级特征的相似性</h5>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">论文实验发现，ALexNet提取到的高级特征之间具有很强的相关性，即<strong>相似图片的第二个全连接层输出特征向量的欧式距离相近</strong>，如下图所示，如果两张图片的第二个全连接层输出特征向量的欧式距离很近，则这两张图片应该是非常相似的，此外，论文中提到这种相似的图片在没有输入到模型时，计算两张图片的欧式距离并不是非常小的，这就启发我们可以使用$4096$的特征向量进行比较相似性，这就可以用来做<strong>图像的检索</strong>、<strong>图像的编码</strong>、<strong>图像的聚类</strong>，这样可以大大的减小复杂度。</span>
+</p>
+
+<span class="md_repeated_n md_repeated_n_1"></span>
+<p class="md_block">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/截屏2020-06-2314.51.46.png?r=60" alt="" title="" style="width:60%;"></span>
+</p>
+
+<h4 id="toc_14" class="h16">3、论文总结与启发</h4>
+<h5 id="toc_15" class="h16">（1）关键点</h5>
+
+<ul>
+<li class="md_li"><span>大量带标签数据——ImageNet
+
+</span></li>
+<li class="md_li"><span>高性能计算资源——GPU
+
+</span></li>
+<li class="md_li"><span>合理算法模型——深度卷积神经网络
+
+</span></li>
+</ul>
+<h5 id="toc_16" class="h16">（2）创新点</h5>
+
+<ul>
+<li class="md_li"><span>采用ReLu加快大型神经网络训练
+
+</span></li>
+<li class="md_li"><span>采用LRN提升大型网络泛化能力
+
+</span></li>
+<li class="md_li"><span>采用Overlapping Pooling提升指标
+
+</span></li>
+<li class="md_li"><span>采用随机裁剪翻转及色彩扰动增加数据多样性
+
+</span></li>
+<li class="md_li"><span>采用Drpout减轻过拟合
+
+</span></li>
+</ul>
+<h5 id="toc_17" class="h16">（3）启发点</h5>
+
+<ul>
+<li class="md_li"><span>深度与宽度可决定网络能力
+
+</span></li>
+<li class="md_li"><span>更强大GPU及更多数据可进一步提高模型性能
+
+</span></li>
+<li class="md_li"><span>图片缩放细节，对短边先缩放
+
+</span></li>
+<li class="md_li"><span>ReLU不需要对输入进行标准化来防止饱和现象，即说明sigmoid/tanh激活函数有必要对输入进行标准化
+
+</span></li>
+</ul>
+<h3 id="toc_18" class="h16">二、代码实现</h3>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">代码实现采用<a class="md_compiled" href="https://www.kaggle.com/c/dogs-vs-cats-redux-kernels-edition/data">猫狗数据集</a>，使用<code>Pytorch</code>实现，主要有下面5个部分</span>
+</p>
+
+<span class="md_repeated_n md_repeated_n_1"></span><h4 id="toc_19" class="h16">1、构建<code>DataLoader</code></h4>
+
+<p class="md_block md_block_as_opening md_has_block_below md_has_block_below_code_block">
+    <span class="md_line md_line_start md_line_end">分别构建训练集和测试集对应的<code>DataLoader</code>：</span>
+</p>
+
+<div class="codehilite code_lang_python  highlight"><pre><span></span><span class="n">train_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">train_data</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">BATCH_SIZE</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">valid_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">valid_data</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block md_block_as_opening md_has_block_below md_has_block_below_code_block">
+    <span class="md_line md_line_start md_line_end">这里需要构建一个<code>Dataset</code>类——<code>CatDogDataset</code>，并使用下面两行代码构建MyDataset实例：</span>
+</p>
+
+<div class="codehilite code_lang_python  highlight"><pre><span></span><span class="n">train_data</span> <span class="o">=</span> <span class="n">CatDogDataset</span><span class="p">(</span><span class="n">data_dir</span><span class="o">=</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">train_transform</span><span class="p">)</span>
+<span class="n">valid_data</span> <span class="o">=</span> <span class="n">CatDogDataset</span><span class="p">(</span><span class="n">data_dir</span><span class="o">=</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;valid&quot;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">valid_transform</span><span class="p">)</span>
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block md_block_as_opening md_has_block_below md_has_block_below_code_block">
+    <span class="md_line md_line_start md_line_end">其中<code>CatDogDataset</code>类代码实现如下：</span>
+</p>
+
+<div class="codehilite code_lang_python  highlight"><pre><span></span><span class="k">class</span> <span class="nc">CatDogDataset</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_dir</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="n">split_n</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">rng_seed</span><span class="o">=</span><span class="mi">620</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        猫狗分类任务的Dataset</span>
+<span class="sd">        :param data_dir: str, 数据集所在路径</span>
+<span class="sd">        :param transform: torch.transform，数据预处理</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="n">mode</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_dir</span> <span class="o">=</span> <span class="n">data_dir</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rng_seed</span> <span class="o">=</span> <span class="n">rng_seed</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">split_n</span> <span class="o">=</span> <span class="n">split_n</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_img_info</span><span class="p">()</span>  <span class="c1"># data_info存储所有图片路径和标签，在DataLoader中通过index读取样本</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">transform</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+        <span class="n">path_img</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_info</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path_img</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">)</span>     <span class="c1"># 0~255</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>   <span class="c1"># 在这里做transform，转为tensor等等</span>
+
+        <span class="k">return</span> <span class="n">img</span><span class="p">,</span> <span class="n">label</span>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_info</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">data_dir:{} is a empty dir! Please checkout your path to images!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_dir</span><span class="p">))</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_info</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_img_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="n">img_names</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_dir</span><span class="p">)</span>
+        <span class="n">img_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.jpg&#39;</span><span class="p">),</span> <span class="n">img_names</span><span class="p">))</span>
+
+        <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rng_seed</span><span class="p">)</span>
+        <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">img_names</span><span class="p">)</span>
+
+        <span class="n">img_labels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">if</span> <span class="n">n</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;cat&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">img_names</span><span class="p">]</span>
+
+        <span class="n">split_idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">img_labels</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">split_n</span><span class="p">)</span>  <span class="c1"># 25000* 0.9 = 22500</span>
+        <span class="c1"># split_idx = int(100 * self.split_n)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;train&quot;</span><span class="p">:</span>
+            <span class="n">img_set</span> <span class="o">=</span> <span class="n">img_names</span><span class="p">[:</span><span class="n">split_idx</span><span class="p">]</span>     <span class="c1"># 数据集90%训练</span>
+            <span class="c1"># img_set = img_names[:22500]     #  hard code 数据集90%训练</span>
+            <span class="n">label_set</span> <span class="o">=</span> <span class="n">img_labels</span><span class="p">[:</span><span class="n">split_idx</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;valid&quot;</span><span class="p">:</span>
+            <span class="n">img_set</span> <span class="o">=</span> <span class="n">img_names</span><span class="p">[</span><span class="n">split_idx</span><span class="p">:]</span>
+            <span class="n">label_set</span> <span class="o">=</span> <span class="n">img_labels</span><span class="p">[</span><span class="n">split_idx</span><span class="p">:]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;self.mode 无法识别，仅支持(train, valid)&quot;</span><span class="p">)</span>
+
+        <span class="n">path_img_set</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">img_set</span><span class="p">]</span>
+        <span class="n">data_info</span> <span class="o">=</span> <span class="p">[(</span><span class="n">n</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">path_img_set</span><span class="p">,</span> <span class="n">label_set</span><span class="p">)]</span>
+
+        <span class="k">return</span> <span class="n">data_info</span>
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">在构建自定义的<code>Dataset</code>时，需要重写<code>__getitem__</code>和<code>__len__</code>这两个方法，<code>__len__</code>主要是记录数据的大小，而<code>__getitem__</code>是通过图片索引寻找图片，这里需要主要的是<code>__getitem__</code>是会不停的被调用，因此不能在<code>__getitem__</code>中进行过多的操作，否则会导致训练过程非常缓慢，对于图片信息的获取就不建议放到<code>__getitem__</code>中，这里是将图片信息的获取过程单独写成一个函数<code>_get_img_info</code>，通过这个函数得到所有图片的信息并存储到一个列表中，这样在<code>__getitem__</code>中就只需要传入这个列表对对列表中的元素就行索引，得到图片的信息，避免了重复操作，加快了代码的运行速度</span>
+</p>
+
+<span class="md_repeated_n md_repeated_n_1"></span><h4 id="toc_20" class="h16">2、构建模型</h4>
+
+<p class="md_block md_block_as_opening md_has_block_below md_has_block_below_code_block">
+    <span class="md_line md_line_start md_line_end">Pytorch中已经实现了$AlexNet$，因此直接调用即可，在调用后需要加载预训练参数以加快模型训练速度：</span>
+</p>
+
+<div class="codehilite code_lang_python  highlight"><pre><span></span><span class="n">alexnet_model</span> <span class="o">=</span> <span class="n">get_model</span><span class="p">(</span><span class="n">path_state_dict</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">get_model</span><span class="p">(</span><span class="n">path_state_dict</span><span class="p">,</span> <span class="n">vis_model</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    创建模型，加载参数</span>
+<span class="sd">    :param path_state_dict:</span>
+<span class="sd">    :return:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">alexnet</span><span class="p">()</span>
+    <span class="n">pretrained_state_dict</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">path_state_dict</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">pretrained_state_dict</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">vis_model</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">torchsummary</span> <span class="kn">import</span> <span class="n">summary</span>
+        <span class="n">summary</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">input_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">),</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+
+    <span class="n">model</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">model</span>
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block md_block_as_opening md_has_block_below md_has_block_below_code_block">
+    <span class="md_line md_line_start md_line_end">另外，$AlexNet$是一个1000类的分类网络，而我们使用的数据集是二分类任务，因此需要替换最后的输出层：</span>
+</p>
+
+<div class="codehilite code_lang_python  highlight"><pre><span></span><span class="n">num_ftrs</span> <span class="o">=</span> <span class="n">alexnet_model</span><span class="o">.</span><span class="n">classifier</span><span class="o">.</span><span class="n">_modules</span><span class="p">[</span><span class="s2">&quot;6&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">in_features</span>
+<span class="n">alexnet_model</span><span class="o">.</span><span class="n">classifier</span><span class="o">.</span><span class="n">_modules</span><span class="p">[</span><span class="s2">&quot;6&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">num_ftrs</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span> <span class="c1"># num_classes = 2</span>
+</pre></div>
+
+<!--block_code_end--><h4 id="toc_21" class="h16">3、构建损失函数</h4>
+
+<p class="md_block md_block_as_opening md_has_block_below md_has_block_below_code_block">
+    <span class="md_line md_line_start md_line_end">由于是二分类问题，因此直接采用<strong>交叉熵损失函数即可</strong>：</span>
+</p>
+
+<div class="codehilite code_lang_python  highlight"><pre><span></span><span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+</pre></div>
+
+<!--block_code_end--><h4 id="toc_22" class="h16">4、构建优化器</h4>
+
+<p class="md_block md_block_as_opening md_has_block_below md_has_block_below_code_block">
+    <span class="md_line md_line_start md_line_end">优化器选择传统的<strong>随机梯度下降</strong>即可：</span>
+</p>
+
+<div class="codehilite code_lang_python  highlight"><pre><span></span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">alexnet_model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">LR</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block md_block_as_opening md_has_block_below md_has_block_below_code_block">
+    <span class="md_line md_line_start md_line_end">当然，也可以选择冻结卷积层：</span>
+</p>
+
+<div class="codehilite code_lang_python  highlight"><pre><span></span><span class="n">fc_params_id</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">alexnet_model</span><span class="o">.</span><span class="n">classifier</span><span class="o">.</span><span class="n">parameters</span><span class="p">()))</span>  <span class="c1"># 返回的是parameters的 内存地址</span>
+<span class="n">base_params</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="nb">id</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">fc_params_id</span><span class="p">,</span> <span class="n">alexnet_model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">([</span>
+    <span class="p">{</span><span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="n">base_params</span><span class="p">,</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span> <span class="n">LR</span> <span class="o">*</span> <span class="mf">0.1</span><span class="p">},</span>  <span class="c1"># 0</span>
+    <span class="p">{</span><span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="n">alexnet_model</span><span class="o">.</span><span class="n">classifier</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span> <span class="n">LR</span><span class="p">}],</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+</pre></div>
+
+<!--block_code_end--><h4 id="toc_23" class="h16">5、迭代训练</h4>
+<div class="codehilite code_lang_python  highlight"><pre><span></span><span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start_epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">MAX_EPOCH</span><span class="p">):</span>
+
+    <span class="n">loss_mean</span> <span class="o">=</span> <span class="mf">0.</span>
+    <span class="n">correct</span> <span class="o">=</span> <span class="mf">0.</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mf">0.</span>
+
+    <span class="n">alexnet_model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_loader</span><span class="p">):</span>
+
+        <span class="c1"># forward</span>
+        <span class="n">inputs</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="n">inputs</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">),</span> <span class="n">labels</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">alexnet_model</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+
+        <span class="c1"># backward</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+
+        <span class="c1"># update weights</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+        <span class="c1"># 统计分类情况</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">labels</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">correct</span> <span class="o">+=</span> <span class="p">(</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">labels</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+
+        <span class="c1"># 打印训练信息</span>
+        <span class="n">loss_mean</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+        <span class="n">train_curve</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">log_interval</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">loss_mean</span> <span class="o">=</span> <span class="n">loss_mean</span> <span class="o">/</span> <span class="n">log_interval</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Training:Epoch[{:0&gt;3}/{:0&gt;3}] Iteration[{:0&gt;3}/{:0&gt;3}] Loss: {:.4f} Acc:{:.2%}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">epoch</span><span class="p">,</span> <span class="n">MAX_EPOCH</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">train_loader</span><span class="p">),</span> <span class="n">loss_mean</span><span class="p">,</span> <span class="n">correct</span> <span class="o">/</span> <span class="n">total</span><span class="p">))</span>
+            <span class="n">loss_mean</span> <span class="o">=</span> <span class="mf">0.</span>
+
+    <span class="n">scheduler</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>  <span class="c1"># 更新学习率</span>
+
+    <span class="c1"># validate the model</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">val_interval</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+
+        <span class="n">correct_val</span> <span class="o">=</span> <span class="mf">0.</span>
+        <span class="n">total_val</span> <span class="o">=</span> <span class="mf">0.</span>
+        <span class="n">loss_val</span> <span class="o">=</span> <span class="mf">0.</span>
+        <span class="n">alexnet_model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+        <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">valid_loader</span><span class="p">):</span>
+                <span class="n">inputs</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">data</span>
+                <span class="n">inputs</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">),</span> <span class="n">labels</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+                <span class="n">bs</span><span class="p">,</span> <span class="n">ncrops</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>     <span class="c1"># [4, 10, 3, 224, 224</span>
+                <span class="n">outputs</span> <span class="o">=</span> <span class="n">alexnet_model</span><span class="p">(</span><span class="n">inputs</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
+                <span class="n">outputs_avg</span> <span class="o">=</span> <span class="n">outputs</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">bs</span><span class="p">,</span> <span class="n">ncrops</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+                <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs_avg</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+
+                <span class="n">_</span><span class="p">,</span> <span class="n">predicted</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">outputs_avg</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="n">total_val</span> <span class="o">+=</span> <span class="n">labels</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                <span class="n">correct_val</span> <span class="o">+=</span> <span class="p">(</span><span class="n">predicted</span> <span class="o">==</span> <span class="n">labels</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+
+                <span class="n">loss_val</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+            <span class="n">loss_val_mean</span> <span class="o">=</span> <span class="n">loss_val</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">valid_loader</span><span class="p">)</span>
+            <span class="n">valid_curve</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss_val_mean</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Valid:</span><span class="se">\t</span><span class="s2"> Epoch[{:0&gt;3}/{:0&gt;3}] Iteration[{:0&gt;3}/{:0&gt;3}] Loss: {:.4f} Acc:{:.2%}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">epoch</span><span class="p">,</span> <span class="n">MAX_EPOCH</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">valid_loader</span><span class="p">),</span> <span class="n">loss_val_mean</span><span class="p">,</span> <span class="n">correct_val</span> <span class="o">/</span> <span class="n">total_val</span><span class="p">))</span>
+        <span class="n">alexnet_model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+</pre></div>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">最后的训练损失曲线如下图所示：</span>
+</p>
+
+
+<p class="md_block">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/2020-06-23-17-03-43.jpg?r=60" alt="" title="" style="width:60%;"></span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">从上图可以看出训练效果非常好，在测试集上的准确率能够达到97.52%，如果多训练几个Epoch，准确率会进一步提高</span>
+</p>
+        </div>
+    </div>
+    
+        <script type= "text/javascript">
+            window.MathJax = {
+              tex: {
+                inlineMath: [ ['$','$']],
+                displayMath: [ ['$$','$$'] ]
+              },
+              svg: {fontCache: 'global'},
+              startup: {
+                    ready: () => {
+                      MathJax.startup.defaultReady();
+                      MathJax.startup.promise.then(() => {
+                        if (typeof(send_to_app_client)!='undefined'){send_to_app_client({'action': 'start_to_export_pdf'})}
+                      });
+                    }
+                  },
+              options: {
+                renderActions: {
+                  addMenu: [0]
+                }
+              }
+            };
+        </script>
+        <script src="https://markeditor-files.oss-cn-hangzhou.aliyuncs.com/fb_static/lib/markdown/MathJax/tex-svg.js" type= "text/javascript"></script>
+        
+        
+    <!--mermaid-->
+</body>
+</html>

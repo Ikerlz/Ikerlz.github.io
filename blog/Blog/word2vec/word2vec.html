@@ -1,0 +1,1151 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="renderer" content="webkit">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="renderer" content="webkit"/>
+    <title></title>
+    <link rel="stylesheet" href="data:text/css;base64,CiAgICBoMSwgaDIsIGgzLCBoNSwgaDYsICBpbWcsIHN2ZywgcHJlLCB0YWJsZSwgdHJ7cGFnZS1icmVhay1pbnNpZGU6IGF2b2lkfQoKCiAgICBib2R5IHsKICAgICAgICBiYWNrZ3JvdW5kOiAjRkZGRkZGOwogICAgICAgIGZvbnQtc2l6ZTogMTZweDsKICAgICAgICBsaW5lLWhlaWdodDoyLjM7CiAgICAgICAgZm9udC1mYW1pbHk6ICJIZWx2ZXRpY2EiOwogICAgICAgIGZvbnQtd2VpZ2h0OiBub3JtYWw7CiAgICAgICAgY29sb3I6ICMzQzNDM0M7CiAgICAgICAgcGFkZGluZzogMCAzOHB4OwogICAgICAgIG1heC13aWR0aDogODIwcHg7CiAgICAgICAgbWFyZ2luOiAwIGF1dG87CgogICAgICAgIHdvcmQtd3JhcDpicmVhay13b3JkOwogICAgICAgIHdvcmQtYnJlYWs6IG5vcm1hbDsKICAgICAgICBvdmVyZmxvdy13cmFwOmJyZWFrLXdvcmQ7CgoKICAgICAgICBvdmVyZmxvdy14OiBoaWRkZW47CiAgICAgICAgdGV4dC1yZW5kZXJpbmc6IG9wdGltaXplTGVnaWJpbGl0eTsKICAgICAgICAtd2Via2l0LXRleHQtc2l6ZS1hZGp1c3Q6IG5vbmU7CiAgICB9CgogICAgYnJ7CiAgICAgICAgbGluZS1oZWlnaHQ6IDIuMzsKICAgIH0KCgoKICAgIEBtZWRpYSAobWF4LXdpZHRoOiA2MDBweCkgewogICAgICAgIGJvZHl7CiAgICAgICAgICAgIHBhZGRpbmc6IDAgMzBweDsKICAgICAgICB9CiAgICB9CgogICAgQG1lZGlhIChtYXgtd2lkdGg6IDQ4MHB4KSB7CiAgICAgICAgYm9keXsKICAgICAgICAgICAgcGFkZGluZzogMCAyMHB4OwogICAgICAgIH0KICAgIH0KCiAgICAuZ2lzdHsKICAgICAgICB3b3JkLWJyZWFrOiBub3JtYWw7CiAgICB9CgogICAgLnBvc3R7CiAgICAgICAgbWFyZ2luLXRvcDogMTBweDsKICAgICAgICBtYXJnaW4tYm90dG9tOiA1MHB4OwogICAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTsKICAgIH0KCgoKICAgIGltZ3sKICAgICAgICBtYXgtd2lkdGg6IDk4JTsKICAgICAgICBtYXJnaW46IDAuOGVtIGF1dG8gMC44ZW0gYXV0bzsKICAgIH0KCiAgICBoMSBpbWcsIGgyIGltZywgaDMgaW1nLCBoNCBpbWcsIGg1IGltZywgaDYgaW1newogICAgICAgIG1hcmdpbjogYXV0bzsKICAgIH0KCiAgICAueDJfaW1hZ2V7CiAgICAgICAgem9vbTogNTAlOwogICAgfQoKICAgIC54M19pbWFnZXsKICAgICAgICB6b29tOiAzMy4zMyU7CiAgICB9CgogICAgLng0X2ltYWdlewogICAgICAgIHpvb206IDI1JTsKICAgIH0KCgogICAgcCBpbWd7CiAgICAgICAgbWFyZ2luOiAwIGF1dG87CiAgICB9CgogICAgcHsKICAgICAgICAvKm92ZXJmbG93OmhpZGRlbjsqLwogICAgICAgIG1hcmdpbjogMS4wZW0gMCAxLjhlbSAwOwogICAgfQoKICAgIHAubWRfYmxvY2tfYXNfb3BlbmluZ3sKICAgICAgICBtYXJnaW4tYm90dG9tOiAtMC41ZW0gIWltcG9ydGFudDsKICAgIH0KCiAgICBsaSBwewogICAgICAgIGxpbmUtaGVpZ2h0OiAyLjA3OwogICAgICAgIG1hcmdpbjogMDsKICAgIH0KCiAgICAucF9wYXJ0IHsKICAgICAgICBtYXJnaW46IDEwcHggMDsKICAgIH0KCiAgICAucF9wYXJ0IHB7CiAgICAgICAgbWFyZ2luOiAwIDAgMC42ZW0gMDsKICAgIH0KCiAgICAvKiB0ZXh0IGluZGVudCBmb3IgY2hpbmVzZSBzdGFydHMqLwogICAgLypoMiwgaDMsIGg0LCBoNSwgaDYsIC5wX3BhcnQgcCwgLnRvZG9faXRlbSwgcHsKICAgICAgICB0ZXh0LWluZGVudDogMHB4OwogICAgfSovCiAgICB0YWJsZSwgcHJlLCBzdmcsIC5jb2RlaGlsaXRldGFibGV7CiAgICAgICAgbWFyZ2luLWxlZnQ6IDBweDsKICAgICAgICBtYXJnaW4tcmlnaHQ6IDBweDsKICAgIH0KICAgIAogICAgc3BhbiBzdmd7CiAgICAgICAgbWFyZ2luLWxlZnQ6IDA7CiAgICAgICAgbWFyZ2luLXJpZ2h0OiAwOwogICAgfQoKICAgIC5jb2RlaGlsaXRldGFibGUgcHJlewogICAgICAgIG1hcmdpbi1sZWZ0OiAwOwogICAgICAgIG1hcmdpbi1yaWdodDogMDsKCiAgICB9CgogICAgLmNvZGVoaWxpdGV0YWJsZSAuY29kZWhpbGl0ZSBwcmV7CiAgICAgICAgYm9yZGVyLWxlZnQ6IG5vbmU7CiAgICB9CgogICAgLyogdGV4dCBpbmRlbnQgZm9yIGNoaW5lc2UgZW5kcyovCgoKICAgIGJsb2NrcXVvdGUgLnBfcGFydCBwLCBsaSAucF9wYXJ0IHB7CiAgICAgICAgdGV4dC1pbmRlbnQ6IDAgIWltcG9ydGFudDsKICAgIH0KCgogICAgaHJ7CiAgICAgICAgbWFyZ2luOiAzOHB4IDA7CiAgICAgICAgYm9yZGVyOiBub25lOwogICAgICAgIGJvcmRlci1ib3R0b206IDFweCBkYXNoZWQgcmdiYSgyMDUsIDIwNSwgMjA1LCAwLjM1KTsKICAgICAgICBjb2xvcjogcmdiYSgyMDUsIDIwNSwgMjA1LCAwLjM1KTsKICAgICAgICBoZWlnaHQ6IDFweDsKICAgICAgICBsaW5lLWhlaWdodDoxcHg7CiAgICAgICAgZm9udC1zaXplOjFweDsKICAgICAgICBvdmVyZmxvdy15OiBoaWRkZW47CiAgICB9CgoKICAgIGgxewogICAgICAgIGNvbG9yOiAjMTBBM0VFOwogICAgICAgIGZvbnQtc2l6ZTogMS43ZW07CiAgICAgICAgdGV4dC1hbGlnbjogbGVmdDsKICAgICAgICBtYXJnaW46IDA7CiAgICAgICAgcGFkZGluZzogMDsKICAgICAgICBsaW5lLWhlaWdodDogMS43ZW07CiAgICAgICAgbWFyZ2luLXRvcDogMC44ZW07CiAgICAgICAgbWFyZ2luLWJvdHRvbTogMC42ZW07CiAgICB9CgogICAgaDEsIGgyLCBoMywgaDR7CiAgICAgICAgY29sb3I6ICMxMEEzRUU7CiAgICB9CiAgICAKICAgIGgxe2NvbG9yOiMxMEEzRUV9CgoKCiAgICBoMiwgaDN7CiAgICAgICAgbGluZS1oZWlnaHQ6IDEuNWVtOwogICAgICAgIG1hcmdpbi10b3A6IDEuOGVtOwogICAgICAgIG1hcmdpbi1ib3R0b206IDAuNWVtOwogICAgfQoKICAgIC5oMTYubWRfZmlyc3RfaC5tZF9maXJzdF9wYXJ0IHsKICAgICAgICBtYXJnaW4tdG9wOiA1cHg7CiAgICB9CgogICAgaDIgewogICAgICAgIGZvbnQtc2l6ZTogMS41ZW07CiAgICB9CgogICAgaDMgewogICAgICAgIGZvbnQtc2l6ZTogMS4yNWVtCiAgICB9CgogICAgaDQgewogICAgICAgIGZvbnQtc2l6ZTogMS4xNWVtOwogICAgfQoKICAgIGg1IHsKICAgICAgICBmb250LXNpemU6IDEuMWVtOwogICAgfQoKICAgIGg2IHtmb250LXNpemU6IDFlbX0KCgogICAgaDEsIGgyLCBoMywgaDQsIGg1LCBoNnsKICAgICAgICBmb250LWZhbWlseTogIkhlaXRpIFNDIjsKICAgIH0KCgogICAgb2wgewogICAgICAgIG1hcmdpbjogMDsKICAgIH0KCiAgICB1bHsKICAgICAgICBwYWRkaW5nOiA1cHggMzhweDsKICAgICAgICBtYXJnaW46IDA7CiAgICB9CgogICAgdWwgbGksIGxpewogICAgICAgIHBhZGRpbmc6IDA7CiAgICAgICAgbWFyZ2luOiAwOwogICAgfQoKICAgIHVsIHAsIG9sIHB7CiAgICAgICAgb3ZlcmZsb3c6IHZpc2libGU7CiAgICB9CgoKICAgIGJsb2NrcXVvdGUgewogICAgICAgIC1tb3otYm94LXNpemluZzogYm9yZGVyLWJveDsKICAgICAgICBib3gtc2l6aW5nOiBib3JkZXItYm94OwogICAgICAgIG1hcmdpbjogMS42ZW0gMDsKICAgICAgICBwYWRkaW5nOiAwIDAgMCAxLjJlbTsKICAgICAgICBib3JkZXItbGVmdDogMC40ZW0gc29saWQgIzE2QjBGRjsKICAgICAgICBjb2xvcjogIzg4ODg4ODsKICAgICAgICBtaW4taGVpZ2h0OjIwcHg7CiAgICB9CgoKICAgIGJsb2NrcXVvdGUgcCB7CiAgICAgICAgbWFyZ2luOiAwLjhlbSAwOwogICAgfQoKICAgIGJsb2NrcXVvdGUgc3Bhbi5tZF9saW5lIHsKICAgICAgICBtYXJnaW4tYm90dG9tOiAwLjI1ZW07CiAgICAgICAgbWFyZ2luLXRvcDogMC4yNWVtOwogICAgfQoKICAgIGJsb2NrcXVvdGUgdWx7CiAgICAgICAgcGFkZGluZzogMCAxNXB4OwogICAgfQoKICAgIGJsb2NrcXVvdGUgc21hbGwgewogICAgICAgIGRpc3BsYXk6IGlubGluZS1ibG9jazsKICAgICAgICBtYXJnaW46IDAuOGVtIDAgMC44ZW0gMS41ZW07CiAgICAgICAgZm9udC1zaXplOiAwLjllbTsKICAgICAgICBjb2xvcjogI2NjYzsKICAgIH0KCgoKCgoKICAgIHRhYmxlIHsKICAgICAgICBsaW5lLWhlaWdodDogMS43OwogICAgICAgIC1tb3otYm94LXNpemluZzogYm9yZGVyLWJveDsKICAgICAgICBib3gtc2l6aW5nOiBib3JkZXItYm94OwogICAgICAgIG1hcmdpbjogMWVtIDA7CiAgICAgICAgd2lkdGg6IDEwMCU7CiAgICAgICAgbWF4LXdpZHRoOiAxMDAlOwogICAgICAgIGJvcmRlci13aWR0aDogMXB4OwogICAgICAgIGJvcmRlci1zdHlsZTogc29saWQ7CiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogdHJhbnNwYXJlbnQ7CiAgICAgICAgYm9yZGVyLXNwYWNpbmc6IDA7CiAgICAgICAgd29yZC1icmVhazogbm9ybWFsOwogICAgfQogICAgCiAgICAvKiBmb3Igd2VjaGF0IG9ubHkgc3RhcnRzICovCiAgICB0YWJsZSB0cnsKICAgICAgICBib3JkZXItcmlnaHQtc3R5bGU6IHNvbGlkOwogICAgICAgIGJvcmRlci1yaWdodC13aWR0aDogMXB4OwogICAgfQogICAgCiAgICB0YWJsZSB0Ym9keXsKICAgICAgICBib3JkZXItYm90dG9tLXdpZHRoOiAxcHg7CiAgICAgICAgYm9yZGVyLWJvdHRvbS1zdHlsZTogc29saWQ7CiAgICB9CiAgICAvKiBmb3Igd2VjaGF0IG9ubHkgZW5kcyAqLwoKCiAgICB0YWJsZSwgdGFibGUgdHIsIHRhYmxlIHRyIHRkLCB0YWJsZSB0ciB0aCwgdGFibGUgdGJvZHkgewogICAgICAgIGJvcmRlci1jb2xvcjogcmdiYSgyMDUsIDIwNSwgMjA1LCAwLjM1KTsKICAgIH0KCiAgICB0YWJsZSB0aCB7CiAgICAgICAgZm9udC13ZWlnaHQ6IGJvbGQ7CiAgICB9CgogICAgdHIgdGggewogICAgICAgIGJvcmRlci1ib3R0b20td2lkdGg6IDFweDsKICAgICAgICBib3JkZXItYm90dG9tLXN0eWxlOiBzb2xpZDsKICAgICAgICB0ZXh0LWFsaWduOiBsZWZ0OwogICAgfQoKICAgIHRyIHRoLCB0ciB0ZCB7CiAgICAgICAgcGFkZGluZzogMTBweCAyMHB4OwogICAgICAgIGJvcmRlci1yaWdodDogMXB4IHNvbGlkOwogICAgICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCByZ2JhKDIwNSwgMjA1LCAyMDUsIDAuMzUpOwogICAgfQoKICAgIHRib2R5IHRyOmxhc3QtY2hpbGQgdGR7CiAgICAgICAgYm9yZGVyLWJvdHRvbTogMDsKICAgIH0KCiAgICB0ciB0aDpsYXN0LWNoaWxkLCB0ciB0ZDpsYXN0LWNoaWxkIHsKICAgICAgICBib3JkZXItcmlnaHQ6IDA7CiAgICB9CgogICAgdGFibGUgdGJvZHkgPiB0cjpudGgtY2hpbGQob2RkKSA+IHRkLCB0YWJsZSB0Ym9keSA+IHRyOm50aC1jaGlsZChvZGQpID4gdGggewogICAgICAgIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMjM1LCAyMzUsIDIzNSwgMC4yKTsKICAgIH0KCgoKCiAgICBjb2RlewogICAgICAgIGJhY2tncm91bmQ6IHJnYmEoMjM1LCAyMzUsIDIzNSwgMC4zNSk7CiAgICAgICAgY29sb3I6ICM0OEI0NTY7CiAgICAgICAgcGFkZGluZzogMCA1cHg7CiAgICAgICAgbWFyZ2luOiAwIDJweDsKICAgIH0KCiAgICBwcmV7CiAgICAgICAgbWFyZ2luLXRvcDogMS4yZW07CiAgICAgICAgbWFyZ2luLWJvdHRvbTogMS4yZW07CiAgICAgICAgcGFkZGluZzogMTVweCAxMHB4OwogICAgICAgIGRpc3BsYXk6IGJsb2NrOwogICAgICAgIC8qIG92ZXJmbG93OiBhdXRvOyAqLwogICAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHJnYmEoMjA1LCAyMDUsIDIwNSwgMC4zNSk7CiAgICAgICAgLypiYWNrZ3JvdW5kOiByZ2JhKDIzNSwgMjM1LCAyMzUsIDAuMzUpOyovCiAgICAgICAgZm9udC1zaXplOiA5MCU7CiAgICAgICAgbGluZS1oZWlnaHQ6Mi4zOwogICAgICAgIHdoaXRlLXNwYWNlOiBwcmUtd3JhcDsKICAgIH0KCiAgICAuaGlnaGxpZ2h0dGFibGUgdGR7CiAgICAgICAgLypiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDIzNSwgMjM1LCAyMzUsIDAuMzUpICFpbXBvcnRhbnQ7Ki8KICAgIH0KCiAgICAud2l0aF9saW5lcyBwcmV7CiAgICAgICAgYm9yZGVyOm5vbmU7CiAgICAgICAgbWFyZ2luLXRvcDogMC4yZW07CiAgICAgICAgbWFyZ2luLWJvdHRvbTogMC4yZW07CiAgICAgICAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7CiAgICB9CgogICAgLmlzX2NvZGVfZmlsZSBwcmV7CiAgICAgICAgYm9yZGVyOiBub25lOwogICAgICAgIGJhY2tncm91bmQ6IHRyYW5zcGFyZW50OwogICAgfQoKICAgIC5jb2RlaGlsaXRlIHByZXsKICAgICAgICAvKndvcmQtd3JhcDogbm9ybWFsOyovCiAgICAgICAgZm9udC1zaXplOiAxM3B4OwogICAgfQoKICAgIHByZSBjb2RlewogICAgICAgIGJvcmRlcjpub25lOwogICAgICAgIGJhY2tncm91bmQ6IG5vbmU7CiAgICAgICAgcGFkZGluZzogMDsKICAgICAgICBtYXJnaW46IDA7CiAgICB9CgogICAgcHJlIHB7CiAgICAgICAgbWFyZ2luOiAwOwogICAgICAgIHBhZGRpbmc6IDA7CiAgICB9CgogICAgLmNvZGVoaWxpdGUgdGgsIC5jb2RlaGlsaXRlIHRkewogICAgICAgIGxpbmUtaGVpZ2h0OiAxLjhlbTsKICAgIH0KCgogICAgYXsKICAgICAgICBjb2xvcjogIzQwODNDNDsKICAgICAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7CiAgICAgICAgLy9ib3JkZXItYm90dG9tOiAxcHggc29saWQgdHJhbnNwYXJlbnQ7CiAgICB9CgogICAgYTpob3ZlcnsKICAgICAgICB0ZXh0LWRlY29yYXRpb246IHVuZGVybGluZTsKICAgICAgICAvL2JvcmRlci1ib3R0b206IDFweCBzb2xpZCAjNDA4M0M0OwogICAgfQoKICAgIHN0cm9uZyB7CiAgICAgICAgY29sb3I6ICMwMDAwMDA7CiAgICAgICAgZm9udC13ZWlnaHQ6IGJvbGQ7CiAgICB9CgoKICAgIC8qIGZvciBtYXJrZG93biAqLwoKICAgIC5saW5lbm9zIHByZXsKCQliYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDsKCQlib3JkZXI6IG5vbmU7Cgl9CgoJLmxpbmVub3N7CgkgICAgcGFkZGluZzogMCA1cHggMCA1cHg7CgkgICAgd2lkdGg6IDAuMDAxJTsKCX0KCgkuaGlnaGxpZ2h0dGFibGUgcHJlewoJICAgIHBhZGRpbmc6IDVweCAxMHB4OwoJfQoKICAgIC50b2N7CiAgICAgICAgYmFja2dyb3VuZDogTm9uZTsKICAgICAgICBib3JkZXItcmFkaXVzOiA1cHg7CiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgTm9uZTsKICAgICAgICBtYXJnaW46IDI3cHggMCA0N3B4IDA7CiAgICAgICAgcGFkZGluZzogMTBweCAwOwogICAgfQoKICAgIC50b2MgdWx7CiAgICAgICAgLy9wYWRkaW5nOiA1cHggNDJweDsKICAgIH0KCiAgICAudG9jIHVsIGxpewogICAgICAgIHBhZGRpbmc6IDA7CiAgICAgICAgbWFyZ2luOiAwOwogICAgfQogICAgLnRvYyBhewogICAgICAgIGNvbG9yOiAjM0MzQzNDOwogICAgfQoKCgogICAgLnRvZG9faXRlbXsKICAgICAgICBsaXN0LXN0eWxlOiBub25lOwogICAgICAgIG1hcmdpbi1sZWZ0OiAtMS41ZW0KICAgIH0KICAgIC50b2RvX2l0ZW0gLnRvZG9faXRlbSB7CiAgICAgICAgbWFyZ2luLWxlZnQ6IGF1dG87CiAgICB9CgogICAgLnRvZG9fZG9uZV9pdGVtewogICAgICAgIGNvbG9yOiAjOTk5OTk5OwogICAgfQoKICAgIC50b2RvX3VuZG9uZV9pdGVtewogICAgICAgIGNvbG9yOiAjQzg1QTU3OwogICAgfQoKCiAgICB1bCBsaS50b2RvX2l0ZW17CglsaXN0LXN0eWxlLXR5cGU6IG5vbmU7CiAgICB9CgogICAgdWwgbGkudG9kb19pdGVtOmJlZm9yZXsKICAgICAgICBjb250ZW50OiAn4piQJzsKICAgICAgICAvKnBhZGRpbmctcmlnaHQ6IDAuMmVtOyovCiAgICAgICAgZm9udC1mYW1pbHk6IGFyaWFsOwogICAgfQoKICAgIHVsIGxpLnRvZG9fZG9uZV9pdGVtOmJlZm9yZXsKICAgICAgICBjb250ZW50OiAn4piRJzsKICAgICAgICAvKnBhZGRpbmctcmlnaHQ6IDAuMmVtOyovCiAgICAgICAgZm9udC1mYW1pbHk6IGFyaWFsOwogICAgfQoKICAgIHVsIGxpLnRvZG9faXRlbSBpbnB1dHsKICAgICAgICBkaXNwbGF5Om5vbmUKICAgIH0KCgogICAgLypweWdtZW50cyovCgogICAgLmNvZGVoaWxpdGV7CiAgICAgICAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQgIWltcG9ydGFudDsKICAgIH0KCiAgICB0YWJsZS5jb2RlaGlsaXRldGFibGV7IGJvcmRlcjpub25lOyB9CgoKICAgIC5jb2RlaGlsaXRldGFibGUgdGR7IGJvcmRlcjogbm9uZTsgcGFkZGluZzogMDt9CgogICAgLmZsb3ctZ3JhcGhpYywgLm1kX2Jsb2NrX3NlY3Rpb25fZm9yX2Zsb3dfZ3JhcGhpY3t0ZXh0LWFsaWduOiBjZW50ZXJ9CiAgICAuZmxvdy1ncmFwaGljIHsgb3ZlcmZsb3cteDogYXV0bzt9CiAgICAubWVybWFpZCwgLm1kX2Jsb2NrX3NlY3Rpb25fZm9yX21lcm1haWR7dGV4dC1hbGlnbjogY2VudGVyfQogICAgCiAgICAuZmxvdy1ncmFwaGljLCAubWVybWFpZHsKICAgICAgICBiYWNrZ3JvdW5kOiAjZmZmZmZmOwogICAgfQoKCiAgICB0YWJsZSwgdHIsIHRkLCB0aCwgdGJvZHksIHRoZWFkLCB0Zm9vdCwgLm1kX2VjaGFydHMsIGJsb2NrcXVvdGUgLm1kX2xpbmV7CiAgICAgICAgcGFnZS1icmVhay1pbnNpZGU6IGF2b2lkICFpbXBvcnRhbnQ7CiAgICB9CgogICAgLmZvb3Rub3RlcyAubWRfbGluZXsKICAgICAgICBkaXNwbGF5OiBpbmxpbmUgIWltcG9ydGFudDsKICAgIH0KCgogICAgLmltZ19ydF85MHsKICAgICAgICB0cmFuc2Zvcm06cm90YXRlKDkwZGVnKTsKICAgICAgICAtbXMtdHJhbnNmb3JtOnJvdGF0ZSg5MGRlZyk7CiAgICAgICAgLW1vei10cmFuc2Zvcm06cm90YXRlKDkwZGVnKTsKICAgICAgICAtd2Via2l0LXRyYW5zZm9ybTpyb3RhdGUoOTBkZWcpOwogICAgICAgIC1vLXRyYW5zZm9ybTpyb3RhdGUoOTBkZWcpOwogICAgfQogICAgLmltZ19ydF8xODB7CiAgICAgICAgdHJhbnNmb3JtOnJvdGF0ZSgxODBkZWcpOwogICAgICAgIC1tcy10cmFuc2Zvcm06cm90YXRlKDE4MGRlZyk7CiAgICAgICAgLW1vei10cmFuc2Zvcm06cm90YXRlKDE4MGRlZyk7CiAgICAgICAgLXdlYmtpdC10cmFuc2Zvcm06cm90YXRlKDE4MGRlZyk7CiAgICAgICAgLW8tdHJhbnNmb3JtOnJvdGF0ZSgxODBkZWcpOwogICAgfQogICAgLmltZ19ydF8yNzB7CiAgICAgICAgdHJhbnNmb3JtOnJvdGF0ZSgyNzBkZWcpOwogICAgICAgIC1tcy10cmFuc2Zvcm06cm90YXRlKDI3MGRlZyk7CiAgICAgICAgLW1vei10cmFuc2Zvcm06cm90YXRlKDI3MGRlZyk7CiAgICAgICAgLXdlYmtpdC10cmFuc2Zvcm06cm90YXRlKDI3MGRlZyk7CiAgICAgICAgLW8tdHJhbnNmb3JtOnJvdGF0ZSgyNzBkZWcpOwogICAgfQoKICAgIC5tZF9oYXNfYmxvY2tfYmVsb3d7CiAgICAgICAgbWFyZ2luLWJvdHRvbTogMC4xZW0gIWltcG9ydGFudDsKICAgIH0KICAgIC5tZF9oYXNfYmxvY2tfYmVsb3dfaW1newogICAgICAgIG1hcmdpbi1ib3R0b206IC0wLjZlbSAhaW1wb3J0YW50OwogICAgfQoKCiAgICAuY29kZWhpbGl0ZSAuZXJyewogICAgICAgIGJvcmRlcjogbm9uZSAhaW1wb3J0YW50OwogICAgICAgIGJhY2tncm91bmQtY29sb3I6IHRyYW5zcGFyZW50ICFpbXBvcnRhbnQ7CiAgICB9CgoKCiAgICAgICAgc3Bhbi5tZF9saW5le21hcmdpbi1ib3R0b206MC41ZW07IGRpc3BsYXk6YmxvY2s7IGxpbmUtaGVpZ2h0OjEuOTg5NX0KICAgICAgICAubWRfbGluZSBicnsgZGlzcGxheTogbm9uZTt9CiAgICAgICAgLmNvZGVoaWxpdGUgLmhsbCB7IGJhY2tncm91bmQtY29sb3I6ICB9Ci5jb2RlaGlsaXRlICB7IGJhY2tncm91bmQ6ICNlZWVlZGQ7IGNvbG9yOiAjNTU1NTU1IH0KLmNvZGVoaWxpdGUgLmMgeyBjb2xvcjogIzk5OTk5OSB9IC8qIENvbW1lbnQgKi8KLmNvZGVoaWxpdGUgLmVyciB7IGNvbG9yOiAjYTYxNzE3OyBiYWNrZ3JvdW5kLWNvbG9yOiAjZTNkMmQyIH0gLyogRXJyb3IgKi8KLmNvZGVoaWxpdGUgLmsgeyBjb2xvcjogIzhCMDA4QjsgZm9udC13ZWlnaHQ6IGJvbGQgfSAvKiBLZXl3b3JkICovCi5jb2RlaGlsaXRlIC5sIHsgY29sb3I6ICNhZTgxZmYgfSAvKiBMaXRlcmFsICovCi5jb2RlaGlsaXRlIC5uIHsgY29sb3I6ICM1NTU1NTUgfSAvKiBOYW1lICovCi5jb2RlaGlsaXRlIC5vIHsgY29sb3I6ICM1NTU1NTUgfSAvKiBPcGVyYXRvciAqLwouY29kZWhpbGl0ZSAucCB7IGNvbG9yOiAjNTU1NTU1IH0gLyogUHVuY3R1YXRpb24gKi8KLmNvZGVoaWxpdGUgLmNoIHsgY29sb3I6ICM5OTk5OTkgfSAvKiBDb21tZW50Lkhhc2hiYW5nICovCi5jb2RlaGlsaXRlIC5jbSB7IGNvbG9yOiAjOTk5OTk5IH0gLyogQ29tbWVudC5NdWx0aWxpbmUgKi8KLmNvZGVoaWxpdGUgLmNwIHsgY29sb3I6ICMxZTg4OWIgfSAvKiBDb21tZW50LlByZXByb2MgKi8KLmNvZGVoaWxpdGUgLmNwZiB7IGNvbG9yOiAjOTk5OTk5IH0gLyogQ29tbWVudC5QcmVwcm9jRmlsZSAqLwouY29kZWhpbGl0ZSAuYzEgeyBjb2xvcjogIzk5OTk5OSB9IC8qIENvbW1lbnQuU2luZ2xlICovCi5jb2RlaGlsaXRlIC5jcyB7IGNvbG9yOiAjOEIwMDhCOyBmb250LXdlaWdodDogYm9sZCB9IC8qIENvbW1lbnQuU3BlY2lhbCAqLwouY29kZWhpbGl0ZSAuZ2QgeyBjb2xvcjogI2FhMDAwMCB9IC8qIEdlbmVyaWMuRGVsZXRlZCAqLwouY29kZWhpbGl0ZSAuZ2UgeyBmb250LXN0eWxlOiBpdGFsaWMgfSAvKiBHZW5lcmljLkVtcGggKi8KLmNvZGVoaWxpdGUgLmdyIHsgY29sb3I6ICNhYTAwMDAgfSAvKiBHZW5lcmljLkVycm9yICovCi5jb2RlaGlsaXRlIC5naCB7IGNvbG9yOiAjMDAwMDgwOyBmb250LXdlaWdodDogYm9sZCB9IC8qIEdlbmVyaWMuSGVhZGluZyAqLwouY29kZWhpbGl0ZSAuZ2kgeyBjb2xvcjogIzAwYWEwMCB9IC8qIEdlbmVyaWMuSW5zZXJ0ZWQgKi8KLmNvZGVoaWxpdGUgLmdvIHsgY29sb3I6ICM4ODg4ODggfSAvKiBHZW5lcmljLk91dHB1dCAqLwouY29kZWhpbGl0ZSAuZ3AgeyBjb2xvcjogIzU1NTU1NSB9IC8qIEdlbmVyaWMuUHJvbXB0ICovCi5jb2RlaGlsaXRlIC5ncyB7IGZvbnQtd2VpZ2h0OiBib2xkIH0gLyogR2VuZXJpYy5TdHJvbmcgKi8KLmNvZGVoaWxpdGUgLmd1IHsgY29sb3I6ICM4MDAwODA7IGZvbnQtd2VpZ2h0OiBib2xkIH0gLyogR2VuZXJpYy5TdWJoZWFkaW5nICovCi5jb2RlaGlsaXRlIC5ndCB7IGNvbG9yOiAjYWEwMDAwIH0gLyogR2VuZXJpYy5UcmFjZWJhY2sgKi8KLmNvZGVoaWxpdGUgLmtjIHsgY29sb3I6ICM4QjAwOEI7IGZvbnQtd2VpZ2h0OiBib2xkIH0gLyogS2V5d29yZC5Db25zdGFudCAqLwouY29kZWhpbGl0ZSAua2QgeyBjb2xvcjogIzhCMDA4QjsgZm9udC13ZWlnaHQ6IGJvbGQgfSAvKiBLZXl3b3JkLkRlY2xhcmF0aW9uICovCi5jb2RlaGlsaXRlIC5rbiB7IGNvbG9yOiAjOEIwMDhCOyBmb250LXdlaWdodDogYm9sZCB9IC8qIEtleXdvcmQuTmFtZXNwYWNlICovCi5jb2RlaGlsaXRlIC5rcCB7IGNvbG9yOiAjOEIwMDhCOyBmb250LXdlaWdodDogYm9sZCB9IC8qIEtleXdvcmQuUHNldWRvICovCi5jb2RlaGlsaXRlIC5rciB7IGNvbG9yOiAjOEIwMDhCOyBmb250LXdlaWdodDogYm9sZCB9IC8qIEtleXdvcmQuUmVzZXJ2ZWQgKi8KLmNvZGVoaWxpdGUgLmt0IHsgY29sb3I6ICNhN2E3YTc7IGZvbnQtd2VpZ2h0OiBib2xkIH0gLyogS2V5d29yZC5UeXBlICovCi5jb2RlaGlsaXRlIC5sZCB7IGNvbG9yOiAjZTZkYjc0IH0gLyogTGl0ZXJhbC5EYXRlICovCi5jb2RlaGlsaXRlIC5tIHsgY29sb3I6ICNCNDUyQ0QgfSAvKiBMaXRlcmFsLk51bWJlciAqLwouY29kZWhpbGl0ZSAucyB7IGNvbG9yOiAjQ0Q1NTU1IH0gLyogTGl0ZXJhbC5TdHJpbmcgKi8KLmNvZGVoaWxpdGUgLm5hIHsgY29sb3I6ICM2NThiMDAgfSAvKiBOYW1lLkF0dHJpYnV0ZSAqLwouY29kZWhpbGl0ZSAubmIgeyBjb2xvcjogIzY1OGIwMCB9IC8qIE5hbWUuQnVpbHRpbiAqLwouY29kZWhpbGl0ZSAubmMgeyBjb2xvcjogIzAwOGI0NTsgZm9udC13ZWlnaHQ6IGJvbGQgfSAvKiBOYW1lLkNsYXNzICovCi5jb2RlaGlsaXRlIC5ubyB7IGNvbG9yOiAjMDA2ODhCIH0gLyogTmFtZS5Db25zdGFudCAqLwouY29kZWhpbGl0ZSAubmQgeyBjb2xvcjogIzcwN2E3YyB9IC8qIE5hbWUuRGVjb3JhdG9yICovCi5jb2RlaGlsaXRlIC5uaSB7IGNvbG9yOiAjNTU1NTU1IH0gLyogTmFtZS5FbnRpdHkgKi8KLmNvZGVoaWxpdGUgLm5lIHsgY29sb3I6ICMwMDhiNDU7IGZvbnQtd2VpZ2h0OiBib2xkIH0gLyogTmFtZS5FeGNlcHRpb24gKi8KLmNvZGVoaWxpdGUgLm5mIHsgY29sb3I6ICMwMDhiNDUgfSAvKiBOYW1lLkZ1bmN0aW9uICovCi5jb2RlaGlsaXRlIC5ubCB7IGNvbG9yOiAjNTU1NTU1IH0gLyogTmFtZS5MYWJlbCAqLwouY29kZWhpbGl0ZSAubm4geyBjb2xvcjogIzAwOGI0NTsgdGV4dC1kZWNvcmF0aW9uOiB1bmRlcmxpbmUgfSAvKiBOYW1lLk5hbWVzcGFjZSAqLwouY29kZWhpbGl0ZSAubnggeyBjb2xvcjogIzU1NTU1NSB9IC8qIE5hbWUuT3RoZXIgKi8KLmNvZGVoaWxpdGUgLnB5IHsgY29sb3I6ICM1NTU1NTUgfSAvKiBOYW1lLlByb3BlcnR5ICovCi5jb2RlaGlsaXRlIC5udCB7IGNvbG9yOiAjOEIwMDhCOyBmb250LXdlaWdodDogYm9sZCB9IC8qIE5hbWUuVGFnICovCi5jb2RlaGlsaXRlIC5udiB7IGNvbG9yOiAjMDA2ODhCIH0gLyogTmFtZS5WYXJpYWJsZSAqLwouY29kZWhpbGl0ZSAub3cgeyBjb2xvcjogIzhCMDA4QiB9IC8qIE9wZXJhdG9yLldvcmQgKi8KLmNvZGVoaWxpdGUgLncgeyBjb2xvcjogI2JiYmJiYiB9IC8qIFRleHQuV2hpdGVzcGFjZSAqLwouY29kZWhpbGl0ZSAubWIgeyBjb2xvcjogI0I0NTJDRCB9IC8qIExpdGVyYWwuTnVtYmVyLkJpbiAqLwouY29kZWhpbGl0ZSAubWYgeyBjb2xvcjogI0I0NTJDRCB9IC8qIExpdGVyYWwuTnVtYmVyLkZsb2F0ICovCi5jb2RlaGlsaXRlIC5taCB7IGNvbG9yOiAjQjQ1MkNEIH0gLyogTGl0ZXJhbC5OdW1iZXIuSGV4ICovCi5jb2RlaGlsaXRlIC5taSB7IGNvbG9yOiAjQjQ1MkNEIH0gLyogTGl0ZXJhbC5OdW1iZXIuSW50ZWdlciAqLwouY29kZWhpbGl0ZSAubW8geyBjb2xvcjogI0I0NTJDRCB9IC8qIExpdGVyYWwuTnVtYmVyLk9jdCAqLwouY29kZWhpbGl0ZSAuc2EgeyBjb2xvcjogI0NENTU1NSB9IC8qIExpdGVyYWwuU3RyaW5nLkFmZml4ICovCi5jb2RlaGlsaXRlIC5zYiB7IGNvbG9yOiAjQ0Q1NTU1IH0gLyogTGl0ZXJhbC5TdHJpbmcuQmFja3RpY2sgKi8KLmNvZGVoaWxpdGUgLnNjIHsgY29sb3I6ICNDRDU1NTUgfSAvKiBMaXRlcmFsLlN0cmluZy5DaGFyICovCi5jb2RlaGlsaXRlIC5kbCB7IGNvbG9yOiAjQ0Q1NTU1IH0gLyogTGl0ZXJhbC5TdHJpbmcuRGVsaW1pdGVyICovCi5jb2RlaGlsaXRlIC5zZCB7IGNvbG9yOiAjQ0Q1NTU1IH0gLyogTGl0ZXJhbC5TdHJpbmcuRG9jICovCi5jb2RlaGlsaXRlIC5zMiB7IGNvbG9yOiAjQ0Q1NTU1IH0gLyogTGl0ZXJhbC5TdHJpbmcuRG91YmxlICovCi5jb2RlaGlsaXRlIC5zZSB7IGNvbG9yOiAjYWU4MWZmIH0gLyogTGl0ZXJhbC5TdHJpbmcuRXNjYXBlICovCi5jb2RlaGlsaXRlIC5zaCB7IGNvbG9yOiAjMWM3ZTcxOyBmb250LXN0eWxlOiBpdGFsaWMgfSAvKiBMaXRlcmFsLlN0cmluZy5IZXJlZG9jICovCi5jb2RlaGlsaXRlIC5zaSB7IGNvbG9yOiAjQ0Q1NTU1IH0gLyogTGl0ZXJhbC5TdHJpbmcuSW50ZXJwb2wgKi8KLmNvZGVoaWxpdGUgLnN4IHsgY29sb3I6ICNjYjZjMjAgfSAvKiBMaXRlcmFsLlN0cmluZy5PdGhlciAqLwouY29kZWhpbGl0ZSAuc3IgeyBjb2xvcjogIzFjN2U3MSB9IC8qIExpdGVyYWwuU3RyaW5nLlJlZ2V4ICovCi5jb2RlaGlsaXRlIC5zMSB7IGNvbG9yOiAjQ0Q1NTU1IH0gLyogTGl0ZXJhbC5TdHJpbmcuU2luZ2xlICovCi5jb2RlaGlsaXRlIC5zcyB7IGNvbG9yOiAjQ0Q1NTU1IH0gLyogTGl0ZXJhbC5TdHJpbmcuU3ltYm9sICovCi5jb2RlaGlsaXRlIC5icCB7IGNvbG9yOiAjNjU4YjAwIH0gLyogTmFtZS5CdWlsdGluLlBzZXVkbyAqLwouY29kZWhpbGl0ZSAuZm0geyBjb2xvcjogIzAwOGI0NSB9IC8qIE5hbWUuRnVuY3Rpb24uTWFnaWMgKi8KLmNvZGVoaWxpdGUgLnZjIHsgY29sb3I6ICMwMDY4OEIgfSAvKiBOYW1lLlZhcmlhYmxlLkNsYXNzICovCi5jb2RlaGlsaXRlIC52ZyB7IGNvbG9yOiAjMDA2ODhCIH0gLyogTmFtZS5WYXJpYWJsZS5HbG9iYWwgKi8KLmNvZGVoaWxpdGUgLnZpIHsgY29sb3I6ICMwMDY4OEIgfSAvKiBOYW1lLlZhcmlhYmxlLkluc3RhbmNlICovCi5jb2RlaGlsaXRlIC52bSB7IGNvbG9yOiAjMDA2ODhCIH0gLyogTmFtZS5WYXJpYWJsZS5NYWdpYyAqLwouY29kZWhpbGl0ZSAuaWwgeyBjb2xvcjogI0I0NTJDRCB9IC8qIExpdGVyYWwuTnVtYmVyLkludGVnZXIuTG9uZyAqLwogICAgLyogcGFnZV9jc3MgKi8KCiAgICAKICAgIGh0bWx7CiAgICAgICAgYmFja2dyb3VuZDogI0VFRUVFRTsKICAgIH0KICAgIGJvZHl7CiAgICAgICAgd2lkdGg6IDkwJTsKICAgICAgICBtYXgtd2lkdGg6IDk2MHB4OwogICAgICAgIGJhY2tncm91bmQ6ICNGRkZGRkY7CiAgICAgICAgbWFyZ2luOiAzZW0gYXV0byAwOwogICAgICAgIHBhZGRpbmctdG9wOiAyZW07CiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgI0VFRUVFRTsKICAgICAgICBib3JkZXItd2lkdGg6IDAgMXB4OwogICAgfQoKICAgIC5wb3N0ewogICAgICAgIHBhZGRpbmc6IDUlIDEwJTsKICAgICAgICBtYXJnaW4tdG9wOiAwOwogICAgICAgIG1hcmdpbi1ib3R0b206IDA7CiAgICB9CiAgICAKCiAgICAudGl0bGVfY29udGFpbmVyewogICAgICAgIG1hcmdpbjogLTJlbSAwIDMuNWVtOwogICAgICAgIHBhZGRpbmctYm90dG9tOiAyZW07CiAgICAgICAgYm9yZGVyLWJvdHRvbTogM3B4IGRvdWJsZSAjRUVFRUVFOwogICAgfQogICAgLnRpdGxlX2NvbnRhaW5lciBoMXsKICAgICAgICBtYXJnaW4tdG9wOiAxLjJlbTsKICAgICAgICBtYXJnaW4tYm90dG9tOiAwLjZlbTsKICAgICAgICBsaW5lLWhlaWdodDogMS4zNTsKICAgICAgICBmb250LXNpemU6IDIuMjVlbTsKICAgIH0KICAgIC50aXRsZV9jb250YWluZXIgaDJ7CiAgICAgICAgY29sb3I6ICM4ODg4ODg7CiAgICAgICAgZm9udC1zaXplOiAxZW07CiAgICAgICAgZm9udC13ZWlnaHQ6IG5vcm1hbDsKICAgICAgICBwYWRkaW5nLWJvdHRvbTogMmVtOwogICAgICAgIGxpbmUtaGVpZ2h0OiAxLjM1OwogICAgICAgIG1hcmdpbi1ib3R0b206IC0yZW07CiAgICB9CgogICAgQG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiA3NjBweCl7CiAgICAgICAgaHRtbHsKICAgICAgICAgICAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7CiAgICAgICAgfQogICAgICAgIGJvZHl7CiAgICAgICAgICAgIG1hcmdpbjogMDsKICAgICAgICB9CiAgICAgICAgLnBvc3R7CiAgICAgICAgICAgIHBhZGRpbmc6IDA7CiAgICAgICAgfQogICAgfQogICAgLyogcGFnZV9jc3MgKi8KCiAgICA=">
+    <!--header_scripts-->
+</head>
+<body>
+    <div class="post">
+        <div class="post_body">
+            
+            <h2 style='display:block; text-align:center;text-indent:0'  id="toc_0" class="h16 md_first_h">Word2vec </h2>
+
+<blockquote><div class="toc_container">
+<div class="toc"><ul>
+<li>
+<a href="#toc_0">Word2vec </a>
+<ul>
+<li>
+<a href="#toc_1">一、语言模型</a>
+<ul>
+<li>
+<a href="#toc_2">1、语言模型的概念</a>
+</li>
+<li>
+<a href="#toc_3">2、语言模型的发展</a>
+<ul>
+<li>
+<a href="#toc_4">（1）基于专家知识的语言模型</a>
+</li>
+<li>
+<a href="#toc_5">（2）统计语言模型</a>
+</li>
+<li>
+<a href="#toc_6">（3）统计语言模型中的平滑操作</a>
+</li>
+<li>
+<a href="#toc_7">（4）马尔可夫假设</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_8">3、语言模型的评价指标：困惑度（Perplexity）</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_9">二、词的表示方法</a>
+<ul>
+<li>
+<a href="#toc_10">1、独热表示（One-hot Representation）</a>
+</li>
+<li>
+<a href="#toc_11">2、分布式表示方法（Distributed Representation）</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_12">三、论文学习</a>
+<ul>
+<li>
+<a href="#toc_13">1、论文背景知识</a>
+</li>
+<li>
+<a href="#toc_14">2、论文的研究成果</a>
+</li>
+<li>
+<a href="#toc_15">3、论文的研究意义</a>
+<ul>
+<li>
+<a href="#toc_16">（1）衡量词向量之间的相似程度</a>
+</li>
+<li>
+<a href="#toc_17">（2）作为预训练模型提升NLP任务</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_18">四、论文精读</a>
+<ul>
+<li>
+<a href="#toc_19">1、对比模型</a>
+<ul>
+<li>
+<a href="#toc_20">（1）前馈神经网络语言模型（NNLM）</a>
+</li>
+<li>
+<a href="#toc_21">Remark：语言模型困惑度和Loss的关系</a>
+</li>
+<li>
+<a href="#toc_22">（2）循环神经网络语言模型（RNNLM）</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_23">2、Word2vec</a>
+<ul>
+<li>
+<a href="#toc_24">（1）Log-linear model</a>
+</li>
+<li>
+<a href="#toc_25">（2）Word2vec 原理</a>
+</li>
+<li>
+<a href="#toc_26">（3）Skip-gram</a>
+</li>
+<li>
+<a href="#toc_27">（4）CBOW</a>
+</li>
+<li>
+<a href="#toc_28">（5）关键技术</a>
+<ul>
+<li>
+<a href="#toc_29">1）Hierarchical Softmax</a>
+</li>
+<li>
+<a href="#toc_30">2）Negative Sampling</a>
+</li>
+<li>
+<a href="#toc_31">3）Subsampling of Frequent Words</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_32">（6）小结</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_33">3、模型复杂度</a>
+<ul>
+<li>
+<a href="#toc_34">（1）模型复杂度的概念</a>
+</li>
+<li>
+<a href="#toc_35">（2）NNLM复杂度</a>
+</li>
+<li>
+<a href="#toc_36">（3）RNNLM复杂度</a>
+</li>
+<li>
+<a href="#toc_37">（4）CBOW模型复杂度</a>
+</li>
+<li>
+<a href="#toc_38">（5）Skip-gram模型复杂度</a>
+</li>
+<li>
+<a href="#toc_39">（6）复杂度比较</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_40">五、论文总结与启发</a>
+<ul>
+<li>
+<a href="#toc_41">1、关键点</a>
+</li>
+<li>
+<a href="#toc_42">2、创新点</a>
+</li>
+<li>
+<a href="#toc_43">3、启发点</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_44">六、代码实现</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div></blockquote>
+<h3 id="toc_1" class="h16">一、语言模型</h3>
+<h4 id="toc_2" class="h16">1、语言模型的概念</h4>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">语言模型是计算一个句子是一个句子的概率的模型，一个句子既需要符合语法规则，同时也需要符合语义，只有两方面都满足的情况下，语言模型才会给出一个较高的概率值。语言模型是一个无监督的模型，不需要任何的语料标注。</span>
+</p>
+
+<span class="md_repeated_n md_repeated_n_1"></span><h4 id="toc_3" class="h16">2、语言模型的发展</h4>
+<h5 id="toc_4" class="h16">（1）基于专家知识的语言模型</h5>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">所谓的基于专家知识的语言模型就是语言学家企图总结出一套通用的语法规则，例如形容词后接名词，但是这种方法并无法当今网络用语频繁出现的这样一种情况，因此现在不用常用这种方法</span>
+</p>
+
+<h5 id="toc_5" class="h16">（2）统计语言模型</h5>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">所谓的统计语言模型是指通过概率计算来刻画语言模型</span>
+</p>
+
+<span class="md_repeated_n md_repeated_n_1"></span>
+<section class="mathjax_script" id="MathQd83pKvQsPib9pHWMNUiAi">$$
+\begin{aligned}
+P(s)=& P\left(w_{1}, w_{2}, \dots, w_{n}\right) \\
+=&P\left(w_{1}\right) P\left(w_{2} | w_{1}\right) P\left(w_{3} | w_{1} w_{2}\right) \dots P\left(w_{n} | w_{1} w_{2} \dots w_{n-1}\right)
+\end{aligned}$$
+</section>
+
+<!--block_code_end-->
+<ul>
+<li class="md_li"><span>某一个词语出现概率的求解方法：用语料的频率代替概率（频率学派）
+</span></li>
+</ul>
+
+<section class="mathjax_script" id="Math7DH4gfHknVyT22gw5yq5Xj">$$
+p(w_i) = \frac{count(w_i)}{N}$$
+</section>
+
+<!--block_code_end-->
+<ul>
+<li class="md_li"><span>条件概率如$P(w_2 | w_1)$的求解方法：频率学派+条件概率
+</span></li>
+</ul>
+
+<section class="mathjax_script" id="MathZbWcxAnRkZhuRydnwYso4Q">$$
+p\left(w_{i} | w_{i-1}\right)=\frac{p\left(w_{i-1}, w_{i}\right)}{p\left(w_{i-1}\right)} = \frac{count(w_{i-1},w_i)}{count(w_{i-1})}$$
+</section>
+
+<!--block_code_end-->
+<p class="md_block md_block_as_opening md_has_block_below md_has_block_below_ul">
+    <span class="md_line md_line_start md_line_end">通常概率表达的方式，我们就能构造出一个较好的语言模型，但仍然存在下面两个问题：</span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>由于$P(s)$采用的是连乘方式，因此对于某一个词语$w_i$，如果在语料中没有出现过，那么$P(w_i)=0$，这样会导致$P(s)=0$
+
+</span></li>
+<li class="md_li"><span>如果一句话由非常多的短语构成，同时某些短语在语料中出现的次数较少，那么多个小于1的概率相乘必然会使得$P(s)$趋向于零
+
+</span></li>
+</ul>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">如何对上面两个问题进行解决呢？$\Rightarrow$ <strong>平滑操作</strong></span>
+</p>
+
+<span class="md_repeated_n md_repeated_n_2"></span><h5 id="toc_6" class="h16">（3）统计语言模型中的平滑操作</h5>
+
+<ul>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">有一些词或词组在语料中没有出现过，但是这不能代表它不可能存在，而平滑操作就是给那些没有出现过的词或者词组一个不为零的较小的概率。最常用的就是 <em>Laplace Smoothing</em> ，也称之为<strong>加1平滑</strong>，具体操作为：每个词在原来出现的次数上加1</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>例如一个语料库中，$A$出现的次数为0，$B$为990，$C$为10，则$A$、$B$、$C$的概率为0、$0.99$、$0.01$；如果通过加1平滑，则相当于$A$出现的次数为1，$B$为991，$C$为11，则$A$、$B$、$C$的概率为0.001、$0.988$、$0.011$。从上面的例子就可以看出，进行加1平滑后，出现次数多的词语的概率计算值有所下降，而出现次数少的词语概率计算值有所上升，加1平滑本质上起到了一个“劫富济贫”的作用
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">加1平滑只要词有显著的作用，对于很长的词组短语并没有很好的效果，这是因为这种长的短语很稀疏，如果要平滑操作，则所有的短语都要平滑，这是因为<strong>参数空间太大</strong>，<strong>数据稀疏</strong>严重，如何解决这两个问题呢？需要用到<strong>马尔可夫假设</strong></span>
+</p>
+
+</span></li>
+</ul>
+<h5 id="toc_7" class="h16">（4）马尔可夫假设</h5>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">在统计语言模型中的马尔可夫假设主要内容就是：下一个词出现的概率仅依赖于前面的一个词或几个词，如果与前$k$个词有关，则称为$k-gram$模型</span>
+</p>
+
+<span class="md_repeated_n md_repeated_n_1"></span>
+<section class="mathjax_script" id="MathRcjZogRx89gKYhgADhriR7">$$
+\begin{aligned}
+unigram \qquad P(s) = & P(w_1)P(w_2)\ldots P(w_n) \\
+bigram \qquad P(s) = & P(w_1)P(w_2 | w_1)\ldots P(w_n | w_{n-1}) \\
+trigram \qquad P(s) = & P(w_1)P(w_2 | w_1)P(w_3 | w_2w_1)\ldots P(w_n | w_{n-1}w_{n-2}) \\
+k-gram \qquad P(s) = & P(w_1)P(w_2 | w_1)P(w_3 | w_2w_1)\ldots P(w_n | w_{n-k+1}\ldots w_{n-1}) \\
+\end{aligned}$$
+</section>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">注意：$k-gram$模型的参数空间为$V+V^2+\ldots+V^k$，$V$为语料库词语总数</span>
+</p>
+
+<span class="md_repeated_n md_repeated_n_1"></span><h4 id="toc_8" class="h16">3、语言模型的评价指标：困惑度（Perplexity）</h4>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">语言模型本质上是一个多分类问题，这里可以通过困惑度（Perplexity）进行模型的评价：</span>
+</p>
+
+<span class="md_repeated_n md_repeated_n_1"></span>
+<section class="mathjax_script" id="Math7L4tUmCrG5fh99hkLBNNo2">$$
+PP(s) = P(w_1, w_2, \ldots, w_n)^{-\frac{1}{n}}=\sqrt[n]{\frac{1}{P\left(w_{1}, w_{2}, \dots, w_{n}\right)}} = \sqrt[n]{\frac{1}{P(s)}}$$
+</section>
+
+<!--block_code_end--><span class="md_repeated_n md_repeated_n_1"></span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">因此，句子概率越大，语言模型越好，困惑度越小</span>
+</p>
+
+<h3 id="toc_9" class="h16">二、词的表示方法</h3>
+<h4 id="toc_10" class="h16">1、独热表示（One-hot Representation）</h4>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">所谓的独热表示，就是一个向量，只有一个地方为1，其他位置都为0。这种表示方法的优点是：表示简单，但是缺点也十分明显，那就是当词非常多的时候，表示向量的维度非常高，需要的空间非常大，同时还有一个问题就是这种表示方法无法表示词与词之间的关系</span>
+</p>
+
+<h4 id="toc_11" class="h16">2、分布式表示方法（Distributed Representation）</h4>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">分布式表示也称为稠密表示，对于每一个词，仅需要一个$D$维的向量就能表示，这里的$D$是远远小于总的词语个数$V$，对于独热表示，每一个都需要一个$V$维的向量，而分布式表示相当于是把$V$维压缩到了$D$维，但$D$维向量中某一位置的数值大小需要通过训练得到。同时，分布式表示有一个很大的好处，那就是可以表示词与词之间的相似性（利用余弦相似度）—— <em>Word embedding</em></span>
+</p>
+
+<span class="md_repeated_n md_repeated_n_1"></span><h3 id="toc_12" class="h16">三、论文学习</h3>
+<h4 id="toc_13" class="h16">1、论文背景知识</h4>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">1986年， <em>Hinton</em> 第一次提出了 <em>Distributed Representation</em> ，目的是将离散形式的词输入到神经网络中，由于神经网络需要的是连续的值，因此提出了一种 <em>Distributed Representation</em> 的表示方法，把离散形式的词进行连续的分布式表示；2003年，在文章 <strong>A Neural Probabilistic Language Model</strong>首次使用了词向量，而在2003年到2013年间，提出了很多训练词向量的方法，但共同的缺点就是非常慢，无法在大的预料上训练，在2013年提出的 <em>word2vec</em> 模型解决了训练速度慢的问题，能够在大的语料上进行训练，得到更好的词向量，推动了自然语言处理的发展</span>
+</p>
+
+<span class="md_repeated_n md_repeated_n_1"></span><h4 id="toc_14" class="h16">2、论文的研究成果</h4>
+
+<ul>
+<li class="md_li"><span>提出了一种新的模型结构
+
+</span></li>
+<li class="md_li"><span>提出优化训练的方法，使得训练速度加快
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">废除训练代码 <em>word2vec</em> ，使得单机训练成为可能</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>成果：训练的词向量又快又好，并且能够在大规模预料上进行词向量的训练
+
+</span></li>
+</ul>
+<h4 id="toc_15" class="h16">3、论文的研究意义</h4>
+<h5 id="toc_16" class="h16">（1）衡量词向量之间的相似程度</h5>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">对于两个词的相似度，可以用公式：</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">$$sim(word1, word2) = \cos(wordvec1, wordvec2)$$</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">进行计算，计算得到的值越接近于1，则两个词越相似，一种更客观的评价方式是<strong>词类比（analogy）</strong>，计算公式为</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">$$\cos(wordvec1-wordvec2+wordvec3,wordvec4)$$</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">通过这种方式，能够学习到词与词之间的关系，例如 <em>France</em> 和 <em>Paris</em> 与 <em>Italy</em> 和 <em>Rome</em> 这两个词对就是非常相似的，因此$V(France) - V(Paris) \approx V(Italy) - V(Rome)$，这种模型的训练就能得到非常多在语义上相似的词对</span>
+</p>
+
+<span class="md_repeated_n md_repeated_n_1"></span><h5 id="toc_17" class="h16">（2）作为预训练模型提升NLP任务</h5>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">可以将训练得到的词向量可以用于外部任务比如命名实体识别、文本分类；也可以应用于其他NLP任务上，相当于一个半监督任务，可以有效地提高模型的泛化能力</span>
+</p>
+
+<span class="md_repeated_n md_repeated_n_1"></span><h3 id="toc_18" class="h16">四、论文精读</h3>
+<h4 id="toc_19" class="h16">1、对比模型</h4>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">对比模型主要对比两种模型，一种是<strong>前馈神经网络语言模型（NNLM）</strong>，一种是<strong>循环神经网络模型（RNNLM）</strong></span>
+</p>
+
+<span class="md_repeated_n md_repeated_n_1"></span><h5 id="toc_20" class="h16">（1）前馈神经网络语言模型（NNLM）</h5>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">前馈神经网络语言模型最早由 <em>Bengio</em> 在2003年提出，网络结构如下图所示：</span>
+</p>
+
+
+<p class="md_block">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/截屏2020-06-2821.29.07.png?r=60" alt="" title="" style="width:60%;"></span>
+</p>
+
+
+<p class="md_block md_block_as_opening md_has_block_below md_has_block_below_ul">
+    <span class="md_line md_line_start md_line_end">从上图中可以看出，NNLM的结构分为三层，最下面为输入层： <em>input layer</em> ，输入的是词的索引而非词本身， 输入后，将每个 <em>index</em> 映射为一个向量，最后将这些向量 <em>contact</em> 在一起；中间一层为隐藏层： <em>hidden layer</em> ，即将输入层的向量接上一个全连接层，用 $tanh$作为激活函数激活；最上面为输出层： <em>output layer</em>，也是接上一个全连接层，利用$softmax$输出概率。这里输入的是前$n-1$个词语，最后输出的是第$n$个位置单词的概率。下面详细介绍三个层：</span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">输入层：将词映射为向量，相当于一个$1\times V$的 <em>one-hot</em> 向量乘以一个 $V\times D$的向量得到一个 $1\times D$ 的向量</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>隐藏层：一个以$tanh$为激活函数的全连接层：$a=tanh(d+Ux)$
+
+</span></li>
+<li class="md_li"><span>输出层：一个全连接层，后面接个$softmax$函数来生成概率分布：$y=b+Wa$，其中$y$是一个$1\times V$的向量，即：
+
+</span></li>
+</ul>
+
+<section class="mathjax_script" id="Mathdu5iRtbyX89gt3HneTnT52">$$
+P\left(w_{t} \mid w_{t-n+1}, \ldots, w_{t-1}\right)=\frac{\exp \left(y_{w_{t}}\right)}{\sum_{i} \exp \left(y_{i}\right)}$$
+</section>
+
+<!--block_code_end--><h5 id="toc_21" class="h16">Remark：语言模型困惑度和Loss的关系</h5>
+
+<p class="md_block md_block_as_opening md_has_block_below md_has_block_below_ul">
+    <span class="md_line md_line_start md_line_end">对于一句话，$Loss$的定义和困惑度的定义如下：</span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>$Loss$：$L=-\frac{1}{T} \sum_{i=1}^{T} \log p\left(w_{i} \mid w_{i-n+1}, \dots, w_{i-1}\right)$
+
+</span></li>
+<li class="md_li"><span>困惑度：$PP(s)=P\left(w_{1}, w_{2}, \ldots, w_{T}\right)^{-\frac{1}{T}}=\sqrt[T]{\frac{1}{P\left(w_{1}, w_{2}, \ldots, w_{T}\right)}}$
+
+</span></li>
+</ul>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">对困惑度取对数得到$\log(PP(s)) = -\frac{1}{T}\log P\left(w_{1}, w_{2}, \ldots, w_{T}\right)$，根据全连接公式和马尔可夫假设可以得到$\log(PP(s))= -\frac{1}{T} \sum_{i=1}^{T} \log p\left(w_{i} \mid w_{i-n+1}, \dots, w_{i-1}\right) = e^{Loss}$，所以困惑度是自然对数的$Loss$次方，这就是两者的关系</span>
+</p>
+
+<span class="md_repeated_n md_repeated_n_1"></span>
+<p class="md_block md_block_as_opening md_has_block_below md_has_block_below_ul">
+    <span class="md_line md_line_start md_line_end"><strong>讨论：</strong> <em>Bingio</em> 在2003年的文章中提出的$NNLM$是一篇开山之作，也为后面的研究提出了几个研究的思路，具体如下：</span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>仅对一部分输出进行梯度传播：像$the$，$a$这类词语，出现次数多，但是在模型中并没特别重要作用，因此对于这一类词语，可以不进行梯度传播
+
+</span></li>
+<li class="md_li"><span>引入先验知识，如词性等：2003年这篇模型并没有输入词性，因此提出了词性的输入是否可以提高模型的精度这个问题，其中主要有两个子问题：
+
+
+<ul>
+<li class="md_li"><span>网络模型自身能否学习到词性
+
+</span></li>
+<li class="md_li"><span>网络模型如果能自己学习词性，学到的词性知识是否够用
+
+</span></li>
+</ul>
+</span></li>
+<li class="md_li"><span>解决一词多义问题，对于同一词语的不同意思，模型如何进行区分
+
+</span></li>
+<li class="md_li"><span>加速$softmax$层，由于输出层是全连接层，对每一个词语都需要输出概率，因此非常慢，需要进行加速
+
+</span></li>
+</ul>
+<h5 id="toc_22" class="h16">（2）循环神经网络语言模型（RNNLM）</h5>
+
+<p class="md_block md_block_as_opening md_has_block_below md_has_block_below_ul">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start"><img class="md_compiled " src="assets/截屏2020-06-2822.30.20.png?r=40" alt="" title="" style="width:40%;"><br /></span>
+    <span class="md_line img_before md_line_end">如上图所示，$RNNLM$也有三层：</span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">输入层：和$NNLM$一样，需要将当 前时间步的转化为词向量（ <em>one-hot</em> ）</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>隐藏层：对输入和上一个时间步的隐藏输出进行全连接层操作：
+
+</span></li>
+</ul>
+
+<section class="mathjax_script" id="MathVs59Y8uLi6QVXcQ9eGjSCc">$$
+s(t)=U w(t)+W s(t-1)+d$$
+</section>
+
+<!--block_code_end-->
+<ul>
+<li class="md_li"><span>输出层：一个全连接层，后面接个$softmax$函数来生成概率分布，$y(t) = b + Vs(t)$，其中，$y$是一个$1\times V$的向量，
+</span></li>
+</ul>
+
+<section class="mathjax_script" id="Math64qsyyubNAhLxR2TTbuLZ8">$$
+P\left(w_{t} \mid w_{t-n+1}, \ldots, w_{t-1}\right)=\frac{\exp \left(y_{w_{t}}\right)}{\sum_{i} \exp \left(y_{i}\right)}$$
+</section>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">循环神经网络语言模型并没有使用马尔可夫假设，因为每个时间步预测一个词，在预测第$n$ 个词时，已经使用了前$n-1$个词的信息</span>
+</p>
+
+<span class="md_repeated_n md_repeated_n_1"></span><h4 id="toc_23" class="h16">2、Word2vec</h4>
+<h5 id="toc_24" class="h16">（1）Log-linear model</h5>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">定义：将语言模型的建立看成个多分类问题，相当于线性分类器加上$softmax$，这样就构成了一个$Log-$线性模型：$Y = softmax(Wx+b)$，多分类的逻辑回归模型就是一个$Log-$线性模型，$word2vec$中的两种模型：$skip-gram$和$CBOW$都是$Log-$线性模型</span>
+</p>
+
+<h5 id="toc_25" class="h16">（2）Word2vec 原理</h5>
+
+<ul>
+<li class="md_li"><span>语言模型基本思想：句子中下一个词的出现和前面的词是有关系的，所以可以使用前面的词预测下一个词
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block md_block_as_opening md_has_block_below md_has_block_below_ul">
+    <span class="md_line md_line_start md_line_end">$word2vec$基本思想：句子中<strong>相近的词</strong>之间是有联系的，比如今天后面经常出现上午，下午和晚上。所以$word2vec$的基本思想就是用词来预测词：</span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>$skip-gram$使用中心词预测周围词
+
+</span></li>
+<li class="md_li"><span>$CBOW$使用周围词预测中心词
+
+</span></li>
+</ul>
+</span></li>
+<li class="md_li"><span>$word2vec$可以看成是对语言模型的一种简化
+
+</span></li>
+</ul>
+<h5 id="toc_26" class="h16">（3）Skip-gram</h5>
+
+<p class="md_block">
+    <span class="md_line md_line_start">$Skip-gram$是用中心词预测周围词，若中心词为$w_i$，这里需要定义在中心词附近多大的范围才是中心词，既需要一个$window$，例如我们取$window=2$，则我们需要计算的就是：$P(w_{i-1} | w_i), P(w_{i-2} | w_i), P(w_{i+1} | w_i), P(w_{i+2} | w_i)$，那么$Skip-gram$是如何求取这些概率值的呢？前面讲到，求这种概率的问题本质上是一个多分类问题，以$P(w_{i-1}| w_i)$为例，输入的是$w_i$，$label$是$w_{i-1}$，计算过程如下图所示：<br /></span>
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_end"><img class="md_compiled " src="assets/截屏2020-06-2910.39.08.png?r=60" alt="" title="" style="width:60%;"></span>
+</p>
+
+
+<p class="md_block md_block_as_opening md_has_block_below md_has_block_below_ul">
+    <span class="md_line md_line_start md_line_end">注意：</span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>输入的是$w_i$的索引
+
+</span></li>
+<li class="md_li"><span>$W$为中心词矩阵，$W \in \mathbb{R}^{V\times D}$；$W^{\prime}$为周围词矩阵，$W^{\prime} \in \mathbb{R}^{D\times V}$
+
+</span></li>
+<li class="md_li"><span>最后通过$softmax$，求得每个位置的一个概率，为一个$1\times V$的向量，我们需要第$i-1$个位置的值最大，因此通过不断的反向传播，训练$W^{\prime}$和$W$
+
+</span></li>
+<li class="md_li"><span>计算公式可写为：
+
+</span></li>
+</ul>
+
+<section class="mathjax_script" id="MathPii8eLiU34yGpQG2yxg58c">$$
+p\left(w_{i-1} \mid w_{i}\right)=\frac{\exp \left(u_{w_{i-1}}^{T} v_{w_{i}}\right)}{\sum_{w=1}^{V} \exp \left(u_{w}^{T} v_{w_{i}}\right)}$$
+</section>
+
+<!--block_code_end-->
+<hr>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">$Skip-gram$的损失函数：</span>
+</p>
+
+<span class="md_repeated_n md_repeated_n_1"></span>
+<section class="mathjax_script" id="Math6VmXiMJh7ziVNefwLuKWBk">$$
+J(\theta)=\frac{1}{T} \sum_{t=1}^{T} \sum_{-m \leq j \leq m, j \neq 0} \log p\left(w_{t+j} \mid w_{t}\right)$$
+</section>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">需要对$J(\theta)$求最大值，或者对$J(\theta)$取相反数并求取最小值</span>
+</p>
+
+<h5 id="toc_27" class="h16">（4）CBOW</h5>
+
+<p class="md_block">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/截屏2020-06-2910.57.50.png?r=50" alt="" title="" style="width:50%;"></span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">$CBOW$的结构如上图所示，是通过周围词预测中心词，$BOW$指的是$Bag \ of \ word$，即<strong>词袋模型</strong>，因此$CBOW$是基于词袋模型的一种模型，具体细节如下图所示：</span>
+</p>
+
+
+<p class="md_block">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/截屏2020-06-2911.00.32.png?r=60" alt="" title="" style="width:60%;"></span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">从上面可以看出，$CBOW$也是使用了$W$和$W^{\prime}$，只是中间进行了一个加和，最后的优化过程仍然是优化$W$和$W^{\prime}$</span>
+</p>
+
+
+<hr>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">损失函数：</span>
+</p>
+
+<span class="md_repeated_n md_repeated_n_1"></span>
+<section class="mathjax_script" id="Math3JffFbr4x6Wk3suFXw4jUK">$$
+J(\theta)=\frac{1}{T} \sum_{T} \sum \log P(c \mid o)=\frac{1}{T} \sum \frac{\exp \left\{u_{o}^{T} v_{c}\right\}}{\sum_{j=1}^{V} \exp \left\{u_{o}^{T} v_{j}\right\}}$$
+</section>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">其中,</span>
+</p>
+
+
+<section class="mathjax_script" id="MathFFK3zE9HqoJyZq6iwaHhFY">$$
+P(c \mid o)=\frac{\exp \left\{u_{o}^{T} v_{c}\right\}}{\sum_{j=1}^{V} \exp \left\{u_{o}^{T} v_{j}\right\}}$$
+</section>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">$u_0$是窗口内上下文词向量之和，$v_c$、$v_j$是中心词向量‘</span>
+</p>
+
+<span class="md_repeated_n md_repeated_n_1"></span><h5 id="toc_28" class="h16">（5）关键技术</h5>
+
+<p class="md_block md_block_as_opening md_has_block_below md_has_block_below_ul">
+    <span class="md_line md_line_start md_line_end">$word2vec$中，最后一层需要输出$V$个概率，因此需要一些降低复杂度的方法：</span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">层次$softmax$：<em class="md_patched_em">Hierarchical Softmax</em></span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">负采样：<em class="md_patched_em">Negative Sampling</em></span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">高频词的重采样：<em class="md_patched_em">Subsampling of Frequent Words</em></span>
+</p>
+
+</span></li>
+</ul>
+<strong>下面分别介绍这三种方法</strong>
+<hr>
+<h6 id="toc_29" class="h16">1）Hierarchical Softmax</h6>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">层次$softmax$的基本思想是将求$softmax$操作转化为求$sigmoid$操作，对于$softmax$，我们需要做$V$次操作，而如何转化为$sigmoid$，则可以采用<strong>树结构</strong>，这样就只需要$\log_2^V$次操作。如下图所示，如果是一个8字符的情况（$a \sim h$），则需要对每个字符做$softmax$，而如果将其构建为下图所示的<strong>满二叉树</strong>的结构，则对于任意字符，仅需要3次就能找到，即$\log_2^V$次</span>
+</p>
+
+<span class="md_repeated_n md_repeated_n_1"></span>
+<p class="md_block">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/IMG_6F9AA8F61ED6-1.jpeg?r=60" alt="" title="" style="width:60%;"></span>
+</p>
+
+<span class="md_repeated_n md_repeated_n_1"></span>
+<p class="md_block md_block_as_opening md_has_block_below md_has_block_below_ul">
+    <span class="md_line md_line_start">能否找到比$\log_2^V$还要快的结构呢？答案是肯定的，通过构建 <em>Huffman</em> 树，找到带权重路径最短的二叉树，可以进一步加速，层次$softmax$就是通过这种方式进行构建，具体的构建方法（$Skip-gram$模型）如下图所示：<br /></span>
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_end"><img class="md_compiled " src="assets/截屏2020-06-2915.11.56.png?r=60" alt="" title="" style="width:60%;"></span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>每一个分支节点（即存在$child$的节点）都是一个向量：$\theta_0$、$\theta_1$等
+
+</span></li>
+<li class="md_li"><span>以单词$I$为例，计算公式为：
+
+</span></li>
+</ul>
+
+<section class="mathjax_script" id="Mathe86FKWhNheSPXDCVqaCxpe">$$
+\begin{aligned}
+p(\mathrm{I} \mid c) &=\sigma\left(\theta_{0}^{T} v_{c}\right) \sigma\left(\theta_{1}^{T} v_{c}\right)\left(1-\sigma\left(\theta_{2}^{T} v_{c}\right)\right) \\
+&=\sigma\left(\theta_{0}^{T} v_{c}\right) \sigma\left(\theta_{1}^{T} v_{c}\right) \sigma\left(-\theta_{2}^{T} v_{c}\right) \qquad \qquad \sigma(x) = \frac{1}{1+ e^{-x}}
+\end{aligned}$$
+</section>
+
+<!--block_code_end-->
+<ul>
+<li class="md_li"><span>这里的$\theta$参数就相当于上下文词向量，大概有$\log V$个，而树的高度为：$L(w) = O(\log_2^V)$
+</span></li>
+</ul>
+
+<hr>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end"><strong>公式表达</strong>：</span>
+</p>
+
+
+<section class="mathjax_script" id="MathduvaXYBoEDTKMaQiojFQNM">$$
+p\left(w \mid w_{I}\right)=\prod_{j=1}^{L(w)-1} \sigma \left([\![ n(w, j+1)=\operatorname{ch}(n(w, j))]\!] \cdot {v_{n(w, j)}^{\prime}}^{\top} v_{w_{I}}\right)$$
+</section>
+
+<!--block_code_end-->
+<ul>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">$n(w,j)$表示词$w$在第$j$个节点上，$n(w,1)$表示 <em>root</em> 节点，$n(w,L(w))$表示叶子节点</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">$\operatorname{ch}(n(w,j))$表示节点$n(w,j)$的 <em>right child node</em></span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">双中括号表示，如果括号中为 <em>true</em> ，则为1，否则为-1，即：</span>
+</p>
+
+</span></li>
+</ul>
+
+<section class="mathjax_script" id="MathSdLqKRyX4V83YjuZGV3zzF">$$
+[\![ x]\!]=\left\{\begin{array}{ll}
+1, & \text { if } x \text { is true } \\
+-1, & \text { else }
+\end{array}\right.$$
+</section>
+
+<!--block_code_end-->
+<ul>
+<li class="md_li"><span>$v_{W_{I}}$为中心词的词向量，${v_{n(w, j)}^{\prime}}$为词$w$在树上的第$j$个节点的参数
+</span></li>
+</ul>
+
+<hr>
+
+<p class="md_block">
+<strong>CBOW中的层次$softmax$：</strong>
+    <span class="md_line">前面提到的层次$softmax$是基于$Skip-gram$模型进行构建的，而针对$CBOW$模型的构建方法如下图所示：<br /></span>
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_end"><img class="md_compiled " src="assets/截屏2020-06-2923.32.50.png?r=50" alt="" title="" style="width:50%;"></span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">可以看到，$CBOW$中的层次$softmax$构建方式与$Skip-gram$相似，唯一 的区别在于$u_0$，这里的$u_0$是值<strong>窗口内上下文词向量的平均</strong></span>
+</p>
+
+
+<hr>
+<h6 id="toc_30" class="h16">2）Negative Sampling</h6>
+
+<hr>
+
+<p class="md_block">
+<strong>核心思想：</strong>
+    <span class="md_line md_line_end">负采样的核心思想是：<strong>舍弃多分类</strong>以提高速度，在现在的研究中，层次$softmax$并不常用，因为本质上仍然是一个多分类问题，而负采样在现在的研究中应用十分广泛，原因就在于直接舍弃了多分类，将其变为了一个二分类问题。例如有一个训练样本，中心词是$w$，它周围上下文共有$2c$个词，记为$context(w)$。由于这个中心词$w$的确和$context(w)$相关存在，因此它是一个真实的正例。通过负采样，我们得到$neg$个和$w$不同的中心词$w_i,i=1,2,\ldots,neg$，这样$context(w)$和$w_i$就组成了$neg$个并不真实存在的负例。利用这一个正例和$neg$个负例，我们进行二元逻辑回归，得到负采样对应每个词$w_i$对应的模型参数$\theta_i$，和每个词的词向量</span>
+</p>
+
+
+<hr>
+<strong>损失函数：</strong>
+<section class="mathjax_script" id="MathhxKC6A2rFK32QiGebXcFf7">$$
+J_{\operatorname{neg}-\operatorname{sample}}(\theta)=\log \sigma\left(u_{o}^{T} v_{c}\right)+\sum_{k=1}^{K} E_{k \sim P(w)}\left[\log \sigma\left(-u_{k}^{T} v_{c}\right)\right]$$
+</section>
+
+<!--block_code_end-->
+<ul>
+<li class="md_li"><span>$v_c$是中心词向量
+
+</span></li>
+<li class="md_li"><span>$u_0$是窗口内上下文词向量
+
+</span></li>
+<li class="md_li"><span>$u_k$是负采样上下文词向量
+
+</span></li>
+</ul>
+
+<hr>
+<strong>采样方法：</strong>
+<p class="md_block  md_has_block_below md_has_block_below_ul">
+    <span class="md_line md_line_start md_line_end">$$P(w)=\frac{U(w)^{\frac{3}{4}}}{Z}$$</span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>$U(w)$是词$w$在数据集中出现的频率，$Z$为归一化的参数，使得求解之后的概率和依旧为1
+
+</span></li>
+<li class="md_li"><span>例如$U(a)=0.01, U(b)=0.99$，则
+
+
+<ul>
+<li class="md_li"><span>$P(a)=\frac{0.01 \times 0.75}{0.01 \times 0.75+0.99 \times 0.75}=0.03$
+
+</span></li>
+<li class="md_li"><span>$P(b)=\frac{0.99 \times 0.75}{0.01 \times 0.75+0.99 \times 0.75}=0.97$
+
+</span></li>
+</ul>
+</span></li>
+<li class="md_li"><span>通过这样的采样方法，可以减少频率大的词的抽样概率，增加评率小的词的抽样概率
+
+</span></li>
+</ul>
+
+<hr>
+
+<p class="md_block">
+<strong>CBOW中的负采样</strong>
+    <span class="md_line md_line_end">$CBOW$中的负采样与$Skip-gram$中的负采样形式相似，损失函数为：</span>
+</p>
+
+
+<section class="mathjax_script" id="Math56aFzcow5XsLpF6hnQQjqN">$$
+J(\theta)=\log \sigma\left(u_{o}^{T} v_{c}\right)+\sum_{i=1}^{k} E_{j \sim P(w)}\left[\log \sigma\left(-u_{o}^{T} v_{j}\right)\right]$$
+</section>
+
+<!--block_code_end-->
+<ul>
+<li class="md_li"><span>$u_0$是窗口内上下文词向量的平均
+
+</span></li>
+<li class="md_li"><span>$v_c$是正确的中心词向量
+
+</span></li>
+<li class="md_li"><span>$v_j$是错误的中心词向量
+
+</span></li>
+</ul>
+
+<hr>
+<span class="md_repeated_n md_repeated_n_1"></span><h6 id="toc_31" class="h16">3）Subsampling of Frequent Words</h6>
+
+<p class="md_block md_block_as_opening md_has_block_below md_has_block_below_ul">
+    <span class="md_line md_line_start md_line_end">自然语言处理有一个共识，即文档或者数据集中出现频率高的词往往携带信息较少，比如 <em>the, is, a, and</em>等，而出现频率低的词往往携带信息多。因此应当重点关注这些低频词，这也是重采样的目的，而进行<strong>重采样</strong>的原因有以下两个：</span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">想更多地训练重要的词对，比如训练 <em>France</em> 和 <em>Paris</em> 之间的关系比训练 <em>France</em> 和 <em>the</em> 之间的关系要有用</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>高频词很快就训练好了，而低频次需要更多的轮次
+
+</span></li>
+</ul>
+
+<hr>
+<strong>重采样的方法</strong><span class="md_repeated_n md_repeated_n_1"></span>
+<section class="mathjax_script" id="MathG9jgc5duUrVqrEBkSLrUb8">$$
+P\left(w_{i}\right)=1-\sqrt{\frac{t}{f\left(w_{i}\right)}}$$
+</section>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">$f(w)$为词$w_i$在数据集中出现的频率，$t$为一个超参数，文中$t$选取为$10^{-5}$，训练集中的词$w_i$会以$P(w_i)$的概率被删除。词频越大，$f(w_i)$越大，$P(w_i)$越大，那么词$w_i$就有更大的概率被删除，反之亦然。如果词$w_i$的词频小于等于$t$，那么$w_i$则不会被别除，这样就加速训练，能够得到更好的词向量。</span>
+</p>
+
+
+<hr>
+<h5 id="toc_32" class="h16">（6）小结</h5>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">$word2vec$可以总结为“$2+3$”或者“$2+2+1$”，第一个“$2$”表示两种模型，一种是$Skip-gram$模型，是用中心词预测周围词，一种是$CBOW$模型，是用周围词预测中心词”“$3$“表示的是三种关键技术：层次$softmax$、负采样、重采样；也可以分为“$2+1$”，本质上是一样的</span>
+</p>
+
+<h4 id="toc_33" class="h16">3、模型复杂度</h4>
+<h5 id="toc_34" class="h16">（1）模型复杂度的概念</h5>
+
+<hr>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">模型复杂度用$O$表示，代表的是训练的复杂度，计算公式为：</span>
+</p>
+
+<span class="md_repeated_n md_repeated_n_1"></span>
+<section class="mathjax_script" id="MathaBnWFoz4qArzJ3TKAKYbHk">$$
+O=E \times T \times Q$$
+</section>
+
+<!--block_code_end-->
+<ul>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">$O$是训练复杂度（ <em>training complexity</em> ）</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">$E$是迭代次数（ <em>number of training epochs</em> ）</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">$T$是数据集大小（ <em>number of words in the training set</em> ）</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">$Q$是模型计算复杂度（ <em>model computational complexity</em> ）</span>
+</p>
+
+</span></li>
+</ul>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">对不同的模型进行复杂度比较时，需要保证$E$和$T$相同，因此实际上是比较$Q$的大小，而$Q$的计算可以通过计算模型的参数个数来等价代替，从而进行模型之间复杂度的比较</span>
+</p>
+
+
+<hr>
+<h5 id="toc_35" class="h16">（2）NNLM复杂度</h5>
+
+<p class="md_block">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start"><img class="md_compiled " src="assets/截屏2020-06-3014.39.27.png?r=40" alt="" title="" style="width:40%;"><br /></span>
+    <span class="md_line img_before md_line_end">$NNLM$是输入$N-1$个词，预测第$N$个词，每个输入的词都会被映射为一个$D$维的向量，因此输入层的参数$x$的维度为$N\times D$，隐藏层$W$是一个全连接层，因此$W$的维度为$N \times D \times H$，输出层$U$也是一个全连接层，因此$U$的维度为$H\times V$，因此$NNLM$的复杂度$Q$为：</span>
+</p>
+
+
+<section class="mathjax_script" id="MathPQC3BvvjHgUSwayPCVaP95">$$
+Q=V \times H+N \times D \times  H+N \times D$$
+</section>
+
+<!--block_code_end-->
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">如果使用层次$softmax$，则复杂度可降为$Q=\log_2^V \times H+N \times D \times  H+N \times D$</span>
+</p>
+
+
+<hr>
+<h5 id="toc_36" class="h16">（3）RNNLM复杂度</h5>
+
+<p class="md_block">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/截屏2020-06-3014.45.23.png?r=40" alt="" title="" style="width:40%;"></span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">$NNLM$输入的是$w(t)$，维度$1\times D$，$U$为全连接层，维度为$D \times H$，$W$为$H \times H$，输出层$V$为$H \times V$，因此</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line md_line_start">$$Q = 1\times D + D\times H + H \times H + H \times V$$<br /></span>
+    <span class="md_line md_line_end">由于$D \approx H$，因此$Q = H(2H +1)+H\times V$，因此可以写为：</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">$$Q = H \times H + H \times V$$</span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">如果使用层次$softmax$，则$Q = H \times H + H \times \log_2^V$</span>
+</p>
+
+
+<hr>
+<h5 id="toc_37" class="h16">（4）CBOW模型复杂度</h5>
+
+<p class="md_block  md_has_block_below md_has_block_below_ul">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start"><img class="md_compiled " src="assets/截屏2020-06-3014.55.06.png?r=40" alt="" title="" style="width:40%;"><br /></span>
+    <span class="md_line img_before">如果周围词个数为$N$，则输入层的维度为$N\times D$，输出层为$D\times V$，因此<br /></span>
+    <span class="md_line md_line_end">$$Q = N\times D + D\times V$$</span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>如果使用层次$softmax$，则$Q=N\times D+D \times \log_2^V$
+
+</span></li>
+<li class="md_li"><span>如果使用负采样，则$Q=N\times D+D \times (K+1)$
+
+</span></li>
+</ul>
+
+<hr>
+<h5 id="toc_38" class="h16">（5）Skip-gram模型复杂度</h5>
+
+<p class="md_block">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/截屏2020-06-3014.50.59.png?r=40" alt="" title="" style="width:40%;"></span>
+</p>
+
+
+<hr>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">对于一个中心词，维度为$D$，周围词矩阵$W^{*}$为$D\times V$，同时需要求解$C$个周围词，因此$Q$为：</span>
+</p>
+
+
+<section class="mathjax_script" id="MathtHbwm49pvmKzxpcivjrR3j">$$
+Q=C(D+D \times V)$$
+</section>
+
+<!--block_code_end-->
+<ul>
+<li class="md_li"><span>如果使用层次$softmax$，则$Q=C(D+D \times \log_2 V)$
+
+</span></li>
+<li class="md_li"><span>如果使用负采样，则$Q=C(D+D \times (K+1))$
+
+</span></li>
+</ul>
+
+<hr>
+<h5 id="toc_39" class="h16">（6）复杂度比较</h5>
+
+<p class="md_block  md_has_block_below md_has_block_below_ul">
+    <span class="md_line md_line_start">不同模型的复杂度$Q$如下：<br /></span>
+    <span class="md_line">NNLM：$Q = N \times D+N \times D \times H+H \times \log _{2} V$<br /></span>
+    <span class="md_line">RNNLM：$Q= H \times H+H \times \log _{2} V$<br /></span>
+    <span class="md_line">CBOW + HS：$Q=N \times D+D \times \log _{2} V$<br /></span>
+    <span class="md_line">Skip-gram + HS：$Q=C\left(D+D \times \log _{2} V\right)$<br /></span>
+    <span class="md_line">CBOW + NEG：$Q=N \times D+D \times(K+1))$<br /></span>
+    <span class="md_line md_line_end">Skip-gram + NEG：$Q=C(D+D \times (K+1))$</span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>$word2vec$中的两种模型时间复杂度都比$NNLM$和$RNNLM$要低
+
+</span></li>
+<li class="md_li"><span>$Skip-gram$比$CBOW$要稍微慢一些
+
+</span></li>
+<li class="md_li"><span>负采样一般比层次$softmax$要快一些
+
+</span></li>
+</ul>
+
+<hr>
+<h3 id="toc_40" class="h16">五、论文总结与启发</h3>
+
+<hr>
+<h4 id="toc_41" class="h16">1、关键点</h4>
+
+<ul>
+<li class="md_li"><span>更简单的预测模型：$word2vec$
+
+</span></li>
+<li class="md_li"><span>更快的分类方案：$HS$和$NEG$
+
+</span></li>
+</ul>
+
+<hr>
+<h4 id="toc_42" class="h16">2、创新点</h4>
+
+<ul>
+<li class="md_li"><span>使用词对的预测来替代语言模型的预测
+
+</span></li>
+<li class="md_li"><span>使用$HS$和$NEG$降低分类复杂度
+
+</span></li>
+<li class="md_li"><span>使用$subsampling$加快训练
+
+</span></li>
+<li class="md_li"><span>新的词对推理数据集来评估词向量的质量
+
+</span></li>
+</ul>
+
+<hr>
+<span class="md_repeated_n md_repeated_n_1"></span><h4 id="toc_43" class="h16">3、启发点</h4>
+
+<ul>
+<li class="md_li"><span>大数据集上的简单模型往往强于小数据集上的复杂模型
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end"><em>King</em> 的词向量减去 <em>Man</em> 的词向量加上 <em>Woman</em> 的词向量和 <em>Queen</em> 的词向量最接近</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>我们决定设计简单的模型来训练词向量，虽然简单的模型无法像神经网络那么准确地表示数据，但是可以在更多地数据上更快地训练
+
+</span></li>
+<li class="md_li"><span>我们相信在更大的数据集上使用更大的词向量维度能够训练得到更好的词向量
+
+</span></li>
+</ul>
+
+<hr>
+<h3 id="toc_44" class="h16">六、代码实现</h3>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">实现$Skip-gram$和$CBOW$以及$HS$和$NGE$，具体代码见我的<a class="md_compiled" href="">Github</a></span>
+</p>
+        </div>
+    </div>
+    
+        <script type= "text/javascript">
+            window.MathJax = {
+              tex: {
+                inlineMath: [ ['$','$']],
+                displayMath: [ ['$$','$$'] ]
+              },
+              svg: {fontCache: 'global'},
+              startup: {
+                    ready: () => {
+                      MathJax.startup.defaultReady();
+                      MathJax.startup.promise.then(() => {
+                        if (typeof(send_to_app_client)!='undefined'){send_to_app_client({'action': 'start_to_export_pdf'})}
+                      });
+                    }
+                  },
+              options: {
+                renderActions: {
+                  addMenu: [0]
+                }
+              }
+            };
+        </script>
+        <script src="https://markeditor-files.oss-cn-hangzhou.aliyuncs.com/fb_static/lib/markdown/MathJax/tex-svg.js" type= "text/javascript"></script>
+        
+        
+    <!--mermaid-->
+</body>
+</html>
