@@ -1,0 +1,1633 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="renderer" content="webkit">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="renderer" content="webkit"/>
+    <title>大数据技术</title>
+    <link rel="stylesheet" href="data:text/css;base64,CiAgICBoMSwgaDIsIGgzLCBoNSwgaDYsICBpbWcsIHN2ZywgcHJlLCB0YWJsZSwgdHJ7cGFnZS1icmVhay1pbnNpZGU6IGF2b2lkfQoKCiAgICBib2R5IHsKICAgICAgICBiYWNrZ3JvdW5kOiAjRkZGRkZGOwogICAgICAgIGZvbnQtc2l6ZTogMTZweDsKICAgICAgICBsaW5lLWhlaWdodDoyLjM7CiAgICAgICAgZm9udC1mYW1pbHk6ICJIZWx2ZXRpY2EiOwogICAgICAgIGZvbnQtd2VpZ2h0OiBub3JtYWw7CiAgICAgICAgY29sb3I6ICMzQzNDM0M7CiAgICAgICAgcGFkZGluZzogMCAzOHB4OwogICAgICAgIG1heC13aWR0aDogODIwcHg7CiAgICAgICAgbWFyZ2luOiAwIGF1dG87CgogICAgICAgIHdvcmQtd3JhcDpicmVhay13b3JkOwogICAgICAgIHdvcmQtYnJlYWs6IG5vcm1hbDsKICAgICAgICBvdmVyZmxvdy13cmFwOmJyZWFrLXdvcmQ7CgoKICAgICAgICBvdmVyZmxvdy14OiBoaWRkZW47CiAgICAgICAgdGV4dC1yZW5kZXJpbmc6IG9wdGltaXplTGVnaWJpbGl0eTsKICAgICAgICAtd2Via2l0LXRleHQtc2l6ZS1hZGp1c3Q6IG5vbmU7CiAgICB9CgogICAgYnJ7CiAgICAgICAgbGluZS1oZWlnaHQ6IDIuMzsKICAgIH0KCgoKICAgIEBtZWRpYSAobWF4LXdpZHRoOiA2MDBweCkgewogICAgICAgIGJvZHl7CiAgICAgICAgICAgIHBhZGRpbmc6IDAgMzBweDsKICAgICAgICB9CiAgICB9CgogICAgQG1lZGlhIChtYXgtd2lkdGg6IDQ4MHB4KSB7CiAgICAgICAgYm9keXsKICAgICAgICAgICAgcGFkZGluZzogMCAyMHB4OwogICAgICAgIH0KICAgIH0KCiAgICAuZ2lzdHsKICAgICAgICB3b3JkLWJyZWFrOiBub3JtYWw7CiAgICB9CgogICAgLnBvc3R7CiAgICAgICAgbWFyZ2luLXRvcDogMTBweDsKICAgICAgICBtYXJnaW4tYm90dG9tOiA1MHB4OwogICAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTsKICAgIH0KCgoKICAgIGltZ3sKICAgICAgICBtYXgtd2lkdGg6IDk4JTsKICAgICAgICBtYXJnaW46IDAuOGVtIGF1dG8gMC44ZW0gYXV0bzsKICAgIH0KCiAgICBoMSBpbWcsIGgyIGltZywgaDMgaW1nLCBoNCBpbWcsIGg1IGltZywgaDYgaW1newogICAgICAgIG1hcmdpbjogYXV0bzsKICAgIH0KCiAgICAueDJfaW1hZ2V7CiAgICAgICAgem9vbTogNTAlOwogICAgfQoKICAgIC54M19pbWFnZXsKICAgICAgICB6b29tOiAzMy4zMyU7CiAgICB9CgogICAgLng0X2ltYWdlewogICAgICAgIHpvb206IDI1JTsKICAgIH0KCgogICAgcCBpbWd7CiAgICAgICAgbWFyZ2luOiAwIGF1dG87CiAgICB9CgogICAgcHsKICAgICAgICAvKm92ZXJmbG93OmhpZGRlbjsqLwogICAgICAgIG1hcmdpbjogMS4wZW0gMCAxLjhlbSAwOwogICAgfQoKICAgIHAubWRfYmxvY2tfYXNfb3BlbmluZ3sKICAgICAgICBtYXJnaW4tYm90dG9tOiAtMC41ZW0gIWltcG9ydGFudDsKICAgIH0KCiAgICBsaSBwewogICAgICAgIGxpbmUtaGVpZ2h0OiAyLjA3OwogICAgICAgIG1hcmdpbjogMDsKICAgIH0KCiAgICAucF9wYXJ0IHsKICAgICAgICBtYXJnaW46IDEwcHggMDsKICAgIH0KCiAgICAucF9wYXJ0IHB7CiAgICAgICAgbWFyZ2luOiAwIDAgMC42ZW0gMDsKICAgIH0KCiAgICAvKiB0ZXh0IGluZGVudCBmb3IgY2hpbmVzZSBzdGFydHMqLwogICAgLypoMiwgaDMsIGg0LCBoNSwgaDYsIC5wX3BhcnQgcCwgLnRvZG9faXRlbSwgcHsKICAgICAgICB0ZXh0LWluZGVudDogMHB4OwogICAgfSovCiAgICB0YWJsZSwgcHJlLCBzdmcsIC5jb2RlaGlsaXRldGFibGV7CiAgICAgICAgbWFyZ2luLWxlZnQ6IDBweDsKICAgICAgICBtYXJnaW4tcmlnaHQ6IDBweDsKICAgIH0KICAgIAogICAgc3BhbiBzdmd7CiAgICAgICAgbWFyZ2luLWxlZnQ6IDA7CiAgICAgICAgbWFyZ2luLXJpZ2h0OiAwOwogICAgfQoKICAgIC5jb2RlaGlsaXRldGFibGUgcHJlewogICAgICAgIG1hcmdpbi1sZWZ0OiAwOwogICAgICAgIG1hcmdpbi1yaWdodDogMDsKCiAgICB9CgogICAgLmNvZGVoaWxpdGV0YWJsZSAuY29kZWhpbGl0ZSBwcmV7CiAgICAgICAgYm9yZGVyLWxlZnQ6IG5vbmU7CiAgICB9CgogICAgLyogdGV4dCBpbmRlbnQgZm9yIGNoaW5lc2UgZW5kcyovCgoKICAgIGJsb2NrcXVvdGUgLnBfcGFydCBwLCBsaSAucF9wYXJ0IHB7CiAgICAgICAgdGV4dC1pbmRlbnQ6IDAgIWltcG9ydGFudDsKICAgIH0KCgogICAgaHJ7CiAgICAgICAgbWFyZ2luOiAzOHB4IDA7CiAgICAgICAgYm9yZGVyOiBub25lOwogICAgICAgIGJvcmRlci1ib3R0b206IDFweCBkYXNoZWQgcmdiYSgyMDUsIDIwNSwgMjA1LCAwLjM1KTsKICAgICAgICBjb2xvcjogcmdiYSgyMDUsIDIwNSwgMjA1LCAwLjM1KTsKICAgICAgICBoZWlnaHQ6IDFweDsKICAgICAgICBsaW5lLWhlaWdodDoxcHg7CiAgICAgICAgZm9udC1zaXplOjFweDsKICAgICAgICBvdmVyZmxvdy15OiBoaWRkZW47CiAgICB9CgoKICAgIGgxewogICAgICAgIGNvbG9yOiAjMTBBM0VFOwogICAgICAgIGZvbnQtc2l6ZTogMS43ZW07CiAgICAgICAgdGV4dC1hbGlnbjogbGVmdDsKICAgICAgICBtYXJnaW46IDA7CiAgICAgICAgcGFkZGluZzogMDsKICAgICAgICBsaW5lLWhlaWdodDogMS43ZW07CiAgICAgICAgbWFyZ2luLXRvcDogMC44ZW07CiAgICAgICAgbWFyZ2luLWJvdHRvbTogMC42ZW07CiAgICB9CgogICAgaDEsIGgyLCBoMywgaDR7CiAgICAgICAgY29sb3I6ICMxMEEzRUU7CiAgICB9CiAgICAKICAgIGgxe2NvbG9yOiMxMEEzRUV9CgoKCiAgICBoMiwgaDN7CiAgICAgICAgbGluZS1oZWlnaHQ6IDEuNWVtOwogICAgICAgIG1hcmdpbi10b3A6IDEuOGVtOwogICAgICAgIG1hcmdpbi1ib3R0b206IDAuNWVtOwogICAgfQoKICAgIC5oMTYubWRfZmlyc3RfaC5tZF9maXJzdF9wYXJ0IHsKICAgICAgICBtYXJnaW4tdG9wOiA1cHg7CiAgICB9CgogICAgaDIgewogICAgICAgIGZvbnQtc2l6ZTogMS41ZW07CiAgICB9CgogICAgaDMgewogICAgICAgIGZvbnQtc2l6ZTogMS4yNWVtCiAgICB9CgogICAgaDQgewogICAgICAgIGZvbnQtc2l6ZTogMS4xNWVtOwogICAgfQoKICAgIGg1IHsKICAgICAgICBmb250LXNpemU6IDEuMWVtOwogICAgfQoKICAgIGg2IHtmb250LXNpemU6IDFlbX0KCgogICAgaDEsIGgyLCBoMywgaDQsIGg1LCBoNnsKICAgICAgICBmb250LWZhbWlseTogIkhlaXRpIFNDIjsKICAgIH0KCgogICAgb2wgewogICAgICAgIG1hcmdpbjogMDsKICAgIH0KCiAgICB1bHsKICAgICAgICBwYWRkaW5nOiA1cHggMzhweDsKICAgICAgICBtYXJnaW46IDA7CiAgICB9CgogICAgdWwgbGksIGxpewogICAgICAgIHBhZGRpbmc6IDA7CiAgICAgICAgbWFyZ2luOiAwOwogICAgfQoKICAgIHVsIHAsIG9sIHB7CiAgICAgICAgb3ZlcmZsb3c6IHZpc2libGU7CiAgICB9CgoKICAgIGJsb2NrcXVvdGUgewogICAgICAgIC1tb3otYm94LXNpemluZzogYm9yZGVyLWJveDsKICAgICAgICBib3gtc2l6aW5nOiBib3JkZXItYm94OwogICAgICAgIG1hcmdpbjogMS42ZW0gMDsKICAgICAgICBwYWRkaW5nOiAwIDAgMCAxLjJlbTsKICAgICAgICBib3JkZXItbGVmdDogMC40ZW0gc29saWQgIzE2QjBGRjsKICAgICAgICBjb2xvcjogIzg4ODg4ODsKICAgICAgICBtaW4taGVpZ2h0OjIwcHg7CiAgICB9CgoKICAgIGJsb2NrcXVvdGUgcCB7CiAgICAgICAgbWFyZ2luOiAwLjhlbSAwOwogICAgfQoKICAgIGJsb2NrcXVvdGUgc3Bhbi5tZF9saW5lIHsKICAgICAgICBtYXJnaW4tYm90dG9tOiAwLjI1ZW07CiAgICAgICAgbWFyZ2luLXRvcDogMC4yNWVtOwogICAgfQoKICAgIGJsb2NrcXVvdGUgdWx7CiAgICAgICAgcGFkZGluZzogMCAxNXB4OwogICAgfQoKICAgIGJsb2NrcXVvdGUgc21hbGwgewogICAgICAgIGRpc3BsYXk6IGlubGluZS1ibG9jazsKICAgICAgICBtYXJnaW46IDAuOGVtIDAgMC44ZW0gMS41ZW07CiAgICAgICAgZm9udC1zaXplOiAwLjllbTsKICAgICAgICBjb2xvcjogI2NjYzsKICAgIH0KCgoKCgoKICAgIHRhYmxlIHsKICAgICAgICBsaW5lLWhlaWdodDogMS43OwogICAgICAgIC1tb3otYm94LXNpemluZzogYm9yZGVyLWJveDsKICAgICAgICBib3gtc2l6aW5nOiBib3JkZXItYm94OwogICAgICAgIG1hcmdpbjogMWVtIDA7CiAgICAgICAgd2lkdGg6IDEwMCU7CiAgICAgICAgbWF4LXdpZHRoOiAxMDAlOwogICAgICAgIGJvcmRlci13aWR0aDogMXB4OwogICAgICAgIGJvcmRlci1zdHlsZTogc29saWQ7CiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogdHJhbnNwYXJlbnQ7CiAgICAgICAgYm9yZGVyLXNwYWNpbmc6IDA7CiAgICAgICAgd29yZC1icmVhazogbm9ybWFsOwogICAgfQogICAgCiAgICAvKiBmb3Igd2VjaGF0IG9ubHkgc3RhcnRzICovCiAgICB0YWJsZSB0cnsKICAgICAgICBib3JkZXItcmlnaHQtc3R5bGU6IHNvbGlkOwogICAgICAgIGJvcmRlci1yaWdodC13aWR0aDogMXB4OwogICAgfQogICAgCiAgICB0YWJsZSB0Ym9keXsKICAgICAgICBib3JkZXItYm90dG9tLXdpZHRoOiAxcHg7CiAgICAgICAgYm9yZGVyLWJvdHRvbS1zdHlsZTogc29saWQ7CiAgICB9CiAgICAvKiBmb3Igd2VjaGF0IG9ubHkgZW5kcyAqLwoKCiAgICB0YWJsZSwgdGFibGUgdHIsIHRhYmxlIHRyIHRkLCB0YWJsZSB0ciB0aCwgdGFibGUgdGJvZHkgewogICAgICAgIGJvcmRlci1jb2xvcjogcmdiYSgyMDUsIDIwNSwgMjA1LCAwLjM1KTsKICAgIH0KCiAgICB0YWJsZSB0aCB7CiAgICAgICAgZm9udC13ZWlnaHQ6IGJvbGQ7CiAgICB9CgogICAgdHIgdGggewogICAgICAgIGJvcmRlci1ib3R0b20td2lkdGg6IDFweDsKICAgICAgICBib3JkZXItYm90dG9tLXN0eWxlOiBzb2xpZDsKICAgICAgICB0ZXh0LWFsaWduOiBsZWZ0OwogICAgfQoKICAgIHRyIHRoLCB0ciB0ZCB7CiAgICAgICAgcGFkZGluZzogMTBweCAyMHB4OwogICAgICAgIGJvcmRlci1yaWdodDogMXB4IHNvbGlkOwogICAgICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCByZ2JhKDIwNSwgMjA1LCAyMDUsIDAuMzUpOwogICAgfQoKICAgIHRib2R5IHRyOmxhc3QtY2hpbGQgdGR7CiAgICAgICAgYm9yZGVyLWJvdHRvbTogMDsKICAgIH0KCiAgICB0ciB0aDpsYXN0LWNoaWxkLCB0ciB0ZDpsYXN0LWNoaWxkIHsKICAgICAgICBib3JkZXItcmlnaHQ6IDA7CiAgICB9CgogICAgdGFibGUgdGJvZHkgPiB0cjpudGgtY2hpbGQob2RkKSA+IHRkLCB0YWJsZSB0Ym9keSA+IHRyOm50aC1jaGlsZChvZGQpID4gdGggewogICAgICAgIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMjM1LCAyMzUsIDIzNSwgMC4yKTsKICAgIH0KCgoKCiAgICBjb2RlewogICAgICAgIGJhY2tncm91bmQ6IHJnYmEoMjM1LCAyMzUsIDIzNSwgMC4zNSk7CiAgICAgICAgY29sb3I6ICM0OEI0NTY7CiAgICAgICAgcGFkZGluZzogMCA1cHg7CiAgICAgICAgbWFyZ2luOiAwIDJweDsKICAgIH0KCiAgICBwcmV7CiAgICAgICAgbWFyZ2luLXRvcDogMS4yZW07CiAgICAgICAgbWFyZ2luLWJvdHRvbTogMS4yZW07CiAgICAgICAgcGFkZGluZzogMTVweCAxMHB4OwogICAgICAgIGRpc3BsYXk6IGJsb2NrOwogICAgICAgIC8qIG92ZXJmbG93OiBhdXRvOyAqLwogICAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHJnYmEoMjA1LCAyMDUsIDIwNSwgMC4zNSk7CiAgICAgICAgLypiYWNrZ3JvdW5kOiByZ2JhKDIzNSwgMjM1LCAyMzUsIDAuMzUpOyovCiAgICAgICAgZm9udC1zaXplOiA5MCU7CiAgICAgICAgbGluZS1oZWlnaHQ6Mi4zOwogICAgICAgIHdoaXRlLXNwYWNlOiBwcmUtd3JhcDsKICAgIH0KCiAgICAuaGlnaGxpZ2h0dGFibGUgdGR7CiAgICAgICAgLypiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDIzNSwgMjM1LCAyMzUsIDAuMzUpICFpbXBvcnRhbnQ7Ki8KICAgIH0KCiAgICAud2l0aF9saW5lcyBwcmV7CiAgICAgICAgYm9yZGVyOm5vbmU7CiAgICAgICAgbWFyZ2luLXRvcDogMC4yZW07CiAgICAgICAgbWFyZ2luLWJvdHRvbTogMC4yZW07CiAgICAgICAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7CiAgICB9CgogICAgLmlzX2NvZGVfZmlsZSBwcmV7CiAgICAgICAgYm9yZGVyOiBub25lOwogICAgICAgIGJhY2tncm91bmQ6IHRyYW5zcGFyZW50OwogICAgfQoKICAgIC5jb2RlaGlsaXRlIHByZXsKICAgICAgICAvKndvcmQtd3JhcDogbm9ybWFsOyovCiAgICAgICAgZm9udC1zaXplOiAxM3B4OwogICAgfQoKICAgIHByZSBjb2RlewogICAgICAgIGJvcmRlcjpub25lOwogICAgICAgIGJhY2tncm91bmQ6IG5vbmU7CiAgICAgICAgcGFkZGluZzogMDsKICAgICAgICBtYXJnaW46IDA7CiAgICB9CgogICAgcHJlIHB7CiAgICAgICAgbWFyZ2luOiAwOwogICAgICAgIHBhZGRpbmc6IDA7CiAgICB9CgogICAgLmNvZGVoaWxpdGUgdGgsIC5jb2RlaGlsaXRlIHRkewogICAgICAgIGxpbmUtaGVpZ2h0OiAxLjhlbTsKICAgIH0KCgogICAgYXsKICAgICAgICBjb2xvcjogIzQwODNDNDsKICAgICAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7CiAgICAgICAgLy9ib3JkZXItYm90dG9tOiAxcHggc29saWQgdHJhbnNwYXJlbnQ7CiAgICB9CgogICAgYTpob3ZlcnsKICAgICAgICB0ZXh0LWRlY29yYXRpb246IHVuZGVybGluZTsKICAgICAgICAvL2JvcmRlci1ib3R0b206IDFweCBzb2xpZCAjNDA4M0M0OwogICAgfQoKICAgIHN0cm9uZyB7CiAgICAgICAgY29sb3I6ICMwMDAwMDA7CiAgICAgICAgZm9udC13ZWlnaHQ6IGJvbGQ7CiAgICB9CgoKICAgIC8qIGZvciBtYXJrZG93biAqLwoKICAgIC5saW5lbm9zIHByZXsKCQliYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDsKCQlib3JkZXI6IG5vbmU7Cgl9CgoJLmxpbmVub3N7CgkgICAgcGFkZGluZzogMCA1cHggMCA1cHg7CgkgICAgd2lkdGg6IDAuMDAxJTsKCX0KCgkuaGlnaGxpZ2h0dGFibGUgcHJlewoJICAgIHBhZGRpbmc6IDVweCAxMHB4OwoJfQoKICAgIC50b2N7CiAgICAgICAgYmFja2dyb3VuZDogTm9uZTsKICAgICAgICBib3JkZXItcmFkaXVzOiA1cHg7CiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgTm9uZTsKICAgICAgICBtYXJnaW46IDI3cHggMCA0N3B4IDA7CiAgICAgICAgcGFkZGluZzogMTBweCAwOwogICAgfQoKICAgIC50b2MgdWx7CiAgICAgICAgLy9wYWRkaW5nOiA1cHggNDJweDsKICAgIH0KCiAgICAudG9jIHVsIGxpewogICAgICAgIHBhZGRpbmc6IDA7CiAgICAgICAgbWFyZ2luOiAwOwogICAgfQogICAgLnRvYyBhewogICAgICAgIGNvbG9yOiAjM0MzQzNDOwogICAgfQoKCgogICAgLnRvZG9faXRlbXsKICAgICAgICBsaXN0LXN0eWxlOiBub25lOwogICAgICAgIG1hcmdpbi1sZWZ0OiAtMS41ZW0KICAgIH0KICAgIC50b2RvX2l0ZW0gLnRvZG9faXRlbSB7CiAgICAgICAgbWFyZ2luLWxlZnQ6IGF1dG87CiAgICB9CgogICAgLnRvZG9fZG9uZV9pdGVtewogICAgICAgIGNvbG9yOiAjOTk5OTk5OwogICAgfQoKICAgIC50b2RvX3VuZG9uZV9pdGVtewogICAgICAgIGNvbG9yOiAjQzg1QTU3OwogICAgfQoKCiAgICB1bCBsaS50b2RvX2l0ZW17CglsaXN0LXN0eWxlLXR5cGU6IG5vbmU7CiAgICB9CgogICAgdWwgbGkudG9kb19pdGVtOmJlZm9yZXsKICAgICAgICBjb250ZW50OiAn4piQJzsKICAgICAgICAvKnBhZGRpbmctcmlnaHQ6IDAuMmVtOyovCiAgICAgICAgZm9udC1mYW1pbHk6IGFyaWFsOwogICAgfQoKICAgIHVsIGxpLnRvZG9fZG9uZV9pdGVtOmJlZm9yZXsKICAgICAgICBjb250ZW50OiAn4piRJzsKICAgICAgICAvKnBhZGRpbmctcmlnaHQ6IDAuMmVtOyovCiAgICAgICAgZm9udC1mYW1pbHk6IGFyaWFsOwogICAgfQoKICAgIHVsIGxpLnRvZG9faXRlbSBpbnB1dHsKICAgICAgICBkaXNwbGF5Om5vbmUKICAgIH0KCgogICAgLypweWdtZW50cyovCgogICAgLmNvZGVoaWxpdGV7CiAgICAgICAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQgIWltcG9ydGFudDsKICAgIH0KCiAgICB0YWJsZS5jb2RlaGlsaXRldGFibGV7IGJvcmRlcjpub25lOyB9CgoKICAgIC5jb2RlaGlsaXRldGFibGUgdGR7IGJvcmRlcjogbm9uZTsgcGFkZGluZzogMDt9CgogICAgLmZsb3ctZ3JhcGhpYywgLm1kX2Jsb2NrX3NlY3Rpb25fZm9yX2Zsb3dfZ3JhcGhpY3t0ZXh0LWFsaWduOiBjZW50ZXJ9CiAgICAuZmxvdy1ncmFwaGljIHsgb3ZlcmZsb3cteDogYXV0bzt9CiAgICAubWVybWFpZCwgLm1kX2Jsb2NrX3NlY3Rpb25fZm9yX21lcm1haWR7dGV4dC1hbGlnbjogY2VudGVyfQogICAgCiAgICAuZmxvdy1ncmFwaGljLCAubWVybWFpZHsKICAgICAgICBiYWNrZ3JvdW5kOiAjZmZmZmZmOwogICAgfQoKCiAgICB0YWJsZSwgdHIsIHRkLCB0aCwgdGJvZHksIHRoZWFkLCB0Zm9vdCwgLm1kX2VjaGFydHMsIGJsb2NrcXVvdGUgLm1kX2xpbmV7CiAgICAgICAgcGFnZS1icmVhay1pbnNpZGU6IGF2b2lkICFpbXBvcnRhbnQ7CiAgICB9CgogICAgLmZvb3Rub3RlcyAubWRfbGluZXsKICAgICAgICBkaXNwbGF5OiBpbmxpbmUgIWltcG9ydGFudDsKICAgIH0KCgogICAgLmltZ19ydF85MHsKICAgICAgICB0cmFuc2Zvcm06cm90YXRlKDkwZGVnKTsKICAgICAgICAtbXMtdHJhbnNmb3JtOnJvdGF0ZSg5MGRlZyk7CiAgICAgICAgLW1vei10cmFuc2Zvcm06cm90YXRlKDkwZGVnKTsKICAgICAgICAtd2Via2l0LXRyYW5zZm9ybTpyb3RhdGUoOTBkZWcpOwogICAgICAgIC1vLXRyYW5zZm9ybTpyb3RhdGUoOTBkZWcpOwogICAgfQogICAgLmltZ19ydF8xODB7CiAgICAgICAgdHJhbnNmb3JtOnJvdGF0ZSgxODBkZWcpOwogICAgICAgIC1tcy10cmFuc2Zvcm06cm90YXRlKDE4MGRlZyk7CiAgICAgICAgLW1vei10cmFuc2Zvcm06cm90YXRlKDE4MGRlZyk7CiAgICAgICAgLXdlYmtpdC10cmFuc2Zvcm06cm90YXRlKDE4MGRlZyk7CiAgICAgICAgLW8tdHJhbnNmb3JtOnJvdGF0ZSgxODBkZWcpOwogICAgfQogICAgLmltZ19ydF8yNzB7CiAgICAgICAgdHJhbnNmb3JtOnJvdGF0ZSgyNzBkZWcpOwogICAgICAgIC1tcy10cmFuc2Zvcm06cm90YXRlKDI3MGRlZyk7CiAgICAgICAgLW1vei10cmFuc2Zvcm06cm90YXRlKDI3MGRlZyk7CiAgICAgICAgLXdlYmtpdC10cmFuc2Zvcm06cm90YXRlKDI3MGRlZyk7CiAgICAgICAgLW8tdHJhbnNmb3JtOnJvdGF0ZSgyNzBkZWcpOwogICAgfQoKICAgIC5tZF9oYXNfYmxvY2tfYmVsb3d7CiAgICAgICAgbWFyZ2luLWJvdHRvbTogMC4xZW0gIWltcG9ydGFudDsKICAgIH0KICAgIC5tZF9oYXNfYmxvY2tfYmVsb3dfaW1newogICAgICAgIG1hcmdpbi1ib3R0b206IC0wLjZlbSAhaW1wb3J0YW50OwogICAgfQoKCiAgICAuY29kZWhpbGl0ZSAuZXJyewogICAgICAgIGJvcmRlcjogbm9uZSAhaW1wb3J0YW50OwogICAgICAgIGJhY2tncm91bmQtY29sb3I6IHRyYW5zcGFyZW50ICFpbXBvcnRhbnQ7CiAgICB9CgoKCiAgICAgICAgc3Bhbi5tZF9saW5le21hcmdpbi1ib3R0b206MC41ZW07IGRpc3BsYXk6YmxvY2s7IGxpbmUtaGVpZ2h0OjEuOTg5NX0KICAgICAgICAubWRfbGluZSBicnsgZGlzcGxheTogbm9uZTt9CiAgICAgICAgLmNvZGVoaWxpdGUgLmhsbCB7IGJhY2tncm91bmQtY29sb3I6ICB9Ci5jb2RlaGlsaXRlICB7IGJhY2tncm91bmQ6ICNlZWVlZGQ7IGNvbG9yOiAjNTU1NTU1IH0KLmNvZGVoaWxpdGUgLmMgeyBjb2xvcjogIzk5OTk5OSB9IC8qIENvbW1lbnQgKi8KLmNvZGVoaWxpdGUgLmVyciB7IGNvbG9yOiAjYTYxNzE3OyBiYWNrZ3JvdW5kLWNvbG9yOiAjZTNkMmQyIH0gLyogRXJyb3IgKi8KLmNvZGVoaWxpdGUgLmsgeyBjb2xvcjogIzhCMDA4QjsgZm9udC13ZWlnaHQ6IGJvbGQgfSAvKiBLZXl3b3JkICovCi5jb2RlaGlsaXRlIC5sIHsgY29sb3I6ICNhZTgxZmYgfSAvKiBMaXRlcmFsICovCi5jb2RlaGlsaXRlIC5uIHsgY29sb3I6ICM1NTU1NTUgfSAvKiBOYW1lICovCi5jb2RlaGlsaXRlIC5vIHsgY29sb3I6ICM1NTU1NTUgfSAvKiBPcGVyYXRvciAqLwouY29kZWhpbGl0ZSAucCB7IGNvbG9yOiAjNTU1NTU1IH0gLyogUHVuY3R1YXRpb24gKi8KLmNvZGVoaWxpdGUgLmNoIHsgY29sb3I6ICM5OTk5OTkgfSAvKiBDb21tZW50Lkhhc2hiYW5nICovCi5jb2RlaGlsaXRlIC5jbSB7IGNvbG9yOiAjOTk5OTk5IH0gLyogQ29tbWVudC5NdWx0aWxpbmUgKi8KLmNvZGVoaWxpdGUgLmNwIHsgY29sb3I6ICMxZTg4OWIgfSAvKiBDb21tZW50LlByZXByb2MgKi8KLmNvZGVoaWxpdGUgLmNwZiB7IGNvbG9yOiAjOTk5OTk5IH0gLyogQ29tbWVudC5QcmVwcm9jRmlsZSAqLwouY29kZWhpbGl0ZSAuYzEgeyBjb2xvcjogIzk5OTk5OSB9IC8qIENvbW1lbnQuU2luZ2xlICovCi5jb2RlaGlsaXRlIC5jcyB7IGNvbG9yOiAjOEIwMDhCOyBmb250LXdlaWdodDogYm9sZCB9IC8qIENvbW1lbnQuU3BlY2lhbCAqLwouY29kZWhpbGl0ZSAuZ2QgeyBjb2xvcjogI2FhMDAwMCB9IC8qIEdlbmVyaWMuRGVsZXRlZCAqLwouY29kZWhpbGl0ZSAuZ2UgeyBmb250LXN0eWxlOiBpdGFsaWMgfSAvKiBHZW5lcmljLkVtcGggKi8KLmNvZGVoaWxpdGUgLmdyIHsgY29sb3I6ICNhYTAwMDAgfSAvKiBHZW5lcmljLkVycm9yICovCi5jb2RlaGlsaXRlIC5naCB7IGNvbG9yOiAjMDAwMDgwOyBmb250LXdlaWdodDogYm9sZCB9IC8qIEdlbmVyaWMuSGVhZGluZyAqLwouY29kZWhpbGl0ZSAuZ2kgeyBjb2xvcjogIzAwYWEwMCB9IC8qIEdlbmVyaWMuSW5zZXJ0ZWQgKi8KLmNvZGVoaWxpdGUgLmdvIHsgY29sb3I6ICM4ODg4ODggfSAvKiBHZW5lcmljLk91dHB1dCAqLwouY29kZWhpbGl0ZSAuZ3AgeyBjb2xvcjogIzU1NTU1NSB9IC8qIEdlbmVyaWMuUHJvbXB0ICovCi5jb2RlaGlsaXRlIC5ncyB7IGZvbnQtd2VpZ2h0OiBib2xkIH0gLyogR2VuZXJpYy5TdHJvbmcgKi8KLmNvZGVoaWxpdGUgLmd1IHsgY29sb3I6ICM4MDAwODA7IGZvbnQtd2VpZ2h0OiBib2xkIH0gLyogR2VuZXJpYy5TdWJoZWFkaW5nICovCi5jb2RlaGlsaXRlIC5ndCB7IGNvbG9yOiAjYWEwMDAwIH0gLyogR2VuZXJpYy5UcmFjZWJhY2sgKi8KLmNvZGVoaWxpdGUgLmtjIHsgY29sb3I6ICM4QjAwOEI7IGZvbnQtd2VpZ2h0OiBib2xkIH0gLyogS2V5d29yZC5Db25zdGFudCAqLwouY29kZWhpbGl0ZSAua2QgeyBjb2xvcjogIzhCMDA4QjsgZm9udC13ZWlnaHQ6IGJvbGQgfSAvKiBLZXl3b3JkLkRlY2xhcmF0aW9uICovCi5jb2RlaGlsaXRlIC5rbiB7IGNvbG9yOiAjOEIwMDhCOyBmb250LXdlaWdodDogYm9sZCB9IC8qIEtleXdvcmQuTmFtZXNwYWNlICovCi5jb2RlaGlsaXRlIC5rcCB7IGNvbG9yOiAjOEIwMDhCOyBmb250LXdlaWdodDogYm9sZCB9IC8qIEtleXdvcmQuUHNldWRvICovCi5jb2RlaGlsaXRlIC5rciB7IGNvbG9yOiAjOEIwMDhCOyBmb250LXdlaWdodDogYm9sZCB9IC8qIEtleXdvcmQuUmVzZXJ2ZWQgKi8KLmNvZGVoaWxpdGUgLmt0IHsgY29sb3I6ICNhN2E3YTc7IGZvbnQtd2VpZ2h0OiBib2xkIH0gLyogS2V5d29yZC5UeXBlICovCi5jb2RlaGlsaXRlIC5sZCB7IGNvbG9yOiAjZTZkYjc0IH0gLyogTGl0ZXJhbC5EYXRlICovCi5jb2RlaGlsaXRlIC5tIHsgY29sb3I6ICNCNDUyQ0QgfSAvKiBMaXRlcmFsLk51bWJlciAqLwouY29kZWhpbGl0ZSAucyB7IGNvbG9yOiAjQ0Q1NTU1IH0gLyogTGl0ZXJhbC5TdHJpbmcgKi8KLmNvZGVoaWxpdGUgLm5hIHsgY29sb3I6ICM2NThiMDAgfSAvKiBOYW1lLkF0dHJpYnV0ZSAqLwouY29kZWhpbGl0ZSAubmIgeyBjb2xvcjogIzY1OGIwMCB9IC8qIE5hbWUuQnVpbHRpbiAqLwouY29kZWhpbGl0ZSAubmMgeyBjb2xvcjogIzAwOGI0NTsgZm9udC13ZWlnaHQ6IGJvbGQgfSAvKiBOYW1lLkNsYXNzICovCi5jb2RlaGlsaXRlIC5ubyB7IGNvbG9yOiAjMDA2ODhCIH0gLyogTmFtZS5Db25zdGFudCAqLwouY29kZWhpbGl0ZSAubmQgeyBjb2xvcjogIzcwN2E3YyB9IC8qIE5hbWUuRGVjb3JhdG9yICovCi5jb2RlaGlsaXRlIC5uaSB7IGNvbG9yOiAjNTU1NTU1IH0gLyogTmFtZS5FbnRpdHkgKi8KLmNvZGVoaWxpdGUgLm5lIHsgY29sb3I6ICMwMDhiNDU7IGZvbnQtd2VpZ2h0OiBib2xkIH0gLyogTmFtZS5FeGNlcHRpb24gKi8KLmNvZGVoaWxpdGUgLm5mIHsgY29sb3I6ICMwMDhiNDUgfSAvKiBOYW1lLkZ1bmN0aW9uICovCi5jb2RlaGlsaXRlIC5ubCB7IGNvbG9yOiAjNTU1NTU1IH0gLyogTmFtZS5MYWJlbCAqLwouY29kZWhpbGl0ZSAubm4geyBjb2xvcjogIzAwOGI0NTsgdGV4dC1kZWNvcmF0aW9uOiB1bmRlcmxpbmUgfSAvKiBOYW1lLk5hbWVzcGFjZSAqLwouY29kZWhpbGl0ZSAubnggeyBjb2xvcjogIzU1NTU1NSB9IC8qIE5hbWUuT3RoZXIgKi8KLmNvZGVoaWxpdGUgLnB5IHsgY29sb3I6ICM1NTU1NTUgfSAvKiBOYW1lLlByb3BlcnR5ICovCi5jb2RlaGlsaXRlIC5udCB7IGNvbG9yOiAjOEIwMDhCOyBmb250LXdlaWdodDogYm9sZCB9IC8qIE5hbWUuVGFnICovCi5jb2RlaGlsaXRlIC5udiB7IGNvbG9yOiAjMDA2ODhCIH0gLyogTmFtZS5WYXJpYWJsZSAqLwouY29kZWhpbGl0ZSAub3cgeyBjb2xvcjogIzhCMDA4QiB9IC8qIE9wZXJhdG9yLldvcmQgKi8KLmNvZGVoaWxpdGUgLncgeyBjb2xvcjogI2JiYmJiYiB9IC8qIFRleHQuV2hpdGVzcGFjZSAqLwouY29kZWhpbGl0ZSAubWIgeyBjb2xvcjogI0I0NTJDRCB9IC8qIExpdGVyYWwuTnVtYmVyLkJpbiAqLwouY29kZWhpbGl0ZSAubWYgeyBjb2xvcjogI0I0NTJDRCB9IC8qIExpdGVyYWwuTnVtYmVyLkZsb2F0ICovCi5jb2RlaGlsaXRlIC5taCB7IGNvbG9yOiAjQjQ1MkNEIH0gLyogTGl0ZXJhbC5OdW1iZXIuSGV4ICovCi5jb2RlaGlsaXRlIC5taSB7IGNvbG9yOiAjQjQ1MkNEIH0gLyogTGl0ZXJhbC5OdW1iZXIuSW50ZWdlciAqLwouY29kZWhpbGl0ZSAubW8geyBjb2xvcjogI0I0NTJDRCB9IC8qIExpdGVyYWwuTnVtYmVyLk9jdCAqLwouY29kZWhpbGl0ZSAuc2EgeyBjb2xvcjogI0NENTU1NSB9IC8qIExpdGVyYWwuU3RyaW5nLkFmZml4ICovCi5jb2RlaGlsaXRlIC5zYiB7IGNvbG9yOiAjQ0Q1NTU1IH0gLyogTGl0ZXJhbC5TdHJpbmcuQmFja3RpY2sgKi8KLmNvZGVoaWxpdGUgLnNjIHsgY29sb3I6ICNDRDU1NTUgfSAvKiBMaXRlcmFsLlN0cmluZy5DaGFyICovCi5jb2RlaGlsaXRlIC5kbCB7IGNvbG9yOiAjQ0Q1NTU1IH0gLyogTGl0ZXJhbC5TdHJpbmcuRGVsaW1pdGVyICovCi5jb2RlaGlsaXRlIC5zZCB7IGNvbG9yOiAjQ0Q1NTU1IH0gLyogTGl0ZXJhbC5TdHJpbmcuRG9jICovCi5jb2RlaGlsaXRlIC5zMiB7IGNvbG9yOiAjQ0Q1NTU1IH0gLyogTGl0ZXJhbC5TdHJpbmcuRG91YmxlICovCi5jb2RlaGlsaXRlIC5zZSB7IGNvbG9yOiAjYWU4MWZmIH0gLyogTGl0ZXJhbC5TdHJpbmcuRXNjYXBlICovCi5jb2RlaGlsaXRlIC5zaCB7IGNvbG9yOiAjMWM3ZTcxOyBmb250LXN0eWxlOiBpdGFsaWMgfSAvKiBMaXRlcmFsLlN0cmluZy5IZXJlZG9jICovCi5jb2RlaGlsaXRlIC5zaSB7IGNvbG9yOiAjQ0Q1NTU1IH0gLyogTGl0ZXJhbC5TdHJpbmcuSW50ZXJwb2wgKi8KLmNvZGVoaWxpdGUgLnN4IHsgY29sb3I6ICNjYjZjMjAgfSAvKiBMaXRlcmFsLlN0cmluZy5PdGhlciAqLwouY29kZWhpbGl0ZSAuc3IgeyBjb2xvcjogIzFjN2U3MSB9IC8qIExpdGVyYWwuU3RyaW5nLlJlZ2V4ICovCi5jb2RlaGlsaXRlIC5zMSB7IGNvbG9yOiAjQ0Q1NTU1IH0gLyogTGl0ZXJhbC5TdHJpbmcuU2luZ2xlICovCi5jb2RlaGlsaXRlIC5zcyB7IGNvbG9yOiAjQ0Q1NTU1IH0gLyogTGl0ZXJhbC5TdHJpbmcuU3ltYm9sICovCi5jb2RlaGlsaXRlIC5icCB7IGNvbG9yOiAjNjU4YjAwIH0gLyogTmFtZS5CdWlsdGluLlBzZXVkbyAqLwouY29kZWhpbGl0ZSAuZm0geyBjb2xvcjogIzAwOGI0NSB9IC8qIE5hbWUuRnVuY3Rpb24uTWFnaWMgKi8KLmNvZGVoaWxpdGUgLnZjIHsgY29sb3I6ICMwMDY4OEIgfSAvKiBOYW1lLlZhcmlhYmxlLkNsYXNzICovCi5jb2RlaGlsaXRlIC52ZyB7IGNvbG9yOiAjMDA2ODhCIH0gLyogTmFtZS5WYXJpYWJsZS5HbG9iYWwgKi8KLmNvZGVoaWxpdGUgLnZpIHsgY29sb3I6ICMwMDY4OEIgfSAvKiBOYW1lLlZhcmlhYmxlLkluc3RhbmNlICovCi5jb2RlaGlsaXRlIC52bSB7IGNvbG9yOiAjMDA2ODhCIH0gLyogTmFtZS5WYXJpYWJsZS5NYWdpYyAqLwouY29kZWhpbGl0ZSAuaWwgeyBjb2xvcjogI0I0NTJDRCB9IC8qIExpdGVyYWwuTnVtYmVyLkludGVnZXIuTG9uZyAqLwogICAgLyogcGFnZV9jc3MgKi8KCiAgICAKICAgIGh0bWx7CiAgICAgICAgYmFja2dyb3VuZDogI0VFRUVFRTsKICAgIH0KICAgIGJvZHl7CiAgICAgICAgd2lkdGg6IDkwJTsKICAgICAgICBtYXgtd2lkdGg6IDk2MHB4OwogICAgICAgIGJhY2tncm91bmQ6ICNGRkZGRkY7CiAgICAgICAgbWFyZ2luOiAzZW0gYXV0byAwOwogICAgICAgIHBhZGRpbmctdG9wOiAyZW07CiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgI0VFRUVFRTsKICAgICAgICBib3JkZXItd2lkdGg6IDAgMXB4OwogICAgfQoKICAgIC5wb3N0ewogICAgICAgIHBhZGRpbmc6IDUlIDEwJTsKICAgICAgICBtYXJnaW4tdG9wOiAwOwogICAgICAgIG1hcmdpbi1ib3R0b206IDA7CiAgICB9CiAgICAKCiAgICAudGl0bGVfY29udGFpbmVyewogICAgICAgIG1hcmdpbjogLTJlbSAwIDMuNWVtOwogICAgICAgIHBhZGRpbmctYm90dG9tOiAyZW07CiAgICAgICAgYm9yZGVyLWJvdHRvbTogM3B4IGRvdWJsZSAjRUVFRUVFOwogICAgfQogICAgLnRpdGxlX2NvbnRhaW5lciBoMXsKICAgICAgICBtYXJnaW4tdG9wOiAxLjJlbTsKICAgICAgICBtYXJnaW4tYm90dG9tOiAwLjZlbTsKICAgICAgICBsaW5lLWhlaWdodDogMS4zNTsKICAgICAgICBmb250LXNpemU6IDIuMjVlbTsKICAgIH0KICAgIC50aXRsZV9jb250YWluZXIgaDJ7CiAgICAgICAgY29sb3I6ICM4ODg4ODg7CiAgICAgICAgZm9udC1zaXplOiAxZW07CiAgICAgICAgZm9udC13ZWlnaHQ6IG5vcm1hbDsKICAgICAgICBwYWRkaW5nLWJvdHRvbTogMmVtOwogICAgICAgIGxpbmUtaGVpZ2h0OiAxLjM1OwogICAgICAgIG1hcmdpbi1ib3R0b206IC0yZW07CiAgICB9CgogICAgQG1lZGlhIG9ubHkgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiA3NjBweCl7CiAgICAgICAgaHRtbHsKICAgICAgICAgICAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7CiAgICAgICAgfQogICAgICAgIGJvZHl7CiAgICAgICAgICAgIG1hcmdpbjogMDsKICAgICAgICB9CiAgICAgICAgLnBvc3R7CiAgICAgICAgICAgIHBhZGRpbmc6IDA7CiAgICAgICAgfQogICAgfQogICAgLyogcGFnZV9jc3MgKi8KCiAgICA=">
+    <!--header_scripts-->
+</head>
+<body>
+    <div class="post">
+        <div class="post_body">
+            
+            <h1 style='font-family:b;color:black;display:block; text-align:center;text-indent:0'  id="toc_0" class="h16 md_first_h">大数据技术</h1>
+
+<blockquote><div class="toc_container">
+<div class="toc"><ul>
+<li>
+<a href="#toc_0">大数据技术</a>
+<ul>
+<li>
+<a href="#toc_1">第一章：大数据简介与分布式系统</a>
+<ul>
+<li>
+<a href="#toc_2">第一节：大数据介绍</a>
+<ul>
+<li>
+<a href="#toc_3">一、大数据概览</a>
+</li>
+<li>
+<a href="#toc_4">二、大数据处理及意义</a>
+</li>
+<li>
+<a href="#toc_5">三、大数据应用场景</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_6">第二节：分布式架构介绍</a>
+<ul>
+<li>
+<a href="#toc_7">一、单机架构</a>
+</li>
+<li>
+<a href="#toc_8">二、集群</a>
+</li>
+<li>
+<a href="#toc_9">三、分布式系统</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_10">第三节：常见的分布式系统</a>
+<ul>
+<li>
+<a href="#toc_11">一、分布式存储系统</a>
+<ul>
+<li>
+<a href="#toc_12">1、中间控制节点架构</a>
+</li>
+<li>
+<a href="#toc_13">2、完全无中心架构</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_14">二、分布式计算系统</a>
+<ul>
+<li>
+<a href="#toc_15">1、Hadoop Map Reduce </a>
+</li>
+<li>
+<a href="#toc_16">2、Spark</a>
+</li>
+<li>
+<a href="#toc_17">3、Flink</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_18">三、分布式消息队列系统</a>
+</li>
+<li>
+<a href="#toc_19">四、分布式机器学习系统</a>
+<ul>
+<li>
+<a href="#toc_20">1、Spark ML</a>
+</li>
+<li>
+<a href="#toc_21">2、分布式 TensorFlow</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_22">第二章：Scala与sbt构建工具</a>
+<ul>
+<li>
+<a href="#toc_23">第一节：Scala 基础</a>
+<ul>
+<li>
+<a href="#toc_24">一、Scala 简介</a>
+</li>
+<li>
+<a href="#toc_25">二、Scala 数据类型和结构</a>
+</li>
+<li>
+<a href="#toc_26">三、Scala 方法和函数</a>
+</li>
+<li>
+<a href="#toc_27">四、Scala 类和对象</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_28">第二节：sbt简介</a>
+<ul>
+<li>
+<a href="#toc_29">1、项目结构</a>
+</li>
+<li>
+<a href="#toc_30">2、sbt常用命令</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_31">第三章：分布式文件系统</a>
+<ul>
+<li>
+<a href="#toc_32">第一节：分布式文件系统简介</a>
+<ul>
+<li>
+<a href="#toc_33">1、单机式文件系统</a>
+</li>
+<li>
+<a href="#toc_34">2、分布式文件系统</a>
+<ul>
+<li>
+<ul>
+<li>
+<a href="#toc_35">分布式文件系统的架构</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_36">3、常见的分布式文件系统</a>
+</li>
+<li>
+<a href="#toc_37">4、GFS 谷歌分布式文件系统</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_38">第二节：HDFS详解</a>
+<ul>
+<li>
+<a href="#toc_39">1、HDFS 简介</a>
+<ul>
+<li>
+<a href="#toc_40">HDFS 设计原则</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_41">2、HDFS 架构及重要组成部分</a>
+<ul>
+<li>
+<a href="#toc_42">（1）Namenode</a>
+</li>
+<li>
+<a href="#toc_43">（2）Secondary Namenode</a>
+</li>
+<li>
+<a href="#toc_44">（3）Datanode</a>
+</li>
+<li>
+<a href="#toc_45">（4）The File System Namespace——文件系统命名空间</a>
+</li>
+<li>
+<a href="#toc_46">（5）File Block and Data Replication——文件块和数据复制</a>
+<ul>
+<li>
+<a href="#toc_47">&lt;1&gt; 文件块：一个文件可以可以被划分成很多个数据块</a>
+</li>
+<li>
+<a href="#toc_48">&lt;2&gt; 数据复制</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_49">（6）Data Replication——数据复制原理</a>
+</li>
+<li>
+<a href="#toc_50">（7）节点交流协议</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_51">3、HDFS 读写操作</a>
+<ul>
+<li>
+<a href="#toc_52">（1）HDFS写操作</a>
+</li>
+<li>
+<a href="#toc_53">（2）HDFS读操作</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_54">4、HDFS 特点</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_55">第三节：元数据管理</a>
+<ul>
+<li>
+<a href="#toc_56">1、元数据简介</a>
+</li>
+<li>
+<a href="#toc_57">2、分布式储存系统的元数据管理</a>
+<ul>
+<li>
+<a href="#toc_58">（1）中心节点管理</a>
+</li>
+<li>
+<a href="#toc_59">（2）分布式节点管理</a>
+</li>
+<li>
+<a href="#toc_60">（3）无元数据节点管理</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_61">3、HDFS元数据管理</a>
+<ul>
+<li>
+<a href="#toc_62">（1）HDFS元数据管理架构</a>
+</li>
+<li>
+<a href="#toc_63">（2）HDFS元数据内容</a>
+</li>
+<li>
+<a href="#toc_64">（3）HDFS元数据持久化储存</a>
+</li>
+<li>
+<a href="#toc_65">（4）HDFS元数据节点的可用性</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div></blockquote>
+<h2 style='font-family:b;color:red'  id="toc_1" class="h16">第一章：大数据简介与分布式系统</h2>
+<h3 style='font-family:b;color:blue'  id="toc_2" class="h16">第一节：大数据介绍</h3>
+<h4 style='font-family:b;color:black'  id="toc_3" class="h16">一、大数据概览</h4>
+
+<p class="md_block md_block_as_opening md_has_block_below md_has_block_below_ul">
+    <span class="md_line md_line_start md_line_end">什么是<strong>“大数据”</strong> ？通常来说，我们用四个$V$去定义，即：</span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>Volume：即海量的数据规模
+
+</span></li>
+<li class="md_li"><span>Variety：多样的数据类型
+
+</span></li>
+<li class="md_li"><span>Velocity：快速的数据流转
+
+</span></li>
+<li class="md_li"><span>Value：数据中蕴含巨大的价值
+
+</span></li>
+</ul>
+<h4 style='font-family:b;color:black'  id="toc_4" class="h16">二、大数据处理及意义</h4>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">全球数据总量飞速上升，并且超过 80%的是无结构数据，而传统的数据通常是通过单机处理的，且处理的数据类型通常为结构化数据，当大数据时代来临后，数据规模越来越大，数据类型也越来越复杂，单机对于非结构化数据难以处理，无法储存海量数据，难以提取数据价值。大数据处理能够实现并行处理 ，多个机器一起 工作，可扩展能力强，因此处理速度迅速，可快速处理多种数据格式 ， 文本数据，音频数据</span>
+</p>
+
+<h4 style='font-family:b;color:black'  id="toc_5" class="h16">三、大数据应用场景</h4>
+
+<ul>
+<li class="md_li"><span>移动支付行业
+
+
+<ul>
+<li class="md_li"><span>支付宝：欺诈行为检测
+
+</span></li>
+<li class="md_li"><span>微信：钱包理财推荐
+
+</span></li>
+<li class="md_li"><span>京东：白条用户违约分析
+
+</span></li>
+</ul>
+</span></li>
+<li class="md_li"><span>电商行业
+
+
+<ul>
+<li class="md_li"><span>淘宝：个性化商品推荐
+
+</span></li>
+<li class="md_li"><span>拼多多：利用数据精准营销
+
+</span></li>
+</ul>
+</span></li>
+<li class="md_li"><span>视频行业
+
+
+<ul>
+<li class="md_li"><span>抖音：用户短视频数据分析及推荐
+
+</span></li>
+<li class="md_li"><span>Youtube：视频个性化推荐及广告精确推送
+
+</span></li>
+</ul>
+</span></li>
+</ul>
+
+<hr>
+<h3 style='font-family:b;color:blue'  id="toc_6" class="h16">第二节：分布式架构介绍</h3>
+<h4 style='font-family:b;color:black'  id="toc_7" class="h16">一、单机架构</h4>
+
+<p class="md_block  md_has_block_below md_has_block_below_ul">
+    <span class="md_line md_line_start">所谓的单机架构，是一种最简单的架构，将所有的业务功能都在一个项目中，并且部署到一台服务器上，客户端所有的请求业务都由这一台服务器处理，如下图所示：<br /></span>
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image"><img class="md_compiled " src="assets/截屏2020-11-0419.40.14.png?r=70" alt="" title="" style="width:70%;"><br /></span>
+    <span class="md_line img_before md_line_end">这样的简单架构存在诸多的缺点：</span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>所有用户的需求都是一台服务器处理 ，无法满足大量的业务需求
+
+</span></li>
+<li class="md_li"><span>所有业务功能（例如：用户管理 +订单+支付+物流）都只能由一台服务器处理 ，无法同时处理大量不同业务并且做业务切割
+
+</span></li>
+<li class="md_li"><span>所有业务功能由一台服务器处理，当服务器发生故障时，所有业务将无法处理
+
+</span></li>
+</ul>
+<h4 style='font-family:b;color:black'  id="toc_8" class="h16">二、集群</h4>
+
+<p class="md_block  md_has_block_below md_has_block_below_ul">
+    <span class="md_line md_line_start">集群架构值的是将单机复制多份，这些单机就构成了集群，每一台服务器就叫做节点，每个节点都提供相同的服务<br /></span>
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image"><img class="md_compiled " src="assets/截屏2020-11-0421.41.00.png?r=70" alt="" title="" style="width:70%;"><br /></span>
+    <span class="md_line img_before md_line_end">在集群架构中，负载均衡服务器非常重要，它能够接收并且处理所有用户请求，同时监控并且查看各个服务器节点的负载，调度用户请求 ，将用户请求发送 给负载小的服务器节点；因此集群机构的优势在于：</span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>服务器处理业务需求的能力可以扩展（增加服务器节点）
+
+</span></li>
+<li class="md_li"><span>可以处理大量的用户请求
+
+</span></li>
+</ul>
+
+<p class="md_block md_block_as_opening md_has_block_below md_has_block_below_ul">
+    <span class="md_line md_line_start md_line_end">但与此同时，集群结构也存在一定的瓶颈，主要表现为：</span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>集群每个节点处理相同任务，每次扩张只是单一增加机器，无法将任务切割成小任务
+
+</span></li>
+<li class="md_li"><span>任务本身复杂，简单增加机器无法解决，需要切割划分任务，这是集群架构无能为力的
+
+</span></li>
+</ul>
+<h4 style='font-family:b;color:black'  id="toc_9" class="h16">三、分布式系统</h4>
+
+<p class="md_block md_block_as_opening md_has_block_below md_has_block_below_ul">
+    <span class="md_line md_line_start md_line_end">分布式系统有以下特点：</span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>将完整的系统按照业务划分成各个子系统
+
+</span></li>
+<li class="md_li"><span>每个子系统是一个服务
+
+</span></li>
+<li class="md_li"><span>每个子系统都是独立部署，互相不受影响
+
+</span></li>
+<li class="md_li"><span>服务之间可以互相通信
+
+</span></li>
+</ul>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">分布式系统成为主流架构的原因主要在于其子系统独立部署的特点以及高扩展性（可以无限扩张系统性能，性能不再是瓶颈）</span>
+</p>
+
+
+<hr>
+<h3 style='font-family:b;color:blue'  id="toc_10" class="h16">第三节：常见的分布式系统</h3>
+<h4 style='font-family:b;color:black'  id="toc_11" class="h16">一、分布式存储系统</h4>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">分布式存储系统主要有两类：中间控制节点架构和完全无中心架构</span>
+</p>
+
+<h5 style='font-family:b;color:black'  id="toc_12" class="h16">1、中间控制节点架构</h5>
+
+<ul>
+<li class="md_li"><span>定义：以单独元数据（即描述数据的数据 (包含具体数据的路径，以及相关信息)）服务器为中间控制，具体数据存储服务器为分布式存储的架构存储
+
+</span></li>
+<li class="md_li"><span>代表： Hadoop Distributed File System（HDFS）
+
+</span></li>
+<li class="md_li"><span>架构图
+
+</span></li>
+</ul>
+
+<p class="md_block md_block_as_opening md_has_block_below md_has_block_below_ul">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start"><img class="md_compiled " src="assets/截屏2020-11-0422.13.44.png?r=70" alt="" title="" style="width:70%;"><br /></span>
+    <span class="md_line img_before md_line_end">从上图可以看出，用户在访问数据之前，必须先访问“元数据服务器节点”，通过元数据服务器节点，查询真实数据的信息，再又用户与数据服务器节点进行交互，HDFS中，元数据服务器节点称之为“NameNode”，而数据服务器节点称之为“DataNode”，其特点主要有以下两点：</span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>用户进行数据读写时，先访问存储元数据的节点（NameNode），得到真正数据的储存信息后，去真正存储数据的节点（Datanode）进行读写
+
+</span></li>
+<li class="md_li"><span>.存储元数据的节点通常为单一的服务器节点，但是因为访问元数据节点的频率和访问量都相对数据节点较小，所以不太可能会出现性能瓶颈
+
+</span></li>
+</ul>
+<h5 style='font-family:b;color:black'  id="toc_13" class="h16">2、完全无中心架构</h5>
+
+<ul>
+<li class="md_li"><span>定义：客户端通过设备映射关系计算出具体数据的位置，客户端直接与数据存储节点进行交互
+
+</span></li>
+<li class="md_li"><span>代表：计算模式（Ceph）
+
+</span></li>
+<li class="md_li"><span>架构图
+
+</span></li>
+</ul>
+
+<p class="md_block  md_has_block_below md_has_block_below_ul">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/截屏2020-11-0422.21.35.png?r=70" alt="" title="" style="width:70%;"></span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>流程介绍：客户端通过Mon服务通信，计算得到客户端需要写到的具体文件路径（注意：Mon服务在客户端和数据端都有，需要通过网络通讯保持信息的一致）
+
+</span></li>
+<li class="md_li"><span>特点：
+
+
+<ul>
+<li class="md_li"><span>与中间控制架构的相似，真实的数据都是分布式存储在各个服务器节点
+
+</span></li>
+<li class="md_li"><span>与中间控制架构的不同的地方在于，架构中没有类似于Namenode的中心节点，而是客户端通过设备映射关系计算出其读写数据的数据节点位置 ，从而直接访问数据存储节点
+
+</span></li>
+</ul>
+</span></li>
+</ul>
+<h4 style='font-family:b;color:black'  id="toc_14" class="h16">二、分布式计算系统</h4>
+
+<p class="md_block md_block_as_opening md_has_block_below md_has_block_below_ul">
+    <span class="md_line md_line_start md_line_end">分布式计算系统主要介绍三类，即：</span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>Hadoop Map Reduce
+
+</span></li>
+<li class="md_li"><span>Spark
+
+</span></li>
+<li class="md_li"><span>Flink
+
+</span></li>
+</ul>
+<h5 style='font-family:b;color:black'  id="toc_15" class="h16">1、Hadoop Map Reduce </h5>
+
+<ul>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">定义：一种大数据编程模型，将数据处理运用<em class="md_patched_em">Map</em>和<em class="md_patched_em">Reduce</em>的概念进行<strong>分而治之</strong>的处理</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>理念：分而治之，将大任务划分成小任务
+
+</span></li>
+<li class="md_li"><span>应用场景：批处理（一次性处理数据）
+
+</span></li>
+</ul>
+
+<p class="md_block  md_has_block_below md_has_block_below_ul">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/截屏2020-11-0422.30.46.png?r=65" alt="" title="" style="width:65%;"></span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>优点：实现了分布式计算
+
+</span></li>
+<li class="md_li"><span>缺点：中间结果都存放在硬盘，导致无法实时查询中间过程结果，因此效率一般，因为这个原因，导致无法进行迭代计算，只能应用于批处理，对于机器学习领域非常不友好
+
+</span></li>
+</ul>
+<h5 style='font-family:b;color:black'  id="toc_16" class="h16">2、Spark</h5>
+
+<ul>
+<li class="md_li"><span>定义：基于内存优化的分布式大数据计算框架
+
+</span></li>
+<li class="md_li"><span>理念：分而治之，将大任务划分成小任务，引入RDD概念
+
+</span></li>
+<li class="md_li"><span>应用场景：批处理(效率最好) +流处理（Spark中的流处理不是真正的流处理，而是一种微笑的批处理）
+
+</span></li>
+<li class="md_li"><span>应用程序流程图
+
+</span></li>
+</ul>
+
+<p class="md_block">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/截屏2020-11-0423.08.21.png?r=70" alt="" title="" style="width:70%;"></span>
+</p>
+
+<h5 style='font-family:b;color:black'  id="toc_17" class="h16">3、Flink</h5>
+
+<ul>
+<li class="md_li"><span>定义：分布式大数据处理框架，真正实现了对流数据进行计算
+
+</span></li>
+<li class="md_li"><span>理念：实时处理
+
+</span></li>
+<li class="md_li"><span>应用场景：流处理
+
+</span></li>
+</ul>
+
+<p class="md_block  md_has_block_below md_has_block_below_ul">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/截屏2020-11-0423.14.36.png?r=61" alt="" title="" style="width:61%;"></span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>应用程序流程图
+</span></li>
+</ul>
+
+<p class="md_block">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start"><img class="md_compiled " src="assets/截屏2020-11-0423.15.33.png?r=50" alt="" title="" style="width:50%;"><br /></span>
+    <span class="md_line img_before md_line_end">从上图中可以看出，与Spark，MapReduce相同，Flink也有一个管理器：JobManager，负责任务的调度</span>
+</p>
+
+<strong>MapReduce、Spark、Flink对比：</strong><table>
+ <thead><tr><th style="text-align:left">\</th>
+<th style="text-align:left">MapReduce</th>
+<th style="text-align:left">Spark</th>
+<th style="text-align:left">Flink</th>
+ </tr>
+</thead>
+ <tbody><tr><td style="text-align:left">应用场景 </td>
+<td style="text-align:left"> 批处理 </td>
+<td style="text-align:left"> 批处理+实时处理 </td>
+<td style="text-align:left"> 实时处理</td>
+</tr>
+<tr><td style="text-align:left">效率 </td>
+<td style="text-align:left"> 中间结果在硬盘，效率一般 </td>
+<td style="text-align:left">  提供内存优化，批处理效率最好，实时处理为微型批处理 </td>
+<td style="text-align:left"> 真正的实时处理效率最高的开源框架</td>
+</tr>
+<tr><td style="text-align:left">功能性 </td>
+<td style="text-align:left"> 无法交互式查询 </td>
+<td style="text-align:left"> 可以交互式查询，进行机器学习 </td>
+<td style="text-align:left"> 可以实时进行状态交互式查询</td>
+</tr>
+<tr><td style="text-align:left">支持语言 </td>
+<td style="text-align:left"> Java，C++ </td>
+<td style="text-align:left"> Java,Scala,Python,R </td>
+<td style="text-align:left"> Java,Scala,Python,R</td>
+</tr>
+<tr><td style="text-align:left">扩展包 </td>
+<td style="text-align:left"> HDFS，YARN </td>
+<td style="text-align:left"> Spark Graph, Spark ML </td>
+<td style="text-align:left"> Flink Sql</td>
+</tr>
+</tbody> 
+</table>
+<!--block_code_end--><h4 style='font-family:b;color:black'  id="toc_18" class="h16">三、分布式消息队列系统</h4>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">分布式消息队列系统以<strong>Kafka</strong>为典型代表，它是一个分布式消息队列。具有高性能、持久化、多副本备份、横向扩展能力。 如下图所示，Kafka的特点为<strong>生产者</strong>往队列里写消息，<strong>消费者</strong>从队列里取消息进行业务逻辑</span>
+</p>
+
+
+<p class="md_block">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start"><img class="md_compiled " src="assets/截屏2020-11-0423.26.42.png?r=70" alt="" title="" style="width:70%;"><br /></span>
+    <span class="md_line img_before">这里的Broker是存储数据的服务器，可以做备份；如下图所示，Kafka通过Topic定义特定的消息， 可以让生产者和消费者都从 该Topic中进行数据读写，同时一个Topic可以分成好几个分区，这样每个分区就可以在不同的Broker上进行备份<br /></span>
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_end"><img class="md_compiled " src="assets/截屏2020-11-0423.29.26.png?r=70" alt="" title="" style="width:70%;"></span>
+</p>
+
+<h4 style='font-family:b;color:black'  id="toc_19" class="h16">四、分布式机器学习系统</h4>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">机器学习中最具有代表性的是<strong>Spark ML</strong>，还有一种分布式<strong>TensorFlow</strong></span>
+</p>
+
+<h5 style='font-family:b;color:black'  id="toc_20" class="h16">1、Spark ML</h5>
+
+<ul>
+<li class="md_li"><span>定义：以Spark 为计算引擎的分布式机器学习框架
+
+</span></li>
+<li class="md_li"><span>特点：提供一个分布式的模型训练环境，也能提供一个训练数据集分布式处理的环境
+
+</span></li>
+</ul>
+<h5 style='font-family:b;color:black'  id="toc_21" class="h16">2、分布式 TensorFlow</h5>
+
+<p class="md_block">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start"><img class="md_compiled " src="assets/截屏2020-11-0423.34.45.png?r=50" alt="" title="" style="width:50%;"><br /></span>
+    <span class="md_line img_before md_line_end">如上图所示，分布式 TensorFlow 是在分布式集群进行训练，首先创建一个集群$W_1,\ldots, W_n$，然后将任务发送到$W_1$，$W_1$将任务发送给其他的节点，然后进行分布式的计算</span>
+</p>
+
+
+<hr>
+<span class="md_repeated_n md_repeated_n_1"></span><h2 style='font-family:b;color:red'  id="toc_22" class="h16">第二章：Scala与sbt构建工具</h2>
+<h3 style='font-family:b;color:blue'  id="toc_23" class="h16">第一节：Scala 基础</h3>
+<h4 style='font-family:b;color:black'  id="toc_24" class="h16">一、Scala 简介</h4>
+
+<ul>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end"><strong>Scala</strong>是一门基于编译的多范式编程语言，问世于2003年，由<em class="md_patched_em">Martin Odersky</em>和其研究组发明，可快速并且高效运行在Java虚拟机中</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block md_block_as_opening md_has_block_below md_has_block_below_ul">
+    <span class="md_line md_line_start md_line_end"><strong>Scala</strong>语言的特点：</span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>面向对象语言：Scala是一种纯面向对象的语言，每个值都是对象，对象的数据类型以及行为由类和特质描述
+
+</span></li>
+<li class="md_li"><span>函数式编程：Scala也是一种函数式语言，其函数也能当成值来使用
+
+</span></li>
+<li class="md_li"><span>静态类型：Scala具备类型系统，通过编译时检查，保证代码的安全性和一致性
+
+</span></li>
+<li class="md_li"><span>扩展性和并发性：Scala使用Actor作为其并发模型
+
+</span></li>
+</ul>
+</span></li>
+</ul>
+<h4 style='font-family:b;color:black'  id="toc_25" class="h16">二、Scala 数据类型和结构</h4>
+<table>
+ <thead><tr><th style="text-align:left">数据类型</th>
+<th style="text-align:left">描述</th>
+ </tr>
+</thead>
+ <tbody><tr><td style="text-align:left">Byte </td>
+<td style="text-align:left"> 8位有符号补码整数。数值区间为 -128 到 127</td>
+</tr>
+<tr><td style="text-align:left">Short </td>
+<td style="text-align:left"> 16位有符号补码整数。数值区间为 -32768 到 32767</td>
+</tr>
+<tr><td style="text-align:left">Int </td>
+<td style="text-align:left"> 32位有符号补码整数。数值区间为 -2147483648 到 2147483647</td>
+</tr>
+<tr><td style="text-align:left">Long </td>
+<td style="text-align:left"> 64位有符号补码整数。数值区间为 -9223372036854775808 到 9223372036854775807</td>
+</tr>
+<tr><td style="text-align:left">Float </td>
+<td style="text-align:left"> 32 位, IEEE 754 标准的单精度浮点数</td>
+</tr>
+<tr><td style="text-align:left">Double </td>
+<td style="text-align:left"> 64 位 IEEE 754 标准的双精度浮点数</td>
+</tr>
+<tr><td style="text-align:left">Char </td>
+<td style="text-align:left"> 16位无符号Unicode字符, 区间值为 U+0000 到 U+FFFF 字符序列</td>
+</tr>
+<tr><td style="text-align:left">String </td>
+<td style="text-align:left"> 字符序列</td>
+</tr>
+<tr><td style="text-align:left">Boolean </td>
+<td style="text-align:left"> 布尔变量</td>
+</tr>
+<tr><td style="text-align:left">Unit </td>
+<td style="text-align:left"> 表示无值，和其他语言中void等同，用作不返回任何结果的方法的结果类型，Unit只有一个实例值，写成()</td>
+</tr>
+<tr><td style="text-align:left">Null </td>
+<td style="text-align:left"> null或空引用</td>
+</tr>
+<tr><td style="text-align:left">Nothing </td>
+<td style="text-align:left"> Nothing 类型在 Scala 的类层级的最底端;它是任何其他类型的子类型</td>
+</tr>
+<tr><td style="text-align:left">Any </td>
+<td style="text-align:left"> Any是所有其他类的超类</td>
+</tr>
+<tr><td style="text-align:left">AnyRef </td>
+<td style="text-align:left"> AnyRef类是Scala里所有引用类(reference class)的基类</td>
+</tr>
+</tbody> 
+</table>
+<!--block_code_end--><h4 style='font-family:b;color:black'  id="toc_26" class="h16">三、Scala 方法和函数</h4>
+
+<ul>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">Scala 方法是类的一部分，而函数是一个对象，可以赋值给一个变量； 换句话来说在类中定义的函数即是方法，在Scala中，用<code>val</code>定义函数，用<code>def</code>定义方法</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">方法声明：<code>def functionName ([参数列表]) : [return type]</code>，例如：</span>
+</p>
+
+</span></li>
+</ul>
+<div class="codehilite code_lang_scala  highlight"><pre><span></span><span class="k">def</span> <span class="n">sumInt</span><span class="o">(</span> <span class="n">a</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">b</span><span class="k">:</span> <span class="kt">Iny</span><span class="o">)</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="k">var</span> <span class="n">sum</span><span class="k">:</span><span class="kt">int</span><span class="o">=</span><span class="mi">0</span>
+    <span class="n">sum</span> <span class="k">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+    <span class="k">return</span> <span class="n">sum</span>
+<span class="o">}</span>
+</pre></div>
+
+<!--block_code_end--><h4 style='font-family:b;color:black'  id="toc_27" class="h16">四、Scala 类和对象</h4>
+
+<p class="md_block  md_has_block_below md_has_block_below_code_block">
+    <span class="md_line md_line_start md_line_end">类是对象的抽象，而对象是类的具体实例。类是抽象 的，不占用内存，而对象是具体的，占用存储空间</span>
+</p>
+
+<div class="codehilite code_lang_scala  highlight"><pre><span></span><span class="k">class</span> <span class="nc">Point</span><span class="o">(</span><span class="n">xc</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">yc</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">var</span> <span class="n">x</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="n">xc</span>
+    <span class="k">var</span> <span class="n">y</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="n">yc</span>
+    <span class="k">def</span> <span class="n">move</span><span class="o">(</span><span class="n">dx</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">dy</span><span class="k">:</span> <span class="kt">Int</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">x</span> <span class="k">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">dx</span>
+        <span class="n">y</span> <span class="k">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">dy</span>
+        <span class="n">println</span> <span class="o">(</span><span class="s">&quot;x 的坐标点：&quot;</span> <span class="o">+</span> <span class="n">x</span><span class="o">)</span>
+        <span class="n">println</span> <span class="o">(</span><span class="s">&quot;y 的坐标点：&quot;</span> <span class="o">+</span> <span class="n">y</span><span class="o">)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="k">object</span> <span class="nc">Test</span> <span class="o">{</span>
+    <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span> <span class="o">{</span>
+        <span class="k">val</span> <span class="n">pt</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Point</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">20</span><span class="o">)</span>
+
+        <span class="c1">// 移到一个新的位置</span>
+        <span class="n">pt</span><span class="o">.</span><span class="n">move</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">10</span><span class="o">)</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+<!--block_code_end--><h3 style='font-family:b;color:blue'  id="toc_28" class="h16">第二节：sbt简介</h3>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">$SBT$全称：<em class="md_patched_em">Simple Build Tool</em>，是 Scala 的构建工具， 类似 Maven 或 Gradle，关于$SBT$的入门介绍，参考<a class="md_compiled" href="https://www.scala-sbt.org/1.x/docs/zh-cn/Getting-Started.html">此网站</a></span>
+</p>
+
+<h4 style='font-family:b;color:black'  id="toc_29" class="h16">1、项目结构</h4>
+<span class="md_repeated_n md_repeated_n_2"></span>
+<p class="md_block">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/截屏2020-11-0622.19.16.png?r=81" alt="" title="" style="width:81%;"></span>
+</p>
+
+<h4 style='font-family:b;color:black'  id="toc_30" class="h16">2、sbt常用命令</h4>
+<table>
+ <thead><tr><th style="text-align:left">命令</th>
+<th style="text-align:left">作用</th>
+ </tr>
+</thead>
+ <tbody><tr><td style="text-align:left">compile </td>
+<td style="text-align:left"> 编译项目</td>
+</tr>
+<tr><td style="text-align:left">run </td>
+<td style="text-align:left"> 先编译，后运行</td>
+</tr>
+<tr><td style="text-align:left">tasks </td>
+<td style="text-align:left"> 列出所有的task</td>
+</tr>
+<tr><td style="text-align:left">clean </td>
+<td style="text-align:left"> 删除编译后生成的target目录下的文件</td>
+</tr>
+<tr><td style="text-align:left">update </td>
+<td style="text-align:left"> 更新外部依赖</td>
+</tr>
+<tr><td style="text-align:left">test </td>
+<td style="text-align:left"> 运行测试代码</td>
+</tr>
+</tbody> 
+</table>
+<!--block_code_end-->
+<hr>
+<h2 style='font-family:b;color:red'  id="toc_31" class="h16">第三章：分布式文件系统</h2>
+<h3 style='font-family:b;color:blue'  id="toc_32" class="h16">第一节：分布式文件系统简介</h3>
+
+<ul>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">定义：所谓的<strong>文件系统</strong>，指的是一种存储和组织计算机数据的方法，利用抽象的文件和目录替代了电脑硬盘或者光盘使用数据块的概念</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>原理：文件系统将硬盘空间以块为单位进行划分，每个文件都占据若干块，然后在通过一个 文件控制块（File Control Block）记录每个文件占据的硬盘数据块
+
+</span></li>
+</ul>
+<h4 style='font-family:b;color:black'  id="toc_33" class="h16">1、单机式文件系统</h4>
+
+<ul>
+<li class="md_li"><span>定义：单机式文件系统是指将文件存在本地或者一台服务器上的硬盘上，所有的文件都存储在同一个物理设备上
+
+</span></li>
+<li class="md_li"><span>特点：
+
+
+<ul>
+<li class="md_li"><span>文件都存储在一台机器上，用户可以直接进行访问
+
+</span></li>
+<li class="md_li"><span>文件系统的性能有限，可存储的文件大小以及被访问的频率有很大的限制
+
+</span></li>
+<li class="md_li"><span>无法自动进行备份，需要用户自己复制文件进行备份
+
+</span></li>
+<li class="md_li"><span>一般都是一个客户端进行访问
+
+</span></li>
+</ul>
+</span></li>
+</ul>
+<h4 style='font-family:b;color:black'  id="toc_34" class="h16">2、分布式文件系统</h4>
+
+<ul>
+<li class="md_li"><span>定义：分布式文件系统是将文件存储在不同的服务器上面，用户不能直接访问，而 是通过网络，利用特定的通信协议和文件服务器进行沟通
+
+</span></li>
+<li class="md_li"><span>对比：单机式文件系统是用户直接访问，文件存储在一台机器；分布式文件系统用户通过网络，利用通信协议和文件服务器激进型沟通
+
+</span></li>
+</ul>
+<h6 id="toc_35" class="h16">分布式文件系统的架构</h6>
+
+<p class="md_block md_block_as_opening md_has_block_below md_has_block_below_ul">
+    <span class="md_line md_line_start md_line_end">分布式文件系统主要由<strong>客户端</strong>和<strong>文件系统服务器</strong>：</span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>客户端
+
+
+<ul>
+<li class="md_li"><span>多个客户端可以同时访问
+
+</span></li>
+<li class="md_li"><span>客户端不直接访问服务器，利用网络通信访问
+
+</span></li>
+</ul>
+</span></li>
+<li class="md_li"><span>文件系统服务器
+
+
+<ul>
+<li class="md_li"><span>文件系统服务器是多个机器组成
+
+</span></li>
+<li class="md_li"><span>文件分布存放在不同的机器上面
+
+</span></li>
+</ul>
+</span></li>
+</ul>
+
+<p class="md_block">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/图片1.png?r=60" alt="" title="" style="width:60%;"></span>
+</p>
+
+<h4 style='font-family:b;color:black'  id="toc_36" class="h16">3、常见的分布式文件系统</h4>
+
+<p class="md_block md_block_as_opening md_has_block_below md_has_block_below_ul">
+    <span class="md_line md_line_start md_line_end">常见的分布式文件系统主要是<strong>谷歌文件系统</strong>（Google File System），后面的所有的分布式系统基本都源于此，它是由谷歌公司开发的，运行在Linux平台的分布式系统，主要组成部分为：<strong>GFSMaster</strong>和<strong>GFS Chunkserver</strong>：</span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>GFSMaster：客户端访问数据和写数据的时候，需要和Master主节点交互，来确定具体数据服务器的位置
+
+</span></li>
+<li class="md_li"><span>Chunkserver：真正文件存放的位置，文件存放在不同的机器中
+
+</span></li>
+</ul>
+<h4 style='font-family:b;color:black'  id="toc_37" class="h16">4、GFS 谷歌分布式文件系统</h4>
+
+<p class="md_block">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/图片1-2.png?r=70" alt="" title="" style="width:70%;"></span>
+</p>
+
+<h3 style='font-family:b;color:blue'  id="toc_38" class="h16">第二节：HDFS详解</h3>
+<h4 style='font-family:b;color:black'  id="toc_39" class="h16">1、HDFS 简介</h4>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">HDFS是Hadoop生态下的分布式文件系统，专门存储超大数据文件，为整个 Hadoop 生态圈提供了基础的存储服务，它来源于<strong>谷歌文件系统</strong>（GFS），是一种常用的大部分分布式文件系统，几乎所有的大数据计算引擎都支持与HDFS的交互。但需要注意的时候，由于HDFS是专门存储超大数据文件，因此，HDFS存在<strong>“小文件”问题</strong></span>
+</p>
+
+<h5 style='font-family:b;color:red'  id="toc_40" class="h16">HDFS 设计原则</h5>
+
+<ul>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end"><strong>硬件故障</strong>：HDFS中的硬件失败应该是常态，并不是意外。因为一个HDFS可能包含大量服务器，每个节点可能会存在硬件故障。 所以， HDFS 需要检测故障、快速和自动回复数据</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end"><strong>流数据访问</strong>：HDFS是被设计用于批量处理 ，而非普通应用程序的用户交互。 设计重点应该在于支持高的吞吐量</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end"><strong>大数据集</strong>：HDFS 支持大文件，应该提供高带宽和可扩展的上百个节点，文 件大小应该在GB及TB以上</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end"><strong>简单一致性原则</strong>：HDFS的文件需要被多个用户多次读写 ，所以其需要一个<strong>“一次写入多次读取”</strong>的文件访问模型。 一个文件一旦创建，写入和关闭后就不再需要改变。 支持在文件的末端进行追加数据而不支持在文件的任意位置进行修改 </span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end"><strong>移动计算比移动数据更划算</strong>：应用的计算在其要操作的数据附近执行那就会更高效。尤其是数据集非常大的时候 ，将最大限度地减少网络拥堵和提高系统的吞吐量</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end"><strong>轻便的跨异构的软硬件平台</strong>：容易从一个平台跨到另一个平台</span>
+</p>
+
+</span></li>
+</ul>
+
+<hr>
+<span class="md_repeated_n md_repeated_n_1"></span><h4 style='font-family:b;color:black'  id="toc_41" class="h16">2、HDFS 架构及重要组成部分</h4>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">HDFS的整体架构如下图所示：</span>
+</p>
+
+
+<p class="md_block">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/图片1-3.png?r=70" alt="" title="" style="width:70%;"></span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">从上图中可以看出，HDFS是一个<strong>主从架构</strong>的分布式 文件系统 ，主要由 Namenode 和Datanode 构成；客户端通过 Namenode 对真实的数据进行 管理客户端首先与Namennode进行交互，然后Namenode与Datanode进行交互，获得数据的具体位置，最后才是客户端与Namenode进行交互；HDFS的主要组成部分如下：</span>
+</p>
+
+<h5 style='font-family:b;color:black'  id="toc_42" class="h16">（1）Namenode</h5>
+
+<ul>
+<li class="md_li"><span>HDFS 集群必须拥有至少一个Namenode，是HDFS的大脑，其功能主要有以下五个：
+
+
+<ul>
+<li class="md_li"><span>存储元数据信息
+
+</span></li>
+<li class="md_li"><span>管理HDFS的命名空间（文件的存储结构）
+
+</span></li>
+<li class="md_li"><span>管理客户端的访问权限
+
+</span></li>
+<li class="md_li"><span>管理Datanode中的文件块映射
+
+</span></li>
+<li class="md_li"><span>接收Datanode的心跳信息和文件块报告
+
+</span></li>
+</ul>
+</span></li>
+<li class="md_li"><span>Namenode的存储机制：Namenode在启动时，会读取fsimage并且与日志文件：eidt logs合并，然后恢复到上次关闭时的状态，而在运行中，所有针对于Namenode的操作（例如元数据的读写）都会被写入到eidt logs，这样，在意外宕机重启后，可以恢复到之前的状态
+
+</span></li>
+</ul>
+
+<p class="md_block">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/图片3.png?r=60" alt="" title="" style="width:60%;"></span>
+</p>
+
+<span class="md_repeated_n md_repeated_n_1"></span><h5 style='font-family:b;color:black'  id="toc_43" class="h16">（2）Secondary Namenode</h5>
+
+<p class="md_block">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/图片4.png?r=60" alt="" title="" style="width:60%;"></span>
+</p>
+
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">Secondary Namenode 不是Namenode，它是一个“备份主节点”，是为了更好的容错性，从上图中可以看出，其作用是作为Namenode的助手，把edit logs更新到fsimage中，然后在把fsimage合并，保持了fsimage的实时更新</span>
+</p>
+
+<h5 style='font-family:b;color:black'  id="toc_44" class="h16">（3）Datanode</h5>
+
+<ul>
+<li class="md_li"><span>HDFS 中真正存储数据的节点 ，通常来说一个 Datanode 指的就是整个集群中的一个节点
+
+</span></li>
+<li class="md_li"><span>管理存储在 Datanode 中的数据和文件块，（虽然Datanode并不知道有文件具体有哪些文件块，但是Datanode知道文件块的位置以及数据 ）
+
+</span></li>
+<li class="md_li"><span>对文件块进行创建 ，删除和复制(指令来自于 Namenode )
+
+</span></li>
+<li class="md_li"><span>向Namenode 汇报文件块信息和节点状态（Datanode需要时刻汇报信息）
+
+</span></li>
+<li class="md_li"><span>可以和客户端进行数据交互（大量的交互都发生在客户端和Datanode中，交流非常频繁）
+
+</span></li>
+</ul>
+<h5 style='font-family:b;color:black'  id="toc_45" class="h16">（4）The File System Namespace——文件系统命名空间</h5>
+
+<ul>
+<li class="md_li"><span>HDFS 支持传统的文件分层结构，目录文件夹结构，用户可以在其中存储文件，例如：
+
+
+<ul>
+<li class="md_li"><span>hdfs://www.deepshare .com/demo/file1
+
+</span></li>
+<li class="md_li"><span>hdfs://namenodehost/parent/child or /parent/child
+
+</span></li>
+</ul>
+</span></li>
+<li class="md_li"><span>HDFS 命名空间和传统的单机文件系统命名方式很类似
+
+</span></li>
+<li class="md_li"><span>任何有关 文件系统命名空间的操作 (新建目录，删除目录等)都是记录在 Namenode 里（fsimage或者eidt logs中）
+
+</span></li>
+<li class="md_li"><span>HDFS 命名空间的操作包括(打开，关闭以及删除目录文件，重命名目录文件)
+
+</span></li>
+<li class="md_li"><span>命名空间的操作是由 Namenode 完成的
+
+</span></li>
+</ul>
+<h5 style='font-family:b;color:black'  id="toc_46" class="h16">（5）File Block and Data Replication——文件块和数据复制</h5>
+<h6 id="toc_47" class="h16">&lt;1&gt; 文件块：一个文件可以可以被划分成很多个数据块</h6>
+
+<p class="md_block  md_has_block_below md_has_block_below_ul">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/2020-11-09-16-25-46.jpg?r=30" alt="" title="" style="width:30%;"></span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>默认值是 128MB ，可以设置
+
+</span></li>
+<li class="md_li"><span>文件的所有的 Block 都是同样大小的， 除了最后一个
+
+</span></li>
+<li class="md_li"><span>数据块可以使存储变均匀（每个Datanode上的数据大小大致相同）
+
+</span></li>
+<li class="md_li"><span>更容易进行故障恢复（只需要回复文件块，而非整个文件）
+
+</span></li>
+<li class="md_li"><span>可以进行并行的读写
+
+</span></li>
+<li class="md_li"><span>可以设置副本数目
+
+</span></li>
+</ul>
+<h6 id="toc_48" class="h16">&lt;2&gt; 数据复制</h6>
+
+<p class="md_block  md_has_block_below md_has_block_below_ul">
+    <span class="md_line md_line_start md_line_end">文件的<strong>文件块大小</strong>和<strong>副本个数</strong>（通常为3）可以设置</span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>HDFS 在写操作的时候就会创建多个副 本
+
+</span></li>
+<li class="md_li"><span>Datanode 会定时发送心跳信息给 Namenode 报告本节点的数据块信息
+
+</span></li>
+<li class="md_li"><span>收到 Datanode 的心跳信息和报告说明 Datanode 是正常工作的
+
+</span></li>
+</ul>
+
+<p class="md_block">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/2020-11-09-16-30-54.jpg?r=40" alt="" title="" style="width:40%;"></span>
+</p>
+
+<h5 style='font-family:b;color:black'  id="toc_49" class="h16">（6）Data Replication——数据复制原理</h5>
+
+<p class="md_block  md_has_block_below md_has_block_below_ul">
+    <span class="md_line md_line_start md_line_end">复制准则</span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>同一个机架（Rack）的 Datanode 数据传输速度会好过跨机架传输
+
+</span></li>
+<li class="md_li"><span>副本要放在不同的机架中，防止整个机架损坏后，数据仍然不会丢失
+
+</span></li>
+<li class="md_li"><span>如果复制因子是 3, 也就是存放三份的时候，一般将两份放在同一机架的不同的 Datanode 第三份放在另一个机架的  Datanode 之中
+
+</span></li>
+</ul>
+
+<p class="md_block">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/2020-11-09-16-33-50.jpg?r=34" alt="" title="" style="width:34%;"></span>
+</p>
+
+<h5 style='font-family:b;color:black'  id="toc_50" class="h16">（7）节点交流协议</h5>
+
+<ul>
+<li class="md_li"><span>HDFS 各个部分的信息交流协议是基于 TCP/IP之上的
+
+</span></li>
+<li class="md_li"><span>客户端和 Datanode 会建立对应的连接
+
+</span></li>
+<li class="md_li"><span>RPC（远程过程调用）
+
+
+<ul>
+<li class="md_li"><span>客户端：客户端协议
+
+</span></li>
+<li class="md_li"><span>Datanode: Datanode 协议
+
+</span></li>
+</ul>
+</span></li>
+<li class="md_li"><span>Namenode：只回应 RPC request（不主动请求访问）
+
+</span></li>
+</ul>
+
+<p class="md_block">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/2020-11-09-16-36-52.jpg?r=15" alt="" title="" style="width:15%;"></span>
+</p>
+
+<h4 style='font-family:b;color:black'  id="toc_51" class="h16">3、HDFS 读写操作</h4>
+<h5 style='font-family:b;color:black'  id="toc_52" class="h16">（1）HDFS写操作</h5>
+
+<p class="md_block  md_has_block_below md_has_block_below_ul">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start"><img class="md_compiled " src="assets/2020-11-09-16-37-21.jpg" alt="" title="" ><img class="md_compiled " src="assets/2020-11-09-16-40-13.jpg" alt="" title="" ><br /></span>
+    <span class="md_line img_before md_line_end">场景：一个文件 200MB，客户端需要将该文件写到 HDFS 上。HDFS 配置：HDFS 分布在三个机架 Rack1, Rack2 和 Rack3 写入配置：文件被分成 128MB 和 72MB 的两个数据块，复制三份</span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>第一步：客户端将该文件分成 128MB 和 72MB 的两个 Block, block1 和 block2
+
+</span></li>
+<li class="md_li"><span>第二步：
+
+
+<ul>
+<li class="md_li"><span>客户端向 Namenode 发送数据写入请求，点虚线1
+
+</span></li>
+<li class="md_li"><span>Namenode 节点记录数据节点信息，并且返回可用的 Datanode，点虚线 2
+
+</span></li>
+<li class="md_li"><span> 确定写入位置：Block1: DN1 DN3 DN4  Block2: DN5 DN7 DN8
+
+</span></li>
+</ul>
+</span></li>
+<li class="md_li"><span>第三步：
+
+
+<ul>
+<li class="md_li"><span>客户端向 Datanode 发送 block1, 发送过程是流式写入，将 128MB 的 block 按照 64k 的传输包划分
+
+</span></li>
+<li class="md_li"><span>将第一个传输包发送个 DN1, DN1 接受完第一个传输包后，将该传包发送给 DN4, 同时客户端向 DN 发送第二个传输包
+
+</span></li>
+<li class="md_li"><span>DN4 接收完第一传输包后，向 DN3 传送第一个传输包，同时接收从 DN1 发来的第二个传输包
+
+</span></li>
+<li class="md_li"><span>此重复，直至 block1 发送完毕
+
+</span></li>
+<li class="md_li"><span>DN1, DN4, DN3 向 Namenode 发送消息，DN1 向客户端发送消息，说明 block1 已经传输完毕
+
+</span></li>
+<li class="md_li"><span>客户端收到 DN1 的消息后，向 Namenode 发送消息，说明 block1 已经写完了。到此为止，block1 正式写完
+
+</span></li>
+<li class="md_li"><span>依照以上原理，将 bock2 写入 DN5, DN8, DN7, 写完后，DN5, DN8, DN7 告诉 Namenode 已经写完，DN5 告诉客户端已经写入完毕
+
+</span></li>
+<li class="md_li"><span>客户端会告诉 Namenode，已经写完 bock2, 至此整个文件已经写入完毕
+
+</span></li>
+</ul>
+</span></li>
+</ul>
+
+<hr>
+
+<ul>
+<li class="md_li"><span>Namenode 选择原理
+
+
+<ul>
+<li class="md_li"><span>客户端在 datanode 上，第一个副本和客户端相同的节点，第二个副本不同机架上的节点，第三个副本是和第二个副本同一机架的不同节点
+
+</span></li>
+<li class="md_li"><span>客户端不在 datanode 上，第一个副本随机选择，第二个副本选择和第一个副本不同机架上的节点，第三个副本选择和第二个副本同一机架上的相同节点
+
+</span></li>
+</ul>
+</span></li>
+</ul>
+
+<hr>
+
+<ul>
+<li class="md_li"><span>从上面写的步骤中可以看出，HDFS的写入操作有以下特点：
+
+
+<ul>
+<li class="md_li"><span>文件大小 200MB，副本 3, 存储需求 600MB，网络流量带宽 600MB（仅仅是文件传输的带宽）
+
+</span></li>
+<li class="md_li"><span>如果一个 datanode 失效或者整个机架失效，HDFS 仍然可以保证数据的完整性 
+
+</span></li>
+<li class="md_li"><span>datanode 不知道整个 HDFS 的状态，只知道本机的 Block 状态
+
+</span></li>
+</ul>
+</span></li>
+</ul>
+<h5 style='font-family:b;color:black'  id="toc_53" class="h16">（2）HDFS读操作</h5>
+
+<p class="md_block md_block_as_opening md_has_block_below md_has_block_below_ul">
+    <span class="md_line md_line_start md_line_end">相较于<strong>“写操作”</strong>，读操作更简单，主要的步骤为：</span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>第一步：客户端向 Namenode 发送读请求
+
+</span></li>
+<li class="md_li"><span>第二步：Namenode 查看元数据信息，返回文件 block 的位置 
+
+
+<ul>
+<li class="md_li"><span>Bock1: DN1 DN3 DN4  
+
+</span></li>
+<li class="md_li"><span>Block2: DN5 DN7 DN8
+
+</span></li>
+</ul>
+</span></li>
+<li class="md_li"><span>第三步：Block 的位置是有先后序的，先读 bock1, 再读 block2；读取的条件是：先从本机架的 Datanode 上进行数据的读取，如果本机架上没有数据，则从就近的机架的 Datanode 中读取数据
+
+</span></li>
+</ul>
+<h4 style='font-family:b;color:black'  id="toc_54" class="h16">4、HDFS 特点</h4>
+
+<ul>
+<li class="md_li"><span>经济高效：数据集中存储，经济高效（可以使用多个，但单个成本低廉的物理硬盘）
+
+</span></li>
+<li class="md_li"><span>大存储高吞吐：分布式存储
+
+</span></li>
+<li class="md_li"><span>容错性可靠性：多个副本，智能的存储方式（支持多备份操作）
+
+</span></li>
+<li class="md_li"><span>可扩展性：添加Datanode （通过添加Datanode的方法扩展整个文件系统容量）
+
+</span></li>
+<li class="md_li"><span>数据完整性：分布式存储，Datanode 定时汇报数据块状态
+
+</span></li>
+<li class="md_li"><span> 高可用性：一个Datanode，甚至一个机架故障后，数据仍然可以读取
+
+</span></li>
+<li class="md_li"><span>耐用性：故障自我修复 ，数据再次复制， Namenode 也可以有备用节点进行恢复，数据迁移至经常访问的Datanode
+
+</span></li>
+</ul>
+
+<hr>
+<h3 style='font-family:b;color:blue'  id="toc_55" class="h16">第三节：元数据管理</h3>
+<h4 style='font-family:b;color:black'  id="toc_56" class="h16">1、元数据简介</h4>
+
+<ul>
+<li class="md_li"><span>
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">所谓元数据，是指<strong>“描述数据的数据”</strong>，主要是描述数据属性的数据，比如数据存储位置，数据 的编辑记录等</span>
+</p>
+
+</span></li>
+<li class="md_li"><span>元数据的作用：
+
+
+<ul>
+<li class="md_li"><span>存储真正数据的描述信息
+
+</span></li>
+<li class="md_li"><span>存储真正数据的位置和操作信息
+
+</span></li>
+<li class="md_li"><span>是为用户提供真正数据信息的接口
+
+</span></li>
+</ul>
+</span></li>
+<li class="md_li"><span>存储系统的元数据
+
+
+<ul>
+<li class="md_li"><span>传统数据库（MySqL）：数据库中的信息，表的属性以及属性的类别等
+
+</span></li>
+<li class="md_li"><span>分布式存储系统：数据的位置，数据的编辑记录，数据的存储目录等
+
+</span></li>
+<li class="md_li"><span>Hive（数据仓库工具）：数据仓库中表的信息，表的属性以及表中数据的位置信息
+
+</span></li>
+</ul>
+</span></li>
+</ul>
+<h4 style='font-family:b;color:black'  id="toc_57" class="h16">2、分布式储存系统的元数据管理</h4>
+
+<p class="md_block">
+    <span class="md_line md_line_start md_line_end">分布式储存系统的元数据管理主要有三类：中心节点管理、分布式节点管理、无元数据节点管理</span>
+</p>
+
+<h5 style='font-family:b;color:black'  id="toc_58" class="h16">（1）中心节点管理</h5>
+
+<p class="md_block  md_has_block_below md_has_block_below_ul">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/2020-11-09-21-27-42.jpg?r=50" alt="" title="" style="width:50%;"></span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>中心节点管理元数据是通过单个 节点去管理元数据，该节点会存储元数据，也会向真正的数据节点发送指令进行相关操作。以普通的HDFS为代表，是应用最为广泛的一种管理方式
+
+</span></li>
+<li class="md_li"><span>优点：
+
+
+<ul>
+<li class="md_li"><span>数据集中式管理，会很方便地处理用户的数据请求任务
+
+</span></li>
+<li class="md_li"><span>由于元数据都存储在一个节点上，当发生元数据更新的时候，只需要更新该节点上的元数据即可
+
+</span></li>
+<li class="md_li"><span>单个节点易于管理和维护
+
+</span></li>
+</ul>
+</span></li>
+<li class="md_li"><span>缺点
+
+
+<ul>
+<li class="md_li"><span>单个节点故障，整个存储系统不可用 ---- (备份节点)
+
+</span></li>
+<li class="md_li"><span>性能扩容，尽管用户对于元数据的访问量相比真正输入的访问量，要小很多， 但是理论上来说，仍然存在性能瓶颈。 ---- (提高该节点的性能)
+
+</span></li>
+</ul>
+</span></li>
+</ul>
+<h5 style='font-family:b;color:black'  id="toc_59" class="h16">（2）分布式节点管理</h5>
+
+<p class="md_block  md_has_block_below md_has_block_below_ul">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/2020-11-09-21-30-26.jpg?r=50" alt="" title="" style="width:50%;"></span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>分布式节点管理与中心节点管理最多的不同在于通过多个节点去管理元数据，不同的元数据节点会代表不同的命名空间 (文件目录)。以HDFS Federation作为代表
+
+</span></li>
+<li class="md_li"><span>优点：
+
+
+<ul>
+<li class="md_li"><span>在保证了元数据中心管理的同时，实现了分布式节点存储元数据
+
+</span></li>
+<li class="md_li"><span>根本上解决了性能和容量扩容的问题，理论上可以实现无限扩容
+
+</span></li>
+</ul>
+</span></li>
+<li class="md_li"><span>缺点
+
+
+<ul>
+<li class="md_li"><span>除了数据节点以外，又维护了一个分布式的元数据节点，维护成本较高
+
+</span></li>
+<li class="md_li"><span>分布式元数据节点对于数据的一致性有极高的要求，如何元数据不一致，会导致数据存储出错
+
+</span></li>
+<li class="md_li"><span>所有的元数据节点都要管理和维护数据节点，在数据节点发生问题的时候需要对数据节点做出一致性的决策
+
+</span></li>
+<li class="md_li"><span>增加了用户使用文件系统的难度
+
+</span></li>
+</ul>
+</span></li>
+</ul>
+<h5 style='font-family:b;color:black'  id="toc_60" class="h16">（3）无元数据节点管理</h5>
+
+<p class="md_block  md_has_block_below md_has_block_below_ul">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/2020-11-09-21-32-50.jpg?r=50" alt="" title="" style="width:50%;"></span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>无元数据节点管理并无特别的元数据节点单独存储元数据，客户端使用算法进行计 算相关数据地址。以Ceph作为代表
+
+</span></li>
+<li class="md_li"><span>优点：
+
+
+<ul>
+<li class="md_li"><span>无单独的节点存储元数据，系统的扩容性相对来说较强
+
+</span></li>
+<li class="md_li"><span>寻址算法的所需要的参数相对来说比较简单，易于计算，并且可以进行缓存
+
+</span></li>
+</ul>
+</span></li>
+<li class="md_li"><span>缺点：
+
+
+<ul>
+<li class="md_li"><span>对于一个现有集群进行更新的时候，客户端需要重新进行计算数据地址
+
+</span></li>
+<li class="md_li"><span>数据地址相对来说较为固定，所以当某个区域的数据发生故障后，重新更新恢复会有较大的难度
+
+</span></li>
+</ul>
+</span></li>
+</ul>
+<h4 style='font-family:b;color:black'  id="toc_61" class="h16">3、HDFS元数据管理</h4>
+<h5 style='font-family:b;color:black'  id="toc_62" class="h16">（1）HDFS元数据管理架构</h5>
+
+<p class="md_block">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start"><img class="md_compiled " src="assets/2020-11-09-21-39-56.jpg?r=80" alt="" title="" style="width:80%;"><br /></span>
+    <span class="md_line img_before md_line_end">从上图中可以看出，HDFS是利用Namenode进行远数据管理的，HDFS的元数据包括HDFS的文件和目录结构，以及对应的属性。元数据负责与Datanode和Client之间进行交互，而Secondary Namenode负责为Namenode备份</span>
+</p>
+
+<h5 style='font-family:b;color:black'  id="toc_63" class="h16">（2）HDFS元数据内容</h5>
+
+<ul>
+<li class="md_li"><span>文件名称，地址，权限，所属者
+
+</span></li>
+<li class="md_li"><span>文件的命名空间
+
+</span></li>
+<li class="md_li"><span>数据块ID,数据块信息，数据块地址
+
+</span></li>
+<li class="md_li"><span>副本个数
+
+</span></li>
+</ul>
+<h5 style='font-family:b;color:black'  id="toc_64" class="h16">（3）HDFS元数据持久化储存</h5>
+
+<p class="md_block  md_has_block_below md_has_block_below_ul">
+    <span class="md_line md_line_start md_line_end">HDFS元数据持久化储存是通过<strong>“fsimage”</strong>和<strong>“edit file”</strong>实现的</span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>fsimage：某个时间点的整个文件系统的状态，也就是某个时间点的Namenode的快照。 $T_1$时刻，Namenode的快照为fsiamge1，$T_2$时刻做了一些文件系统的修改，修改ID为1，那么可以说$T_2$时刻，Namenode的快照为 fsimage2，即“fsimage2 = fsimage1 + ID为1的修改”；但是需要注意的是，Namenode并不会实时去对fsimage进行更新，这部分的工作是通过Secondary Namenode实现的，Namenode只有在启动时采用去查看fsimage和edit file并进行合并，在运行过程中并不会进行合并的操作
+
+</span></li>
+<li class="md_li"><span>edit file：存储了文件系统的修改日志，每一次对于文件系统的修改都有一个修改的ID；根据最近的fsimage和edit file的修改日志，我们可以重现Namenode当时的状态
+
+</span></li>
+<li class="md_li"><span>我们以一个例子来说明HDFS的持久化操作
+
+
+<ul>
+<li class="md_li"><span>$T_0$ 启动 Namenode，使用了初始的 fsimage0
+
+</span></li>
+<li class="md_li"><span>$T_1$ 发生了一次修改，修改 ID 为 1, 如果我们此时使用 checkpoint，那么新的 fsimage1 = fsimage + 0
+
+</span></li>
+<li class="md_li"><span>$T_2$ 又发生了一次修改，修改 ID 为 2, 如果此时 Namenodei 死机，我们并没有及时Checkpoint 第二个修改，那么在重启后，我们可以利用 fsimage1+ edit file（包含修改 ID 为 2 的记录）重现 Namenode 死机前的状态
+
+</span></li>
+</ul>
+</span></li>
+</ul>
+<h5 style='font-family:b;color:black'  id="toc_65" class="h16">（4）HDFS元数据节点的可用性</h5>
+
+<p class="md_block  md_has_block_below md_has_block_below_ul">
+    <span class="md_line md_line_start">HDFS元数据节点的可用性与稳定性有以下两种方式保证：<br /></span>
+    <span class="md_line md_line_end">s</span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>Secondary Namenode：其原理如下图所示，Secondary Namenode 可以帮助  Namenode 进行恢复，但是如果  Namenode 出现问题，需要手动进行恢复
+</span></li>
+</ul>
+
+<p class="md_block  md_has_block_below md_has_block_below_ul">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/2020-11-09-21-56-11.jpg?r=60" alt="" title="" style="width:60%;"></span>
+</p>
+
+
+<ul>
+<li class="md_li"><span>Standby Namenode：Standby Namenode 的工作原理与Secondary Namenode不同，如下图所示，Standby Namenode和主Namenode 共享相关的编辑日志，并且接收 Datanode 的报告，如果主  Namenode 发生了问题，系统会自动切换到 standby Namenode
+</span></li>
+</ul>
+
+<p class="md_block">
+    <span style='display:block; text-align:center;text-indent:0'  class="md_line md_line_with_image md_line_start md_line_end"><img class="md_compiled " src="assets/2020-11-09-21-57-58.jpg?r=60" alt="" title="" style="width:60%;"></span>
+</p>
+        </div>
+    </div>
+    
+        <script type= "text/javascript">
+            window.MathJax = {
+              tex: {
+                inlineMath: [ ['$','$']],
+                displayMath: [ ['$$','$$'] ]
+              },
+              svg: {fontCache: 'global'},
+              startup: {
+                    ready: () => {
+                      MathJax.startup.defaultReady();
+                      MathJax.startup.promise.then(() => {
+                        if (typeof(send_to_app_client)!='undefined'){send_to_app_client({'action': 'start_to_export_pdf'})}
+                      });
+                    }
+                  },
+              options: {
+                renderActions: {
+                  addMenu: [0]
+                }
+              }
+            };
+        </script>
+        <script src="https://markeditor-files.oss-cn-hangzhou.aliyuncs.com/fb_static/lib/markdown/MathJax/tex-svg.js" type= "text/javascript"></script>
+        
+        
+    <!--mermaid-->
+</body>
+</html>
