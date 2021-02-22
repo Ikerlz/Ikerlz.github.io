@@ -1,0 +1,51 @@
+Hower:
+  name:              whatwhyhow7
+  email:             wangwenhao.rar@gmail.com
+
+  # Markdown enabled, can use multiple paragraphs (enabled by `|`)
+  about:             |
+    出家人不打诳语，你这个需求我说做不了就是做不了。
+
+  picture:
+    src:               /blog/assets/img/me.jpg
+
+  social:
+    home:              https://whatwhyhow7.github.io/
+    photo:             https://whatwhyhow7.github.io/photo/
+    gitHub:            whatwhyhow7
+    email:             mailto:wangwenhao.rar@gmail.com
+    # facebook:        <username>
+    # twitter:         <username>
+    # google:          <number>
+    # vk:              <username>
+    # youtube:         <string_string_string>
+    # vimeo:           <username>
+    # vine:            <username>
+    # spotify:         <user>/<number>
+    # soundcloud:      <username>
+    # lastfm:          <username>
+    # instagram:       <username>
+    # flickr:          <string@string>
+    # 500px:           <username>
+    # dribbble:        <username>
+    # behance:         <username>
+    # deviantart:      <username>
+    # ello:            <username>
+    # twitch:          <username>
+    # steam:           <number>
+    # reddit:          <username>
+    # tumblr:          <username>
+    # pinterest:       <username>
+    # foursquare:      <number>
+    # yelp:            <string>
+    # stackoverflow:   <number/username>
+    # npm:             <username>
+    # hackernews:      <username>
+    # trello:          <firstnamelastname>
+    # linkedin:        <firstname-lastname-string>
+    # xing:            <firstname_lastname_counter>
+    # blogger:         <number>
+    # delicious:       <username>
+    # stumbleupon:     <username>
+    # paypal:          <username>
+    # rss:             https://<url>/feed.xml
