@@ -3322,7 +3322,7 @@ $$
 - `Pytorch`随机梯度下降+动量：加上动量后，更新公式变化为：
 $$
 \begin{aligned}
-{v}_{i}&={m} * {v}_{{i}-\mathbf{1}}+{g}\left({w}_{{i}}\right) \\
+{v}_{i}&={m} * {v}_{i-\mathbf{1}} + {g} \left( {w}_{{i}} \right) \\
 {w}_{i+1}&={w}_{i}-{l} {r} * {v}_{i}
 \end{aligned}
 $$
