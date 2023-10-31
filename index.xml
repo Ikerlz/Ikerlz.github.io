@@ -33,6 +33,384 @@
     </item>
     
     <item>
+      <title>Using the Propensity Score in Regressions for Causal Effects</title>
+      <link>https://example.com/slides/causalinferencechapter14/</link>
+      <pubDate>Sun, 29 Oct 2023 00:00:00 +0000</pubDate>
+      <guid>https://example.com/slides/causalinferencechapter14/</guid>
+      <description>
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;ZIBIN.jpg&#34;
+  &gt;
+
+&lt;h1 id=&#34;using-the-propensity-score-in-regressions-for-causal-effects&#34;&gt;Using the Propensity Score in Regressions for Causal Effects&lt;/h1&gt;
+&lt;p&gt;$$
+\begin{aligned}
+\
+\end{aligned}
+$$&lt;/p&gt;
+&lt;center&gt; Li Zhe &lt;center&gt;
+&lt;p&gt;$$$$&lt;/p&gt;
+&lt;center&gt;School of Data Science, Fudan University &lt;center&gt; 
+&lt;p&gt;$$$$&lt;/p&gt;
+&lt;center&gt;November 1, 2023&lt;center&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;This chapter discusses two simple methods to use the propensity score:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;the propensity score as a covariate in regressions&lt;/li&gt;
+&lt;li&gt;running regressions weighted by the inverse of the propensity score&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Reasons&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;they are easy to implement, which involve only standard statistical software packages for regressions;&lt;/li&gt;
+&lt;li&gt;their properties are comparable to many more complex methods;&lt;/li&gt;
+&lt;li&gt;they can be easily extended to allow for flexible statistical models including machine learning algorithms.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h3 id=&#34;regressions-with-the-propensity-score-as-a-covariate&#34;&gt;Regressions with the propensity score as a covariate&lt;/h3&gt;
+&lt;p&gt;$$
+\text { Theorem 11.1 If } Z \perp\!\!\!\perp\{Y(1), Y(0)\} \mid X \text {, then } {\color{red}Z \perp\!\!\!\perp\{Y(1), Y(0)\} \mid e(X)} \text {. }
+$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;By Theorem 11.1, if unconfoundedness holds conditioning on $X$, then it also holds conditioning on $e(X)$: $\color{red}{Z \perp\!\!\!\perp{Y(1), Y(0)} \mid e(X) }.$&lt;/li&gt;
+&lt;li&gt;Analogous to (10.5), $\tau$ is also &lt;mark&gt;nonparametrically&lt;/mark&gt; identified by
+$$
+\tau=E[E\{Y \mid Z=1, e(X)\}-E\{Y \mid Z=0, e(X)\}],
+$$&lt;/li&gt;
+&lt;li&gt;$\Rightarrow$ The simplest regression specification is the OLS fit of $Y$ on $\{1, Z, e(X)\}$, with the coefficient of $Z$ as an estimator, denoted by $\tau_e$:
+$$
+\arg \min _{a, b, c} E\{Y-a-b Z-c e(X)\}^2
+$$&lt;/li&gt;
+&lt;li&gt;$\tau_e$ defined as the coefficient of $Z$.&lt;/li&gt;
+&lt;li&gt;It is consistent for $\tau$ if
+&lt;ul&gt;
+&lt;li&gt;have a correct propensity score model&lt;/li&gt;
+&lt;li&gt;the outcome model is indeed linear in $Z$ and $e(X)$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;$\tau_e$ estimates $\tau_{\mathrm{O}}$ if we have a correct propensity score model even if the outcome model is &lt;mark&gt;completely misspecified&lt;/mark&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h3 id=&#34;regressions-with-the-propensity-score-as-a-covariate-1&#34;&gt;Regressions with the propensity score as a covariate&lt;/h3&gt;
+&lt;p&gt;&lt;mark&gt;Theorem 14.1&lt;/mark&gt; If $Z \perp\!\!\!\perp\{Y(1), Y(0)\} \mid X$, then the coefficient of $Z$ in the OLS fit of $Y$ on $\{1, Z, e(X)\}$ equals
+$$
+\tau_e=\tau_{\mathrm{O}}=\frac{E\left\{h_{\mathrm{O}}(X) \tau(X)\right\}}{E\left\{h_{\mathrm{O}}(X)\right\}},
+$$
+recalling that $h_{\mathrm{O}}(X)=e(X)\{1-e(X)\}$ and $\tau(X)=E\{Y(1)-Y(0) \mid X\}$.&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+\
+\
+\end{aligned}
+$$&lt;/p&gt;
+&lt;p&gt;&lt;mark&gt;Corollary 14.1&lt;/mark&gt; If $Z \perp\!\!\!\perp\{Y(1), Y(0)\} \mid X$, then&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;the coefficient of $Z-e(X)$ in the OLS fit of $Y$ on $Z-e(X)$ or $\{1, Z-e(X)\}$ equals $\tau_{\mathrm{O}}$;&lt;/li&gt;
+&lt;li&gt;the coefficient of $Z$ in the OLS fit of $Y$ on $\{1, Z, e(X), X\}$ equals $\tau_{\mathrm{O}}$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h3 id=&#34;regressions-with-the-propensity-score-as-a-covariate-2&#34;&gt;Regressions with the propensity score as a covariate&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;An unusual feature of Theorem 14.1 is that &lt;strong&gt;the overlap condition&lt;/strong&gt; ($0 &amp;lt; e(x) &amp;lt; 1$) is not needed any more.&lt;/li&gt;
+&lt;li&gt;Even if some units have propensity score $e(X)$ equaling 0 or 1, their associate weight $e(X)\{1-e(X)\}$ is zero so that they do not contribute anything to the final parameter $\tau_O$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h2 id=&#34;frischwaughlovell-theorem&#34;&gt;Frisch–Waugh–Lovell Theorem&lt;/h2&gt;
+&lt;p&gt;The Frisch–Waugh–Lovell (FWL) theorem reduces multivariate OLS to univariate OLS and therefore facilitate the understanding and calculation of the OLS coefficients.&lt;/p&gt;
+&lt;p&gt;&lt;mark&gt;Theorem A2.2 (sample FWL)&lt;/mark&gt; With data $\left(Y, X_1, X_2, \ldots, X_p\right)$ containing column vectors, the coefficient of $X_1$ equals the coefficient of $\tilde{X}_1$ in the OLS fit of $Y$ or $\tilde{Y}$ on $\tilde{X}_1$, where&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$\tilde{Y}$ is the residual vector from the OLS fit of $Y$ on $\left(X_2, \ldots, X_p\right)$&lt;/li&gt;
+&lt;li&gt;$\tilde{X}_1$ is the residual from the OLS fit of $X_1$ on $\left(X_2, \ldots, X_p\right)$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;$$$$&lt;/p&gt;
+&lt;p&gt;Based on the FWL theorem, we can obtain $\tau_e$ in two steps:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;first, we obtain the residual $\tilde{Z}$ from the OLS fit of $Z$ on ${1, e(X)}$;&lt;/li&gt;
+&lt;li&gt;then, we obtain $\tau_e$ from the OLS fit of $Y$ on $\tilde{Z}$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h3 id=&#34;proof-of-theorem-141&#34;&gt;Proof of Theorem 14.1&lt;/h3&gt;
+&lt;p&gt;The coefficient of $e(X)$ in the OLS fit of $Z$ on ${1, e(X)}$ is
+$$
+\begin{aligned}
+\frac{\operatorname{cov}\{Z, e(X)\}}{\operatorname{var}\{e(X)\}} &amp;amp; =\frac{E[\operatorname{cov}\{Z, e(X) \mid X\}]+\operatorname{cov}\{E(Z \mid X), e(X)\}}{\operatorname{var}\{e(X)\}} \\ &amp;amp;=\frac{0+\operatorname{var}\{e(X)\}}{\operatorname{var}\{e(X)\}}=1,
+\end{aligned}
+$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;the intercept is $E(Z)-E\{e(X)\}=0$&lt;/li&gt;
+&lt;li&gt;the residual is $\tilde{Z}=Z-e(X)$ (This makes sense since $Z-e(X)$ is uncorrelated with any function of $X$).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Therefore, we can obtain $\tau_e$ from the univariate OLS fit of $Y$ on $Z-e(X)$ :
+$$\small{\tau_e=\frac{\operatorname{cov}\{Z-e(X), Y\}}{\operatorname{var}\{Z-e(X)\}}}$$
+The denominator simplifies to
+$$
+\begin{aligned}
+\operatorname{var}\{Z-e(X)\} &amp;amp; =E\{Z-e(X)\}^2 =e(X)+e(X)^2-2 e(X)^2=h_{\mathrm{O}}(X)
+\end{aligned}
+$$&lt;/p&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h3 id=&#34;proof-of-theorem-141-1&#34;&gt;Proof of Theorem 14.1&lt;/h3&gt;
+&lt;p&gt;The numerator simplifies to
+$$
+\begin{aligned}
+&amp;amp; \operatorname{cov}\{Z-e(X), Y\} \\
+= &amp;amp; E[\{Z-e(X)\} Y] \\
+= &amp;amp; E[\{Z-e(X)\} Z Y(1)]+E[\{Z-e(X)\}(1-Z) Y(0)] \\
+&amp;amp; \quad \quad \quad{\color{red}(\text { since } Y=Z Y(1)+(1-Z) Y(0))} \\
+= &amp;amp; E[\{Z-Z e(X)\} Y(1)]-E[e(X)(1-Z) Y(0)] \\
+= &amp;amp; E[Z\{1-e(X)\} Y(1)]-E[e(X)(1-Z) Y(0)] \\
+= &amp;amp; E\left[e(X)\{1-e(X)\} \mu_1(X)\right]-E\left[e(X)\{1-e(X)\} \mu_0(X)\right] \\
+&amp;amp; \quad \quad \quad\text { {\color{red}(tower property and ignorability)} } \\
+= &amp;amp; E\left\{h_{\mathrm{O}}(X) \tau(X)\right\} .
+\end{aligned}
+$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;From the proof of Theorem 14.1, we can simply run the OLS of $Y$ on the centered treatment $\tilde{Z} = Z e(X)$.&lt;/li&gt;
+&lt;li&gt;Moreover, we can also include $X$ in the OLS fit which may improve efficiency in finite sample.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h3 id=&#34;comments-of-theorem-141-and-corollary-141&#34;&gt;Comments of Theorem 14.1 and Corollary 14.1&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Theorem 14.1 motivates a two-step estimator for $\tau_{\mathrm{O}}$:
+&lt;ul&gt;
+&lt;li&gt;first, fit a propensity score model to obtain $\hat{e}\left(X_i\right)$;&lt;/li&gt;
+&lt;li&gt;second, run OLS of $Y_i$ on $\left(1, X_i, \hat{e}\left(X_i\right)\right)$ to obtain the coefficient of $Z_i$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Corollary 14.1 motivates another two-step estimator for $\tau_{\mathrm{O}}$:
+&lt;ul&gt;
+&lt;li&gt;first, fit a propensity score model to obtain $\hat{e}\left(X_i\right)$;&lt;/li&gt;
+&lt;li&gt;second, run OLS of $Y_i$ on $Z_i-\hat{e}\left(X_i\right)$ to obtain the coefficient of $Z_i$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Remark&lt;/strong&gt;: OLS is convenient for obtaining point estimators, the corresponding standard errors are incorrect due to &lt;mark&gt;the uncertainty in the first step estimation of the propensity score&lt;/mark&gt;. We can use the bootstrap to approximate the standard errors.&lt;/p&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h4 id=&#34;regressions-weighted-by-the-inverse-of-the-propensity-score&#34;&gt;Regressions weighted by the inverse of the propensity score&lt;/h4&gt;
+&lt;p&gt;We first re-examine the Hajek estimator of $\tau$ :
+$$
+\hat{\tau}^{\text {hajek }}=\frac{\sum_{i=1}^n \frac{Z_i Y_i}{\hat{e}\left(X_i\right)}}{\sum_{i=1}^n \frac{Z_i}{\hat{e}\left(X_i\right)}}-\frac{\sum_{i=1}^n \frac{\left(1-Z_i\right) Y_i}{1-\hat{e}\left(X_i\right)}}{\sum_{i=1}^n \frac{1-Z_i}{1-\hat{e}\left(X_i\right)}},
+$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;which equals the difference between the weighted means of the outcomes in the treatment and control groups.&lt;/li&gt;
+&lt;li&gt;Numerically, it is identical to the coefficient of $Z_i$ in the following weighted least squares (WLS) of $Y_i$ on $\left(1, Z_i\right)$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;mark&gt;Proposition 14.1&lt;/mark&gt; $\hat{\tau}^{\text {hajek }}$ equals $\hat{\beta}$ from the following $WLS$ :&lt;/p&gt;
+&lt;p&gt;$$
+(\hat{\alpha}, \hat{\beta})=\arg \min_{\alpha, \beta} \sum_{i=1}^n w_i\left(Y_i-\alpha-\beta Z_i\right)^2
+$$&lt;/p&gt;
+&lt;p&gt;with weights
+$$
+w_i=\frac{Z_i}{\hat{e}\left(X_i\right)}+\frac{1-Z_i}{1-\hat{e}\left(X_i\right)}= \begin{cases}\frac{1}{\hat{e}\left(X_i\right)} &amp;amp; \text { if } Z_i=1 \\ \frac{1}{1-\hat{e}\left(X_i\right)} &amp;amp; \text { if } Z_i=0\end{cases}
+$$&lt;/p&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h3 id=&#34;average-causal-effect&#34;&gt;Average causal effect&lt;/h3&gt;
+&lt;ul style=&#34;color: black&#34;&gt;
+&lt;li&gt;By Proposition 14.1, it is convenient to obtain $\hat{\tau}^{\text {hajek }}$ based on WLS.&lt;/li&gt;
+&lt;li&gt;However, due to the uncertainty in the estimated propensity score, the standard error &lt;mark&gt;reported by WLS is incorrect&lt;/mark&gt; for the true standard error $\Rightarrow$ &lt;strong&gt;bootstrap&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul style=&#34;color: red&#34;&gt;
+&lt;li&gt;Why does the WLS give a consistent estimator for $\tau$ ?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;Recall that in the CRE with a constant propensity score, we can simply use the coefficient of $Z_i$ in the OLS fit of $Y_i$ on $(1, Z_i)$ to estimate $\tau$.&lt;/li&gt;
+&lt;li&gt;In observational studies, units have different probabilities of receiving the treatment and control, respectively.&lt;/li&gt;
+&lt;li&gt;If we weight the treated units by $1 / e(X_i)$ and the control units by $1 /\{1-e(X_i)\}$, then they can represent the whole population and we effectively have &lt;strong&gt;a pseudo randomized experiment&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Consequently, the difference between the weighted means are consistent for $\tau$.&lt;/li&gt;
+&lt;li&gt;The numerical equivalence of $\hat{\tau}^{\text {hajek }}$ and WLS is not only a fun numerical fact itself but also useful for motivation more complex estimator with covariate adjustment.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h3 id=&#34;an-extension-to-a-more-complex-estimator&#34;&gt;An extension to a more complex estimator&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;In the CRE, we can use the coefficient of $Z_i$ in the OLS fit of $Y_i$ on $(1, Z_i, X_i, Z_i X_i)$ to estimate $\tau$, where the covariates are centered with $\bar{X}=0$.&lt;/li&gt;
+&lt;li&gt;This is Lin (2013)&amp;rsquo;s estimator which uses covariates to improve efficiency.&lt;/li&gt;
+&lt;li&gt;A natural extension to observational studies is to estimate $\tau$ using the coefficient of $Z_i$ in the WLS fit of $Y_i$ on $\left(1, Z_i, X_i, Z_i X_i\right)$ with weights defined in (14.1).&lt;/li&gt;
+&lt;li&gt;If the linear models
+$$
+E(Y \mid Z=1, X)=\beta_{10}+\beta_{1 x}^{\top} X, \quad E(Y \mid Z=0, X)=\beta_{00}+\beta_{0 x}^{\top} X,
+$$
+are correctly specified, then &lt;mark&gt;both OLS and WLS give consistent estimators for the coefficients&lt;/mark&gt; and the estimators of the coefficient of $Z$ is consistent for $\tau$.&lt;/li&gt;
+&lt;li&gt;More interestingly, the estimator of the coefficient of $Z$ based on WLS is also consistent for $\tau$ if &lt;strong&gt;the propensity score model is correct and the outcome model is incorrect&lt;/strong&gt;. $\Rightarrow$ the estimator based on WLS is &lt;strong&gt;doubly robust&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h3 id=&#34;a-doubly-robust-estimator&#34;&gt;A doubly robust estimator&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Let $\hat{e}(X_i)$ be the fitted propensity score and $(\mu_1(X_i, \hat{\beta}_1), \mu_0(X_i, \hat{\beta}_0))$ be the fitted values of the outcome means based on the WLS.&lt;/li&gt;
+&lt;li&gt;The outcome regression estimator is&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;$$
+\hat{\tau}_{\mathrm{wls}}^{\mathrm{reg}}= \frac{1}{n}\sum_{i=1}^n\mu_1\left(X_i, \hat{\beta}_1\right)-\frac{1}{n} \sum_{i=1}^n \mu_0\left(X_i, \hat{\beta}_0\right)
+$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The doubly robust estimator for $\tau$ is&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;$$
+\hat{\tau}_{\mathrm{wls}}^{\mathrm{dr}}=\hat{\tau}_{\mathrm{wls}}^{\mathrm{reg}}+\frac{1}{n} \sum_{i=1}^n \frac{Z_i\left\{Y_i-\mu_1\left(X_i, \hat{\beta}_1\right)\right\}}{\hat{e}\left(X_i\right)}-\frac{1}{n} \sum_{i=1}^n \frac{\left(1-Z_i\right)\left\{Y_i-\mu_0\left(X_i, \hat{\beta}_0\right)\right\}}{1-\hat{e}\left(X_i\right)} .
+$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;An interesting result is that this doubly robust estimator equals the outcome regression estimator, which reduces to the coefficient of $Z_i$ in the WLS fit of $Y_i$ on $\left(1, Z_i, X_i, Z_i X_i\right)$ if we use weights (14.1).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h3 id=&#34;theorem-142&#34;&gt;Theorem 14.2&lt;/h3&gt;
+&lt;p style=&#34;color: blue&#34;&gt;If $\bar{X}=0$ and $(\mu_1(X_i, \hat{\beta}_1), \mu_0(X_i, \hat{\beta}_0))=(\hat{\beta}_{10}+\hat{\beta}_{1 x}^{\top} X_i, \hat{\beta}_{00}+\hat{\beta}_{0 x}^{\top} X_i)$ based on the WLS fit of $Y_i$ on $\left(1, Z_i, X_i, Z_i X_i\right)$ with weights (14.1), then&lt;/p&gt;
+&lt;p style=&#34;color: blue&#34;&gt;$$
+\hat{\tau}_{\mathrm{wls}}^{\mathrm{dr}}=\hat{\tau}_{\mathrm{wls}}^{\mathrm{reg}}=\hat{\beta}_{10}-\hat{\beta}_{00},
+$$&lt;/p&gt;
+&lt;p style=&#34;color: blue&#34;&gt;which is the coefficient of $Z_i$ in the WLS fit.&lt;/p&gt;
+&lt;p&gt;$$$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Freedman and Berk (2008) showed that when the outcome model is correct, the WLS estimator is worse than the OLS estimator&lt;/li&gt;
+&lt;li&gt;When the errors have variance proportional to the inverse of the propensity scores, the WLS estimator will be more effcient than the OLS estimator.&lt;/li&gt;
+&lt;li&gt;The estimated standard error based on the WLS fit is not consistent for the true standard error because it &lt;strong&gt;ignores the uncertainty in the estimated propensity score&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;This can be easily fixed by using the bootstrap to approximate the variance of the WLS estimator.&lt;/li&gt;
+&lt;li&gt;Nevertheless, they found that &amp;ldquo;weighting may help under some circumstances&amp;rdquo; because when the outcome model is incorrect, the
+WLS estimator is still consistent if the propensity score model is correct.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h3 id=&#34;average-causal-effect-on-the-treated-units&#34;&gt;Average causal effect on the treated units&lt;/h3&gt;
+&lt;p&gt;&lt;mark&gt;Proposition 14.2&lt;/mark&gt; $\hat{\tau}_{\mathrm{T}}^{\text {hajek }}$ is numerically identical to $\hat{\beta}$ in the following WLS:
+$$
+(\hat{\alpha}, \hat{\beta})=\arg \min_{\alpha, \beta} \sum_{i=1}^n w_{\mathrm{T} i}\left(Y_i-\alpha-\beta Z_i\right)^2
+$$
+with weights
+$$
+w_{\mathrm{T} i}=Z_i+\left(1-Z_i\right) \hat{o}\left(X_i\right)= \begin{cases}1 &amp;amp; \text { if } Z_i=1 \\ \hat{o}\left(X_i\right) &amp;amp; \text { if } Z_i=0\end{cases}
+$$
+where $\hat{o}\left(X_i\right)=\hat{e}\left(X_i\right) /\{1-\hat{e}\left(X_i\right)\}$&lt;/p&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h3 id=&#34;average-causal-effect-on-the-treated-units-1&#34;&gt;Average causal effect on the treated units&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;If we center covariates with $\hat{X}(1)=0$, then we can estimate $\tau_{\mathrm{T}}$ using the coefficient of $Z_i$ in the WLS fit of $Y_i$ on $\left(1, Z_i, X_i, Z_i X_i\right)$ with weights defined in (14.2). Similarly, this estimator equals the regression estimator&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;$$
+\hat{\tau}_{\mathrm{T}, \mathrm{wls}}^{\mathrm{reg}}=\hat{\bar{Y}}(1)-\frac{1}{n_1} \sum_{i=1}^n Z_i \mu_0\left(X_i, \hat{\beta}_0\right)
+$$&lt;/p&gt;
+&lt;p&gt;which also equals the doubly robust estimator&lt;/p&gt;
+&lt;p&gt;$$
+\hat{\tau}_{\mathrm{T}, \mathrm{wls}}^{\mathrm{dr}}=\hat{\tau}_{\mathrm{T}, \mathrm{wls}}^{\mathrm{reg}}-\frac{1}{n_1} \sum_{i=1}^n \hat{o}\left(X_i\right)\left(1-Z_i\right)\left\{Y_i-\mu_0\left(X_i, \hat{\beta}_0\right)\right\}.
+$$&lt;/p&gt;
+&lt;p&gt;&lt;mark&gt;Theorem 14.3&lt;/mark&gt; If $\hat{\bar{X}}(1)=0$ and $\mu_0(X_i, \hat{\beta}_0)=\hat{\beta}_{00}+\hat{\beta}_{0x}^{\top} X_i$ based on the WLS fit of $Y_i$ on $(1, Z_i, X_i, Z_i X_i)$ with weights (14.2), then&lt;/p&gt;
+&lt;p&gt;$$
+\hat{\tau}_{\mathrm{T}, \mathrm{wls}}^{\mathrm{dr}}=\hat{\tau}_{\mathrm{T}, \mathrm{wls}}^{\mathrm{reg}}=\hat{\beta}_{10}-\hat{\beta}_{00},
+$$&lt;/p&gt;
+&lt;p&gt;which is the coefficient of $Z_i$ in the $W L S$ fit.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>A Distributed Community Detection Algorithm for Large Scale Networks Under Stochastic Block Models</title>
       <link>https://example.com/publication/dcd/</link>
       <pubDate>Sat, 27 May 2023 00:00:00 +0000</pubDate>
@@ -243,7 +621,7 @@ data.head()
 
 
 
-&lt;div id=&#34;chart-387694152&#34; class=&#34;chart&#34;&gt;&lt;/div&gt;
+&lt;div id=&#34;chart-973651842&#34; class=&#34;chart&#34;&gt;&lt;/div&gt;
 &lt;script&gt;
   (function() {
     let a = setInterval( function() {
@@ -253,7 +631,7 @@ data.head()
       clearInterval( a );
 
       Plotly.d3.json(&#34;./line-chart.json&#34;, function(chart) {
-        Plotly.plot(&#39;chart-387694152&#39;, chart.data, chart.layout, {responsive: true});
+        Plotly.plot(&#39;chart-973651842&#39;, chart.data, chart.layout, {responsive: true});
       });
     }, 500 );
   })();
@@ -593,19 +971,32 @@ Crash --&gt; [*]
     </item>
     
     <item>
-      <title>Slides</title>
+      <title>Slides on Wowchemy</title>
       <link>https://example.com/slides/example/</link>
       <pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate>
       <guid>https://example.com/slides/example/</guid>
-      <description>&lt;h1 id=&#34;create-slides-in-markdown-with-wowchemy&#34;&gt;Create slides in Markdown with Wowchemy&lt;/h1&gt;
+      <description>
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;ZIBIN5.jpg&#34;
+  &gt;
+
+&lt;h1 id=&#34;create-slides-in-markdown-with-wowchemy&#34;&gt;Create slides in Markdown with Wowchemy&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&#34;https://wowchemy.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Wowchemy&lt;/a&gt; | &lt;a href=&#34;https://wowchemy.com/docs/content/slides/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Documentation&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
 &lt;h2 id=&#34;features&#34;&gt;Features&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Efficiently write slides in Markdown&lt;/li&gt;
 &lt;li&gt;3-in-1: Create, Present, and Publish your slides&lt;/li&gt;
 &lt;li&gt;Supports speaker notes&lt;/li&gt;
-&lt;li&gt;Mobile friendly slides&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;controls&#34;&gt;Controls&lt;/h2&gt;
@@ -693,9 +1084,16 @@ $$&lt;/p&gt;
 &lt;section data-noprocess data-shortcode-slide
   
       
-      data-background-image=&#34;/media/boards.jpg&#34;
+      data-background-image=&#34;zibinyuan.jpeg&#34;
   &gt;
 
+&lt;!-- 
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-color=&#34;#FFFFFF&#34;
+  &gt;
+ --&gt;
 &lt;h2 id=&#34;custom-slide&#34;&gt;Custom Slide&lt;/h2&gt;
 &lt;p&gt;Customize the slide style and background&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;slide&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;background-image&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;/media/boards.jpg&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;}}
