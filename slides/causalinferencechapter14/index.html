@@ -129,12 +129,55 @@ $$</p>
       data-background-image="body1.jpg"
   >
 
+<h3 id="outline">Outline</h3>
+<ul>
+<li>Regressions with the propensity score as a covariate
+<ul>
+<li><strong>Theorem 14.1</strong></li>
+<li>Proposition 14.1</li>
+</ul>
+</li>
+</ul>
+<p>$$$$</p>
+<ul>
+<li>Regressions weighted by the inverse of the propensity score
+<ul>
+<li>Average causal effect
+<ul>
+<li>Theorem 14.2</li>
+</ul>
+</li>
+<li>Average causal effect on the treated units
+<ul>
+<li>Table 14.1</li>
+<li>Proposition 14.2</li>
+<li>Theorem 14.3</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+    </section>
+    
+
+    
+    
+    
+      
+
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="body1.jpg"
+  >
+
 <h3 id="regressions-with-the-propensity-score-as-a-covariate">Regressions with the propensity score as a covariate</h3>
 <p>$$
 \text { Theorem 11.1 If } Z \perp\!\!\!\perp\{Y(1), Y(0)\} \mid X \text {, then } {\color{red}Z \perp\!\!\!\perp\{Y(1), Y(0)\} \mid e(X)} \text {. }
 $$</p>
 <ul>
-<li>By Theorem 11.1, if unconfoundedness holds conditioning on $X$, then it also holds conditioning on $e(X)$: $\color{red}{Z \perp\!\!\!\perp{Y(1), Y(0)} \mid e(X) }.$</li>
+<li>By Theorem 11.1, if unconfoundedness holds conditioning on $X$, then it also holds conditioning on $e(X)$: $\color{red}{Z \perp\!\!\!\perp\{Y(1), Y(0)\} \mid e(X) }.$</li>
 <li>Analogous to (10.5), $\tau$ is also <mark>nonparametrically</mark> identified by
 $$
 \tau=E[E\{Y \mid Z=1, e(X)\}-E\{Y \mid Z=0, e(X)\}],
@@ -248,7 +291,7 @@ $$</p>
   >
 
 <h3 id="proof-of-theorem-141">Proof of Theorem 14.1</h3>
-<p>The coefficient of $e(X)$ in the OLS fit of $Z$ on ${1, e(X)}$ is
+<p>The coefficient of $e(X)$ in the OLS fit of $Z$ on $\{1, e(X)\}$ is
 $$
 \begin{aligned}
 \frac{\operatorname{cov}\{Z, e(X)\}}{\operatorname{var}\{e(X)\}} &amp; =\frac{E[\operatorname{cov}\{Z, e(X) \mid X\}]+\operatorname{cov}\{E(Z \mid X), e(X)\}}{\operatorname{var}\{e(X)\}} \\ &amp;=\frac{0+\operatorname{var}\{e(X)\}}{\operatorname{var}\{e(X)\}}=1,
@@ -297,7 +340,7 @@ $$
 \end{aligned}
 $$</p>
 <ul>
-<li>From the proof of Theorem 14.1, we can simply run the OLS of $Y$ on the centered treatment $\tilde{Z} = Z e(X)$.</li>
+<li>From the proof of Theorem 14.1, we can simply run the OLS of $Y$ on the centered treatment $\tilde{Z} = Z - e(X)$.</li>
 <li>Moreover, we can also include $X$ in the OLS fit which may improve efficiency in finite sample.</li>
 </ul>
 
@@ -507,6 +550,43 @@ $$
 w_{\mathrm{T} i}=Z_i+\left(1-Z_i\right) \hat{o}\left(X_i\right)= \begin{cases}1 &amp; \text { if } Z_i=1 \\ \hat{o}\left(X_i\right) &amp; \text { if } Z_i=0\end{cases}
 $$
 where $\hat{o}\left(X_i\right)=\hat{e}\left(X_i\right) /\{1-\hat{e}\left(X_i\right)\}$</p>
+
+    </section>
+    
+
+    
+    
+    
+      
+
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="body1.jpg"
+  >
+
+<h3 id="regression-estimators">Regression estimators</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">CRE</th>
+<th style="text-align:center">unconfounded observational studies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">without $X$</td>
+<td style="text-align:center">$Y_i \sim Z_i$</td>
+<td style="text-align:center">$Y_i \sim Z_i$ with weights $w_i$</td>
+</tr>
+<tr>
+<td style="text-align:center">with $X$</td>
+<td style="text-align:center">$Y_i \sim\left(Z_i, X_i, Z_i X_i\right)$</td>
+<td style="text-align:center">$Y_i \sim\left(Z_i, X_i, Z_i X_i\right)$ with weights $w_i$</td>
+</tr>
+</tbody>
+</table>
 
     </section>
     

@@ -69,12 +69,48 @@ $$&lt;/p&gt;
       data-background-image=&#34;body1.jpg&#34;
   &gt;
 
+&lt;h3 id=&#34;outline&#34;&gt;Outline&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Regressions with the propensity score as a covariate
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Theorem 14.1&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Proposition 14.1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;$$$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Regressions weighted by the inverse of the propensity score
+&lt;ul&gt;
+&lt;li&gt;Average causal effect
+&lt;ul&gt;
+&lt;li&gt;Theorem 14.2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Average causal effect on the treated units
+&lt;ul&gt;
+&lt;li&gt;Table 14.1&lt;/li&gt;
+&lt;li&gt;Proposition 14.2&lt;/li&gt;
+&lt;li&gt;Theorem 14.3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
 &lt;h3 id=&#34;regressions-with-the-propensity-score-as-a-covariate&#34;&gt;Regressions with the propensity score as a covariate&lt;/h3&gt;
 &lt;p&gt;$$
 \text { Theorem 11.1 If } Z \perp\!\!\!\perp\{Y(1), Y(0)\} \mid X \text {, then } {\color{red}Z \perp\!\!\!\perp\{Y(1), Y(0)\} \mid e(X)} \text {. }
 $$&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;By Theorem 11.1, if unconfoundedness holds conditioning on $X$, then it also holds conditioning on $e(X)$: $\color{red}{Z \perp\!\!\!\perp{Y(1), Y(0)} \mid e(X) }.$&lt;/li&gt;
+&lt;li&gt;By Theorem 11.1, if unconfoundedness holds conditioning on $X$, then it also holds conditioning on $e(X)$: $\color{red}{Z \perp\!\!\!\perp\{Y(1), Y(0)\} \mid e(X) }.$&lt;/li&gt;
 &lt;li&gt;Analogous to (10.5), $\tau$ is also &lt;mark&gt;nonparametrically&lt;/mark&gt; identified by
 $$
 \tau=E[E\{Y \mid Z=1, e(X)\}-E\{Y \mid Z=0, e(X)\}],
@@ -160,7 +196,7 @@ $$&lt;/p&gt;
   &gt;
 
 &lt;h3 id=&#34;proof-of-theorem-141&#34;&gt;Proof of Theorem 14.1&lt;/h3&gt;
-&lt;p&gt;The coefficient of $e(X)$ in the OLS fit of $Z$ on ${1, e(X)}$ is
+&lt;p&gt;The coefficient of $e(X)$ in the OLS fit of $Z$ on $\{1, e(X)\}$ is
 $$
 \begin{aligned}
 \frac{\operatorname{cov}\{Z, e(X)\}}{\operatorname{var}\{e(X)\}} &amp;amp; =\frac{E[\operatorname{cov}\{Z, e(X) \mid X\}]+\operatorname{cov}\{E(Z \mid X), e(X)\}}{\operatorname{var}\{e(X)\}} \\ &amp;amp;=\frac{0+\operatorname{var}\{e(X)\}}{\operatorname{var}\{e(X)\}}=1,
@@ -202,7 +238,7 @@ $$
 \end{aligned}
 $$&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;From the proof of Theorem 14.1, we can simply run the OLS of $Y$ on the centered treatment $\tilde{Z} = Z e(X)$.&lt;/li&gt;
+&lt;li&gt;From the proof of Theorem 14.1, we can simply run the OLS of $Y$ on the centered treatment $\tilde{Z} = Z - e(X)$.&lt;/li&gt;
 &lt;li&gt;Moreover, we can also include $X$ in the OLS fit which may improve efficiency in finite sample.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
@@ -363,6 +399,36 @@ $$
 w_{\mathrm{T} i}=Z_i+\left(1-Z_i\right) \hat{o}\left(X_i\right)= \begin{cases}1 &amp;amp; \text { if } Z_i=1 \\ \hat{o}\left(X_i\right) &amp;amp; \text { if } Z_i=0\end{cases}
 $$
 where $\hat{o}\left(X_i\right)=\hat{e}\left(X_i\right) /\{1-\hat{e}\left(X_i\right)\}$&lt;/p&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h3 id=&#34;regression-estimators&#34;&gt;Regression estimators&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;CRE&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;unconfounded observational studies&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;without $X$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$Y_i \sim Z_i$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$Y_i \sim Z_i$ with weights $w_i$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;with $X$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$Y_i \sim\left(Z_i, X_i, Z_i X_i\right)$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$Y_i \sim\left(Z_i, X_i, Z_i X_i\right)$ with weights $w_i$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 &lt;hr&gt;
 
 &lt;section data-noprocess data-shortcode-slide
