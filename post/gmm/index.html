@@ -235,7 +235,7 @@
     
     
     <link rel="stylesheet" href="/css/libs/chroma/github-light.min.css" title="hl-light" media="print" onload="this.media='all'" >
-    <link rel="stylesheet" href="/css/libs/chroma/dracula.min.css" title="hl-dark" media="print" onload="this.media='all'" disabled>
+    <link rel="stylesheet" href="/css/libs/chroma/github-dark.min.css" title="hl-dark" media="print" onload="this.media='all'" disabled>
   
 
   
@@ -1091,10 +1091,10 @@ $$</p>
 <figure  id="figure-利用sklearn生成的聚类数据">
   <div class="d-flex justify-content-center">
     <div class="w-100" ><img alt="利用Sklearn生成的聚类数据" srcset="
-               /media/posts/gmm/%E6%88%AA%E5%B1%8F2021-09-10_%E4%B8%8B%E5%8D%883.03.05_huac7b4589a068f84ddc9e0bbdc94a3032_125835_a1e53cee060f849bbeb15da6e5c4213a.webp 400w,
+               /media/posts/gmm/%E6%88%AA%E5%B1%8F2021-09-10_%E4%B8%8B%E5%8D%883.03.05_huac7b4589a068f84ddc9e0bbdc94a3032_125835_774ebaa6eae3826fbe2da6c37a5c8ece.webp 400w,
                /media/posts/gmm/%E6%88%AA%E5%B1%8F2021-09-10_%E4%B8%8B%E5%8D%883.03.05_huac7b4589a068f84ddc9e0bbdc94a3032_125835_10ba755b7b6fc40a17238a0d363bd3f1.webp 760w,
                /media/posts/gmm/%E6%88%AA%E5%B1%8F2021-09-10_%E4%B8%8B%E5%8D%883.03.05_huac7b4589a068f84ddc9e0bbdc94a3032_125835_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
-               src="/media/posts/gmm/%E6%88%AA%E5%B1%8F2021-09-10_%E4%B8%8B%E5%8D%883.03.05_huac7b4589a068f84ddc9e0bbdc94a3032_125835_a1e53cee060f849bbeb15da6e5c4213a.webp"
+               src="/media/posts/gmm/%E6%88%AA%E5%B1%8F2021-09-10_%E4%B8%8B%E5%8D%883.03.05_huac7b4589a068f84ddc9e0bbdc94a3032_125835_774ebaa6eae3826fbe2da6c37a5c8ece.webp"
                width="445"
                height="291"
                loading="lazy" data-zoomable /></div>
@@ -1205,87 +1205,87 @@ $$</p>
 </span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">cov_mat_prediction</span> <span class="o">=</span> <span class="n">cov_mat_list</span>
 </span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">pi_prediction</span> <span class="o">=</span> <span class="n">pi_list</span>
 </span></span></code></pre></div><h3 id="3r实现-1">3、R实现</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">gmm_em_algorithm &lt;- function(data, num_clusters, eps=1e-3, max_iter=100, print_log=TRUE){
-</span></span><span class="line"><span class="cl">  # 实现混合高斯的EM算法
-</span></span><span class="line"><span class="cl">  # data: N * p维的一个matrix或者dataframe
-</span></span><span class="line"><span class="cl">  # num_clusters: 类别数
-</span></span><span class="line"><span class="cl">  # eps: 迭代的阈值
-</span></span><span class="line"><span class="cl">  # max_iter: 最大迭代次数
-</span></span><span class="line"><span class="cl">  # print_log: 每次迭代是否打印日志
-</span></span><span class="line"><span class="cl">  data &lt;- as.matrix(data)
-</span></span><span class="line"><span class="cl">  total_num &lt;- dim(data)[1]
-</span></span><span class="line"><span class="cl">  dimension &lt;- dim(data)[2]
-</span></span><span class="line"><span class="cl">  # 初始化
-</span></span><span class="line"><span class="cl">  # 各组概率
-</span></span><span class="line"><span class="cl">  pi_vec &lt;- rep(1/num_clusters, num_clusters)
-</span></span><span class="line"><span class="cl">  # 各组均值: 采用随机选择的策略
-</span></span><span class="line"><span class="cl">  initial_index &lt;- sample(total_num, num_clusters)
-</span></span><span class="line"><span class="cl">  mean_mat &lt;- data[initial_index, ] # 是一个num_clusters * dimension的矩阵
-</span></span><span class="line"><span class="cl">  cov_mat_list &lt;- list()
-</span></span><span class="line"><span class="cl">  init_cov_mat &lt;- cov(data)
-</span></span><span class="line"><span class="cl">  for (i in 1:num_clusters) {
-</span></span><span class="line"><span class="cl">    cov_mat_list[[i]] &lt;- init_cov_mat
-</span></span><span class="line"><span class="cl">  }
-</span></span><span class="line"><span class="cl">  # 其他
-</span></span><span class="line"><span class="cl">  diff_loglikelihood &lt;- 100
-</span></span><span class="line"><span class="cl">  loglikelihood_old &lt;- 0
-</span></span><span class="line"><span class="cl">  # 每个个体属于哪个组
-</span></span><span class="line"><span class="cl">  gamma_mat &lt;- matrix(0, total_num, num_clusters)
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">gmm_em_algorithm</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">num_clusters</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="m">1e-3</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="m">100</span><span class="p">,</span> <span class="n">print_log</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># 实现混合高斯的EM算法</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># data: N * p维的一个matrix或者dataframe</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># num_clusters: 类别数</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># eps: 迭代的阈值</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># max_iter: 最大迭代次数</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># print_log: 每次迭代是否打印日志</span>
+</span></span><span class="line"><span class="cl">  <span class="n">data</span> <span class="o">&lt;-</span> <span class="nf">as.matrix</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">total_num</span> <span class="o">&lt;-</span> <span class="nf">dim</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="n">[1]</span>
+</span></span><span class="line"><span class="cl">  <span class="n">dimension</span> <span class="o">&lt;-</span> <span class="nf">dim</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="n">[2]</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># 初始化</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># 各组概率</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pi_vec</span> <span class="o">&lt;-</span> <span class="nf">rep</span><span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="n">num_clusters</span><span class="p">,</span> <span class="n">num_clusters</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># 各组均值: 采用随机选择的策略</span>
+</span></span><span class="line"><span class="cl">  <span class="n">initial_index</span> <span class="o">&lt;-</span> <span class="nf">sample</span><span class="p">(</span><span class="n">total_num</span><span class="p">,</span> <span class="n">num_clusters</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">mean_mat</span> <span class="o">&lt;-</span> <span class="n">data[initial_index</span><span class="p">,</span> <span class="n">]</span> <span class="c1"># 是一个num_clusters * dimension的矩阵</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cov_mat_list</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="n">init_cov_mat</span> <span class="o">&lt;-</span> <span class="nf">cov</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">num_clusters</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cov_mat_list[[i]]</span> <span class="o">&lt;-</span> <span class="n">init_cov_mat</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># 其他</span>
+</span></span><span class="line"><span class="cl">  <span class="n">diff_loglikelihood</span> <span class="o">&lt;-</span> <span class="m">100</span>
+</span></span><span class="line"><span class="cl">  <span class="n">loglikelihood_old</span> <span class="o">&lt;-</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># 每个个体属于哪个组</span>
+</span></span><span class="line"><span class="cl">  <span class="n">gamma_mat</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="n">total_num</span><span class="p">,</span> <span class="n">num_clusters</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  # 迭代求解
-</span></span><span class="line"><span class="cl">  step &lt;- 0
-</span></span><span class="line"><span class="cl">  while ((abs(diff_loglikelihood) &gt; eps) &amp; (step &lt; max_iter)) {
-</span></span><span class="line"><span class="cl">    # E-Step
-</span></span><span class="line"><span class="cl">    for (index in 1:total_num) {
-</span></span><span class="line"><span class="cl">      for (k in 1:num_clusters) {
-</span></span><span class="line"><span class="cl">        # 计算第index个个体属于第k个类别的概率
-</span></span><span class="line"><span class="cl">        gamma_mat[index, k] &lt;- pi_vec[k] * dmvnorm(x = data[index, ], mean = mean_mat[k, ], sigma = cov_mat_list[[k]])
-</span></span><span class="line"><span class="cl">      }
-</span></span><span class="line"><span class="cl">      # 归一化
-</span></span><span class="line"><span class="cl">      gamma_mat[index, ] &lt;- gamma_mat[index, ] / sum(gamma_mat[index, ])
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">    # M-Step
-</span></span><span class="line"><span class="cl">    gamma_k_vec &lt;- colSums(gamma_mat) # 列求和, 得到每个组的gamma求和, size=cluster_num
-</span></span><span class="line"><span class="cl">    for (k in 1:num_clusters) {
-</span></span><span class="line"><span class="cl">      # 更新均值
-</span></span><span class="line"><span class="cl">      mean_mat[k, ] &lt;- colSums(data * gamma_mat[, k]) / gamma_k_vec[k]
-</span></span><span class="line"><span class="cl">      # 更新协方差矩阵
-</span></span><span class="line"><span class="cl">      e_mat &lt;- t(data) - mean_mat[k, ] # 一个dimension * N的矩阵
-</span></span><span class="line"><span class="cl">      cov_mat_list[[k]] &lt;- e_mat %*% (t(e_mat) * gamma_mat[, k]) / gamma_k_vec[k]
-</span></span><span class="line"><span class="cl">      # 更新权重
-</span></span><span class="line"><span class="cl">      pi_vec[k] &lt;- gamma_k_vec[k] / total_num
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">    # 计算对数似然
-</span></span><span class="line"><span class="cl">    part1 &lt;- total_num * sum(pi_vec * log(pi_vec))
-</span></span><span class="line"><span class="cl">    part2 &lt;- 0
-</span></span><span class="line"><span class="cl">    for (k in 1:num_clusters) {
-</span></span><span class="line"><span class="cl">      # print(cov_mat_list[[k]])
-</span></span><span class="line"><span class="cl">      part2 &lt;- part2 + sum(gamma_mat[, k] * dmvnorm(data, mean_mat[k, ], cov_mat_list[[k]]))
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">    loglikelihood_new &lt;- part1 + part2
-</span></span><span class="line"><span class="cl">    # 更新step和loglikehood
-</span></span><span class="line"><span class="cl">      step &lt;- step + 1
-</span></span><span class="line"><span class="cl">      diff_loglikelihood &lt;- loglikelihood_new - loglikelihood_old
-</span></span><span class="line"><span class="cl">      loglikelihood_old &lt;- loglikelihood_new
-</span></span><span class="line"><span class="cl">      if (print_log) {
-</span></span><span class="line"><span class="cl">        print(&#34;-----------------------------------------------&#34;)
-</span></span><span class="line"><span class="cl">        print(paste0(&#34;Iteration: &#34;, as.character(step)))
-</span></span><span class="line"><span class="cl">        print(paste0(&#34;Loglikehood Diff: &#34;, as.character(diff_loglikelihood)))
-</span></span><span class="line"><span class="cl">      }
-</span></span><span class="line"><span class="cl">  }
-</span></span><span class="line"><span class="cl">  if (print_log) {
-</span></span><span class="line"><span class="cl">    print(&#34;============================================&#34;)
-</span></span><span class="line"><span class="cl">    print(paste0(&#34;Total Iteration: &#34;, as.character(step)))
-</span></span><span class="line"><span class="cl">  }
-</span></span><span class="line"><span class="cl">  # 输出结果
-</span></span><span class="line"><span class="cl">  colnames(gamma_mat) &lt;- 1:num_clusters
-</span></span><span class="line"><span class="cl">  res &lt;- list(
-</span></span><span class="line"><span class="cl">    weight_pred = pi_vec,
-</span></span><span class="line"><span class="cl">    mean_pred = mean_mat,
-</span></span><span class="line"><span class="cl">    cov_mat_pred = cov_mat_list,
-</span></span><span class="line"><span class="cl">    label_pred = as.numeric(apply(gamma_mat, 1, function(t) colnames(gamma_mat)[which.max(t)]))
-</span></span><span class="line"><span class="cl">  )
-</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">  <span class="c1"># 迭代求解</span>
+</span></span><span class="line"><span class="cl">  <span class="n">step</span> <span class="o">&lt;-</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">while </span><span class="p">((</span><span class="nf">abs</span><span class="p">(</span><span class="n">diff_loglikelihood</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">eps</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">step</span> <span class="o">&lt;</span> <span class="n">max_iter</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># E-Step</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">for </span><span class="p">(</span><span class="n">index</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">total_num</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">for </span><span class="p">(</span><span class="n">k</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">num_clusters</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># 计算第index个个体属于第k个类别的概率</span>
+</span></span><span class="line"><span class="cl">        <span class="n">gamma_mat[index</span><span class="p">,</span> <span class="n">k]</span> <span class="o">&lt;-</span> <span class="n">pi_vec[k]</span> <span class="o">*</span> <span class="nf">dmvnorm</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">data[index</span><span class="p">,</span> <span class="n">]</span><span class="p">,</span> <span class="n">mean</span> <span class="o">=</span> <span class="n">mean_mat[k</span><span class="p">,</span> <span class="n">]</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">cov_mat_list[[k]]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="c1"># 归一化</span>
+</span></span><span class="line"><span class="cl">      <span class="n">gamma_mat[index</span><span class="p">,</span> <span class="n">]</span> <span class="o">&lt;-</span> <span class="n">gamma_mat[index</span><span class="p">,</span> <span class="n">]</span> <span class="o">/</span> <span class="nf">sum</span><span class="p">(</span><span class="n">gamma_mat[index</span><span class="p">,</span> <span class="n">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># M-Step</span>
+</span></span><span class="line"><span class="cl">    <span class="n">gamma_k_vec</span> <span class="o">&lt;-</span> <span class="nf">colSums</span><span class="p">(</span><span class="n">gamma_mat</span><span class="p">)</span> <span class="c1"># 列求和, 得到每个组的gamma求和, size=cluster_num</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">for </span><span class="p">(</span><span class="n">k</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">num_clusters</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="c1"># 更新均值</span>
+</span></span><span class="line"><span class="cl">      <span class="n">mean_mat[k</span><span class="p">,</span> <span class="n">]</span> <span class="o">&lt;-</span> <span class="nf">colSums</span><span class="p">(</span><span class="n">data</span> <span class="o">*</span> <span class="n">gamma_mat[</span><span class="p">,</span> <span class="n">k]</span><span class="p">)</span> <span class="o">/</span> <span class="n">gamma_k_vec[k]</span>
+</span></span><span class="line"><span class="cl">      <span class="c1"># 更新协方差矩阵</span>
+</span></span><span class="line"><span class="cl">      <span class="n">e_mat</span> <span class="o">&lt;-</span> <span class="nf">t</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="n">mean_mat[k</span><span class="p">,</span> <span class="n">]</span> <span class="c1"># 一个dimension * N的矩阵</span>
+</span></span><span class="line"><span class="cl">      <span class="n">cov_mat_list[[k]]</span> <span class="o">&lt;-</span> <span class="n">e_mat</span> <span class="o">%*%</span> <span class="p">(</span><span class="nf">t</span><span class="p">(</span><span class="n">e_mat</span><span class="p">)</span> <span class="o">*</span> <span class="n">gamma_mat[</span><span class="p">,</span> <span class="n">k]</span><span class="p">)</span> <span class="o">/</span> <span class="n">gamma_k_vec[k]</span>
+</span></span><span class="line"><span class="cl">      <span class="c1"># 更新权重</span>
+</span></span><span class="line"><span class="cl">      <span class="n">pi_vec[k]</span> <span class="o">&lt;-</span> <span class="n">gamma_k_vec[k]</span> <span class="o">/</span> <span class="n">total_num</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 计算对数似然</span>
+</span></span><span class="line"><span class="cl">    <span class="n">part1</span> <span class="o">&lt;-</span> <span class="n">total_num</span> <span class="o">*</span> <span class="nf">sum</span><span class="p">(</span><span class="n">pi_vec</span> <span class="o">*</span> <span class="nf">log</span><span class="p">(</span><span class="n">pi_vec</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">part2</span> <span class="o">&lt;-</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">for </span><span class="p">(</span><span class="n">k</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">num_clusters</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="c1"># print(cov_mat_list[[k]])</span>
+</span></span><span class="line"><span class="cl">      <span class="n">part2</span> <span class="o">&lt;-</span> <span class="n">part2</span> <span class="o">+</span> <span class="nf">sum</span><span class="p">(</span><span class="n">gamma_mat[</span><span class="p">,</span> <span class="n">k]</span> <span class="o">*</span> <span class="nf">dmvnorm</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">mean_mat[k</span><span class="p">,</span> <span class="n">]</span><span class="p">,</span> <span class="n">cov_mat_list[[k]]</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">loglikelihood_new</span> <span class="o">&lt;-</span> <span class="n">part1</span> <span class="o">+</span> <span class="n">part2</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># 更新step和loglikehood</span>
+</span></span><span class="line"><span class="cl">      <span class="n">step</span> <span class="o">&lt;-</span> <span class="n">step</span> <span class="o">+</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">      <span class="n">diff_loglikelihood</span> <span class="o">&lt;-</span> <span class="n">loglikelihood_new</span> <span class="o">-</span> <span class="n">loglikelihood_old</span>
+</span></span><span class="line"><span class="cl">      <span class="n">loglikelihood_old</span> <span class="o">&lt;-</span> <span class="n">loglikelihood_new</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">if </span><span class="p">(</span><span class="n">print_log</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">print</span><span class="p">(</span><span class="s">&#34;-----------------------------------------------&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">print</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&#34;Iteration: &#34;</span><span class="p">,</span> <span class="nf">as.character</span><span class="p">(</span><span class="n">step</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">print</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&#34;Loglikehood Diff: &#34;</span><span class="p">,</span> <span class="nf">as.character</span><span class="p">(</span><span class="n">diff_loglikelihood</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">if </span><span class="p">(</span><span class="n">print_log</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">print</span><span class="p">(</span><span class="s">&#34;============================================&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">print</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&#34;Total Iteration: &#34;</span><span class="p">,</span> <span class="nf">as.character</span><span class="p">(</span><span class="n">step</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># 输出结果</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">colnames</span><span class="p">(</span><span class="n">gamma_mat</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">:</span><span class="n">num_clusters</span>
+</span></span><span class="line"><span class="cl">  <span class="n">res</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">weight_pred</span> <span class="o">=</span> <span class="n">pi_vec</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mean_pred</span> <span class="o">=</span> <span class="n">mean_mat</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cov_mat_pred</span> <span class="o">=</span> <span class="n">cov_mat_list</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">label_pred</span> <span class="o">=</span> <span class="nf">as.numeric</span><span class="p">(</span><span class="nf">apply</span><span class="p">(</span><span class="n">gamma_mat</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="nf">function</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="nf">colnames</span><span class="p">(</span><span class="n">gamma_mat</span><span class="p">)</span><span class="nf">[which.max</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="n">]</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><h3 id="4第三方工具库">4、第三方工具库</h3>
 <p>在Python中，<code>Sklearn</code>库实现了GMM，R中，<code>mclust</code>包也实现了GMM；调用非常简单</p>
 <ul>
