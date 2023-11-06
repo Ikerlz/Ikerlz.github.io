@@ -5,12 +5,366 @@
     <link>https://example.com/post/</link>
       <atom:link href="https://example.com/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 02 Nov 2023 00:39:27 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 05 Nov 2023 22:16:45 +0800</lastBuildDate>
     <image>
       <url>https://example.com/media/icon_hu9ccd2acdcd774e20fa34966445b706a8_6997380_512x512_fill_lanczos_center_3.png</url>
       <title>Posts</title>
       <link>https://example.com/post/</link>
     </image>
+    
+    <item>
+      <title>Notes on &#39;&#39;One-step Estimators and Pathwise Derivatives&#39;&#39;</title>
+      <link>https://example.com/post/path-dev/</link>
+      <pubDate>Sun, 05 Nov 2023 22:16:45 +0800</pubDate>
+      <guid>https://example.com/post/path-dev/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;You can locate the original blog post on &lt;a href=&#34;https://observablehq.com/@herbps10/one-step-estimators-and-pathwise-derivatives&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;observablehq.com&lt;/a&gt;, written by &lt;strong&gt;Herb Susmann&lt;/strong&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+
+&lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
+  &lt;summary class=&#34;font-weight-bold&#34;&gt;Table of Contents&lt;/summary&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#1-functional&#34;&gt;1. Functional&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#2-pathwise-derivatives&#34;&gt;2. Pathwise Derivatives&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#3-one-step-estimator&#34;&gt;3. One-step Estimator&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#4-pathwise-differentiability&#34;&gt;4. Pathwise differentiability&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#5-influence-function&#34;&gt;5. Influence function&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#references&#34;&gt;References&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/details&gt;
+
+&lt;hr&gt;
+&lt;h2 id=&#34;1-functional&#34;&gt;1. Functional&lt;/h2&gt;
+&lt;p&gt;A functional (you could also call it a parameter) is &lt;strong&gt;any function&lt;/strong&gt; that takes in a probability distribution and returns a number (or multiple numbers). For example, the mean is a functional: given a probability distribution, you compute &lt;mark&gt;$\mathbb{E}(X)=\int x p(x) d x$&lt;/mark&gt; and get back a number.
+Mathematically, we can define the functional as $T(P):\mathscr{P} \rightarrow \mathbb{R}^q$, where ${\color{red}\mathscr{P}=\{P\}}$ is the family of the distributions.&lt;/p&gt;
+&lt;details class=&#34;spoiler &#34;  id=&#34;spoiler-1&#34;&gt;
+  &lt;summary&gt;&lt;strong&gt;A toy example&lt;/strong&gt;&lt;/summary&gt;
+  &lt;p&gt;&lt;p&gt;$$
+T(P)=\int p(x)^2 d x\qquad(\star)
+$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;This functional doesn&amp;rsquo;t usually have any practical significance&lt;/li&gt;
+&lt;li&gt;Other functionals might be
+&lt;ul&gt;
+&lt;li&gt;the &lt;strong&gt;average treatment effect&lt;/strong&gt; in causal inference&lt;/li&gt;
+&lt;li&gt;the &lt;strong&gt;probability of survival&lt;/strong&gt; after a certain time point in survival analysis.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;For the true data generating distribution $P$ (here, we can use $N(0,1)$), the value of this squared density parameter is $T(P)=0.282$.
+However, we don&amp;rsquo;t know the true data generating distribution and we need to estimate it. Once we have an estimate of the distribution, we can &amp;ldquo;plug it in&amp;rdquo; to the formula for the functional to get an estimate for the parameter.&lt;/p&gt;
+&lt;p&gt;Take 100 samples from the true data generating distribution and use a &lt;strong&gt;kernel density estimator&lt;/strong&gt; to obtain the  estimated distribution $\tilde{P}$, with a corresponding density $\tilde{p}$. The following &lt;a href=&#34;#figure-est_diff&#34;&gt;FIGURE&lt;/a&gt; shows how the estimated $\tilde{P}$ compares to the truth, $P$.&lt;/p&gt;
+&lt;figure  id=&#34;figure-est_diff&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;The difference between $\tilde{P}$ and the truth $P$&#34; srcset=&#34;
+               /media/posts/path-dev/toy_dist_est_hu6b57dde35fb621b2e402235d9ae3ac15_48832_7a60d827413f043c5240737d8c770d91.webp 400w,
+               /media/posts/path-dev/toy_dist_est_hu6b57dde35fb621b2e402235d9ae3ac15_48832_cb656030e87868ac2edbf9006a565a23.webp 760w,
+               /media/posts/path-dev/toy_dist_est_hu6b57dde35fb621b2e402235d9ae3ac15_48832_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://example.com/media/posts/path-dev/toy_dist_est_hu6b57dde35fb621b2e402235d9ae3ac15_48832_7a60d827413f043c5240737d8c770d91.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;227&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      The difference between $\tilde{P}$ and the truth $P$
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;p&gt;The estimate of the functional $(\star)$ using this estimated distribution is $T(\tilde P)=0.282$ (off by 1.5% compared to the true value).&lt;/p&gt;
+&lt;/p&gt;
+&lt;/details&gt;
+&lt;p&gt;&lt;strong&gt;How would our estimate of the functional change if we could nudge our estimated distribution towards the true distribution ?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;We define a family of distributions $P_\epsilon$ which are mixtures of the estimated distribution and the true distribution. The density of $p_\epsilon$ is given by
+$$
+p_\epsilon=(1-\epsilon) p+\epsilon \tilde{p}
+$$
+where $\epsilon\in[0,1]$. For every value of $\epsilon$ we can compute a corresponding value of the functional: $T\left(P_\epsilon\right)$. These values trace out a trajectory as they move from the initual guess, $T(\tilde{P})$, to the true value, $T(P)$, as shown in &lt;a href=&#34;#figure-tp_vary_eps&#34;&gt;FIGURE&lt;/a&gt; below.&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-tp_vary_eps&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;The difference between $\tilde{P}$ and the truth $P$&#34; srcset=&#34;
+               /media/posts/path-dev/tp_vary_eps_hu645d32e7b6c2b6ffa7e1d579f7af0927_23355_cc882aafed63ba6cbab7ebd220681124.webp 400w,
+               /media/posts/path-dev/tp_vary_eps_hu645d32e7b6c2b6ffa7e1d579f7af0927_23355_1df5b8d059878a83c8bd590c38f0a9ba.webp 760w,
+               /media/posts/path-dev/tp_vary_eps_hu645d32e7b6c2b6ffa7e1d579f7af0927_23355_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://example.com/media/posts/path-dev/tp_vary_eps_hu645d32e7b6c2b6ffa7e1d579f7af0927_23355_cc882aafed63ba6cbab7ebd220681124.webp&#34;
+               width=&#34;564&#34;
+               height=&#34;342&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      The difference between $\tilde{P}$ and the truth $P$
+    &lt;/figcaption&gt;&lt;/figure&gt;
+
+&lt;hr&gt;
+&lt;h2 id=&#34;2-pathwise-derivatives&#34;&gt;2. Pathwise Derivatives&lt;/h2&gt;
+&lt;p&gt;A &lt;mark&gt;pathwise derivative&lt;/mark&gt; is &lt;font color=&#34;red&#34;&gt;the derivative of $T\left(P_\epsilon\right)$ with respect to $\epsilon$&lt;/font&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;It&amp;rsquo;s useful to think of a derivative as a direction: for each value of $\epsilon$, the pathwise derivative tells us which direction the functional $T\left(P_\epsilon\right)$ is moving.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-tp_pathwise&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;The pathwise derivative at $\epsilon=1$&#34; srcset=&#34;
+               /media/posts/path-dev/tp_pathwise_hucf546d1153bd73be506196aa75dac6e3_23792_5555f774161ad97ab8d060aa138c63aa.webp 400w,
+               /media/posts/path-dev/tp_pathwise_hucf546d1153bd73be506196aa75dac6e3_23792_9338c322d3fc09c44791e6cfda45d745.webp 760w,
+               /media/posts/path-dev/tp_pathwise_hucf546d1153bd73be506196aa75dac6e3_23792_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://example.com/media/posts/path-dev/tp_pathwise_hucf546d1153bd73be506196aa75dac6e3_23792_5555f774161ad97ab8d060aa138c63aa.webp&#34;
+               width=&#34;564&#34;
+               height=&#34;342&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      The pathwise derivative at $\epsilon=1$
+    &lt;/figcaption&gt;&lt;/figure&gt;
+
+&lt;p&gt;When $\epsilon=1, \tilde{P}$ is the estimated distribution. The pathwise derivative at that point tells us how our estimate of $T(\tilde{P})$ would change if we nudged our estimate in the right direction, towards the true distribution.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;3-one-step-estimator&#34;&gt;3. One-step Estimator&lt;/h2&gt;
+&lt;p&gt;We can use this to form a better estimate of the functional by using this pathwise derivative to approximate the trajectory as &lt;strong&gt;a linear function&lt;/strong&gt; (shown in the following &lt;a href=&#34;#figure-tp_onestep&#34;&gt;FIGURE&lt;/a&gt;). This is called a &lt;mark&gt;&amp;ldquo;one-step&amp;rdquo; estimator&lt;/mark&gt;, because it&amp;rsquo;s like performing a single step of Newton&amp;rsquo;s method.&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-tp_onestep&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;The one-step estimate&#34; srcset=&#34;
+               /media/posts/path-dev/tp_onestep_hu546b4e2afde3a6ef21b949680015f560_27062_b5f2b05d6e85bc5f41fde172ffcec663.webp 400w,
+               /media/posts/path-dev/tp_onestep_hu546b4e2afde3a6ef21b949680015f560_27062_03de0ad093fa116efaceff309222b7e4.webp 760w,
+               /media/posts/path-dev/tp_onestep_hu546b4e2afde3a6ef21b949680015f560_27062_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://example.com/media/posts/path-dev/tp_onestep_hu546b4e2afde3a6ef21b949680015f560_27062_b5f2b05d6e85bc5f41fde172ffcec663.webp&#34;
+               width=&#34;564&#34;
+               height=&#34;342&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      The one-step estimate
+    &lt;/figcaption&gt;&lt;/figure&gt;
+
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    In any practical setting, we would need to use the observed data to estimate the pathwise derivative.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    One-step estimators don&amp;rsquo;t respect any bounds on the target functional, which can lead to nonsensical results. An alternative family of estimators, &lt;strong&gt;Targeted Maximum Likelihood Estimators&lt;/strong&gt; (TMLE), provide one way around this problem
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;4-pathwise-differentiability&#34;&gt;4. Pathwise differentiability&lt;/h2&gt;
+&lt;p&gt;A functional is called &lt;strong&gt;pathwise differentiable&lt;/strong&gt; if it&amp;rsquo;s possible to compute it&amp;rsquo;s pathwise derivative.&lt;/p&gt;
+&lt;p&gt;This is a desirable property:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;it allows for the creation of one-step estimators&lt;/li&gt;
+&lt;li&gt;it also allows for other techniques like Targeted Maximum Likelihood Estimation (TMLE).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Fortunately, many parameters of real-world interest are pathwise differentiable: for example:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;the average treatment effect&lt;/strong&gt; for a binary intervention is a pathwise differentiable parameter.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;5-influence-function&#34;&gt;5. Influence function&lt;/h2&gt;
+&lt;p&gt;The term &lt;strong&gt;influence function&lt;/strong&gt; comes from its origins in robust statistics, where it was developed to quantify &lt;font color=&#34;red&#34;&gt;how much an estimator will change when its input changes&lt;/font&gt; (&lt;mark&gt;in other words, how much influence each input data point has on the outcome&lt;/mark&gt;). In robust statistics, they&amp;rsquo;re mostly concerned with what happens when your data is perturbed in a bad direction, so they can understand how things like outliers will impact an estimator.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;In our case, we are more interested in how estimators change when our estimates are nudged in the right direction, towards the true data distribution.&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Visually Communicating and Teaching Intuition for Influence Functions &lt;a href=&#34;https://www.tandfonline.com/doi/abs/10.1080/00031305.2020.1717620&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;(Fisher &amp;amp; Kennedy 2020)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Semiparametric Theory &lt;a href=&#34;https://arxiv.org/abs/1709.06418&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;(Kennedy 2017)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Tutorial: Deriving The Efficient Influence Curve For Large Models &lt;a href=&#34;chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://arxiv.org/pdf/1903.01706.pdf&#34;&gt;(Levy 2019)&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Notes on &#39;&#39;The Asymptotic Variance of Semiparametric Estimators&#39;&#39;</title>
+      <link>https://example.com/post/var-semiparam/</link>
+      <pubDate>Sun, 05 Nov 2023 22:16:45 +0800</pubDate>
+      <guid>https://example.com/post/var-semiparam/</guid>
+      <description>
+
+&lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
+  &lt;summary class=&#34;font-weight-bold&#34;&gt;Table of Contents&lt;/summary&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#0-background-semiparametric-model&#34;&gt;0. Background: Semiparametric Model&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#1-introduction&#34;&gt;1. Introduction&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#2-the-pathwise-derivative-formula-for-the-asymptotic-variance&#34;&gt;2. The Pathwise Derivative Formula For the Asymptotic Variance&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#3-semiparametric-m-estimators&#34;&gt;3. Semiparametric $M$-estimators&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#4-functions-of-mean-square-projection-and-densities&#34;&gt;4. Functions of Mean-square Projection and Densities&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#5-regularity-conditions&#34;&gt;5. Regularity Conditions&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#6-series-estimation-of-projection-functionals&#34;&gt;6. Series Estimation of Projection Functionals&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#7-power-series-estimators-for-semiparametric-individual-effects-and-average-derivatives&#34;&gt;7. Power Series Estimators For Semiparametric Individual Effects and Average Derivatives&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#references&#34;&gt;References&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/details&gt;
+
+&lt;hr&gt;
+&lt;h2 id=&#34;0-background-semiparametric-model&#34;&gt;0. Background: Semiparametric Model&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Reference&lt;/strong&gt;: &lt;a href=&#34;http://www.stat.columbia.edu/~bodhi/Talks/SPThNotes.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Lecture notes&lt;/a&gt; from Prof. Bodhisattva Sen (Columbia University)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;A semiparametric model is a statistical model that involves both &lt;strong&gt;parametric&lt;/strong&gt; and &lt;strong&gt;nonparametric&lt;/strong&gt; (infinite-dimensional) components. However, we are mostly interested in estimation and inference of a &lt;mark&gt;finite-dimensional parameter&lt;/mark&gt; in the model.&lt;/p&gt;
+&lt;hr&gt;
+&lt;details class=&#34;spoiler &#34;  id=&#34;spoiler-1&#34;&gt;
+  &lt;summary&gt;&lt;strong&gt;Example 1 (population mean)&lt;/strong&gt;&lt;/summary&gt;
+  &lt;p&gt;&lt;p&gt;Suppose that $X_1, \ldots, X_n$ are i.i.d. $P$ belonging to the class $\mathcal{P}$ of distribution. Let $\psi(P) \equiv \mathbb{E}_P\left[X_1\right]$, the mean of the distribution, be the parameter of interest.&lt;/p&gt;
+&lt;p style=&#34;color: red&#34;&gt;Question:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Suppose that $\mathcal{P}$ is the class of all distributions that have a finite variance.&lt;/li&gt;
+&lt;li&gt;What is the most efficient estimator of $\psi(P)$, i.e., what is the estimator with the best asymptotic performance?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    A model $\mathcal{P}$ is simply a collection of probability distributions for the data we observe.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+&lt;/details&gt;
+&lt;details class=&#34;spoiler &#34;  id=&#34;spoiler-2&#34;&gt;
+  &lt;summary&gt;&lt;strong&gt;Example 2 (partial linear regression model)&lt;/strong&gt;&lt;/summary&gt;
+  &lt;p&gt;&lt;p&gt;Suppose that we observe i.i.d. data $\left\{X_i \equiv\left(Y_i, Z_i, V_i\right): i=1, \ldots, n\right\}$ from the following partial linear regression model:
+$$
+Y_i=Z_i^{\top} \beta+g\left(V_i\right)+\epsilon_i
+$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$Y_i$ is the scalar response variable&lt;/li&gt;
+&lt;li&gt;$Z_i$ and $V_i$ are vectors of predictors&lt;/li&gt;
+&lt;li&gt;$g(\cdot)$ is the unknown (nonparametric) function&lt;/li&gt;
+&lt;li&gt;$\epsilon_i$ is the unobserved error.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p style=&#34;color: red&#34;&gt;For simplicity and to focus on the semiparametric nature of the problem:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Assume that $\left(Z_i, V_i\right) \sim f(\cdot, \cdot)$, where we assume that the density $f(\cdot, \cdot)$ is known, is independent of $\epsilon_i \sim N\left(0, \sigma^2\right)$ (with $\sigma^2$ known).&lt;/li&gt;
+&lt;li&gt;The model, under these assumptions, has a &lt;mark&gt;parametric component&lt;/mark&gt; $\beta$ and a &lt;mark&gt;nonparametric component&lt;/mark&gt; $g(\cdot)$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/p&gt;
+&lt;/details&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;mark&gt;&lt;strong&gt;&amp;ldquo;Separated semiparametric model&amp;rdquo;&lt;/strong&gt;&lt;/mark&gt;: We say that the model $\mathcal{P}=\left\{P_{\nu, \eta}\right\}$ is a &amp;ldquo;separated semiparametric model&amp;rdquo;, where $\nu$ is a &lt;strong&gt;&amp;ldquo;Euclidean parameter&amp;rdquo;&lt;/strong&gt; and $\eta$ runs through a nonparametric class of distributions (or some infinite-dimensional set). This gives a semiparametric model in the strict sense, in which we &lt;font color=&#34;red&#34;&gt;aim at estimating $\nu$ and consider $\eta$ as a nuisance parameter.&lt;/font&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;mark&gt;&lt;strong&gt;&amp;ldquo;Frequent questions for semiparametric model&amp;rdquo;&lt;/strong&gt;&lt;/mark&gt;: consider the estimation of a parameter of interest $\nu=\nu(P)$, where the data has distribution $P \in \mathcal{P}$:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;(Q1) How well can we estimate $\nu=\nu(P)$ ? What is our &amp;ldquo;gold standard&amp;rdquo;?&lt;/li&gt;
+&lt;li&gt;(Q2) Can we compare absolute &amp;ldquo;in principle&amp;rdquo; standards for estimation of $\nu$ in a model $\mathcal{P}$ with estimation of $\nu$ in a submodel $\mathcal{P}_0 \subset \mathcal{P}$ ? What is the effect of &lt;em&gt;not knowing&lt;/em&gt; $\eta$ on estimation of $\nu$ when $\mathcal{P}=\left\{P_\theta: \theta \equiv(\nu, \eta) \in \Theta\right\}$ ?&lt;/li&gt;
+&lt;li&gt;(Q3) How do we construct &lt;strong&gt;efficient&lt;/strong&gt; estimators of $\nu(P)$ ?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;1-introduction&#34;&gt;1. Introduction&lt;/h2&gt;
+&lt;h2 id=&#34;2-the-pathwise-derivative-formula-for-the-asymptotic-variance&#34;&gt;2. The Pathwise Derivative Formula For the Asymptotic Variance&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Preliminary: &lt;a href=&#34;https://example.com/post/path-dev/&#34;&gt;one-step estimators and pathwise derivatives&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The formula is based on the observation that &lt;font color=&#34;red&#34;&gt;$\sqrt{n}$-consistent&lt;/font&gt; &lt;strong&gt;nonparametric&lt;/strong&gt; estimators are often efficient.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For example, the sample mean is known to be an efficient estimator of the population mean in a &lt;strong&gt;nonparametric&lt;/strong&gt; model where no
+restrictions, other than regularity conditions (e.g. &lt;strong&gt;existence of the second moment&lt;/strong&gt;) are placed on the distribution of the data.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Idea&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Calculate the asymptotic variance of a semiparametric estimator as the variance bound for the &lt;em&gt;functional&lt;/em&gt; that it nonparametrically estimates.&lt;/li&gt;
+&lt;li&gt;In other words, the formula is &lt;font color=&#34;red&#34;&gt;the variance bound for the functional that is the limit of the estimator under general misspecification.&lt;/font&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;Let $z_1, \ldots, z_n$ be i.i.d. data, with &lt;font color=&#34;red&#34;&gt;(true) distribution $F_0$&lt;/font&gt; of $z_i$, and let $\hat{\beta}=\beta_n\left(z_1, \ldots, z_n\right)$ denote a $q \times 1$ vector of estimators. Suppose $\hat{\beta}$ can be associated with a family of distributions and a functional as
+$$
+\hat{\beta} \rightarrow \begin{cases}\mathscr{F}=\{F\} ; &amp;amp; \text { general family of distributions of } z \\ \mu: \mathscr{F} \rightarrow \mathbb{R}^q ; &amp;amp; \text { if } z_i \text { has distribution } F \text { then } {\color{red}\operatorname{plim}(\hat{\beta})=\mu(F)}\end{cases}
+$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The word &amp;ldquo;general&amp;rdquo; is taken to mean that $\mathscr{F}$ is unrestricted, except for regularity conditions, and allows for general misspecification.&lt;/li&gt;
+&lt;li&gt;This equation also specifies that $\mu(F)$ is the limit of $\hat{\beta}$ when $z_i$ has distribution $F$.&lt;/li&gt;
+&lt;li&gt;$\mu(F)$ traces out the limits of $\hat{\beta}$ as $F$ varies within the general family $\mathscr{F}$.&lt;/li&gt;
+&lt;li&gt;The variance formula for $\hat{\beta}$ is the semiparametric bound for estimation of $\mu(F)$, calculated as in &lt;em&gt;Koshevnik and Levit (1976)&lt;/em&gt;, &lt;em&gt;Pfanzagl and Wefelmeyer (1982)&lt;/em&gt;, and others.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;Let &lt;mark&gt;$\{F_\theta: F_\theta \in \mathscr{F}\}$&lt;/mark&gt; denote a one-dimensional subfamily of $\mathscr{F}$, i.e. a path in $\mathscr{F}$, that is equal to the true distribution $F_0$ when $\theta=0$.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Suppose that $F_\theta$ has a density $d F_\theta$ and a corresponding score
+$${\color{red}S(z)=\frac{\partial \ln \left(d F_\theta\right)}{ \partial \theta}\Big|_{\theta=0}}.$$&lt;/li&gt;
+&lt;li&gt;Suppose that the set of scores can approximate in mean square any mean zero, finite variance function of $z$.&lt;/li&gt;
+&lt;li&gt;Let $E[\cdot]$ denote the expectation at the true distribution $F_0$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The &lt;strong&gt;pathwise derivative&lt;/strong&gt; of $\mu(F)$ is a $q \times 1$ vector $d(z)$ with &lt;mark&gt;$E[d(z)]=0$ and $E\left[|d(z)|^2\right]&amp;lt;\infty$&lt;/mark&gt; such that for every path,
+$$
+{\color{red}\frac{\partial \mu\left(F_\theta\right)}{\partial \theta}=E[d(z) S(z)].}
+$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The variance bound for estimation of $\mu(F)$ is $\operatorname{Var}(d(z))$.&lt;/li&gt;
+&lt;li&gt;Thus, the asymptotic variance formula suggested here is the variance of the &lt;strong&gt;pathwise derivative&lt;/strong&gt; of the functional $\mu(F)$ that is estimated under general misspecification.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;details class=&#34;spoiler &#34;  id=&#34;spoiler-4&#34;&gt;
+  &lt;summary&gt;&lt;strong&gt;Example&lt;/strong&gt;&lt;/summary&gt;
+  &lt;p&gt;&lt;p&gt;The parameter $\beta_0=\int f_0(z)^2 d z$, where $f_0(z)$ is the density function of $z_i$, is important in several contexts, e.g. as discussed in Prakasa Rao (1983). One estimator is $\tilde{\beta}=\sum_{i=1}^n \hat{f}\left(z_i\right) / n$, for a nonparametric density estimator $\hat{f}(z)$ of $z_i$. Suppose $z$ is symmetrically distributed around zero. Then one might hope to improve efficiency by using the antithetic estimate $\hat{f}(-z)$ of the density to, say, form $\hat{\beta}=\sum_{i=1}^n\left[\hat{f}\left(z_i\right)+\hat{f}\left(-z_i\right)\right] / 2$. The asymptotic variance can be found by calculating the limit of $\hat{\beta}$ under general misspecification, where $z$ need not be symmetric about zero, and the pathwise derivative of this limit. Let $E_F[\cdot]$ denote the expectation at a distribution $F$ and let $E_\theta[\cdot]=E_{F_\theta}[\cdot]$ for a path $F_\theta$. By an appropriate uniform law of large numbers the limit of $\hat{\beta}$ is $\mu(F)=\int[f(z)+f(-z)] f(z) d z / 2$. Assuming that differentiation inside the integral is allowed, $\partial \mu\left(F_\theta\right) / \partial \theta=\int\left[\partial f_\theta(z) / \partial \theta\right] f_0(z) d z+$ $\left{\int\left[\partial f_\theta(-z) / \partial \theta\right] f_0(z) d z+\int\left[\partial f_\theta(z) / \partial \theta\right] f_0(-z) d z\right} / 2=E\left[\left{f_0(z)+f_0(-z)\right} S(z)\right]=$ $E[d(z) S(z)]$, for $d(z)=2\left{f_0(z)-\beta_0\right}$. Thus, in this example the asymptotic variance formula is $\operatorname{Var}\left(2 f_0(z)\right)$, which is the well known asymptotic variance of $\tilde{\beta}$, so no efficiency improvement results.&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    A model $\mathcal{P}$ is simply a collection of probability distributions for the data we observe.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+&lt;/details&gt;
+&lt;h2 id=&#34;3-semiparametric-m-estimators&#34;&gt;3. Semiparametric $M$-estimators&lt;/h2&gt;
+&lt;h2 id=&#34;4-functions-of-mean-square-projection-and-densities&#34;&gt;4. Functions of Mean-square Projection and Densities&lt;/h2&gt;
+&lt;h2 id=&#34;5-regularity-conditions&#34;&gt;5. Regularity Conditions&lt;/h2&gt;
+&lt;h2 id=&#34;6-series-estimation-of-projection-functionals&#34;&gt;6. Series Estimation of Projection Functionals&lt;/h2&gt;
+&lt;h2 id=&#34;7-power-series-estimators-for-semiparametric-individual-effects-and-average-derivatives&#34;&gt;7. Power Series Estimators For Semiparametric Individual Effects and Average Derivatives&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;KOSHEVNIK, Y. A., AND B. Y. LEVIT (1976): &amp;ldquo;On a Non-parametric Analogue of the Information Matrix&amp;rdquo;, Theory of Probability and Applications, 21, 738-753.&lt;/li&gt;
+&lt;li&gt;PFANZAGL, J., AND WEFELMEYER (1982): &amp;ldquo;Contributions to a General Asymptotic Statistical Theory&amp;rdquo;, New York: Springer-Verlag.&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
     
     <item>
       <title>混合高斯模型的代码实现</title>

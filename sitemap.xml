@@ -11,7 +11,23 @@
     <changefreq>weekly</changefreq>
   </url><url>
     <loc>https://example.com/categories/</loc>
-    <lastmod>2023-11-02T00:39:27+08:00</lastmod>
+    <lastmod>2023-11-05T22:16:45+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>https://example.com/category/causal-inference/</loc>
+    <lastmod>2023-11-05T22:16:45+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>https://example.com/post/path-dev/</loc>
+    <lastmod>2023-11-05T22:16:45+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>https://example.com/post/var-semiparam/</loc>
+    <lastmod>2023-11-05T22:16:45+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>https://example.com/post/</loc>
+    <lastmod>2023-11-05T22:16:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
     <loc>https://example.com/category/classical-statistics/</loc>
@@ -23,10 +39,6 @@
     <changefreq>weekly</changefreq>
   </url><url>
     <loc>https://example.com/tag/gmm/</loc>
-    <lastmod>2023-11-02T00:39:27+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>https://example.com/post/</loc>
     <lastmod>2023-11-02T00:39:27+08:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
@@ -44,10 +56,6 @@
   </url><url>
     <loc>https://example.com/post/gmm/</loc>
     <lastmod>2023-11-02T00:39:27+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>https://example.com/category/causal-inference/</loc>
-    <lastmod>2023-10-29T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
     <loc>https://example.com/slides/</loc>
