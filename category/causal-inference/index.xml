@@ -30,7 +30,11 @@
     &lt;li&gt;&lt;a href=&#34;#2-pathwise-derivatives&#34;&gt;2. Pathwise Derivatives&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&#34;#3-one-step-estimator&#34;&gt;3. One-step Estimator&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&#34;#4-pathwise-differentiability&#34;&gt;4. Pathwise differentiability&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&#34;#5-influence-function&#34;&gt;5. Influence function&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#5-influence-function&#34;&gt;5. Influence function&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#51-the-gâteaux-derivative&#34;&gt;5.1 The Gâteaux derivative&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
     &lt;li&gt;&lt;a href=&#34;#references&#34;&gt;References&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/nav&gt;
@@ -101,10 +105,10 @@ where $\epsilon\in[0,1]$. For every value of $\epsilon$ we can compute a corresp
 &lt;figure  id=&#34;figure-tp_vary_eps&#34;&gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;The difference between $\tilde{P}$ and the truth $P$&#34; srcset=&#34;
-               /media/posts/path-dev/tp_vary_eps_hu645d32e7b6c2b6ffa7e1d579f7af0927_23355_cc882aafed63ba6cbab7ebd220681124.webp 400w,
+               /media/posts/path-dev/tp_vary_eps_hu645d32e7b6c2b6ffa7e1d579f7af0927_23355_81adf42d1864c024aaccc18ab5094087.webp 400w,
                /media/posts/path-dev/tp_vary_eps_hu645d32e7b6c2b6ffa7e1d579f7af0927_23355_1df5b8d059878a83c8bd590c38f0a9ba.webp 760w,
                /media/posts/path-dev/tp_vary_eps_hu645d32e7b6c2b6ffa7e1d579f7af0927_23355_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://example.com/media/posts/path-dev/tp_vary_eps_hu645d32e7b6c2b6ffa7e1d579f7af0927_23355_cc882aafed63ba6cbab7ebd220681124.webp&#34;
+               src=&#34;https://example.com/media/posts/path-dev/tp_vary_eps_hu645d32e7b6c2b6ffa7e1d579f7af0927_23355_81adf42d1864c024aaccc18ab5094087.webp&#34;
                width=&#34;564&#34;
                height=&#34;342&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -139,10 +143,10 @@ where $\epsilon\in[0,1]$. For every value of $\epsilon$ we can compute a corresp
 &lt;figure  id=&#34;figure-tp_pathwise&#34;&gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;The pathwise derivative at $\epsilon=1$&#34; srcset=&#34;
-               /media/posts/path-dev/tp_pathwise_hucf546d1153bd73be506196aa75dac6e3_23792_5555f774161ad97ab8d060aa138c63aa.webp 400w,
+               /media/posts/path-dev/tp_pathwise_hucf546d1153bd73be506196aa75dac6e3_23792_1f63684b021986fdd75ad0d58ad77dce.webp 400w,
                /media/posts/path-dev/tp_pathwise_hucf546d1153bd73be506196aa75dac6e3_23792_9338c322d3fc09c44791e6cfda45d745.webp 760w,
                /media/posts/path-dev/tp_pathwise_hucf546d1153bd73be506196aa75dac6e3_23792_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://example.com/media/posts/path-dev/tp_pathwise_hucf546d1153bd73be506196aa75dac6e3_23792_5555f774161ad97ab8d060aa138c63aa.webp&#34;
+               src=&#34;https://example.com/media/posts/path-dev/tp_pathwise_hucf546d1153bd73be506196aa75dac6e3_23792_1f63684b021986fdd75ad0d58ad77dce.webp&#34;
                width=&#34;564&#34;
                height=&#34;342&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -175,10 +179,10 @@ where $\epsilon\in[0,1]$. For every value of $\epsilon$ we can compute a corresp
 &lt;figure  id=&#34;figure-tp_onestep&#34;&gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;The one-step estimate&#34; srcset=&#34;
-               /media/posts/path-dev/tp_onestep_hu546b4e2afde3a6ef21b949680015f560_27062_b5f2b05d6e85bc5f41fde172ffcec663.webp 400w,
+               /media/posts/path-dev/tp_onestep_hu546b4e2afde3a6ef21b949680015f560_27062_e2ce109324cc8f37c662df42b0d70b9b.webp 400w,
                /media/posts/path-dev/tp_onestep_hu546b4e2afde3a6ef21b949680015f560_27062_03de0ad093fa116efaceff309222b7e4.webp 760w,
                /media/posts/path-dev/tp_onestep_hu546b4e2afde3a6ef21b949680015f560_27062_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://example.com/media/posts/path-dev/tp_onestep_hu546b4e2afde3a6ef21b949680015f560_27062_b5f2b05d6e85bc5f41fde172ffcec663.webp&#34;
+               src=&#34;https://example.com/media/posts/path-dev/tp_onestep_hu546b4e2afde3a6ef21b949680015f560_27062_e2ce109324cc8f37c662df42b0d70b9b.webp&#34;
                width=&#34;564&#34;
                height=&#34;342&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -215,6 +219,66 @@ where $\epsilon\in[0,1]$. For every value of $\epsilon$ we can compute a corresp
 &lt;li&gt;&lt;strong&gt;In our case, we are more interested in how estimators change when our estimates are nudged in the right direction, towards the true data distribution.&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
+&lt;p&gt;Is the plug-in estimator $T(\tilde F)$ a good estimator?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The Glivenko-Cantelli Theorem says that $\hat{F} \stackrel{\text { a.s. }}{\longrightarrow} F$; does this mean that $T(\hat{F}) \stackrel{\text { a.s. }}{\longrightarrow} T(F)$ ?&lt;/li&gt;
+&lt;li&gt;The answer turns out to be a complicated &amp;ldquo;sometimes&amp;rdquo;; often &amp;ldquo;yes&amp;rdquo;, but not always
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-tf_density_example&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;The difference between $\tilde{P}$ and the truth $P$&#34; srcset=&#34;
+               /media/posts/path-dev/TF_density_example_huba61f51cfb0925473f4e859d3bd8a8e8_18949_ab9e1c0aa292afcedeb634177a45f352.webp 400w,
+               /media/posts/path-dev/TF_density_example_huba61f51cfb0925473f4e859d3bd8a8e8_18949_3c869501e1da317d601867c331ff7e0c.webp 760w,
+               /media/posts/path-dev/TF_density_example_huba61f51cfb0925473f4e859d3bd8a8e8_18949_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://example.com/media/posts/path-dev/TF_density_example_huba61f51cfb0925473f4e859d3bd8a8e8_18949_ab9e1c0aa292afcedeb634177a45f352.webp&#34;
+               width=&#34;659&#34;
+               height=&#34;259&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      The difference between $\tilde{P}$ and the truth $P$
+    &lt;/figcaption&gt;&lt;/figure&gt;
+
+When is the plug-in estimator consistent $\Rightarrow$ requires certain conditions on the smoothness
+(differentiability) of $T(F)$ $\Rightarrow$ &lt;font color=&#34;red&#34;&gt;What does it mean to take the derivative of a function w.r.t. a function&lt;/font&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;51-the-gâteaux-derivative&#34;&gt;5.1 The Gâteaux derivative&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;The Gâteaux derivative of $T$ at $F$ in the direction $G$ is defined by
+$$
+L_F(T ; G)=\lim _{\epsilon \rightarrow 0}\left[\frac{T{(1-\epsilon) F+\epsilon G}-T(F)}{\epsilon}\right]
+$$&lt;/li&gt;
+&lt;li&gt;An equivalent way of stating the definition is to define $D=G-F$, and the above becomes
+$$
+L_F(T ; D)=\lim _{\epsilon \rightarrow 0}\left[\frac{T{F+\epsilon D}-T(F)}{\epsilon}\right]
+$$&lt;/li&gt;
+&lt;li&gt;Either way, the definition boils down to
+$$
+L_F(T)=\lim_{\epsilon \rightarrow 0}\left[\frac{T\left(F_\epsilon\right)-T(F)}{\epsilon}\right]
+$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;From a &lt;strong&gt;mathematical perspective&lt;/strong&gt;, the Gâteaux derivative a generalization of the concept of a directional derivative to functional analysis&lt;/li&gt;
+&lt;li&gt;From a &lt;strong&gt;statistical perspective&lt;/strong&gt;, it represents the rate of change in a statistical functional upon a small amount of contamination by another distribution G&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;Visually Communicating and Teaching Intuition for Influence Functions &lt;a href=&#34;https://www.tandfonline.com/doi/abs/10.1080/00031305.2020.1717620&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;(Fisher &amp;amp; Kennedy 2020)&lt;/a&gt;&lt;/li&gt;
@@ -299,6 +363,11 @@ $$&lt;/p&gt;
 &lt;li&gt;(Q2) Can we compare absolute &amp;ldquo;in principle&amp;rdquo; standards for estimation of $\nu$ in a model $\mathcal{P}$ with estimation of $\nu$ in a submodel $\mathcal{P}_0 \subset \mathcal{P}$ ? What is the effect of &lt;em&gt;not knowing&lt;/em&gt; $\eta$ on estimation of $\nu$ when $\mathcal{P}=\left\{P_\theta: \theta \equiv(\nu, \eta) \in \Theta\right\}$ ?&lt;/li&gt;
 &lt;li&gt;(Q3) How do we construct &lt;strong&gt;efficient&lt;/strong&gt; estimators of $\nu(P)$ ?&lt;/li&gt;
 &lt;/ul&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    A model $\mathcal{P}$ is simply a collection of probability distributions for the data we observe.
+  &lt;/div&gt;
+&lt;/div&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;1-introduction&#34;&gt;1. Introduction&lt;/h2&gt;
 &lt;h2 id=&#34;2-the-pathwise-derivative-formula-for-the-asymptotic-variance&#34;&gt;2. The Pathwise Derivative Formula For the Asymptotic Variance&lt;/h2&gt;
@@ -342,14 +411,31 @@ $$&lt;/p&gt;
 &lt;li&gt;The variance bound for estimation of $\mu(F)$ is $\operatorname{Var}(d(z))$.&lt;/li&gt;
 &lt;li&gt;Thus, the asymptotic variance formula suggested here is the variance of the &lt;strong&gt;pathwise derivative&lt;/strong&gt; of the functional $\mu(F)$ that is estimated under general misspecification.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;details class=&#34;spoiler &#34;  id=&#34;spoiler-4&#34;&gt;
+&lt;details class=&#34;spoiler &#34;  id=&#34;spoiler-5&#34;&gt;
   &lt;summary&gt;&lt;strong&gt;Example&lt;/strong&gt;&lt;/summary&gt;
-  &lt;p&gt;&lt;p&gt;The parameter $\beta_0=\int f_0(z)^2 d z$, where $f_0(z)$ is the density function of $z_i$, is important in several contexts, e.g. as discussed in Prakasa Rao (1983). One estimator is $\tilde{\beta}=\sum_{i=1}^n \hat{f}\left(z_i\right) / n$, for a nonparametric density estimator $\hat{f}(z)$ of $z_i$. Suppose $z$ is symmetrically distributed around zero. Then one might hope to improve efficiency by using the antithetic estimate $\hat{f}(-z)$ of the density to, say, form $\hat{\beta}=\sum_{i=1}^n\left[\hat{f}\left(z_i\right)+\hat{f}\left(-z_i\right)\right] / 2$. The asymptotic variance can be found by calculating the limit of $\hat{\beta}$ under general misspecification, where $z$ need not be symmetric about zero, and the pathwise derivative of this limit. Let $E_F[\cdot]$ denote the expectation at a distribution $F$ and let $E_\theta[\cdot]=E_{F_\theta}[\cdot]$ for a path $F_\theta$. By an appropriate uniform law of large numbers the limit of $\hat{\beta}$ is $\mu(F)=\int[f(z)+f(-z)] f(z) d z / 2$. Assuming that differentiation inside the integral is allowed, $\partial \mu\left(F_\theta\right) / \partial \theta=\int\left[\partial f_\theta(z) / \partial \theta\right] f_0(z) d z+$ $\left{\int\left[\partial f_\theta(-z) / \partial \theta\right] f_0(z) d z+\int\left[\partial f_\theta(z) / \partial \theta\right] f_0(-z) d z\right} / 2=E\left[\left{f_0(z)+f_0(-z)\right} S(z)\right]=$ $E[d(z) S(z)]$, for $d(z)=2\left{f_0(z)-\beta_0\right}$. Thus, in this example the asymptotic variance formula is $\operatorname{Var}\left(2 f_0(z)\right)$, which is the well known asymptotic variance of $\tilde{\beta}$, so no efficiency improvement results.&lt;/p&gt;
-&lt;div class=&#34;alert alert-note&#34;&gt;
-  &lt;div&gt;
-    A model $\mathcal{P}$ is simply a collection of probability distributions for the data we observe.
-  &lt;/div&gt;
-&lt;/div&gt;
+  &lt;p&gt;&lt;ul&gt;
+&lt;li&gt;Consider the parameter $\beta_0=\int f_0(z)^2 d z$, where $f_0(z)$ is the density function of $z_i$.&lt;/li&gt;
+&lt;li&gt;One estimator is &lt;mark&gt;$\tilde{\beta}=\sum_{i=1}^n \hat{f}\left(z_i\right) / n$&lt;/mark&gt;, for a nonparametric density estimator $\hat{f}(z)$ of $z_i$.&lt;/li&gt;
+&lt;li&gt;Suppose $z$ is symmetrically distributed around zero. Then one might hope to improve efficiency by using the antithetic estimate $\hat{f}(-z)$ of the density to form
+$$\hat{\beta}=\sum_{i=1}^n\frac{[\hat{f}(z_i)+\hat{f}(-z_i)]}{2}.$$&lt;/li&gt;
+&lt;li&gt;The asymptotic variance can be found by calculating the limit of $\hat{\beta}$ under &lt;mark&gt;general misspecification&lt;/mark&gt;, where $z$ need not be symmetric about zero, and the pathwise derivative of this limit.
+&lt;ul&gt;
+&lt;li&gt;Let $E_F[\cdot]$ denote the expectation at a distribution $F$ and let $E_\theta[\cdot]=E_{F_\theta}[\cdot]$ for a path $F_\theta$.&lt;/li&gt;
+&lt;li&gt;By an appropriate uniform law of large numbers the limit of $\hat{\beta}$ is $\mu(F)=\int[f(z)+f(-z)] f(z) d z / 2$.&lt;/li&gt;
+&lt;li&gt;Assuming that differentiation inside the integral is allowed,
+$$
+\begin{aligned}
+\frac{\partial \mu\left(F_\theta\right)}{ \partial \theta} &amp;amp;=\int\left[\frac{\partial f_\theta(z) }{ \partial \theta}\right] f_0(z) d z\\
+&amp;amp;\qquad +\frac{1}{2}\left\{\int\left[\frac{\partial f_\theta(-z)}{ \partial \theta}\right] f_0(z) d z\right.\\
+&amp;amp;\qquad\qquad\qquad\qquad\qquad +\left.\int\left[\frac{\partial f_\theta(z) }{ \partial \theta}\right] f_0(-z) d z\right\}\\
+&amp;amp;=E\left[\left\{f_0(z)+f_0(-z)\right\} S(z)\right]\\
+&amp;amp;=E[d(z) S(z)]
+\end{aligned}
+$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Thus, in this example the asymptotic variance formula is ${\color{red}\operatorname{Var}\left(2 f_0(z)\right)}$, which is the well known asymptotic variance of $\tilde{\beta}$, so &lt;mark&gt;no efficiency improvement results&lt;/mark&gt;.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/p&gt;
 &lt;/details&gt;
 &lt;h2 id=&#34;3-semiparametric-m-estimators&#34;&gt;3. Semiparametric $M$-estimators&lt;/h2&gt;

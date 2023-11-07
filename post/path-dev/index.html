@@ -280,7 +280,7 @@
   
 
 <meta name="description" content="You can locate the original blog post on observablehq.com, written by Herb Susmann.
-Table of Contents 1. Functional 2. Pathwise Derivatives 3. One-step Estimator 4. Pathwise differentiability 5. Influence function References 1." />
+Table of Contents 1. Functional 2. Pathwise Derivatives 3. One-step Estimator 4. Pathwise differentiability 5. Influence function 5." />
 
 
 
@@ -323,7 +323,7 @@ Table of Contents 1. Functional 2. Pathwise Derivatives 3. One-step Estimator 4.
 <meta property="og:url" content="https://example.com/post/path-dev/" />
 <meta property="og:title" content="Notes on &#39;&#39;One-step Estimators and Pathwise Derivatives&#39;&#39; | Li Zhe" />
 <meta property="og:description" content="You can locate the original blog post on observablehq.com, written by Herb Susmann.
-Table of Contents 1. Functional 2. Pathwise Derivatives 3. One-step Estimator 4. Pathwise differentiability 5. Influence function References 1." /><meta property="og:image" content="https://example.com/post/path-dev/featured.png" /><meta property="og:locale" content="en-us" />
+Table of Contents 1. Functional 2. Pathwise Derivatives 3. One-step Estimator 4. Pathwise differentiability 5. Influence function 5." /><meta property="og:image" content="https://example.com/post/path-dev/featured.png" /><meta property="og:locale" content="en-us" />
 
   
     <meta
@@ -382,7 +382,7 @@ Table of Contents 1. Functional 2. Pathwise Derivatives 3. One-step Estimator 4.
       "url": "https://example.com/media/icon_hu9ccd2acdcd774e20fa34966445b706a8_6997380_192x192_fill_lanczos_center_3.png"
     }
   },
-  "description": "You can locate the original blog post on observablehq.com, written by Herb Susmann.\nTable of Contents 1. Functional 2. Pathwise Derivatives 3. One-step Estimator 4. Pathwise differentiability 5. Influence function References 1."
+  "description": "You can locate the original blog post on observablehq.com, written by Herb Susmann.\nTable of Contents 1. Functional 2. Pathwise Derivatives 3. One-step Estimator 4. Pathwise differentiability 5. Influence function 5."
 }
 </script>
 
@@ -859,7 +859,7 @@ Table of Contents 1. Functional 2. Pathwise Derivatives 3. One-step Estimator 4.
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    4 min read
+    5 min read
   </span>
   
 
@@ -911,7 +911,11 @@ Table of Contents 1. Functional 2. Pathwise Derivatives 3. One-step Estimator 4.
     <li><a href="#2-pathwise-derivatives">2. Pathwise Derivatives</a></li>
     <li><a href="#3-one-step-estimator">3. One-step Estimator</a></li>
     <li><a href="#4-pathwise-differentiability">4. Pathwise differentiability</a></li>
-    <li><a href="#5-influence-function">5. Influence function</a></li>
+    <li><a href="#5-influence-function">5. Influence function</a>
+      <ul>
+        <li><a href="#51-the-gâteaux-derivative">5.1 The Gâteaux derivative</a></li>
+      </ul>
+    </li>
     <li><a href="#references">References</a></li>
   </ul>
 </nav>
@@ -982,10 +986,10 @@ where $\epsilon\in[0,1]$. For every value of $\epsilon$ we can compute a corresp
 <figure  id="figure-tp_vary_eps">
   <div class="d-flex justify-content-center">
     <div class="w-100" ><img alt="The difference between $\tilde{P}$ and the truth $P$" srcset="
-               /media/posts/path-dev/tp_vary_eps_hu645d32e7b6c2b6ffa7e1d579f7af0927_23355_cc882aafed63ba6cbab7ebd220681124.webp 400w,
+               /media/posts/path-dev/tp_vary_eps_hu645d32e7b6c2b6ffa7e1d579f7af0927_23355_81adf42d1864c024aaccc18ab5094087.webp 400w,
                /media/posts/path-dev/tp_vary_eps_hu645d32e7b6c2b6ffa7e1d579f7af0927_23355_1df5b8d059878a83c8bd590c38f0a9ba.webp 760w,
                /media/posts/path-dev/tp_vary_eps_hu645d32e7b6c2b6ffa7e1d579f7af0927_23355_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
-               src="/media/posts/path-dev/tp_vary_eps_hu645d32e7b6c2b6ffa7e1d579f7af0927_23355_cc882aafed63ba6cbab7ebd220681124.webp"
+               src="/media/posts/path-dev/tp_vary_eps_hu645d32e7b6c2b6ffa7e1d579f7af0927_23355_81adf42d1864c024aaccc18ab5094087.webp"
                width="564"
                height="342"
                loading="lazy" data-zoomable /></div>
@@ -1020,10 +1024,10 @@ where $\epsilon\in[0,1]$. For every value of $\epsilon$ we can compute a corresp
 <figure  id="figure-tp_pathwise">
   <div class="d-flex justify-content-center">
     <div class="w-100" ><img alt="The pathwise derivative at $\epsilon=1$" srcset="
-               /media/posts/path-dev/tp_pathwise_hucf546d1153bd73be506196aa75dac6e3_23792_5555f774161ad97ab8d060aa138c63aa.webp 400w,
+               /media/posts/path-dev/tp_pathwise_hucf546d1153bd73be506196aa75dac6e3_23792_1f63684b021986fdd75ad0d58ad77dce.webp 400w,
                /media/posts/path-dev/tp_pathwise_hucf546d1153bd73be506196aa75dac6e3_23792_9338c322d3fc09c44791e6cfda45d745.webp 760w,
                /media/posts/path-dev/tp_pathwise_hucf546d1153bd73be506196aa75dac6e3_23792_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
-               src="/media/posts/path-dev/tp_pathwise_hucf546d1153bd73be506196aa75dac6e3_23792_5555f774161ad97ab8d060aa138c63aa.webp"
+               src="/media/posts/path-dev/tp_pathwise_hucf546d1153bd73be506196aa75dac6e3_23792_1f63684b021986fdd75ad0d58ad77dce.webp"
                width="564"
                height="342"
                loading="lazy" data-zoomable /></div>
@@ -1056,10 +1060,10 @@ where $\epsilon\in[0,1]$. For every value of $\epsilon$ we can compute a corresp
 <figure  id="figure-tp_onestep">
   <div class="d-flex justify-content-center">
     <div class="w-100" ><img alt="The one-step estimate" srcset="
-               /media/posts/path-dev/tp_onestep_hu546b4e2afde3a6ef21b949680015f560_27062_b5f2b05d6e85bc5f41fde172ffcec663.webp 400w,
+               /media/posts/path-dev/tp_onestep_hu546b4e2afde3a6ef21b949680015f560_27062_e2ce109324cc8f37c662df42b0d70b9b.webp 400w,
                /media/posts/path-dev/tp_onestep_hu546b4e2afde3a6ef21b949680015f560_27062_03de0ad093fa116efaceff309222b7e4.webp 760w,
                /media/posts/path-dev/tp_onestep_hu546b4e2afde3a6ef21b949680015f560_27062_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
-               src="/media/posts/path-dev/tp_onestep_hu546b4e2afde3a6ef21b949680015f560_27062_b5f2b05d6e85bc5f41fde172ffcec663.webp"
+               src="/media/posts/path-dev/tp_onestep_hu546b4e2afde3a6ef21b949680015f560_27062_e2ce109324cc8f37c662df42b0d70b9b.webp"
                width="564"
                height="342"
                loading="lazy" data-zoomable /></div>
@@ -1096,6 +1100,66 @@ where $\epsilon\in[0,1]$. For every value of $\epsilon$ we can compute a corresp
 <li><strong>In our case, we are more interested in how estimators change when our estimates are nudged in the right direction, towards the true data distribution.</strong></li>
 </ul>
 <hr>
+<p>Is the plug-in estimator $T(\tilde F)$ a good estimator?</p>
+<ul>
+<li>The Glivenko-Cantelli Theorem says that $\hat{F} \stackrel{\text { a.s. }}{\longrightarrow} F$; does this mean that $T(\hat{F}) \stackrel{\text { a.s. }}{\longrightarrow} T(F)$ ?</li>
+<li>The answer turns out to be a complicated &ldquo;sometimes&rdquo;; often &ldquo;yes&rdquo;, but not always
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-tf_density_example">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="The difference between $\tilde{P}$ and the truth $P$" srcset="
+               /media/posts/path-dev/TF_density_example_huba61f51cfb0925473f4e859d3bd8a8e8_18949_ab9e1c0aa292afcedeb634177a45f352.webp 400w,
+               /media/posts/path-dev/TF_density_example_huba61f51cfb0925473f4e859d3bd8a8e8_18949_3c869501e1da317d601867c331ff7e0c.webp 760w,
+               /media/posts/path-dev/TF_density_example_huba61f51cfb0925473f4e859d3bd8a8e8_18949_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/media/posts/path-dev/TF_density_example_huba61f51cfb0925473f4e859d3bd8a8e8_18949_ab9e1c0aa292afcedeb634177a45f352.webp"
+               width="659"
+               height="259"
+               loading="lazy" data-zoomable /></div>
+  </div><figcaption data-pre="Figure&nbsp;" data-post=":&nbsp;" class="numbered">
+      The difference between $\tilde{P}$ and the truth $P$
+    </figcaption></figure>
+
+When is the plug-in estimator consistent $\Rightarrow$ requires certain conditions on the smoothness
+(differentiability) of $T(F)$ $\Rightarrow$ <font color="red">What does it mean to take the derivative of a function w.r.t. a function</font></li>
+</ul>
+<h3 id="51-the-gâteaux-derivative">5.1 The Gâteaux derivative</h3>
+<ul>
+<li>The Gâteaux derivative of $T$ at $F$ in the direction $G$ is defined by
+$$
+L_F(T ; G)=\lim _{\epsilon \rightarrow 0}\left[\frac{T{(1-\epsilon) F+\epsilon G}-T(F)}{\epsilon}\right]
+$$</li>
+<li>An equivalent way of stating the definition is to define $D=G-F$, and the above becomes
+$$
+L_F(T ; D)=\lim _{\epsilon \rightarrow 0}\left[\frac{T{F+\epsilon D}-T(F)}{\epsilon}\right]
+$$</li>
+<li>Either way, the definition boils down to
+$$
+L_F(T)=\lim_{\epsilon \rightarrow 0}\left[\frac{T\left(F_\epsilon\right)-T(F)}{\epsilon}\right]
+$$</li>
+</ul>
+<blockquote>
+<ul>
+<li>From a <strong>mathematical perspective</strong>, the Gâteaux derivative a generalization of the concept of a directional derivative to functional analysis</li>
+<li>From a <strong>statistical perspective</strong>, it represents the rate of change in a statistical functional upon a small amount of contamination by another distribution G</li>
+</ul>
+</blockquote>
 <h2 id="references">References</h2>
 <ol>
 <li>Visually Communicating and Teaching Intuition for Influence Functions <a href="https://www.tandfonline.com/doi/abs/10.1080/00031305.2020.1717620" target="_blank" rel="noopener">(Fisher &amp; Kennedy 2020)</a></li>
@@ -1443,7 +1507,7 @@ where $\epsilon\in[0,1]$. For every value of $\epsilon$ we can compute a corresp
   
 
 
-<script src="/js/vendor-bundle.min.f64289d8217e08e3afcd597d60836062.js"></script>
+<script src="/js/vendor-bundle.min.b5622475b4b8e8dd4f17b274b09af356.js"></script>
 
 
 
@@ -1527,7 +1591,7 @@ where $\epsilon\in[0,1]$. For every value of $\epsilon$ we can compute a corresp
   
 
 
-<script src="/en/js/wowchemy.min.ead4a376bcf2c4714888c770ea9b0040.js"></script>
+<script src="/en/js/wowchemy.min.59eaa25b822e34224debaefcbad91f7a.js"></script>
 
 
 
