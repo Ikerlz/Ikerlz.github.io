@@ -494,7 +494,7 @@ $$
 $$&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;The word &amp;ldquo;general&amp;rdquo; is taken to mean that $\mathscr{F}$ is unrestricted, except for regularity conditions, and allows for general misspecification.&lt;/li&gt;
-&lt;li&gt;This equation also specifies that $\mu(F)$ is the limit of $\hat{\beta}$ when $z_i$ has distribution $F$.&lt;/li&gt;
+&lt;li&gt;This equation also specifies that &lt;mark&gt;$\mu(F)$ is the limit of $\hat{\beta}$ when $z_i$ has distribution $F$&lt;/mark&gt;.&lt;/li&gt;
 &lt;li&gt;$\mu(F)$ traces out the limits of $\hat{\beta}$ as $F$ varies within the general family $\mathscr{F}$.&lt;/li&gt;
 &lt;li&gt;The variance formula for $\hat{\beta}$ is the semiparametric bound for estimation of $\mu(F)$, calculated as in &lt;em&gt;Koshevnik and Levit (1976)&lt;/em&gt;, &lt;em&gt;Pfanzagl and Wefelmeyer (1982)&lt;/em&gt;, and others.&lt;/li&gt;
 &lt;/ul&gt;
@@ -511,7 +511,7 @@ $$
 {\color{red}\frac{\partial \mu\left(F_\theta\right)}{\partial \theta}=E[d(z) S(z)].}\qquad(\star)
 $$&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;The variance bound for estimation of $\mu(F)$ is $\operatorname{Var}(d(z))$.&lt;/li&gt;
+&lt;li&gt;&lt;mark&gt;The variance bound for estimation of $\mu(F)$ is $\operatorname{Var}(d(z))$&lt;/mark&gt;.&lt;/li&gt;
 &lt;li&gt;Thus, the asymptotic variance formula suggested here is the variance of the &lt;strong&gt;pathwise derivative&lt;/strong&gt; of the functional $\mu(F)$ that is estimated under general misspecification.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;details class=&#34;spoiler &#34;  id=&#34;spoiler-5&#34;&gt;
@@ -763,8 +763,8 @@ $$&lt;/li&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
 &lt;ol&gt;
-&lt;li&gt;KOSHEVNIK, Y. A., AND B. Y. LEVIT (1976): &amp;ldquo;On a Non-parametric Analogue of the Information Matrix&amp;rdquo;, Theory of Probability and Applications, 21, 738-753.&lt;/li&gt;
-&lt;li&gt;PFANZAGL, J., AND WEFELMEYER (1982): &amp;ldquo;Contributions to a General Asymptotic Statistical Theory&amp;rdquo;, New York: Springer-Verlag.&lt;/li&gt;
+&lt;li&gt;KOSHEVNIK, Y. A., AND B. Y. LEVIT (1976): &amp;ldquo;&lt;a href=&#34;https://www.mathnet.ru/php/archive.phtml?wshow=paper&amp;amp;jrnid=tvp&amp;amp;paperid=3421&amp;amp;option_lang=eng&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;On a Non-parametric Analogue of the Information Matrix&lt;/a&gt;&amp;rdquo;, Theory of Probability and Applications, 21, 738-753.&lt;/li&gt;
+&lt;li&gt;PFANZAGL, J., AND WEFELMEYER (1982): &amp;ldquo;&lt;a href=&#34;https://www.degruyter.com/document/doi/10.1524/strm.1985.3.34.379/html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Contributions to a General Asymptotic Statistical Theory&lt;/a&gt;&amp;rdquo;, New York: Springer-Verlag.&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>
