@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- This site was created with Wowchemy. https://www.wowchemy.com -->
-<!-- Last Published: November 7, 2023 --><html lang="en-us" >
+<!-- Last Published: November 8, 2023 --><html lang="en-us" >
 
 
 <head>
@@ -859,7 +859,7 @@ Table of Contents 1. Functional 2. Pathwise Derivatives 3. One-step Estimator 4.
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    5 min read
+    7 min read
   </span>
   
 
@@ -914,6 +914,7 @@ Table of Contents 1. Functional 2. Pathwise Derivatives 3. One-step Estimator 4.
     <li><a href="#5-influence-function">5. Influence function</a>
       <ul>
         <li><a href="#51-the-gâteaux-derivative">5.1 The Gâteaux derivative</a></li>
+        <li><a href="#52-the-influence-function">5.2 The influence function</a></li>
       </ul>
     </li>
     <li><a href="#references">References</a></li>
@@ -1100,6 +1101,9 @@ where $\epsilon\in[0,1]$. For every value of $\epsilon$ we can compute a corresp
 <li><strong>In our case, we are more interested in how estimators change when our estimates are nudged in the right direction, towards the true data distribution.</strong></li>
 </ul>
 <hr>
+<blockquote>
+<p>Notes of <a href="chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://myweb.uiowa.edu/pbreheny/uk/teaching/621/notes/8-28.pdf">Statistical functionals and influence functions</a></p>
+</blockquote>
 <p>Is the plug-in estimator $T(\tilde F)$ a good estimator?</p>
 <ul>
 <li>The Glivenko-Cantelli Theorem says that $\hat{F} \stackrel{\text { a.s. }}{\longrightarrow} F$; does this mean that $T(\hat{F}) \stackrel{\text { a.s. }}{\longrightarrow} T(F)$ ?</li>
@@ -1125,10 +1129,10 @@ where $\epsilon\in[0,1]$. For every value of $\epsilon$ we can compute a corresp
 <figure  id="figure-tf_density_example">
   <div class="d-flex justify-content-center">
     <div class="w-100" ><img alt="The difference between $\tilde{P}$ and the truth $P$" srcset="
-               /media/posts/path-dev/TF_density_example_huba61f51cfb0925473f4e859d3bd8a8e8_18949_ab9e1c0aa292afcedeb634177a45f352.webp 400w,
+               /media/posts/path-dev/TF_density_example_huba61f51cfb0925473f4e859d3bd8a8e8_18949_9244cdc563a13689237c9296df953988.webp 400w,
                /media/posts/path-dev/TF_density_example_huba61f51cfb0925473f4e859d3bd8a8e8_18949_3c869501e1da317d601867c331ff7e0c.webp 760w,
                /media/posts/path-dev/TF_density_example_huba61f51cfb0925473f4e859d3bd8a8e8_18949_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
-               src="/media/posts/path-dev/TF_density_example_huba61f51cfb0925473f4e859d3bd8a8e8_18949_ab9e1c0aa292afcedeb634177a45f352.webp"
+               src="/media/posts/path-dev/TF_density_example_huba61f51cfb0925473f4e859d3bd8a8e8_18949_9244cdc563a13689237c9296df953988.webp"
                width="659"
                height="259"
                loading="lazy" data-zoomable /></div>
@@ -1143,11 +1147,11 @@ When is the plug-in estimator consistent $\Rightarrow$ requires certain conditio
 <ul>
 <li>The Gâteaux derivative of $T$ at $F$ in the direction $G$ is defined by
 $$
-L_F(T ; G)=\lim _{\epsilon \rightarrow 0}\left[\frac{T{(1-\epsilon) F+\epsilon G}-T(F)}{\epsilon}\right]
+L_F(T ; G)=\lim _{\epsilon \rightarrow 0}\left[\frac{T\{(1-\epsilon) F+\epsilon G\}-T(F)}{\epsilon}\right]
 $$</li>
 <li>An equivalent way of stating the definition is to define $D=G-F$, and the above becomes
 $$
-L_F(T ; D)=\lim _{\epsilon \rightarrow 0}\left[\frac{T{F+\epsilon D}-T(F)}{\epsilon}\right]
+L_F(T ; D)=\lim _{\epsilon \rightarrow 0}\left[\frac{T\{F+\epsilon D\}-T(F)}{\epsilon}\right]
 $$</li>
 <li>Either way, the definition boils down to
 $$
@@ -1157,9 +1161,79 @@ $$</li>
 <blockquote>
 <ul>
 <li>From a <strong>mathematical perspective</strong>, the Gâteaux derivative a generalization of the concept of a directional derivative to functional analysis</li>
-<li>From a <strong>statistical perspective</strong>, it represents the rate of change in a statistical functional upon a small amount of contamination by another distribution G</li>
+<li>From a <strong>statistical perspective</strong>, it represents the rate of change in a statistical functional upon a small amount of contamination by another distribution $G$</li>
 </ul>
 </blockquote>
+<details class="spoiler "  id="spoiler-8">
+  <summary><strong>An example: how the Gâteaux derivative work</strong></summary>
+  <p><p>Suppose $F$ is a continuous CDF, and $G$ is the distribution that places all of its mass at the point $x_0$. What happens to the Gâteaux derivative of $T(F)=f\left(x_0\right)$ ?
+$$
+\begin{aligned}
+L_F(T ; G) &amp; =\lim_{\epsilon \rightarrow 0}\left[\frac{\frac{d}{d x}{(1-\epsilon) F(x)+\epsilon G(x)}_{x=x_0}-\left.\frac{d}{d x} F(x)\right|_{x=x_0}}{\epsilon}\right] \\
+&amp; =\lim_{\epsilon \rightarrow 0}\left[\frac{(1-\epsilon) f\left(x_0\right)+\epsilon g\left(x_0\right)-f(x_0)}{\epsilon}\right] \\
+&amp; =\infty
+\end{aligned}
+$$
+<strong>Conclusions:</strong></p>
+<ul>
+<li>Even though $F$ and $F_\epsilon$ differ from each other only infinitesimally $T(F)$ and $T\left(F_\epsilon\right)$ differ from each other by an infinite amount</li>
+<li>The Glivenko-Cantelli theorem does not help us here: <mark>$\sup _x|\hat{F}(x)-F(x)|$ may go to zero without $T(\hat{F}) \rightarrow T(F)$</mark></li>
+</ul>
+</p>
+</details>
+<hr>
+<h4 id="511-hadamard-differentiability">5.1.1 Hadamard differentiability</h4>
+<ul>
+<li>Gâteaux differentiability is <strong>too weak</strong> to ensure that $T(\hat{F}) \rightarrow T(F)$</li>
+<li>Even if the Gâteaux derivative exists, it may not exist in an entirely <font color="red">unique</font> way, and this is the subtle idea introduced by Hadamard differentiability</li>
+<li>A functional $T$ is <font color="red"><strong>Hadamard differentiable</strong></font> if, for any sequence $\epsilon_n \rightarrow 0$ and $D_n$ satisfying <mark>$\sup _x\left|D_n(x)-D(x)\right| \rightarrow 0$</mark>, we have
+$$
+\frac{T\left(F+\epsilon_n D_n\right)-T(F)}{\epsilon_n} \rightarrow L_F(T ; D)
+$$</li>
+<li>If $T$ is Hadamard differentiable, then $T(\hat{F}) \stackrel{\mathrm{P}}{\longrightarrow} T(F)$</li>
+</ul>
+<h4 id="512-bounded-functionals">5.1.2 Bounded functionals</h4>
+<p>Another useful condition: if the functional is bounded, then the plug-in estimate will converge to the true value</p>
+<blockquote>
+<p><strong>Proposition:</strong> Suppose that there exists a constant $C$ such that the following relation holds for all $G$ :
+$$
+|T(F)-T(G)| \leq C \sup _x|F(x)-G(x)|.
+$$
+Show that $T(\hat{F}) \stackrel{\text { a.s. }}{\longrightarrow} T(F)$.</p>
+</blockquote>
+<hr>
+<h3 id="52-the-influence-function">5.2 The influence function</h3>
+<h4 id="521-contamination-by-a-point-mass">5.2.1 Contamination by a point mass</h4>
+<p>The idea of contaminating a distribution with a small amount of additional data has a long history in statistics and the investigation of robust estimators. Statisticians usually do not work with the general Gâteaux derivative, but a special case of it called the <font color="red"><strong>influence function</strong></font>, in which $G$ places a point mass of 1 at $x$ :
+$$
+\delta_x(u)= \begin{cases}0 &amp; \text { if } u&lt;x \\ 1 &amp; \text { if } u \geq x\end{cases}
+$$</p>
+<h4 id="522-influence-function--empirical-influence-function">5.2.2 Influence function &amp; empirical influence function</h4>
+<ul>
+<li>The influence function is usually written as a function of $x$, and defined as
+$$
+L(x)=\lim_{\epsilon \rightarrow 0}\left[\frac{T\left\{(1-\epsilon) F+\epsilon \delta_x\right\}-T(F)}{\epsilon}\right]
+$$</li>
+<li>A closely related concept is that of the empirical influence function:
+$$
+\hat{L}(x)=\lim _{\epsilon \rightarrow 0}\left[\frac{T\left\{(1-\epsilon) \hat{F}+\epsilon \delta_x\right\}-T(\hat{F})}{\epsilon}\right]
+$$</li>
+</ul>
+<blockquote>
+<p><strong>Example</strong>: if $T(F)=\mu$, then we have $L(x)=x-\mu$ and $\hat L(x)=x-\bar x$</p>
+</blockquote>
+<h4 id="523-linear-functionals">5.2.3 Linear functionals</h4>
+<p>A functional $T(F)$ is a linear functional iff $T(F)=\int a(x) d F(x)$. For the linear functionals, we have
+$$
+\begin{aligned}
+&amp; L(x)=a(x)-T(F) \\
+&amp; \hat{L}(x)=a(x)-T(\hat{F})
+\end{aligned}
+$$</p>
+<blockquote>
+<p><strong>Example</strong>: if $T(F)=\sigma^2$, then we have $L(x)=(x-\mu)^2-\sigma^2$ and $\hat L(x)=(x-\bar x)^2-\hat\sigma^2$</p>
+</blockquote>
+<hr>
 <h2 id="references">References</h2>
 <ol>
 <li>Visually Communicating and Teaching Intuition for Influence Functions <a href="https://www.tandfonline.com/doi/abs/10.1080/00031305.2020.1717620" target="_blank" rel="noopener">(Fisher &amp; Kennedy 2020)</a></li>
@@ -1507,7 +1581,7 @@ $$</li>
   
 
 
-<script src="/js/vendor-bundle.min.b5622475b4b8e8dd4f17b274b09af356.js"></script>
+<script src="/js/vendor-bundle.min.f64289d8217e08e3afcd597d60836062.js"></script>
 
 
 
@@ -1591,7 +1665,7 @@ $$</li>
   
 
 
-<script src="/en/js/wowchemy.min.59eaa25b822e34224debaefcbad91f7a.js"></script>
+<script src="/en/js/wowchemy.min.ead4a376bcf2c4714888c770ea9b0040.js"></script>
 
 
 

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- This site was created with Wowchemy. https://www.wowchemy.com -->
-<!-- Last Published: November 7, 2023 --><html lang="en-us" >
+<!-- Last Published: November 8, 2023 --><html lang="en-us" >
 
 
 <head>
@@ -279,7 +279,7 @@
 
   
 
-<meta name="description" content="Table of Contents 0. Background: Semiparametric Model 1. Introduction 2. The Pathwise Derivative Formula For the Asymptotic Variance 3. Semiparametric $M$-estimators 4. Functions of Mean-square Projection and Densities 5. Regularity Conditions 6." />
+<meta name="description" content="Table of Contents 0. Background: Semiparametric Model 1. Introduction 2. The Pathwise Derivative Formula For the Asymptotic Variance Regular path &amp; regular estimator The pathwise derivative asymptotic variance formula 3." />
 
 
 
@@ -321,7 +321,7 @@
 <meta property="og:site_name" content="Li Zhe" />
 <meta property="og:url" content="https://example.com/post/var-semiparam/" />
 <meta property="og:title" content="Notes on &#39;&#39;The Asymptotic Variance of Semiparametric Estimators&#39;&#39; | Li Zhe" />
-<meta property="og:description" content="Table of Contents 0. Background: Semiparametric Model 1. Introduction 2. The Pathwise Derivative Formula For the Asymptotic Variance 3. Semiparametric $M$-estimators 4. Functions of Mean-square Projection and Densities 5. Regularity Conditions 6." /><meta property="og:image" content="https://example.com/post/var-semiparam/featured.png" /><meta property="og:locale" content="en-us" />
+<meta property="og:description" content="Table of Contents 0. Background: Semiparametric Model 1. Introduction 2. The Pathwise Derivative Formula For the Asymptotic Variance Regular path &amp; regular estimator The pathwise derivative asymptotic variance formula 3." /><meta property="og:image" content="https://example.com/post/var-semiparam/featured.png" /><meta property="og:locale" content="en-us" />
 
   
     <meta
@@ -380,7 +380,7 @@
       "url": "https://example.com/media/icon_hu9ccd2acdcd774e20fa34966445b706a8_6997380_192x192_fill_lanczos_center_3.png"
     }
   },
-  "description": "Table of Contents 0. Background: Semiparametric Model 1. Introduction 2. The Pathwise Derivative Formula For the Asymptotic Variance 3. Semiparametric $M$-estimators 4. Functions of Mean-square Projection and Densities 5. Regularity Conditions 6."
+  "description": "Table of Contents 0. Background: Semiparametric Model 1. Introduction 2. The Pathwise Derivative Formula For the Asymptotic Variance Regular path \u0026amp; regular estimator The pathwise derivative asymptotic variance formula 3."
 }
 </script>
 
@@ -857,7 +857,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    6 min read
+    15 min read
   </span>
   
 
@@ -904,8 +904,18 @@
   <ul>
     <li><a href="#0-background-semiparametric-model">0. Background: Semiparametric Model</a></li>
     <li><a href="#1-introduction">1. Introduction</a></li>
-    <li><a href="#2-the-pathwise-derivative-formula-for-the-asymptotic-variance">2. The Pathwise Derivative Formula For the Asymptotic Variance</a></li>
-    <li><a href="#3-semiparametric-m-estimators">3. Semiparametric $M$-estimators</a></li>
+    <li><a href="#2-the-pathwise-derivative-formula-for-the-asymptotic-variance">2. The Pathwise Derivative Formula For the Asymptotic Variance</a>
+      <ul>
+        <li><a href="#regular-path--regular-estimator">Regular path &amp; regular estimator</a></li>
+        <li><a href="#the-pathwise-derivative-asymptotic-variance-formula">The pathwise derivative asymptotic variance formula</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-semiparametric-m-estimators">3. Semiparametric $M$-estimators</a>
+      <ul>
+        <li><a href="#when-will-the-adjustment-term-be-zero-">When will the adjustment term be zero ?</a></li>
+        <li><a href="#a-more-direct-condition">A more direct condition</a></li>
+      </ul>
+    </li>
     <li><a href="#4-functions-of-mean-square-projection-and-densities">4. Functions of Mean-square Projection and Densities</a></li>
     <li><a href="#5-regularity-conditions">5. Regularity Conditions</a></li>
     <li><a href="#6-series-estimation-of-projection-functionals">6. Series Estimation of Projection Functionals</a></li>
@@ -973,6 +983,25 @@ $$</p>
 </div>
 <hr>
 <h2 id="1-introduction">1. Introduction</h2>
+<ul>
+<li>Develop a general form for <mark>the asymptotic variance of semiparametric estimators</mark> that depend on nonparametric estimators of functions.</li>
+<li>The formula is often straightforward to derive, requiring only some calculus.</li>
+<li>Although the formula is not based on primitive conditions, it should be useful for semiparametric estimators, just as analogous formulae are for parametric estimators.</li>
+<li>The formula gives the form of remainder terms, which facilitates specification of primitive conditions.</li>
+<li>It can also be used to make asymptotic efficiency comparisons and to find an efficient estimator in some class.</li>
+</ul>
+<div class="markmap" style="height: 500px;">
+
+<pre>- 
+  - Derive the formula: **Section 2**
+  - Propositions about semiparametric estimator
+    - **Section 3**
+    - **Section 4**
+  - High-level regularity conditions: **Section 5**
+  - Conditions for $\sqrt{n}$-consistency and asymptotic normality: **Section 6**
+  - Primitive conditions for the examples: **Section 7**</pre>
+</div>
+
 <h2 id="2-the-pathwise-derivative-formula-for-the-asymptotic-variance">2. The Pathwise Derivative Formula For the Asymptotic Variance</h2>
 <blockquote>
 <p>Preliminary: <a href="/post/path-dev/">one-step estimators and pathwise derivatives</a></p>
@@ -1008,7 +1037,7 @@ $${\color{red}S(z)=\frac{\partial \ln \left(d F_\theta\right)}{ \partial \theta}
 </ul>
 <p>The <strong>pathwise derivative</strong> of $\mu(F)$ is a $q \times 1$ vector $d(z)$ with <mark>$E[d(z)]=0$ and $E\left[|d(z)|^2\right]&lt;\infty$</mark> such that for every path,
 $$
-{\color{red}\frac{\partial \mu\left(F_\theta\right)}{\partial \theta}=E[d(z) S(z)].}
+{\color{red}\frac{\partial \mu\left(F_\theta\right)}{\partial \theta}=E[d(z) S(z)].}\qquad(\star)
 $$</p>
 <ul>
 <li>The variance bound for estimation of $\mu(F)$ is $\operatorname{Var}(d(z))$.</li>
@@ -1041,7 +1070,221 @@ $$</li>
 </ul>
 </p>
 </details>
+<p>The <strong>pathwise derivative</strong> generalizes the Gateaux derivative formula for von-Mises estimators:</p>
+<ul>
+<li>The pathwise derivative formula works for estimators that are explicit functions of densities or expectations, where the domain of $\mu(F)$ may only include <strong>continuous distributions</strong>.</li>
+<li>The Gateaux derivative formula only applies when the domain of $\mu(F)$ also includes <strong>discrete distributions</strong></li>
+</ul>
+<hr>
+<p>A precise justification for the asymptotic variance formula is available when $\hat\beta$ is asymptotically equivalent to a sample average: define $\hat{\beta}$ to be asymptotically linear with <strong>influence function</strong> $\psi(z)$ when $z_i$ has distribution $F_0$:
+$$
+\begin{aligned}
+&amp; \sqrt{n}\left(\hat{\beta}-\beta_0\right)=\sum_{i=1}^n \psi\left(z_i\right) / \sqrt{n}+O_p(1), \\
+&amp; E[\psi(z)]=0, \quad \operatorname{Var}(\psi(z)) \text { finite. }
+\end{aligned}
+$$</p>
+<blockquote>
+<p>Asymptotic linearity and the central limit theorem imply $\hat{\beta}$ is asymptotically normal with variance $\operatorname{Var}(\psi(z))$.</p>
+</blockquote>
+<h3 id="regular-path--regular-estimator">Regular path &amp; regular estimator</h3>
+<ul>
+<li>
+<p>Define the path <font color="red">$\left\{F_\theta: \theta \in(-\varepsilon, \varepsilon) \subset \mathbb{R}, \varepsilon&gt;0, F_\theta \in \mathscr{F}\right\}$</font> to be regular if <mark>each distribution is absolutely continuous w.r.t the same dominating measure and $S(z)$ satisfies the mean-square derivative condition</mark>
+$$
+\int\left[\theta^{-1}\left(d F_\theta^{1 / 2}-d F_0^{1 / 2}\right)-\frac{1}{2} S(z) d F_0^{1 / 2}\right]^2 d z \rightarrow 0, \text { as } \quad \theta \rightarrow 0 .
+$$</p>
+</li>
+<li>
+<p>Define $\hat{\beta}$ to be a <strong>regular estimator</strong> of $\mu(F)$ if for any regular path and $\theta_n=$ $0(1 / \sqrt{n})$, when $z_i$ has distribution $F_{\theta_n}, \sqrt{n}\left(\hat{\beta}-\mu\left(F_{\theta_n}\right)\right)$ has a limiting distribution that <mark>does not depend on $\left\{\theta_n\right\}_{n=1}^{\infty}$</mark>.</p>
+</li>
+</ul>
+<h3 id="the-pathwise-derivative-asymptotic-variance-formula">The pathwise derivative asymptotic variance formula</h3>
+<p><mark><strong>THEOREM 2.1</strong></mark>: Suppose that</p>
+<ul>
+<li>(i) the set of scores for regular paths is linear;</li>
+<li>(ii) for any $\varepsilon&gt;0$ and measureable $s(z)$ with $E[s(z)]=0$ and $E\left[s(z)^2\right]&lt;\infty$, there is a regular path with score $S(z)$ satisfying $E\left[|s(z)-S(z)|^2\right]&lt;\varepsilon$;</li>
+<li>(iii) $\hat{\beta}$ is asymptotically linear and regular.</li>
+</ul>
+<p><strong>Then there is $d(z)$ such that equation $(\star)$ is satisfied and $\psi(z)=d(z)$</strong></p>
+<ul>
+<li>Condition (ii), that the scores can approximate any mean zero function, is the precise version of the &ldquo;generality&rdquo; property of $\mathscr{F}$.</li>
+<li>Regularity of $\hat{\beta}$ is the precise condition that specifies that <mark>$\hat{\beta}$ is a nonparametric estimator of $\mu(F)$</mark>.</li>
+<li>Innovations: calculating the bound for the functional $\mu(F)$ is nonparametrically estimated by $\hat\beta$</li>
+<li>Asymptotic linearity and regularity imply pathwise differentiability</li>
+<li>Condition (ii) implies that there is <strong>only one influence function</strong> and that it equals the pathwise derivative</li>
+</ul>
+<hr>
+<ul>
+<li>Theorem 2.1 give a justification for the pathwise derivative formula, rather than an approach to showing asymptotic normality.</li>
+<li>A better approach:
+<ul>
+<li>Solve equation $(\star)$ for the pathwise derivative, as a candidate for the influence function</li>
+<li>Formulate regularity conditions for the remainder $\sqrt{n}\left(\hat{\theta}-\theta_0\right)-\sum_{i=1}^n \psi\left(z_i\right) / \sqrt{n}$ to be small.</li>
+</ul>
+</li>
+<li>The formula is a very important part of this approach, because it provides the form of the remainder.</li>
+<li>This approach, with formal calculation followed by regularity conditions, is similar to that used in parametric asymptotic theory (e.g. for Edgeworth expansions).</li>
+</ul>
 <h2 id="3-semiparametric-m-estimators">3. Semiparametric $M$-estimators</h2>
+<ul>
+<li>Let $h$ denote a function, that can depend on the parameters $\beta$ and the data $z$.</li>
+<li>Let $m(z, \beta, h)$ be a vector of functions with the same dimension as $\beta$. Here $m(z, \beta, h)$ can depend on the entire function $h$, rather than just its value at particular points, so $m(z, \beta, h)$ is a vector of functionals.</li>
+<li>Suppose that $E\left[m\left(z, \beta_0, h_0\right)\right]=0$ for the true values $\beta_0$ and $h_0$.</li>
+<li>Let $\hat{h}$ denote an estimator of $h$. A semiparametric $m$-estimator is one that solves a moment equation of the form
+$$
+{\color{red}\frac{1}{n}\sum_{i=1}^n m\left(z_i, \beta, \hat{h}\right)=0} .\qquad (\Delta)
+$$</li>
+<li>The general idea here is that $\hat{\beta}$ is obtained by a procedure that &ldquo;plugs-in&rdquo; an estimated function $\hat{h}$.</li>
+</ul>
+<!-- <details class="spoiler "  id="spoiler-6">
+  <summary>Example 3.1 Quasi-maximum Likelihood for a Conditional Mean Index</summary>
+  <p>&ndash;&gt;</p>
+<!--</p>
+</details> -->
+<details class="spoiler "  id="spoiler-7">
+  <summary><strong>Example 3.1 Quasi-maximum Likelihood for a Conditional Mean Index</strong></summary>
+  <p><ul>
+<li>The conditional mean index model: $E[y \mid x]=\tau\left(v\left(x, \beta_0\right)\right)$ for a <strong>known</strong> function $v(x, \beta)$ and an <strong>unknown</strong> function $\tau(\cdot)$.</li>
+<li>Let $\hat{h}(x, \beta)$ be a nonparametric estimator of $E[y \mid v(x, \beta)]$, such as a kernel estimator.</li>
+</ul>
+<blockquote>
+<ul>
+<li>An estimator of $\beta_0$ suggested by Ichimura (1993) minimizes $\sum_{i=1}^n\left[y_i-\hat{h}\left(x_i, \beta\right)\right]^2$.</li>
+<li>When $y_i$ is binary, Klein and Spady (1993) have suggested maximizing
+$$\sum_{i=1}^n\left\{y_i \ln [\hat{h}(x_i, \beta)]+(1-y_i) \ln [1-\hat{h}(x_i, \beta)]\right\}$$</li>
+<li>A generalization of these estimators is a quasi-maximum likelihood estimator (QMLE) for an exponential family.</li>
+<li>The estimator will be efficient when the true distribution has the exponential form.</li>
+</ul>
+</blockquote>
+<ul>
+<li>To describe the estimator, let $l(u, \nu)=\exp (A(\nu)+B(u)+C(\nu) u)$ be a linear exponential density, with mean $\nu$.</li>
+<li>Consider an estimator $\hat{\beta}$ that maximizes $\sum_{i=1}^n \ln l\left(y_i, \hat{h}\left(x_i, \beta\right)\right)$.</li>
+<li>The first order conditions for this estimator make it a special case of equation $(\Delta)$, with
+$$
+m(z, \beta, h)=\left[A_\nu(h(x, \beta))+C_\nu(h(x, \beta)) y\right] \frac{\partial h(x, \beta) } {\partial \beta}
+$$</li>
+</ul>
+</p>
+</details>
+<details class="spoiler "  id="spoiler-8">
+  <summary><strong>Example 3.2: Inverse Density Weighted Least Squares</strong></summary>
+  <p><ul>
+<li>Let $w(x)=r((x-$ $\zeta)^{\prime} \Omega(x-\zeta)$ ) be an elliptically symmetric density function, where $\zeta$ is a vector and $\Omega$ a positive definite matrix.</li>
+<li>Let $\hat{h}\left(x_l\right)$ be an estimator of the density of $x$, such as a kernel estimator.</li>
+<li>As shown by Ruud (1986), the weighted least squares estimator $\hat{\beta}=\left[\sum_{l=1}^n w\left(x_i\right) \hat{h}\left(x_l\right)^{-1} x_l x_l^{\prime}\right]^{-1} \sum_{l=1}^n w\left(x_l\right) \hat{h}\left(x_l\right)^{-1} x_i y_i$ will be consistent up to scale, for the coefficients $\gamma_0$ of an index model $E[y \mid x]=\tau\left(x^{\prime} \gamma_0\right)$.</li>
+<li>This example is a special case of equation $(\Delta)$ with
+$$
+m(z, \beta, h)=w(x) h(x)^{-1} x\left(y-x^{\prime} \beta\right) .
+$$</li>
+<li>This estimator will be used to illustrate the correction term for density estimates.</li>
+<li>Asymptotic normality and $\sqrt{n}$-consistency for $\hat{h}(x)$ a kernel estimator, are shown in Newey and Ruud (1991).</li>
+</ul>
+</p>
+</details>
+<hr>
+<p>To use the pathwise derivative formula in this derivation, it is necessary to <mark>identify the functional that is nonparametrically estimated by $\hat{\beta}$.</mark></p>
+<ul>
+<li>Let $h(F)$ denote the limit of $\hat{h}$ when $z$ has distribution $F$.</li>
+<li>The limit $\mu(F)$ of $\hat{\beta}$ for a general $F$ should be the solution to
+$$
+E_F[m(z, \mu, h(F))]=0 .\qquad(\odot)
+$$</li>
+<li>Equation $(\Delta)$ sets $\hat{\beta}$ so that sample moments are zero, and the sample moments have a limit of $E_F[m(z, \beta, h(F))]$
+<ul>
+<li>by the law of large numbers and $h(F)$ equal to the limit of $\hat{h}$</li>
+</ul>
+</li>
+<li><font color="red">$\Rightarrow$ $\hat{\beta}$ is consistent for the solution of $(\odot)$.</font></li>
+</ul>
+<p><strong>Remarks</strong></p>
+<ul>
+<li>the estimators depend only on the limit $h(F)$, and not on the particular form of the estimator $\hat{h}$.</li>
+<li>Different nonparametric estimators of the same functions should result in <mark>the same asymptotic variance</mark>.</li>
+</ul>
+<p><mark><strong>Proposition 1</strong></mark>: <font color="blue">The asymptotic variance of semiparametric estimators depends only on the function that is nonparametrically estimated, and not on the type of estimator.</font></p>
+<hr>
+<ul>
+<li>For a path $\left\{F_\theta\right\}$, let $h(\theta)=h\left(F_\theta\right)$. Here, $\mu\left(F_\theta\right)$ will satisfy the population moment equation
+$$
+E_\theta[m(z, \mu, h(\theta))]=0 .
+$$</li>
+<li>Let $m(z, h)=m\left(z, \beta_0, h\right)$. Differentiation under the integral gives
+$$
+\frac{\partial E_\theta\left[m\left(z, h_0\right)\right]}{ \partial \theta}=\int m\left(z, h_0\right)\left[\frac{\partial d F_\theta }{ \partial \theta}\right] d z=E\left[m\left(z, h_0\right) S(z)\right] .
+$$</li>
+<li>Using the chain rule, it follows that
+$$
+\frac{\partial E_\theta[m(z, h(\theta))] }{ \partial \theta}=E\left[m\left(z, h_0\right) S(z)\right]+\frac{\partial E[m(z, h(\theta))] }{ \partial \theta} .
+$$</li>
+<li>Assuming $M \equiv \partial E\left[m\left(z, \beta, h_0\right)\right] /\left.\partial \beta\right|_{\beta_0}$ is nonsingular, by the implicit function theorem
+$$
+\frac{\partial \mu\left(F_\theta\right) }{ \partial \theta}=-M^{-1}\left\{E\left[m\left(z, h_0\right) S(z)\right]+\frac{\partial E[m(z, h(\theta))] }{ \partial \theta}\right\} .
+$$</li>
+<li>The first term is already in an outer product form, so that the pathwise derivative can be found by <mark>putting the second term in singular form</mark></li>
+<li>Suppose there is a $\alpha(z)$ such that $E[\alpha(z)]=0$ and
+$$\frac{\partial E[m(z, h(\theta))] }{ \partial \theta}=E[\alpha(z) S(z)]\qquad(\oplus)$$.</li>
+<li>Move $-M^{-1}$ inside the expectation, it follows that the pathwise derivative is <font color="red">$d(z)=-M^{-1}\left\{m\left(z, h_0\right)+\alpha(z)\right\}$</font></li>
+<li>By Theorem 2.1 the influence function of $\hat{\beta}$ is
+$$
+\psi(z)=-M^{-1}\left\{m\left(z, \beta_0, h_0\right)+\alpha(z)\right\}
+$$
+<strong>Remarks</strong></li>
+<li>The leading term $-M^{-1} m\left(z, \beta_0, h_0\right)$ is the usual formula for the influence function of an $m$-estimator with moment functions $m\left(z, \beta, {\color{red}h_0}\right)$.</li>
+<li>The solution to equation $(\oplus)$ is an adjustment term for the estimation of $h_0$.</li>
+<li>Solving equation $(\oplus)$ is therefore the essential step in discovering <mark>how the estimation of $h$ affects the asymptotic variance</mark>.</li>
+<li>This solution can be interpreted as
+<ul>
+<li>the pathwise derivative of the functional $-M^{-1} E\left[m\left(z, \beta_0, h(F)\right)\right]$</li>
+<li>the influence function of $-M^{-1} \int m\left(z, \beta_0, \hat{h}\right) d F_0(z)$.</li>
+</ul>
+</li>
+</ul>
+<h3 id="when-will-the-adjustment-term-be-zero-">When will the adjustment term be zero ?</h3>
+<ul>
+<li>If the adjustment term is zero, then it should not be necessary to account for the presence of $\hat{h}$, i.e. <font color="red">$\hat{h}$ can be treated as if it were equal to $h_0$</font></li>
+<li>One case: equation $(\Delta)$ is <mark>the first-order condition</mark> to a maximization problem, and $\hat{h}$ has a limit that <mark>maximizes the population value of the same function</mark>.</li>
+</ul>
+<p><strong>To be specific</strong>, suppose that there is a function $q(z, \beta, h)$ and a set of functions $\mathscr{H}(\beta)$, possibly depending on $\beta$ but not on the distribution $F$ of $z$, such that
+$$
+\begin{aligned}
+&amp; m(z, \beta, h)=\partial q(z, \beta, h) / \partial \beta, \\
+&amp; h(F)=\operatorname{argmax}_{\tilde{h} \in \mathscr{H}(\beta)} E_F[q(z, \beta, \tilde{h})] .\qquad(\otimes)
+\end{aligned}
+$$</p>
+<ul>
+<li>$m(z, \beta, h)$ are the first order conditions for a maximum of the function $q$</li>
+<li>$h(F)$ maximizes the expected value of the same function
+<ul>
+<li>i.e. $h(F)$ has been &ldquo;concentrated out&rdquo;.</li>
+</ul>
+</li>
+</ul>
+<p>For any parametric model $F_\theta$, since $h(\theta)=h\left(F_\theta\right)$ $\Rightarrow$ $E[q(z, \beta, h(\theta))]$ is maximized at $\theta=0$ $\Rightarrow$ $\partial E[q(z, \beta, h(\theta))] / \partial \theta=0$. Differentiating again with respect to $\beta$,
+$$
+\begin{aligned}
+0 &amp; =\partial^2 E[q(z, \beta, h(\theta))] / \partial \theta \partial \beta\\
+&amp;=\partial E[\partial q(z, \beta, h(\theta)) / \partial \beta] / \partial \theta \\
+&amp; =\partial E[m(z, \beta, h(\theta))] / \partial \theta .
+\end{aligned}
+$$</p>
+<ul>
+<li>Evaluating this equation at $\beta_0$, it follows that $\alpha(z)=0$ will solve equation $(\oplus)$, and hence the adjustment term is zero.</li>
+</ul>
+<p><strong>Proposition 2</strong>: <font color="blue">If equation $(\otimes)$ is satisfied, then the estimation of $h$ can be ignored in calculating the asymptotic variance, i.e. it is the same as if $\hat{h}=h_0$</font></p>
+<h3 id="a-more-direct-condition">A more direct condition</h3>
+<ul>
+<li>Suppose that $m(z, h)$ depends on $h$ only through its value $h(v)$ at a subvector $v$ of $z$, i.e. $m(z, h)=m(z, h(v))$ where the last function depends on a real vector argument in $m(z, h)$.</li>
+<li>Let $h(v, \theta)$ denote the limiting value of $\hat{h}\left(v, \beta_0\right)$ for a path. For $D(z)=\partial m\left(z, \beta_0, h\right) /\left.\partial h\right|_{h=h_0(v)}$, differentiation gives
+$$
+\frac{\partial E[m(z, h(\theta))] }{ \partial \theta}=E\left[D(z) \frac{\partial h(v, \theta) }{ \partial \theta}\right]=\frac{\partial E[D(z) h(v, \theta)] }{ \partial \theta} .
+$$</li>
+<li>If this derivative is zero for all $h(v, \theta)$, then $\alpha(z)=0$ will solve equation $(\oplus)$, and the adjustment term is zero.</li>
+<li><strong>One simple condition</strong> for this is that <mark>$E[D(z) \mid v]=0$</mark>.</li>
+</ul>
+<p><strong>More generally, the adjustment term will be zero if $h(v, \theta)$ is an element of a set to which $D(z)$ is orthogonal.</strong></p>
+<p><strong>Proposition 3</strong>: <font color="blue">If $E[D(z) \mid v]=0$, or more generally, for all $F, h(v, F)$ is an element of a set $\mathscr{H}$ such that $E[D(z) \tilde{h}(v)]=0$ for all $\tilde{h} \in \mathscr{H}$, then estimation of $h$ can be ignored in calculating the asymptotic variance.</font></p>
+<p><strong>Remarks</strong>:</p>
+<p>This condition can be checked by straightforward calculation, unlike Proposition 2, which requires finding $q(z, \beta, h)$ satisfying equation $(\otimes)$.</p>
 <h2 id="4-functions-of-mean-square-projection-and-densities">4. Functions of Mean-square Projection and Densities</h2>
 <h2 id="5-regularity-conditions">5. Regularity Conditions</h2>
 <h2 id="6-series-estimation-of-projection-functionals">6. Series Estimation of Projection Functionals</h2>
@@ -1393,7 +1636,7 @@ $$</li>
   
 
 
-<script src="/js/vendor-bundle.min.b5622475b4b8e8dd4f17b274b09af356.js"></script>
+<script src="/js/vendor-bundle.min.f64289d8217e08e3afcd597d60836062.js"></script>
 
 
 
@@ -1464,6 +1707,25 @@ $$</li>
 
 
   <script src="/js/wowchemy-headroom.db4755770454eb63685f8de785c0a172.js" type="module"></script>
+<style>
+    .markmap > svg {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+  <script>
+    window.markmap = {
+      autoLoader: {
+        manual: false,
+        onReady() {
+          const { autoLoader, builtInPlugins } = window.markmap;
+          
+          autoLoader.transformPlugins = builtInPlugins.filter(plugin => plugin.name !== 'prism');
+        },
+      },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
 
 
 
@@ -1477,7 +1739,7 @@ $$</li>
   
 
 
-<script src="/en/js/wowchemy.min.59eaa25b822e34224debaefcbad91f7a.js"></script>
+<script src="/en/js/wowchemy.min.ead4a376bcf2c4714888c770ea9b0040.js"></script>
 
 
 

@@ -53,6 +53,7 @@
     &lt;li&gt;&lt;a href=&#34;#5-influence-function&#34;&gt;5. Influence function&lt;/a&gt;
       &lt;ul&gt;
         &lt;li&gt;&lt;a href=&#34;#51-the-gâteaux-derivative&#34;&gt;5.1 The Gâteaux derivative&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#52-the-influence-function&#34;&gt;5.2 The influence function&lt;/a&gt;&lt;/li&gt;
       &lt;/ul&gt;
     &lt;/li&gt;
     &lt;li&gt;&lt;a href=&#34;#references&#34;&gt;References&lt;/a&gt;&lt;/li&gt;
@@ -239,6 +240,9 @@ where $\epsilon\in[0,1]$. For every value of $\epsilon$ we can compute a corresp
 &lt;li&gt;&lt;strong&gt;In our case, we are more interested in how estimators change when our estimates are nudged in the right direction, towards the true data distribution.&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Notes of &lt;a href=&#34;chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://myweb.uiowa.edu/pbreheny/uk/teaching/621/notes/8-28.pdf&#34;&gt;Statistical functionals and influence functions&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Is the plug-in estimator $T(\tilde F)$ a good estimator?&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;The Glivenko-Cantelli Theorem says that $\hat{F} \stackrel{\text { a.s. }}{\longrightarrow} F$; does this mean that $T(\hat{F}) \stackrel{\text { a.s. }}{\longrightarrow} T(F)$ ?&lt;/li&gt;
@@ -264,10 +268,10 @@ where $\epsilon\in[0,1]$. For every value of $\epsilon$ we can compute a corresp
 &lt;figure  id=&#34;figure-tf_density_example&#34;&gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;The difference between $\tilde{P}$ and the truth $P$&#34; srcset=&#34;
-               /media/posts/path-dev/TF_density_example_huba61f51cfb0925473f4e859d3bd8a8e8_18949_ab9e1c0aa292afcedeb634177a45f352.webp 400w,
+               /media/posts/path-dev/TF_density_example_huba61f51cfb0925473f4e859d3bd8a8e8_18949_9244cdc563a13689237c9296df953988.webp 400w,
                /media/posts/path-dev/TF_density_example_huba61f51cfb0925473f4e859d3bd8a8e8_18949_3c869501e1da317d601867c331ff7e0c.webp 760w,
                /media/posts/path-dev/TF_density_example_huba61f51cfb0925473f4e859d3bd8a8e8_18949_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://example.com/media/posts/path-dev/TF_density_example_huba61f51cfb0925473f4e859d3bd8a8e8_18949_ab9e1c0aa292afcedeb634177a45f352.webp&#34;
+               src=&#34;https://example.com/media/posts/path-dev/TF_density_example_huba61f51cfb0925473f4e859d3bd8a8e8_18949_9244cdc563a13689237c9296df953988.webp&#34;
                width=&#34;659&#34;
                height=&#34;259&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -282,11 +286,11 @@ When is the plug-in estimator consistent $\Rightarrow$ requires certain conditio
 &lt;ul&gt;
 &lt;li&gt;The Gâteaux derivative of $T$ at $F$ in the direction $G$ is defined by
 $$
-L_F(T ; G)=\lim _{\epsilon \rightarrow 0}\left[\frac{T{(1-\epsilon) F+\epsilon G}-T(F)}{\epsilon}\right]
+L_F(T ; G)=\lim _{\epsilon \rightarrow 0}\left[\frac{T\{(1-\epsilon) F+\epsilon G\}-T(F)}{\epsilon}\right]
 $$&lt;/li&gt;
 &lt;li&gt;An equivalent way of stating the definition is to define $D=G-F$, and the above becomes
 $$
-L_F(T ; D)=\lim _{\epsilon \rightarrow 0}\left[\frac{T{F+\epsilon D}-T(F)}{\epsilon}\right]
+L_F(T ; D)=\lim _{\epsilon \rightarrow 0}\left[\frac{T\{F+\epsilon D\}-T(F)}{\epsilon}\right]
 $$&lt;/li&gt;
 &lt;li&gt;Either way, the definition boils down to
 $$
@@ -296,9 +300,79 @@ $$&lt;/li&gt;
 &lt;blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;From a &lt;strong&gt;mathematical perspective&lt;/strong&gt;, the Gâteaux derivative a generalization of the concept of a directional derivative to functional analysis&lt;/li&gt;
-&lt;li&gt;From a &lt;strong&gt;statistical perspective&lt;/strong&gt;, it represents the rate of change in a statistical functional upon a small amount of contamination by another distribution G&lt;/li&gt;
+&lt;li&gt;From a &lt;strong&gt;statistical perspective&lt;/strong&gt;, it represents the rate of change in a statistical functional upon a small amount of contamination by another distribution $G$&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
+&lt;details class=&#34;spoiler &#34;  id=&#34;spoiler-8&#34;&gt;
+  &lt;summary&gt;&lt;strong&gt;An example: how the Gâteaux derivative work&lt;/strong&gt;&lt;/summary&gt;
+  &lt;p&gt;&lt;p&gt;Suppose $F$ is a continuous CDF, and $G$ is the distribution that places all of its mass at the point $x_0$. What happens to the Gâteaux derivative of $T(F)=f\left(x_0\right)$ ?
+$$
+\begin{aligned}
+L_F(T ; G) &amp;amp; =\lim_{\epsilon \rightarrow 0}\left[\frac{\frac{d}{d x}{(1-\epsilon) F(x)+\epsilon G(x)}_{x=x_0}-\left.\frac{d}{d x} F(x)\right|_{x=x_0}}{\epsilon}\right] \\
+&amp;amp; =\lim_{\epsilon \rightarrow 0}\left[\frac{(1-\epsilon) f\left(x_0\right)+\epsilon g\left(x_0\right)-f(x_0)}{\epsilon}\right] \\
+&amp;amp; =\infty
+\end{aligned}
+$$
+&lt;strong&gt;Conclusions:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Even though $F$ and $F_\epsilon$ differ from each other only infinitesimally $T(F)$ and $T\left(F_\epsilon\right)$ differ from each other by an infinite amount&lt;/li&gt;
+&lt;li&gt;The Glivenko-Cantelli theorem does not help us here: &lt;mark&gt;$\sup _x|\hat{F}(x)-F(x)|$ may go to zero without $T(\hat{F}) \rightarrow T(F)$&lt;/mark&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/p&gt;
+&lt;/details&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;511-hadamard-differentiability&#34;&gt;5.1.1 Hadamard differentiability&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Gâteaux differentiability is &lt;strong&gt;too weak&lt;/strong&gt; to ensure that $T(\hat{F}) \rightarrow T(F)$&lt;/li&gt;
+&lt;li&gt;Even if the Gâteaux derivative exists, it may not exist in an entirely &lt;font color=&#34;red&#34;&gt;unique&lt;/font&gt; way, and this is the subtle idea introduced by Hadamard differentiability&lt;/li&gt;
+&lt;li&gt;A functional $T$ is &lt;font color=&#34;red&#34;&gt;&lt;strong&gt;Hadamard differentiable&lt;/strong&gt;&lt;/font&gt; if, for any sequence $\epsilon_n \rightarrow 0$ and $D_n$ satisfying &lt;mark&gt;$\sup _x\left|D_n(x)-D(x)\right| \rightarrow 0$&lt;/mark&gt;, we have
+$$
+\frac{T\left(F+\epsilon_n D_n\right)-T(F)}{\epsilon_n} \rightarrow L_F(T ; D)
+$$&lt;/li&gt;
+&lt;li&gt;If $T$ is Hadamard differentiable, then $T(\hat{F}) \stackrel{\mathrm{P}}{\longrightarrow} T(F)$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;512-bounded-functionals&#34;&gt;5.1.2 Bounded functionals&lt;/h4&gt;
+&lt;p&gt;Another useful condition: if the functional is bounded, then the plug-in estimate will converge to the true value&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Proposition:&lt;/strong&gt; Suppose that there exists a constant $C$ such that the following relation holds for all $G$ :
+$$
+|T(F)-T(G)| \leq C \sup _x|F(x)-G(x)|.
+$$
+Show that $T(\hat{F}) \stackrel{\text { a.s. }}{\longrightarrow} T(F)$.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;52-the-influence-function&#34;&gt;5.2 The influence function&lt;/h3&gt;
+&lt;h4 id=&#34;521-contamination-by-a-point-mass&#34;&gt;5.2.1 Contamination by a point mass&lt;/h4&gt;
+&lt;p&gt;The idea of contaminating a distribution with a small amount of additional data has a long history in statistics and the investigation of robust estimators. Statisticians usually do not work with the general Gâteaux derivative, but a special case of it called the &lt;font color=&#34;red&#34;&gt;&lt;strong&gt;influence function&lt;/strong&gt;&lt;/font&gt;, in which $G$ places a point mass of 1 at $x$ :
+$$
+\delta_x(u)= \begin{cases}0 &amp;amp; \text { if } u&amp;lt;x \\ 1 &amp;amp; \text { if } u \geq x\end{cases}
+$$&lt;/p&gt;
+&lt;h4 id=&#34;522-influence-function--empirical-influence-function&#34;&gt;5.2.2 Influence function &amp;amp; empirical influence function&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;The influence function is usually written as a function of $x$, and defined as
+$$
+L(x)=\lim_{\epsilon \rightarrow 0}\left[\frac{T\left\{(1-\epsilon) F+\epsilon \delta_x\right\}-T(F)}{\epsilon}\right]
+$$&lt;/li&gt;
+&lt;li&gt;A closely related concept is that of the empirical influence function:
+$$
+\hat{L}(x)=\lim _{\epsilon \rightarrow 0}\left[\frac{T\left\{(1-\epsilon) \hat{F}+\epsilon \delta_x\right\}-T(\hat{F})}{\epsilon}\right]
+$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Example&lt;/strong&gt;: if $T(F)=\mu$, then we have $L(x)=x-\mu$ and $\hat L(x)=x-\bar x$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;523-linear-functionals&#34;&gt;5.2.3 Linear functionals&lt;/h4&gt;
+&lt;p&gt;A functional $T(F)$ is a linear functional iff $T(F)=\int a(x) d F(x)$. For the linear functionals, we have
+$$
+\begin{aligned}
+&amp;amp; L(x)=a(x)-T(F) \\
+&amp;amp; \hat{L}(x)=a(x)-T(\hat{F})
+\end{aligned}
+$$&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Example&lt;/strong&gt;: if $T(F)=\sigma^2$, then we have $L(x)=(x-\mu)^2-\sigma^2$ and $\hat L(x)=(x-\bar x)^2-\hat\sigma^2$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;Visually Communicating and Teaching Intuition for Influence Functions &lt;a href=&#34;https://www.tandfonline.com/doi/abs/10.1080/00031305.2020.1717620&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;(Fisher &amp;amp; Kennedy 2020)&lt;/a&gt;&lt;/li&gt;
@@ -321,8 +395,18 @@ $$&lt;/li&gt;
   &lt;ul&gt;
     &lt;li&gt;&lt;a href=&#34;#0-background-semiparametric-model&#34;&gt;0. Background: Semiparametric Model&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&#34;#1-introduction&#34;&gt;1. Introduction&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&#34;#2-the-pathwise-derivative-formula-for-the-asymptotic-variance&#34;&gt;2. The Pathwise Derivative Formula For the Asymptotic Variance&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&#34;#3-semiparametric-m-estimators&#34;&gt;3. Semiparametric $M$-estimators&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#2-the-pathwise-derivative-formula-for-the-asymptotic-variance&#34;&gt;2. The Pathwise Derivative Formula For the Asymptotic Variance&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#regular-path--regular-estimator&#34;&gt;Regular path &amp;amp; regular estimator&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#the-pathwise-derivative-asymptotic-variance-formula&#34;&gt;The pathwise derivative asymptotic variance formula&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#3-semiparametric-m-estimators&#34;&gt;3. Semiparametric $M$-estimators&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#when-will-the-adjustment-term-be-zero-&#34;&gt;When will the adjustment term be zero ?&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#a-more-direct-condition&#34;&gt;A more direct condition&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
     &lt;li&gt;&lt;a href=&#34;#4-functions-of-mean-square-projection-and-densities&#34;&gt;4. Functions of Mean-square Projection and Densities&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&#34;#5-regularity-conditions&#34;&gt;5. Regularity Conditions&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&#34;#6-series-estimation-of-projection-functionals&#34;&gt;6. Series Estimation of Projection Functionals&lt;/a&gt;&lt;/li&gt;
@@ -390,6 +474,25 @@ $$&lt;/p&gt;
 &lt;/div&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;1-introduction&#34;&gt;1. Introduction&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Develop a general form for &lt;mark&gt;the asymptotic variance of semiparametric estimators&lt;/mark&gt; that depend on nonparametric estimators of functions.&lt;/li&gt;
+&lt;li&gt;The formula is often straightforward to derive, requiring only some calculus.&lt;/li&gt;
+&lt;li&gt;Although the formula is not based on primitive conditions, it should be useful for semiparametric estimators, just as analogous formulae are for parametric estimators.&lt;/li&gt;
+&lt;li&gt;The formula gives the form of remainder terms, which facilitates specification of primitive conditions.&lt;/li&gt;
+&lt;li&gt;It can also be used to make asymptotic efficiency comparisons and to find an efficient estimator in some class.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;markmap&#34; style=&#34;height: 500px;&#34;&gt;
+
+&lt;pre&gt;- 
+  - Derive the formula: **Section 2**
+  - Propositions about semiparametric estimator
+    - **Section 3**
+    - **Section 4**
+  - High-level regularity conditions: **Section 5**
+  - Conditions for $\sqrt{n}$-consistency and asymptotic normality: **Section 6**
+  - Primitive conditions for the examples: **Section 7**&lt;/pre&gt;
+&lt;/div&gt;
+
 &lt;h2 id=&#34;2-the-pathwise-derivative-formula-for-the-asymptotic-variance&#34;&gt;2. The Pathwise Derivative Formula For the Asymptotic Variance&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Preliminary: &lt;a href=&#34;https://example.com/post/path-dev/&#34;&gt;one-step estimators and pathwise derivatives&lt;/a&gt;&lt;/p&gt;
@@ -425,7 +528,7 @@ $${\color{red}S(z)=\frac{\partial \ln \left(d F_\theta\right)}{ \partial \theta}
 &lt;/ul&gt;
 &lt;p&gt;The &lt;strong&gt;pathwise derivative&lt;/strong&gt; of $\mu(F)$ is a $q \times 1$ vector $d(z)$ with &lt;mark&gt;$E[d(z)]=0$ and $E\left[|d(z)|^2\right]&amp;lt;\infty$&lt;/mark&gt; such that for every path,
 $$
-{\color{red}\frac{\partial \mu\left(F_\theta\right)}{\partial \theta}=E[d(z) S(z)].}
+{\color{red}\frac{\partial \mu\left(F_\theta\right)}{\partial \theta}=E[d(z) S(z)].}\qquad(\star)
 $$&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;The variance bound for estimation of $\mu(F)$ is $\operatorname{Var}(d(z))$.&lt;/li&gt;
@@ -458,7 +561,221 @@ $$&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/p&gt;
 &lt;/details&gt;
+&lt;p&gt;The &lt;strong&gt;pathwise derivative&lt;/strong&gt; generalizes the Gateaux derivative formula for von-Mises estimators:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The pathwise derivative formula works for estimators that are explicit functions of densities or expectations, where the domain of $\mu(F)$ may only include &lt;strong&gt;continuous distributions&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;The Gateaux derivative formula only applies when the domain of $\mu(F)$ also includes &lt;strong&gt;discrete distributions&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;A precise justification for the asymptotic variance formula is available when $\hat\beta$ is asymptotically equivalent to a sample average: define $\hat{\beta}$ to be asymptotically linear with &lt;strong&gt;influence function&lt;/strong&gt; $\psi(z)$ when $z_i$ has distribution $F_0$:
+$$
+\begin{aligned}
+&amp;amp; \sqrt{n}\left(\hat{\beta}-\beta_0\right)=\sum_{i=1}^n \psi\left(z_i\right) / \sqrt{n}+O_p(1), \\
+&amp;amp; E[\psi(z)]=0, \quad \operatorname{Var}(\psi(z)) \text { finite. }
+\end{aligned}
+$$&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Asymptotic linearity and the central limit theorem imply $\hat{\beta}$ is asymptotically normal with variance $\operatorname{Var}(\psi(z))$.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;regular-path--regular-estimator&#34;&gt;Regular path &amp;amp; regular estimator&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Define the path &lt;font color=&#34;red&#34;&gt;$\left\{F_\theta: \theta \in(-\varepsilon, \varepsilon) \subset \mathbb{R}, \varepsilon&amp;gt;0, F_\theta \in \mathscr{F}\right\}$&lt;/font&gt; to be regular if &lt;mark&gt;each distribution is absolutely continuous w.r.t the same dominating measure and $S(z)$ satisfies the mean-square derivative condition&lt;/mark&gt;
+$$
+\int\left[\theta^{-1}\left(d F_\theta^{1 / 2}-d F_0^{1 / 2}\right)-\frac{1}{2} S(z) d F_0^{1 / 2}\right]^2 d z \rightarrow 0, \text { as } \quad \theta \rightarrow 0 .
+$$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Define $\hat{\beta}$ to be a &lt;strong&gt;regular estimator&lt;/strong&gt; of $\mu(F)$ if for any regular path and $\theta_n=$ $0(1 / \sqrt{n})$, when $z_i$ has distribution $F_{\theta_n}, \sqrt{n}\left(\hat{\beta}-\mu\left(F_{\theta_n}\right)\right)$ has a limiting distribution that &lt;mark&gt;does not depend on $\left\{\theta_n\right\}_{n=1}^{\infty}$&lt;/mark&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;the-pathwise-derivative-asymptotic-variance-formula&#34;&gt;The pathwise derivative asymptotic variance formula&lt;/h3&gt;
+&lt;p&gt;&lt;mark&gt;&lt;strong&gt;THEOREM 2.1&lt;/strong&gt;&lt;/mark&gt;: Suppose that&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;(i) the set of scores for regular paths is linear;&lt;/li&gt;
+&lt;li&gt;(ii) for any $\varepsilon&amp;gt;0$ and measureable $s(z)$ with $E[s(z)]=0$ and $E\left[s(z)^2\right]&amp;lt;\infty$, there is a regular path with score $S(z)$ satisfying $E\left[|s(z)-S(z)|^2\right]&amp;lt;\varepsilon$;&lt;/li&gt;
+&lt;li&gt;(iii) $\hat{\beta}$ is asymptotically linear and regular.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Then there is $d(z)$ such that equation $(\star)$ is satisfied and $\psi(z)=d(z)$&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Condition (ii), that the scores can approximate any mean zero function, is the precise version of the &amp;ldquo;generality&amp;rdquo; property of $\mathscr{F}$.&lt;/li&gt;
+&lt;li&gt;Regularity of $\hat{\beta}$ is the precise condition that specifies that &lt;mark&gt;$\hat{\beta}$ is a nonparametric estimator of $\mu(F)$&lt;/mark&gt;.&lt;/li&gt;
+&lt;li&gt;Innovations: calculating the bound for the functional $\mu(F)$ is nonparametrically estimated by $\hat\beta$&lt;/li&gt;
+&lt;li&gt;Asymptotic linearity and regularity imply pathwise differentiability&lt;/li&gt;
+&lt;li&gt;Condition (ii) implies that there is &lt;strong&gt;only one influence function&lt;/strong&gt; and that it equals the pathwise derivative&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;Theorem 2.1 give a justification for the pathwise derivative formula, rather than an approach to showing asymptotic normality.&lt;/li&gt;
+&lt;li&gt;A better approach:
+&lt;ul&gt;
+&lt;li&gt;Solve equation $(\star)$ for the pathwise derivative, as a candidate for the influence function&lt;/li&gt;
+&lt;li&gt;Formulate regularity conditions for the remainder $\sqrt{n}\left(\hat{\theta}-\theta_0\right)-\sum_{i=1}^n \psi\left(z_i\right) / \sqrt{n}$ to be small.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;The formula is a very important part of this approach, because it provides the form of the remainder.&lt;/li&gt;
+&lt;li&gt;This approach, with formal calculation followed by regularity conditions, is similar to that used in parametric asymptotic theory (e.g. for Edgeworth expansions).&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;3-semiparametric-m-estimators&#34;&gt;3. Semiparametric $M$-estimators&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Let $h$ denote a function, that can depend on the parameters $\beta$ and the data $z$.&lt;/li&gt;
+&lt;li&gt;Let $m(z, \beta, h)$ be a vector of functions with the same dimension as $\beta$. Here $m(z, \beta, h)$ can depend on the entire function $h$, rather than just its value at particular points, so $m(z, \beta, h)$ is a vector of functionals.&lt;/li&gt;
+&lt;li&gt;Suppose that $E\left[m\left(z, \beta_0, h_0\right)\right]=0$ for the true values $\beta_0$ and $h_0$.&lt;/li&gt;
+&lt;li&gt;Let $\hat{h}$ denote an estimator of $h$. A semiparametric $m$-estimator is one that solves a moment equation of the form
+$$
+{\color{red}\frac{1}{n}\sum_{i=1}^n m\left(z_i, \beta, \hat{h}\right)=0} .\qquad (\Delta)
+$$&lt;/li&gt;
+&lt;li&gt;The general idea here is that $\hat{\beta}$ is obtained by a procedure that &amp;ldquo;plugs-in&amp;rdquo; an estimated function $\hat{h}$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- &lt;details class=&#34;spoiler &#34;  id=&#34;spoiler-6&#34;&gt;
+  &lt;summary&gt;Example 3.1 Quasi-maximum Likelihood for a Conditional Mean Index&lt;/summary&gt;
+  &lt;p&gt;&amp;ndash;&amp;gt;&lt;/p&gt;
+&lt;!--&lt;/p&gt;
+&lt;/details&gt; --&gt;
+&lt;details class=&#34;spoiler &#34;  id=&#34;spoiler-7&#34;&gt;
+  &lt;summary&gt;&lt;strong&gt;Example 3.1 Quasi-maximum Likelihood for a Conditional Mean Index&lt;/strong&gt;&lt;/summary&gt;
+  &lt;p&gt;&lt;ul&gt;
+&lt;li&gt;The conditional mean index model: $E[y \mid x]=\tau\left(v\left(x, \beta_0\right)\right)$ for a &lt;strong&gt;known&lt;/strong&gt; function $v(x, \beta)$ and an &lt;strong&gt;unknown&lt;/strong&gt; function $\tau(\cdot)$.&lt;/li&gt;
+&lt;li&gt;Let $\hat{h}(x, \beta)$ be a nonparametric estimator of $E[y \mid v(x, \beta)]$, such as a kernel estimator.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;An estimator of $\beta_0$ suggested by Ichimura (1993) minimizes $\sum_{i=1}^n\left[y_i-\hat{h}\left(x_i, \beta\right)\right]^2$.&lt;/li&gt;
+&lt;li&gt;When $y_i$ is binary, Klein and Spady (1993) have suggested maximizing
+$$\sum_{i=1}^n\left\{y_i \ln [\hat{h}(x_i, \beta)]+(1-y_i) \ln [1-\hat{h}(x_i, \beta)]\right\}$$&lt;/li&gt;
+&lt;li&gt;A generalization of these estimators is a quasi-maximum likelihood estimator (QMLE) for an exponential family.&lt;/li&gt;
+&lt;li&gt;The estimator will be efficient when the true distribution has the exponential form.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;To describe the estimator, let $l(u, \nu)=\exp (A(\nu)+B(u)+C(\nu) u)$ be a linear exponential density, with mean $\nu$.&lt;/li&gt;
+&lt;li&gt;Consider an estimator $\hat{\beta}$ that maximizes $\sum_{i=1}^n \ln l\left(y_i, \hat{h}\left(x_i, \beta\right)\right)$.&lt;/li&gt;
+&lt;li&gt;The first order conditions for this estimator make it a special case of equation $(\Delta)$, with
+$$
+m(z, \beta, h)=\left[A_\nu(h(x, \beta))+C_\nu(h(x, \beta)) y\right] \frac{\partial h(x, \beta) } {\partial \beta}
+$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/p&gt;
+&lt;/details&gt;
+&lt;details class=&#34;spoiler &#34;  id=&#34;spoiler-8&#34;&gt;
+  &lt;summary&gt;&lt;strong&gt;Example 3.2: Inverse Density Weighted Least Squares&lt;/strong&gt;&lt;/summary&gt;
+  &lt;p&gt;&lt;ul&gt;
+&lt;li&gt;Let $w(x)=r((x-$ $\zeta)^{\prime} \Omega(x-\zeta)$ ) be an elliptically symmetric density function, where $\zeta$ is a vector and $\Omega$ a positive definite matrix.&lt;/li&gt;
+&lt;li&gt;Let $\hat{h}\left(x_l\right)$ be an estimator of the density of $x$, such as a kernel estimator.&lt;/li&gt;
+&lt;li&gt;As shown by Ruud (1986), the weighted least squares estimator $\hat{\beta}=\left[\sum_{l=1}^n w\left(x_i\right) \hat{h}\left(x_l\right)^{-1} x_l x_l^{\prime}\right]^{-1} \sum_{l=1}^n w\left(x_l\right) \hat{h}\left(x_l\right)^{-1} x_i y_i$ will be consistent up to scale, for the coefficients $\gamma_0$ of an index model $E[y \mid x]=\tau\left(x^{\prime} \gamma_0\right)$.&lt;/li&gt;
+&lt;li&gt;This example is a special case of equation $(\Delta)$ with
+$$
+m(z, \beta, h)=w(x) h(x)^{-1} x\left(y-x^{\prime} \beta\right) .
+$$&lt;/li&gt;
+&lt;li&gt;This estimator will be used to illustrate the correction term for density estimates.&lt;/li&gt;
+&lt;li&gt;Asymptotic normality and $\sqrt{n}$-consistency for $\hat{h}(x)$ a kernel estimator, are shown in Newey and Ruud (1991).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/p&gt;
+&lt;/details&gt;
+&lt;hr&gt;
+&lt;p&gt;To use the pathwise derivative formula in this derivation, it is necessary to &lt;mark&gt;identify the functional that is nonparametrically estimated by $\hat{\beta}$.&lt;/mark&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Let $h(F)$ denote the limit of $\hat{h}$ when $z$ has distribution $F$.&lt;/li&gt;
+&lt;li&gt;The limit $\mu(F)$ of $\hat{\beta}$ for a general $F$ should be the solution to
+$$
+E_F[m(z, \mu, h(F))]=0 .\qquad(\odot)
+$$&lt;/li&gt;
+&lt;li&gt;Equation $(\Delta)$ sets $\hat{\beta}$ so that sample moments are zero, and the sample moments have a limit of $E_F[m(z, \beta, h(F))]$
+&lt;ul&gt;
+&lt;li&gt;by the law of large numbers and $h(F)$ equal to the limit of $\hat{h}$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;font color=&#34;red&#34;&gt;$\Rightarrow$ $\hat{\beta}$ is consistent for the solution of $(\odot)$.&lt;/font&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Remarks&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;the estimators depend only on the limit $h(F)$, and not on the particular form of the estimator $\hat{h}$.&lt;/li&gt;
+&lt;li&gt;Different nonparametric estimators of the same functions should result in &lt;mark&gt;the same asymptotic variance&lt;/mark&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;mark&gt;&lt;strong&gt;Proposition 1&lt;/strong&gt;&lt;/mark&gt;: &lt;font color=&#34;blue&#34;&gt;The asymptotic variance of semiparametric estimators depends only on the function that is nonparametrically estimated, and not on the type of estimator.&lt;/font&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;For a path $\left\{F_\theta\right\}$, let $h(\theta)=h\left(F_\theta\right)$. Here, $\mu\left(F_\theta\right)$ will satisfy the population moment equation
+$$
+E_\theta[m(z, \mu, h(\theta))]=0 .
+$$&lt;/li&gt;
+&lt;li&gt;Let $m(z, h)=m\left(z, \beta_0, h\right)$. Differentiation under the integral gives
+$$
+\frac{\partial E_\theta\left[m\left(z, h_0\right)\right]}{ \partial \theta}=\int m\left(z, h_0\right)\left[\frac{\partial d F_\theta }{ \partial \theta}\right] d z=E\left[m\left(z, h_0\right) S(z)\right] .
+$$&lt;/li&gt;
+&lt;li&gt;Using the chain rule, it follows that
+$$
+\frac{\partial E_\theta[m(z, h(\theta))] }{ \partial \theta}=E\left[m\left(z, h_0\right) S(z)\right]+\frac{\partial E[m(z, h(\theta))] }{ \partial \theta} .
+$$&lt;/li&gt;
+&lt;li&gt;Assuming $M \equiv \partial E\left[m\left(z, \beta, h_0\right)\right] /\left.\partial \beta\right|_{\beta_0}$ is nonsingular, by the implicit function theorem
+$$
+\frac{\partial \mu\left(F_\theta\right) }{ \partial \theta}=-M^{-1}\left\{E\left[m\left(z, h_0\right) S(z)\right]+\frac{\partial E[m(z, h(\theta))] }{ \partial \theta}\right\} .
+$$&lt;/li&gt;
+&lt;li&gt;The first term is already in an outer product form, so that the pathwise derivative can be found by &lt;mark&gt;putting the second term in singular form&lt;/mark&gt;&lt;/li&gt;
+&lt;li&gt;Suppose there is a $\alpha(z)$ such that $E[\alpha(z)]=0$ and
+$$\frac{\partial E[m(z, h(\theta))] }{ \partial \theta}=E[\alpha(z) S(z)]\qquad(\oplus)$$.&lt;/li&gt;
+&lt;li&gt;Move $-M^{-1}$ inside the expectation, it follows that the pathwise derivative is &lt;font color=&#34;red&#34;&gt;$d(z)=-M^{-1}\left\{m\left(z, h_0\right)+\alpha(z)\right\}$&lt;/font&gt;&lt;/li&gt;
+&lt;li&gt;By Theorem 2.1 the influence function of $\hat{\beta}$ is
+$$
+\psi(z)=-M^{-1}\left\{m\left(z, \beta_0, h_0\right)+\alpha(z)\right\}
+$$
+&lt;strong&gt;Remarks&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;The leading term $-M^{-1} m\left(z, \beta_0, h_0\right)$ is the usual formula for the influence function of an $m$-estimator with moment functions $m\left(z, \beta, {\color{red}h_0}\right)$.&lt;/li&gt;
+&lt;li&gt;The solution to equation $(\oplus)$ is an adjustment term for the estimation of $h_0$.&lt;/li&gt;
+&lt;li&gt;Solving equation $(\oplus)$ is therefore the essential step in discovering &lt;mark&gt;how the estimation of $h$ affects the asymptotic variance&lt;/mark&gt;.&lt;/li&gt;
+&lt;li&gt;This solution can be interpreted as
+&lt;ul&gt;
+&lt;li&gt;the pathwise derivative of the functional $-M^{-1} E\left[m\left(z, \beta_0, h(F)\right)\right]$&lt;/li&gt;
+&lt;li&gt;the influence function of $-M^{-1} \int m\left(z, \beta_0, \hat{h}\right) d F_0(z)$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;when-will-the-adjustment-term-be-zero-&#34;&gt;When will the adjustment term be zero ?&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;If the adjustment term is zero, then it should not be necessary to account for the presence of $\hat{h}$, i.e. &lt;font color=&#34;red&#34;&gt;$\hat{h}$ can be treated as if it were equal to $h_0$&lt;/font&gt;&lt;/li&gt;
+&lt;li&gt;One case: equation $(\Delta)$ is &lt;mark&gt;the first-order condition&lt;/mark&gt; to a maximization problem, and $\hat{h}$ has a limit that &lt;mark&gt;maximizes the population value of the same function&lt;/mark&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;To be specific&lt;/strong&gt;, suppose that there is a function $q(z, \beta, h)$ and a set of functions $\mathscr{H}(\beta)$, possibly depending on $\beta$ but not on the distribution $F$ of $z$, such that
+$$
+\begin{aligned}
+&amp;amp; m(z, \beta, h)=\partial q(z, \beta, h) / \partial \beta, \\
+&amp;amp; h(F)=\operatorname{argmax}_{\tilde{h} \in \mathscr{H}(\beta)} E_F[q(z, \beta, \tilde{h})] .\qquad(\otimes)
+\end{aligned}
+$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$m(z, \beta, h)$ are the first order conditions for a maximum of the function $q$&lt;/li&gt;
+&lt;li&gt;$h(F)$ maximizes the expected value of the same function
+&lt;ul&gt;
+&lt;li&gt;i.e. $h(F)$ has been &amp;ldquo;concentrated out&amp;rdquo;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For any parametric model $F_\theta$, since $h(\theta)=h\left(F_\theta\right)$ $\Rightarrow$ $E[q(z, \beta, h(\theta))]$ is maximized at $\theta=0$ $\Rightarrow$ $\partial E[q(z, \beta, h(\theta))] / \partial \theta=0$. Differentiating again with respect to $\beta$,
+$$
+\begin{aligned}
+0 &amp;amp; =\partial^2 E[q(z, \beta, h(\theta))] / \partial \theta \partial \beta\\
+&amp;amp;=\partial E[\partial q(z, \beta, h(\theta)) / \partial \beta] / \partial \theta \\
+&amp;amp; =\partial E[m(z, \beta, h(\theta))] / \partial \theta .
+\end{aligned}
+$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Evaluating this equation at $\beta_0$, it follows that $\alpha(z)=0$ will solve equation $(\oplus)$, and hence the adjustment term is zero.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Proposition 2&lt;/strong&gt;: &lt;font color=&#34;blue&#34;&gt;If equation $(\otimes)$ is satisfied, then the estimation of $h$ can be ignored in calculating the asymptotic variance, i.e. it is the same as if $\hat{h}=h_0$&lt;/font&gt;&lt;/p&gt;
+&lt;h3 id=&#34;a-more-direct-condition&#34;&gt;A more direct condition&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Suppose that $m(z, h)$ depends on $h$ only through its value $h(v)$ at a subvector $v$ of $z$, i.e. $m(z, h)=m(z, h(v))$ where the last function depends on a real vector argument in $m(z, h)$.&lt;/li&gt;
+&lt;li&gt;Let $h(v, \theta)$ denote the limiting value of $\hat{h}\left(v, \beta_0\right)$ for a path. For $D(z)=\partial m\left(z, \beta_0, h\right) /\left.\partial h\right|_{h=h_0(v)}$, differentiation gives
+$$
+\frac{\partial E[m(z, h(\theta))] }{ \partial \theta}=E\left[D(z) \frac{\partial h(v, \theta) }{ \partial \theta}\right]=\frac{\partial E[D(z) h(v, \theta)] }{ \partial \theta} .
+$$&lt;/li&gt;
+&lt;li&gt;If this derivative is zero for all $h(v, \theta)$, then $\alpha(z)=0$ will solve equation $(\oplus)$, and the adjustment term is zero.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;One simple condition&lt;/strong&gt; for this is that &lt;mark&gt;$E[D(z) \mid v]=0$&lt;/mark&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;More generally, the adjustment term will be zero if $h(v, \theta)$ is an element of a set to which $D(z)$ is orthogonal.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Proposition 3&lt;/strong&gt;: &lt;font color=&#34;blue&#34;&gt;If $E[D(z) \mid v]=0$, or more generally, for all $F, h(v, F)$ is an element of a set $\mathscr{H}$ such that $E[D(z) \tilde{h}(v)]=0$ for all $\tilde{h} \in \mathscr{H}$, then estimation of $h$ can be ignored in calculating the asymptotic variance.&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Remarks&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;This condition can be checked by straightforward calculation, unlike Proposition 2, which requires finding $q(z, \beta, h)$ satisfying equation $(\otimes)$.&lt;/p&gt;
 &lt;h2 id=&#34;4-functions-of-mean-square-projection-and-densities&#34;&gt;4. Functions of Mean-square Projection and Densities&lt;/h2&gt;
 &lt;h2 id=&#34;5-regularity-conditions&#34;&gt;5. Regularity Conditions&lt;/h2&gt;
 &lt;h2 id=&#34;6-series-estimation-of-projection-functionals&#34;&gt;6. Series Estimation of Projection Functionals&lt;/h2&gt;
