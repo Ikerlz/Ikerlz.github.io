@@ -14,9 +14,9 @@
     
     <item>
       <title>Notes on &#39;&#39;One-step Estimators and Pathwise Derivatives&#39;&#39;</title>
-      <link>https://example.com/post/path-dev/</link>
+      <link>https://example.com/notes/path-dev/</link>
       <pubDate>Sun, 05 Nov 2023 22:16:45 +0800</pubDate>
-      <guid>https://example.com/post/path-dev/</guid>
+      <guid>https://example.com/notes/path-dev/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;You can locate the original blog post on &lt;a href=&#34;https://observablehq.com/@herbps10/one-step-estimators-and-pathwise-derivatives&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;observablehq.com&lt;/a&gt;, written by &lt;strong&gt;Herb Susmann&lt;/strong&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -364,9 +364,9 @@ $$&lt;/p&gt;
     
     <item>
       <title>Notes on &#39;&#39;The Asymptotic Variance of Semiparametric Estimators&#39;&#39;</title>
-      <link>https://example.com/post/var-semiparam/</link>
+      <link>https://example.com/notes/var-semiparam/</link>
       <pubDate>Sun, 05 Nov 2023 22:16:45 +0800</pubDate>
-      <guid>https://example.com/post/var-semiparam/</guid>
+      <guid>https://example.com/notes/var-semiparam/</guid>
       <description>
 
 &lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
@@ -475,7 +475,7 @@ $$&lt;/p&gt;
 
 &lt;h2 id=&#34;2-the-pathwise-derivative-formula-for-the-asymptotic-variance&#34;&gt;2. The Pathwise Derivative Formula For the Asymptotic Variance&lt;/h2&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Preliminary: &lt;a href=&#34;https://example.com/post/path-dev/&#34;&gt;one-step estimators and pathwise derivatives&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Preliminary: &lt;a href=&#34;https://example.com/notes/path-dev/&#34;&gt;one-step estimators and pathwise derivatives&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;The formula is based on the observation that &lt;font color=&#34;red&#34;&gt;$\sqrt{n}$-consistent&lt;/font&gt; &lt;strong&gt;nonparametric&lt;/strong&gt; estimators are often efficient.&lt;/p&gt;
 &lt;blockquote&gt;

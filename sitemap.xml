@@ -10,15 +10,15 @@
     <lastmod>2023-11-05T22:16:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/post/path-dev/</loc>
+    <loc>https://example.com/notes/</loc>
     <lastmod>2023-11-05T22:16:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/post/var-semiparam/</loc>
+    <loc>https://example.com/notes/path-dev/</loc>
     <lastmod>2023-11-05T22:16:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/post/</loc>
+    <loc>https://example.com/notes/var-semiparam/</loc>
     <lastmod>2023-11-05T22:16:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
@@ -31,6 +31,10 @@
     <changefreq>weekly</changefreq>
   </url><url>
     <loc>https://example.com/tag/gmm/</loc>
+    <lastmod>2023-11-02T00:39:27+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>https://example.com/post/</loc>
     <lastmod>2023-11-02T00:39:27+08:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
