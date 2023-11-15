@@ -13,6 +13,75 @@
     </image>
     
     <item>
+      <title>Notes on &#39;&#39;On factor models with random missing: EM estimation, inference, and cross validation&#39;&#39;</title>
+      <link>https://example.com/notes/factor-model/</link>
+      <pubDate>Tue, 14 Nov 2023 22:16:45 +0800</pubDate>
+      <guid>https://example.com/notes/factor-model/</guid>
+      <description>
+
+&lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
+  &lt;summary class=&#34;font-weight-bold&#34;&gt;Table of Contents&lt;/summary&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#1-introduction&#34;&gt;1. Introduction&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#2-large-dimensional-factor-models-with-random-missing&#34;&gt;2. Large dimensional factor models with random missing&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#21-em-estimation&#34;&gt;2.1. EM estimation&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#3-determining-the-number-of-factors-via-cross-validation&#34;&gt;3. Determining the number of factors via cross validation&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#4-monte-carlo-simulations&#34;&gt;4. Monte Carlo simulations&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#5-empirical-application-forecasting-macroeconomic-variables&#34;&gt;5. Empirical application: Forecasting macroeconomic variables&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/details&gt;
+
+&lt;hr&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /media/notes/factor-model/paper_intro_hu1fc2d9e7412cda710028560e51ff3652_53793_21d412abc8825e11623e78b70c39680f.webp 400w,
+               /media/notes/factor-model/paper_intro_hu1fc2d9e7412cda710028560e51ff3652_53793_c705a68ddc94c1a3588600831f692041.webp 760w,
+               /media/notes/factor-model/paper_intro_hu1fc2d9e7412cda710028560e51ff3652_53793_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://example.com/media/notes/factor-model/paper_intro_hu1fc2d9e7412cda710028560e51ff3652_53793_21d412abc8825e11623e78b70c39680f.webp&#34;
+               width=&#34;670&#34;
+               height=&#34;260&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+&lt;hr&gt;
+&lt;h2 id=&#34;1-introduction&#34;&gt;1. Introduction&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;2-large-dimensional-factor-models-with-random-missing&#34;&gt;2. Large dimensional factor models with random missing&lt;/h2&gt;
+&lt;h3 id=&#34;21-em-estimation&#34;&gt;2.1. EM estimation&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;3-determining-the-number-of-factors-via-cross-validation&#34;&gt;3. Determining the number of factors via cross validation&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;4-monte-carlo-simulations&#34;&gt;4. Monte Carlo simulations&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;5-empirical-application-forecasting-macroeconomic-variables&#34;&gt;5. Empirical application: Forecasting macroeconomic variables&lt;/h2&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Notes on &#39;&#39;One-step Estimators and Pathwise Derivatives&#39;&#39;</title>
       <link>https://example.com/notes/path-dev/</link>
       <pubDate>Sun, 05 Nov 2023 22:16:45 +0800</pubDate>
