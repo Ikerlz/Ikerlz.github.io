@@ -279,12 +279,12 @@
 
   
 
-<meta name="description" content="A highly-customizable Hugo academic resume theme powered by Wowchemy website builder." />
+<meta name="description" content="Table of Contents 1. Introduction 2. The three-pass regression filter 2.1. The estimator 2.2. Assumptions 2.3. Consistency 2.4. Asymptotic distributions 2.5. Proxy selection 3. Related procedures 3.1. Constrained least squares 3." />
 
 
 
-<link rel="alternate" hreflang="en-us" href="https://example.com/post/" />
-<link rel="canonical" href="https://example.com/post/" />
+<link rel="alternate" hreflang="en-us" href="https://example.com/notes/3prf/" />
+<link rel="canonical" href="https://example.com/notes/3prf/" />
 
 
 
@@ -307,25 +307,30 @@
 
 
   
-  
 
 
 
 
 
 
-<meta property="twitter:card" content="summary" />
+<meta property="twitter:card" content="summary_large_image" />
 
   <meta property="twitter:site" content="@wowchemy" />
   <meta property="twitter:creator" content="@wowchemy" />
-<meta property="twitter:image" content="https://example.com/media/icon_hu9ccd2acdcd774e20fa34966445b706a8_6997380_512x512_fill_lanczos_center_3.png" />
+<meta property="twitter:image" content="https://example.com/notes/3prf/featured.jpg" />
 <meta property="og:site_name" content="Li Zhe" />
-<meta property="og:url" content="https://example.com/post/" />
-<meta property="og:title" content="Posts | Li Zhe" />
-<meta property="og:description" content="A highly-customizable Hugo academic resume theme powered by Wowchemy website builder." /><meta property="og:image" content="https://example.com/media/icon_hu9ccd2acdcd774e20fa34966445b706a8_6997380_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+<meta property="og:url" content="https://example.com/notes/3prf/" />
+<meta property="og:title" content="Notes on &#39;&#39;The three-pass regression filter: A new approach to forecasting using many predictors&#39;&#39; | Li Zhe" />
+<meta property="og:description" content="Table of Contents 1. Introduction 2. The three-pass regression filter 2.1. The estimator 2.2. Assumptions 2.3. Consistency 2.4. Asymptotic distributions 2.5. Proxy selection 3. Related procedures 3.1. Constrained least squares 3." /><meta property="og:image" content="https://example.com/notes/3prf/featured.jpg" /><meta property="og:locale" content="en-us" />
 
   
-    <meta property="og:updated_time" content="2023-11-02T00:39:27&#43;08:00" />
+    <meta
+      property="article:published_time"
+      content="2023-11-20T22:16:45&#43;08:00"
+    />
+  
+  
+    <meta property="article:modified_time" content="2023-11-20T22:16:45&#43;08:00">
   
 
 
@@ -333,24 +338,24 @@
 
 
 
-
-
-
-
-  
-  
-  
-
-  
-  
-    <link rel="alternate" href="/post/index.xml" type="application/rss+xml" title="Li Zhe" />
-  
 
   
 
 
+
+
   
-  <title>Posts | Li Zhe</title>
+  
+  
+
+  
+  
+
+  
+
+
+  
+  <title>Notes on &#39;&#39;The three-pass regression filter: A new approach to forecasting using many predictors&#39;&#39; | Li Zhe</title>
 
   
   
@@ -370,7 +375,7 @@
 </head>
 
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="6370009740e1eb2ee0b7974f10ecc91f" >
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="cb83c79cd79d6d0dabc1fa683061dca9" >
 
   
   
@@ -748,6 +753,211 @@
     
     
 
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+<div class="article-container pt-3">
+  <h1>Notes on &#39;&#39;The three-pass regression filter: A new approach to forecasting using many predictors&#39;&#39;</h1>
+
+  
+
+  
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Nov 20, 2023
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/factor-model/">factor-model</a></span>
+  
+
+</div>
+
+  
+
+
+
+
+
+</div>
+
+
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 437px;">
+  <div style="position: relative">
+    <img src="/notes/3prf/featured_hu589ef1c3cf94117706fc6f31fee1d989_111854_720x2500_fit_q75_h2_lanczos.webp" width="720" height="437" alt="" class="featured-image">
+    
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<details class="toc-inpage d-print-none  " open>
+  <summary class="font-weight-bold">Table of Contents</summary>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-introduction">1. Introduction</a></li>
+    <li><a href="#2-the-three-pass-regression-filter">2. The three-pass regression filter</a>
+      <ul>
+        <li><a href="#21-the-estimator">2.1. The estimator</a></li>
+        <li><a href="#22-assumptions">2.2. Assumptions</a></li>
+        <li><a href="#23-consistency">2.3. Consistency</a></li>
+        <li><a href="#24-asymptotic-distributions">2.4. Asymptotic distributions</a></li>
+        <li><a href="#25-proxy-selection">2.5. Proxy selection</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-related-procedures">3. Related procedures</a>
+      <ul>
+        <li><a href="#31-constrained-least-squares">3.1. Constrained least squares</a></li>
+        <li><a href="#32-partial-least-squares">3.2. Partial least squares</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-simulation-evidence">4. Simulation evidence</a>
+      <ul>
+        <li><a href="#41-comparison-against-alternatives">4.1. Comparison against alternatives</a></li>
+        <li><a href="#42-information-criteria">4.2. Information criteria</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-empirical-evidence">5. Empirical evidence</a>
+      <ul>
+        <li><a href="#51-forecasting-macroeconomic-aggregates">5.1. Forecasting macroeconomic aggregates</a></li>
+        <li><a href="#52-forecasting-market-returns">5.2. Forecasting market returns</a></li>
+        <li><a href="#53-examples-of-theory-proxies-for-macroeconomic-forecasts">5.3. Examples of theory proxies for macroeconomic forecasts</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</details>
+
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /media/notes/3PRF/paper_intro_huf5f032f5e0ce25d4704501cb81607dc7_130609_4521b0390b02ac01acfcf8802e497a33.webp 400w,
+               /media/notes/3PRF/paper_intro_huf5f032f5e0ce25d4704501cb81607dc7_130609_a6ae2965e4ec4df5bfad2235d8225cf9.webp 760w,
+               /media/notes/3PRF/paper_intro_huf5f032f5e0ce25d4704501cb81607dc7_130609_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/media/notes/3PRF/paper_intro_huf5f032f5e0ce25d4704501cb81607dc7_130609_4521b0390b02ac01acfcf8802e497a33.webp"
+               width="760"
+               height="296"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+<hr>
+<h2 id="1-introduction">1. Introduction</h2>
+<ul>
+<li>
+<p>How to use the vast predictive information to forecast important economic aggregates like national product or stock market value.</p>
+<ul>
+<li>If the predictors number near or more than the number of observations, the standard OLS forecaster is known to be poorly behaved or nonexistent (Huber, 1973)</li>
+</ul>
+</li>
+<li>
+<p><strong>Contributions</strong></p>
+<ol>
+<li>develop asymptotic theory for the 3PRF</li>
+<li>verify the finite sample accuracy of the asymptotic theory</li>
+<li>compare the 3PRF to other methods</li>
+<li>provide empirical support for the 3PRF&rsquo;s strong forecasting performance</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h2 id="2-the-three-pass-regression-filter">2. The three-pass regression filter</h2>
+<h3 id="21-the-estimator">2.1. The estimator</h3>
+<h3 id="22-assumptions">2.2. Assumptions</h3>
+<h3 id="23-consistency">2.3. Consistency</h3>
+<h3 id="24-asymptotic-distributions">2.4. Asymptotic distributions</h3>
+<h3 id="25-proxy-selection">2.5. Proxy selection</h3>
+<h4 id="251-automatic-proxies">2.5.1. Automatic proxies</h4>
+<h4 id="252-theory-proxies">2.5.2. Theory proxies</h4>
+<hr>
+<h2 id="3-related-procedures">3. Related procedures</h2>
+<h3 id="31-constrained-least-squares">3.1. Constrained least squares</h3>
+<h3 id="32-partial-least-squares">3.2. Partial least squares</h3>
+<hr>
+<h2 id="4-simulation-evidence">4. Simulation evidence</h2>
+<h3 id="41-comparison-against-alternatives">4.1. Comparison against alternatives</h3>
+<h3 id="42-information-criteria">4.2. Information criteria</h3>
+<hr>
+<h2 id="5-empirical-evidence">5. Empirical evidence</h2>
+<h3 id="51-forecasting-macroeconomic-aggregates">5.1. Forecasting macroeconomic aggregates</h3>
+<h3 id="52-forecasting-market-returns">5.2. Forecasting market returns</h3>
+<h3 id="53-examples-of-theory-proxies-for-macroeconomic-forecasts">5.3. Examples of theory proxies for macroeconomic forecasts</h3>
+
+    </div>
+
     
 
 
@@ -756,6 +966,120 @@
 
 
 
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fexample.com%2Fnotes%2F3prf%2F&amp;text=Notes&#43;on&#43;%27%27The&#43;three-pass&#43;regression&#43;filter%3A&#43;A&#43;new&#43;approach&#43;to&#43;forecasting&#43;using&#43;many&#43;predictors%27%27" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fexample.com%2Fnotes%2F3prf%2F&amp;t=Notes&#43;on&#43;%27%27The&#43;three-pass&#43;regression&#43;filter%3A&#43;A&#43;new&#43;approach&#43;to&#43;forecasting&#43;using&#43;many&#43;predictors%27%27" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a href="mailto:?subject=Notes%20on%20%27%27The%20three-pass%20regression%20filter%3A%20A%20new%20approach%20to%20forecasting%20using%20many%20predictors%27%27&amp;body=https%3A%2F%2Fexample.com%2Fnotes%2F3prf%2F" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fexample.com%2Fnotes%2F3prf%2F&amp;title=Notes&#43;on&#43;%27%27The&#43;three-pass&#43;regression&#43;filter%3A&#43;A&#43;new&#43;approach&#43;to&#43;forecasting&#43;using&#43;many&#43;predictors%27%27" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Notes&#43;on&#43;%27%27The&#43;three-pass&#43;regression&#43;filter%3A&#43;A&#43;new&#43;approach&#43;to&#43;forecasting&#43;using&#43;many&#43;predictors%27%27%20https%3A%2F%2Fexample.com%2Fnotes%2F3prf%2F" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fexample.com%2Fnotes%2F3prf%2F&amp;title=Notes&#43;on&#43;%27%27The&#43;three-pass&#43;regression&#43;filter%3A&#43;A&#43;new&#43;approach&#43;to&#43;forecasting&#43;using&#43;many&#43;predictors%27%27" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
 
 
 
@@ -763,61 +1087,117 @@
 
 
   
+  
+
+
 
   
   
   
     
   
-<div class="universal-wrapper pt-3">
-  <h1>Posts</h1>
-
-  
-
-  
-</div>
-
-
-
-<div class="universal-wrapper">
-
-  
-
   
   
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://example.com/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu9ccd2acdcd774e20fa34966445b706a8_6997380_270x270_fill_lanczos_center_3.png" alt="Li Zhe"></a>
     
 
-
-
-
-
-
-
-
-
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://example.com/">Li Zhe</a></h5>
+      <h6 class="card-subtitle">PhD Student</h6>
+      <p class="card-text">My research interests include distributed statistical modelling &amp; inference, network data modelling.</p>
+      <ul class="network-icon" aria-hidden="true">
   
-
-
-
-
-<div class="view-list view-list-item">
-  <i class="far fa-newspaper pub-icon" aria-hidden="true"></i>
-  <a href="/post/gmm/" >混合高斯模型的代码实现</a>
-
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
   
-
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/Ikerlz" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
   
-
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.com/citations?user=vnHn7QkAAAAJ" target="_blank" rel="noopener">
+        <i class="ai ai-google-scholar"></i>
+      </a>
+    </li>
   
-
-</div>
-
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/uploads/resume.pdf" >
+        <i class="ai ai-cv"></i>
+      </a>
+    </li>
   
+</ul>
 
-  
+    </div>
+  </div>
 
 
-</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
   </div>
 
   <div class="page-footer">

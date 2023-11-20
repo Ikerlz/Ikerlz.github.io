@@ -5,12 +5,131 @@
     <link>https://example.com/notes/</link>
       <atom:link href="https://example.com/notes/index.xml" rel="self" type="application/rss+xml" />
     <description>Notes</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Tue, 14 Nov 2023 22:16:45 +0800</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 20 Nov 2023 22:16:45 +0800</lastBuildDate>
     <image>
       <url>https://example.com/media/icon_hu9ccd2acdcd774e20fa34966445b706a8_6997380_512x512_fill_lanczos_center_3.png</url>
       <title>Notes</title>
       <link>https://example.com/notes/</link>
     </image>
+    
+    <item>
+      <title>Notes on &#39;&#39;The three-pass regression filter: A new approach to forecasting using many predictors&#39;&#39;</title>
+      <link>https://example.com/notes/3prf/</link>
+      <pubDate>Mon, 20 Nov 2023 22:16:45 +0800</pubDate>
+      <guid>https://example.com/notes/3prf/</guid>
+      <description>
+
+&lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
+  &lt;summary class=&#34;font-weight-bold&#34;&gt;Table of Contents&lt;/summary&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#1-introduction&#34;&gt;1. Introduction&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#2-the-three-pass-regression-filter&#34;&gt;2. The three-pass regression filter&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#21-the-estimator&#34;&gt;2.1. The estimator&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#22-assumptions&#34;&gt;2.2. Assumptions&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#23-consistency&#34;&gt;2.3. Consistency&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#24-asymptotic-distributions&#34;&gt;2.4. Asymptotic distributions&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#25-proxy-selection&#34;&gt;2.5. Proxy selection&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#3-related-procedures&#34;&gt;3. Related procedures&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#31-constrained-least-squares&#34;&gt;3.1. Constrained least squares&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#32-partial-least-squares&#34;&gt;3.2. Partial least squares&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#4-simulation-evidence&#34;&gt;4. Simulation evidence&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#41-comparison-against-alternatives&#34;&gt;4.1. Comparison against alternatives&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#42-information-criteria&#34;&gt;4.2. Information criteria&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#5-empirical-evidence&#34;&gt;5. Empirical evidence&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#51-forecasting-macroeconomic-aggregates&#34;&gt;5.1. Forecasting macroeconomic aggregates&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#52-forecasting-market-returns&#34;&gt;5.2. Forecasting market returns&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#53-examples-of-theory-proxies-for-macroeconomic-forecasts&#34;&gt;5.3. Examples of theory proxies for macroeconomic forecasts&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/details&gt;
+
+&lt;hr&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /media/notes/3PRF/paper_intro_huf5f032f5e0ce25d4704501cb81607dc7_130609_4521b0390b02ac01acfcf8802e497a33.webp 400w,
+               /media/notes/3PRF/paper_intro_huf5f032f5e0ce25d4704501cb81607dc7_130609_a6ae2965e4ec4df5bfad2235d8225cf9.webp 760w,
+               /media/notes/3PRF/paper_intro_huf5f032f5e0ce25d4704501cb81607dc7_130609_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://example.com/media/notes/3PRF/paper_intro_huf5f032f5e0ce25d4704501cb81607dc7_130609_4521b0390b02ac01acfcf8802e497a33.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;296&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+&lt;hr&gt;
+&lt;h2 id=&#34;1-introduction&#34;&gt;1. Introduction&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;How to use the vast predictive information to forecast important economic aggregates like national product or stock market value.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If the predictors number near or more than the number of observations, the standard OLS forecaster is known to be poorly behaved or nonexistent (Huber, 1973)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Contributions&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;develop asymptotic theory for the 3PRF&lt;/li&gt;
+&lt;li&gt;verify the finite sample accuracy of the asymptotic theory&lt;/li&gt;
+&lt;li&gt;compare the 3PRF to other methods&lt;/li&gt;
+&lt;li&gt;provide empirical support for the 3PRF&amp;rsquo;s strong forecasting performance&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;2-the-three-pass-regression-filter&#34;&gt;2. The three-pass regression filter&lt;/h2&gt;
+&lt;h3 id=&#34;21-the-estimator&#34;&gt;2.1. The estimator&lt;/h3&gt;
+&lt;h3 id=&#34;22-assumptions&#34;&gt;2.2. Assumptions&lt;/h3&gt;
+&lt;h3 id=&#34;23-consistency&#34;&gt;2.3. Consistency&lt;/h3&gt;
+&lt;h3 id=&#34;24-asymptotic-distributions&#34;&gt;2.4. Asymptotic distributions&lt;/h3&gt;
+&lt;h3 id=&#34;25-proxy-selection&#34;&gt;2.5. Proxy selection&lt;/h3&gt;
+&lt;h4 id=&#34;251-automatic-proxies&#34;&gt;2.5.1. Automatic proxies&lt;/h4&gt;
+&lt;h4 id=&#34;252-theory-proxies&#34;&gt;2.5.2. Theory proxies&lt;/h4&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;3-related-procedures&#34;&gt;3. Related procedures&lt;/h2&gt;
+&lt;h3 id=&#34;31-constrained-least-squares&#34;&gt;3.1. Constrained least squares&lt;/h3&gt;
+&lt;h3 id=&#34;32-partial-least-squares&#34;&gt;3.2. Partial least squares&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;4-simulation-evidence&#34;&gt;4. Simulation evidence&lt;/h2&gt;
+&lt;h3 id=&#34;41-comparison-against-alternatives&#34;&gt;4.1. Comparison against alternatives&lt;/h3&gt;
+&lt;h3 id=&#34;42-information-criteria&#34;&gt;4.2. Information criteria&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;5-empirical-evidence&#34;&gt;5. Empirical evidence&lt;/h2&gt;
+&lt;h3 id=&#34;51-forecasting-macroeconomic-aggregates&#34;&gt;5.1. Forecasting macroeconomic aggregates&lt;/h3&gt;
+&lt;h3 id=&#34;52-forecasting-market-returns&#34;&gt;5.2. Forecasting market returns&lt;/h3&gt;
+&lt;h3 id=&#34;53-examples-of-theory-proxies-for-macroeconomic-forecasts&#34;&gt;5.3. Examples of theory proxies for macroeconomic forecasts&lt;/h3&gt;
+</description>
+    </item>
     
     <item>
       <title>Notes on &#39;&#39;On factor models with random missing: EM estimation, inference, and cross validation&#39;&#39;</title>
