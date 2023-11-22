@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Li Zhe</title>
-    <link>https://example.com/</link>
-      <atom:link href="https://example.com/index.xml" rel="self" type="application/rss+xml" />
-    <description>Li Zhe</description>
+    <title>Zhe Li</title>
+    <link>https://ikerlz.github.io/</link>
+      <atom:link href="https://ikerlz.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <description>Zhe Li</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 24 Oct 2022 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://example.com/media/icon_hu9ccd2acdcd774e20fa34966445b706a8_6997380_512x512_fill_lanczos_center_3.png</url>
-      <title>Li Zhe</title>
-      <link>https://example.com/</link>
+      <url>https://ikerlz.github.io/media/icon_hu9ccd2acdcd774e20fa34966445b706a8_6997380_512x512_fill_lanczos_center_3.png</url>
+      <title>Zhe Li</title>
+      <link>https://ikerlz.github.io/</link>
     </image>
     
     <item>
       <title>Notes on &#39;&#39;The three-pass regression filter: A new approach to forecasting using many predictors&#39;&#39;</title>
-      <link>https://example.com/notes/3prf/</link>
+      <link>https://ikerlz.github.io/notes/3prf/</link>
       <pubDate>Mon, 20 Nov 2023 22:16:45 +0800</pubDate>
-      <guid>https://example.com/notes/3prf/</guid>
+      <guid>https://ikerlz.github.io/notes/3prf/</guid>
       <description>
 
 &lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
@@ -39,17 +39,10 @@
         &lt;li&gt;&lt;a href=&#34;#32-partial-least-squares&#34;&gt;3.2. Partial least squares&lt;/a&gt;&lt;/li&gt;
       &lt;/ul&gt;
     &lt;/li&gt;
-    &lt;li&gt;&lt;a href=&#34;#4-simulation-evidence&#34;&gt;4. Simulation evidence&lt;/a&gt;
+    &lt;li&gt;&lt;a href=&#34;#4-empirical-evidence&#34;&gt;4. Empirical evidence&lt;/a&gt;
       &lt;ul&gt;
-        &lt;li&gt;&lt;a href=&#34;#41-comparison-against-alternatives&#34;&gt;4.1. Comparison against alternatives&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href=&#34;#42-information-criteria&#34;&gt;4.2. Information criteria&lt;/a&gt;&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/li&gt;
-    &lt;li&gt;&lt;a href=&#34;#5-empirical-evidence&#34;&gt;5. Empirical evidence&lt;/a&gt;
-      &lt;ul&gt;
-        &lt;li&gt;&lt;a href=&#34;#51-forecasting-macroeconomic-aggregates&#34;&gt;5.1. Forecasting macroeconomic aggregates&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href=&#34;#52-forecasting-market-returns&#34;&gt;5.2. Forecasting market returns&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href=&#34;#53-examples-of-theory-proxies-for-macroeconomic-forecasts&#34;&gt;5.3. Examples of theory proxies for macroeconomic forecasts&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#41-forecasting-macroeconomic-aggregates&#34;&gt;4.1. Forecasting macroeconomic aggregates&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#42-forecasting-market-returns&#34;&gt;4.2. Forecasting market returns&lt;/a&gt;&lt;/li&gt;
       &lt;/ul&gt;
     &lt;/li&gt;
   &lt;/ul&gt;
@@ -81,7 +74,7 @@
                /media/notes/3PRF/paper_intro_huf5f032f5e0ce25d4704501cb81607dc7_130609_4521b0390b02ac01acfcf8802e497a33.webp 400w,
                /media/notes/3PRF/paper_intro_huf5f032f5e0ce25d4704501cb81607dc7_130609_a6ae2965e4ec4df5bfad2235d8225cf9.webp 760w,
                /media/notes/3PRF/paper_intro_huf5f032f5e0ce25d4704501cb81607dc7_130609_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://example.com/media/notes/3PRF/paper_intro_huf5f032f5e0ce25d4704501cb81607dc7_130609_4521b0390b02ac01acfcf8802e497a33.webp&#34;
+               src=&#34;https://ikerlz.github.io/media/notes/3PRF/paper_intro_huf5f032f5e0ce25d4704501cb81607dc7_130609_4521b0390b02ac01acfcf8802e497a33.webp&#34;
                width=&#34;760&#34;
                height=&#34;296&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -216,33 +209,459 @@ $$&lt;/p&gt;
 &lt;/ul&gt;
   &lt;/div&gt;
 &lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Two advantages:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;First, in practice (particularly with many predictors) one often faces unbalanced panels and missing data.&lt;/li&gt;
+&lt;li&gt;Second, it is useful for developing intuition behind the procedure and for understanding its relation to partial least squares.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;details class=&#34;spoiler &#34;  id=&#34;spoiler-4&#34;&gt;
+  &lt;summary&gt;&lt;strong&gt;Two interpretations&lt;/strong&gt;&lt;/summary&gt;
+  &lt;p&gt;&lt;ul&gt;
+&lt;li&gt;Rewrite the forecast as&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;$$
+\begin{aligned}
+&amp;amp; \hat{\boldsymbol{y}}=\boldsymbol{\iota}_T \bar{y}+\hat{\boldsymbol{F}} \hat{\boldsymbol{\beta}} \\
+&amp;amp; \hat{\boldsymbol{F}}^{\prime}=\boldsymbol{S}_{Z Z}\left(\boldsymbol{W}_{X Z}^{\prime} \boldsymbol{s}_{X Z}\right)^{-1} \boldsymbol{W}_{X Z}^{\prime} \boldsymbol{X}^{\prime}, \\
+&amp;amp; \hat{\boldsymbol{\beta}}=\boldsymbol{S}_{Z Z} \boldsymbol{W}_{X Z} \boldsymbol{s}_{X Z}\left(\boldsymbol{W}_{X Z}^{\prime} \boldsymbol{s}_{X X} \boldsymbol{W}_{X Z}\right)^{-1} \boldsymbol{W}_{X Z}^{\prime} \boldsymbol{s}_{X y}
+\end{aligned}
+$$
+where $\boldsymbol{S}_{X Z} \equiv \boldsymbol{X}^{\prime} \boldsymbol{J}_T \boldsymbol{Z}$.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$\hat{\boldsymbol{F}}$ is the &lt;mark&gt;predictive factor&lt;/mark&gt; and $\hat{\boldsymbol{\beta}}$ is &lt;mark&gt;the predictive coefficient&lt;/mark&gt; on that factor.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;Also rewrite the forecast as&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;$$
+\begin{aligned}
+&amp;amp; \hat{\boldsymbol{y}}=\boldsymbol{\iota} \bar{y}+\boldsymbol{J}_T \boldsymbol{X} \hat{\boldsymbol{\alpha}} \\
+&amp;amp; \hat{\boldsymbol{\alpha}}=\boldsymbol{W}_{X Z}\left(\boldsymbol{W}_{X Z}^{\prime} \boldsymbol{s}_{X X} \boldsymbol{W}_{X Z}^{\prime}\right)^{-1} \boldsymbol{W}_{X Z}^{\prime} \boldsymbol{s}_{X y}
+\end{aligned}
+$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$\hat{\alpha}$ is the predictive coefficient on individual predictors.&lt;/li&gt;
+&lt;li&gt;The regular OLS estimate of the projection coefficient $\boldsymbol{\alpha}$ is $\left(\boldsymbol{S}_{X X}\right)^{-1} \boldsymbol{s}_{X y}$.&lt;/li&gt;
+&lt;li&gt;This representation suggests that our approach can be interpreted as &lt;mark&gt;a constrained version of least squares&lt;/mark&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/p&gt;
+&lt;/details&gt;
 &lt;h3 id=&#34;22-assumptions&#34;&gt;2.2. Assumptions&lt;/h3&gt;
+&lt;details class=&#34;spoiler &#34;  id=&#34;spoiler-5&#34;&gt;
+  &lt;summary&gt;&lt;strong&gt;Necessary assumptions&lt;/strong&gt;&lt;/summary&gt;
+  &lt;p&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Assumption 1 (Factor Structure)&lt;/strong&gt;. The data are generated by the following:
+$$
+\begin{array}{l}
+\boldsymbol{x}_t=\boldsymbol{\phi}_0+\boldsymbol{\Phi} \boldsymbol{F}_t+\boldsymbol{\varepsilon}_t \ \  y_{t+1}=\beta_0+\boldsymbol{\beta}^{\prime} \boldsymbol{F}_t+\eta_{t+1} \ \  \boldsymbol{z}_t=\boldsymbol{\lambda}_0+\boldsymbol{\Lambda} \boldsymbol{F}_t+\boldsymbol{\omega}_t \\
+\boldsymbol{X}=\boldsymbol{\iota} \boldsymbol{\phi}_0^{\prime}+\boldsymbol{F} \boldsymbol{\Phi}^{\prime}+\boldsymbol{\varepsilon} \ \  \boldsymbol{y}=\mathbf{\imath} \beta_0+\boldsymbol{F} \boldsymbol{\beta}+\boldsymbol{\eta} \qquad\quad \boldsymbol{Z}=\boldsymbol{\iota} \boldsymbol{\lambda}_0^{\prime}+\boldsymbol{F} \boldsymbol{\Lambda}^{\prime}+\boldsymbol{\omega}
+\end{array}
+$$
+where $\boldsymbol{F}_t=\left(\boldsymbol{f}_t^{\prime}, \mathbf{g}_t^{\prime}\right)^{\prime}, \boldsymbol{\Phi}=\left(\boldsymbol{\Phi}_f, \boldsymbol{\Phi}_g\right), \boldsymbol{\Lambda}=\left(\boldsymbol{\Lambda}_f, \boldsymbol{\Lambda}_g\right)$, and $\boldsymbol{\beta}=$ $\left(\boldsymbol{\beta}_f^{\prime}, \mathbf{0}^{\prime}\right)^{\prime}$ with $\left|\boldsymbol{\beta}_f\right|&amp;gt;$ 0. $K_f&amp;gt;0$ is the dimension of vector $\boldsymbol{f}_t$, $K_g \geq 0$ is the dimension of vector $g_t, L$ is the dimension of vector $z_t(0&amp;lt;L&amp;lt;\min (N, T))$, and $K=K_f+K_g$.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Assumption 2 (Factors, Loadings and Residuals)&lt;/strong&gt;. Let $M&amp;lt;\infty$. For any $i, s, t$&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;$\mathbb{E}\left|\boldsymbol{F}_t\right|^4&amp;lt;M, T^{-1} \sum_{s=1}^T \boldsymbol{F}_s \underset{T \rightarrow \infty}{\stackrel{p}{\longrightarrow}} \boldsymbol{\mu}$ and $T^{-1} \boldsymbol{F}^{\prime} \boldsymbol{J}_T \boldsymbol{F} \underset{T \rightarrow \infty}{\stackrel{p}{\longrightarrow}} \boldsymbol{\Delta}_F$&lt;/li&gt;
+&lt;li&gt;$\mathbb{E}\left|\boldsymbol{\phi}_i\right|^4 \leq M, N^{-1} \sum_{j=1}^N \boldsymbol{\phi}_j \underset{T \rightarrow \infty}{\stackrel{p}{\longrightarrow}} \overline{\boldsymbol{\phi}}, N^{-1} \boldsymbol{\Phi}^{\prime} \boldsymbol{J}_N \boldsymbol{\Phi} \underset{N \rightarrow \infty}{\stackrel{p}{\longrightarrow}} \mathcal{P}$ and $N^{-1} \boldsymbol{\Phi}^{\prime} \boldsymbol{J}_N \boldsymbol{\phi}_0 \underset{N \rightarrow \infty}{\stackrel{p}{\longrightarrow}} \boldsymbol{P}_1^6$&lt;/li&gt;
+&lt;li&gt;$\mathbb{E}\left(\varepsilon_{i t}\right)=0, \mathbb{E}\left|\varepsilon_{i t}\right|^8 \leq M$&lt;/li&gt;
+&lt;li&gt;$\mathbb{E}\left(\boldsymbol{\omega}_t\right)=\mathbf{0}, \mathbb{E}\left|\boldsymbol{\omega}_t\right|^4 \leq M, T^{-1 / 2} \sum_{s=1}^T \boldsymbol{\omega}_s=\boldsymbol{o}_p(1)$ and $T^{-1} \boldsymbol{\omega}^{\prime} \mathbf{J}_T \boldsymbol{\omega} \underset{N \rightarrow \infty}{\stackrel{p}{\longrightarrow}} \boldsymbol{\Delta}_\omega$&lt;/li&gt;
+&lt;li&gt;$\mathbb{E}_t\left(\eta_{t+1}\right)=\mathbb{E}\left(\eta_{t+1} \mid y_t, F_t, y_{t-1}, F_{t-1}, \ldots\right)=0, \mathbb{E}\left(\eta_{t+1}^4\right) \leq M$, and $\eta_{t+1}$ is independent of $\phi_i(m)$ and $\varepsilon_{i, t}$.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Assumption 3 (Dependence)&lt;/strong&gt;. Let $x(m)$ denote the $m$ th element of $\boldsymbol{x}$. For $M&amp;lt;\infty$ and any $i, j, t, s, m_1, m_2$&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;$\mathbb{E}\left(\varepsilon_{i t} \varepsilon_{j s}\right)=\sigma_{i j, t s},\left|\sigma_{i j, t s}\right| \leq \bar{\sigma}_{i j}$ and $\left|\sigma_{i j, t s}\right| \leq \tau_{t s}$, and&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;$N^{-1} \sum_{i, j=1}^N \bar{\sigma}_{i j} \leq M$&lt;/li&gt;
+&lt;li&gt;$T^{-1} \sum_{t, s=1}^T \tau_{t s} \leq M$&lt;/li&gt;
+&lt;li&gt;$N^{-1} \sum_{i, s}\left|\sigma_{i i, t s}\right| \leq M$&lt;/li&gt;
+&lt;li&gt;$N^{-1} T^{-1} \sum_{i, j, t, s}\left|\sigma_{i j, t s}\right| \leq M$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;$\mathbb{E}\left|N^{-1 / 2} T^{-1 / 2} \sum_{s=1}^T \sum_{i=1}^N\left[\varepsilon_{i s} \varepsilon_{i t}-\mathbb{E}\left(\varepsilon_{i s} \varepsilon_{i t}\right)\right]\right|^2 \leq M$&lt;/li&gt;
+&lt;li&gt;$\mathbb{E}\left|T^{-1 / 2} \sum_{t=1}^T F_t\left(m_1\right) \omega_t\left(m_2\right)\right|^2 \leq M$&lt;/li&gt;
+&lt;li&gt;$\mathbb{E}\left|T^{-1 / 2} \sum_{t=1}^T \omega_t\left(m_1\right) \varepsilon_{i t}\right|^2 \leq M$.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Assumption 4 (Central Limit Theorems)&lt;/strong&gt;. For any $i, t$&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;$N^{-1 / 2} \sum_{i=1}^N \phi_i \varepsilon_{i t} \stackrel{d}{\rightarrow} \mathcal{N}\left(0, \Gamma_{\Phi_{\varepsilon}}\right)$, where $\Gamma_{\Phi_{\varepsilon}}=\operatorname{plim}_{N \rightarrow \infty} N^{-1}$ $\sum_{i, j=1}^N \mathbb{E}\left[\boldsymbol{\phi}_i \boldsymbol{\phi}_j^{\prime} \varepsilon_{i t} \varepsilon_{j t}\right]$&lt;/li&gt;
+&lt;li&gt;$T^{-1 / 2} \sum_{t=1}^T \boldsymbol{F}_t \eta_{t+1} \stackrel{d}{\rightarrow} \mathcal{N}\left(0, \Gamma_{F \eta}\right)$, where $\boldsymbol{\Gamma}_{F \eta}=\operatorname{plim}_{T \rightarrow \infty} T^{-1}$ $\sum_{t=1}^T \mathbb{E}\left[\eta_{t+1}^2 \boldsymbol{F}_t \boldsymbol{F}_t^{\prime}\right]&amp;gt;0$&lt;/li&gt;
+&lt;li&gt;$T^{-1 / 2} \sum_{t=1}^T \boldsymbol{F}_t \varepsilon_{i t} \stackrel{d}{\rightarrow} \mathcal{N}\left(0, \boldsymbol{\Gamma}_{F \varepsilon, i}\right)$, where $\boldsymbol{\Gamma}_{F \varepsilon, i}=\operatorname{plim}_{T \rightarrow \infty} T^{-1}$ $\sum_{t, s=1}^T \mathbb{E}\left[\boldsymbol{F}_t \boldsymbol{F}_s^{\prime} \varepsilon_{i t} \varepsilon_{i s}\right]&amp;gt;0$.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Assumption 5 (Normalization)&lt;/strong&gt;. $\mathcal{P}=\mathbf{I}, \boldsymbol{P}_1=\mathbf{0}$ and $\boldsymbol{\Delta}_F$ is diagonal, positive definite, and each diagonal element is unique.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Assumption 6 (Relevant Proxies)&lt;/strong&gt;. $\boldsymbol{\Lambda}=\left[\boldsymbol{\Lambda}_f, \mathbf{0}\right]$ and $\boldsymbol{\Lambda}_f$ is nonsingular.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/p&gt;
+&lt;/details&gt;
 &lt;h3 id=&#34;23-consistency&#34;&gt;2.3. Consistency&lt;/h3&gt;
+&lt;p&gt;&lt;font color=&#34;red&#34;&gt;&lt;strong&gt;Theorem 1.&lt;/strong&gt;&lt;/font&gt; Let Assumptions 1-6 hold. The three-pass regression filter forecast is consistent for the infeasible best forecast, $\hat{y}_{t+1} \underset{T, N \rightarrow \infty}{\stackrel{p}{\longrightarrow}}$ $\beta_0+\boldsymbol{F}_t^{\prime} \boldsymbol{\beta}$.&lt;/p&gt;
+&lt;p&gt;&lt;font color=&#34;red&#34;&gt;&lt;strong&gt;Theorem 2.&lt;/strong&gt;&lt;/font&gt; Let $\hat{\alpha}_i$ denote the ith element of $\hat{\boldsymbol{\alpha}}$, and let Assumptions 1-6 hold. Then for any $i$,
+$$
+N \hat{\alpha}_i \underset{T, N \rightarrow \infty}{\stackrel{p}{\longrightarrow}}\left(\boldsymbol{\phi}_i-\overline{\boldsymbol{\phi}}\right)^{\prime} \boldsymbol{\beta} .
+$$&lt;/p&gt;
+&lt;p&gt;&lt;font color=&#34;blue&#34;&gt;&lt;strong&gt;Corollary 1.&lt;/strong&gt;&lt;/font&gt; Let Assumptions 1–5 hold with the exception of Assumptions 2.4, 3.3 and 3.4. Additionally, assume that there is only one relevant factor. Then the target-proxy three-pass regression filter forecaster is consistent for the infeasible best forecast.&lt;/p&gt;
 &lt;h3 id=&#34;24-asymptotic-distributions&#34;&gt;2.4. Asymptotic distributions&lt;/h3&gt;
+&lt;p&gt;&lt;font color=&#34;red&#34;&gt;&lt;strong&gt;Theorem 3.&lt;/strong&gt;&lt;/font&gt; Under Assumptions 1-6, as $N, T \rightarrow \infty$ we have
+$$
+\frac{\sqrt{T} N\left(\hat{\alpha}_i-\tilde{\alpha}_i\right)}{A_i} \stackrel{d}{\rightarrow} \mathcal{N}(0,1)
+$$
+&lt;details class=&#34;spoiler &#34;  id=&#34;spoiler-6&#34;&gt;
+  &lt;summary&gt;where&lt;/summary&gt;
+  &lt;p&gt;$A_i^2$ is the ith diagonal element of $\widehat{\operatorname{Avar}}(\hat{\boldsymbol{\alpha}})=\boldsymbol{\Omega}_\alpha\left(\frac{1}{T} \sum_t \hat{\eta}_{t+1}^2\left(\boldsymbol{X}_t\right.\right.$ $\left.-\overline{\boldsymbol{X}})\left(\boldsymbol{X}_t-\overline{\boldsymbol{X}}\right)^{\prime}\right) \boldsymbol{\Omega}_\alpha^{\prime}, \hat{\eta}_{t+1}$ is the estimated 3PRF forecast error, $\tilde{\alpha}_i \equiv$ $\boldsymbol{S}_i \boldsymbol{G}_\alpha \boldsymbol{\beta}$, where $\boldsymbol{S}_i$ is selects the ith element of vector $\boldsymbol{G}_\alpha \boldsymbol{\beta}$ and
+$$
+\begin{aligned}
+\boldsymbol{G}_\alpha&amp;amp;=\boldsymbol{J}_N\left(T^{-1} \boldsymbol{X}^{\prime} \boldsymbol{J}_T \boldsymbol{Z}\right)\left(T^{-3} N^{-2} \boldsymbol{W}_{X Z}^{\prime} \boldsymbol{S}_{X X} \boldsymbol{W}_{X Z}\right)^{-1}\times\\
+&amp;amp;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\left(N^{-1} T^{-2} \boldsymbol{W}_{X Z}^{\prime} \boldsymbol{X}^{\prime} \boldsymbol{J}_T \boldsymbol{F}\right),
+\end{aligned}
+$$
+and
+$$
+\boldsymbol{\Omega}_\alpha=\boldsymbol{J}_N\left(\frac{1}{T} \boldsymbol{S}_{X Z}\right)\left(\frac{1}{T^3 N^2} \boldsymbol{W}_{X Z}^{\prime} \boldsymbol{S}_{X X} \boldsymbol{W}_{X Z}\right)^{-1}\left(\frac{1}{T N} \boldsymbol{W}_{X Z}^{\prime}\right)
+$$&lt;/p&gt;
+&lt;/details&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font color=&#34;red&#34;&gt;&lt;strong&gt;Theorem 4.&lt;/strong&gt;&lt;/font&gt; Under Assumptions $1-6$, as $N, T \rightarrow \infty$ we have
+$$
+\frac{\sqrt{T}\left(\hat{y}_{t+1}-\mathbb{E}_t y_{t+1}\right)}{Q_t} \stackrel{d}{\rightarrow} \mathcal{N}(0,1)
+$$
+where $\mathbb{E}_t y_{t+1}=\beta_0+\boldsymbol{\beta}^{\prime} \boldsymbol{F}_t$ and $Q_t^2$ is the th diagonal element of $\frac{1}{N^2} J_T \boldsymbol{X} \widehat{\operatorname{Avar}}(\hat{\boldsymbol{\alpha}}) \boldsymbol{X}^{\prime} \boldsymbol{J}_T$&lt;/p&gt;
+&lt;p&gt;&lt;font color=&#34;red&#34;&gt;&lt;strong&gt;Theorem 5.&lt;/strong&gt;&lt;/font&gt; Under Assumptions $1-6$, as $N, T \rightarrow \infty$ we have
+$$
+\sqrt{T}\left(\hat{\boldsymbol{\beta}}-\boldsymbol{G}_\beta \boldsymbol{\beta}\right) \stackrel{d}{\rightarrow} \mathcal{N}\left(\mathbf{0}, \boldsymbol{\Sigma}_\beta\right)
+$$
+where $\boldsymbol{\Sigma}_\beta=\boldsymbol{\Sigma}_z^{-1} \boldsymbol{\Gamma}_{F \eta} \boldsymbol{\Sigma}_z^{-1}$ and $\boldsymbol{\Sigma}_z=\mathbf{\Lambda} \boldsymbol{\Delta}_F \boldsymbol{\Lambda}^{\prime}+\boldsymbol{\Delta}_\omega$. Furthermore,
+$$
+\begin{aligned}
+\widehat{\operatorname{Avar}}(\hat{\boldsymbol{\beta}})= &amp;amp; \left(T^{-1} \hat{\boldsymbol{F}}^{\prime} \boldsymbol{J}_T \hat{\boldsymbol{F}}\right)^{-1} T^{-1} \sum_t \hat{\eta}_{t+1}^2\left(\hat{\boldsymbol{F}}_t-\hat{\boldsymbol{\mu}}\right)\left(\hat{\boldsymbol{F}}_t-\hat{\boldsymbol{\mu}}\right)^{\prime} \
+&amp;amp; \times\left(T^{-1} \hat{\boldsymbol{F}}^{\prime} \boldsymbol{J}_T \hat{\boldsymbol{F}}\right)^{-1}
+\end{aligned}
+$$
+is a consistent estimator of $\boldsymbol{\Sigma}_\beta$. $\boldsymbol{G}_\beta$ is defined in the Appendix.&lt;/p&gt;
+&lt;p&gt;&lt;font color=&#34;red&#34;&gt;&lt;strong&gt;Theorem 6.&lt;/strong&gt;&lt;/font&gt; Under Assumptions 1-6, as $N, T \rightarrow \infty$ we have for every $t$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;if $\sqrt{N} / T \rightarrow 0$, then
+$$
+\sqrt{N}\left[\hat{\boldsymbol{F}}_t-\left(\boldsymbol{H}_0+\boldsymbol{H} \boldsymbol{F}_t\right)\right] \stackrel{d}{\rightarrow} \mathcal{N}\left(\mathbf{0}, \boldsymbol{\Sigma}_F\right)
+$$&lt;/li&gt;
+&lt;li&gt;if $\liminf \sqrt{N} / T \geq \tau \geq 0$, then
+$$
+T\left[\hat{\boldsymbol{F}}_t-\left(\boldsymbol{H}_0+\boldsymbol{H F}_t\right)\right]=\boldsymbol{O}_p(1)
+$$
+where $\boldsymbol{\Sigma}_F=\left(\boldsymbol{\Lambda} \boldsymbol{\Delta}_F \boldsymbol{\Lambda}^{\prime}+\boldsymbol{\Delta}_\omega\right)\left(\boldsymbol{\Lambda} \boldsymbol{\Delta}_F^2 \boldsymbol{\Lambda}^{\prime}\right)^{-1} \boldsymbol{\Lambda} \boldsymbol{\Delta}_F \boldsymbol{\Gamma}_{\Phi \varepsilon} \boldsymbol{\Delta}_F \boldsymbol{\Lambda}^{\prime}\left(\boldsymbol{\Lambda} \boldsymbol{\Delta}_F^2\right.$ $\left.\boldsymbol{\Lambda}^{\prime}\right)^{-1}\left(\boldsymbol{\Lambda} \boldsymbol{\Delta}_F \boldsymbol{\Lambda}^{\prime}+\boldsymbol{\Delta}_\omega\right) . \boldsymbol{H}_0$ and $\boldsymbol{H}$ are defined in the Appendix.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;25-proxy-selection&#34;&gt;2.5. Proxy selection&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;How to select the proxies that depend only on relevant factors ?&lt;/strong&gt;&lt;/p&gt;
 &lt;h4 id=&#34;251-automatic-proxies&#34;&gt;2.5.1. Automatic proxies&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Initialize $\boldsymbol{r}_0=\boldsymbol{y}$.&lt;/li&gt;
+&lt;li&gt;For $k=1, \ldots, L$ :
+&lt;ul&gt;
+&lt;li&gt;Define the $k$ th automatic proxy to be $\boldsymbol{r}_{k-1}$. Stop if $k=L$; otherwise proceed.&lt;/li&gt;
+&lt;li&gt;Compute the 3PRF for target $\boldsymbol{y}$ using cross section $\boldsymbol{X}$ using statistical proxies 1 through $k$. Denote the resulting forecast $\hat{\boldsymbol{y}}_k$.&lt;/li&gt;
+&lt;li&gt;Calculate $\boldsymbol{r}_k=\boldsymbol{y}-\hat{\boldsymbol{y}}_k$, advance $k$, and go to step 1.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;font color=&#34;red&#34;&gt;&lt;strong&gt;Theorem 7.&lt;/strong&gt;&lt;/font&gt; Let Assumptions 1-5 hold with the exception of Assumptions 2.4, 3.3 and 3.4. Then the L-automatic-proxy three pass regression filter forecaster of $\boldsymbol{y}$ automatically satisfies Assumptions 2.4, 3.3, 3.4 and 6 when $L=K_f$. As a result, &lt;mark&gt;the $L$ automatic-proxy is consistent and asymptotically normal according to Theorems 1 and 4.&lt;/mark&gt;&lt;/p&gt;
 &lt;h4 id=&#34;252-theory-proxies&#34;&gt;2.5.2. Theory proxies&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;The filter may instead be employed using alternative disciplining variables (factor proxies) which may &lt;mark&gt;be distinct from the target and chosen on the basis of economic theory or by statistical arguments&lt;/mark&gt;.&lt;/li&gt;
+&lt;li&gt;Consider a situation in which $K_f$ is one, so that the target and proxy are given by $y_{t+1}=\beta_0+\beta f_t+\eta_{t+1}$ and $z_t=\lambda_0+\Lambda f_t+\omega_t$.&lt;/li&gt;
+&lt;li&gt;Also suppose that the population $R^2$ of the proxy equation is substantially higher than the population $R^2$ of the target equation.
+&lt;ul&gt;
+&lt;li&gt;The forecasts from using either $z_t$ or the target as proxy are asymptotically identical.&lt;/li&gt;
+&lt;li&gt;However, in finite samples, forecasts can be improved by proxying with $z_t$ due to its higher signal-to-noise ratio.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;252-information-criteria&#34;&gt;2.5.2 Information criteria&lt;/h4&gt;
+&lt;p&gt;&amp;lsquo;&amp;lsquo;Trace of the Krylov Representation&amp;rsquo;&amp;rsquo; method of Kramer and Sugiyama (2011).&lt;/p&gt;
+&lt;p&gt;$$
+\begin{aligned}
+&amp;amp; \widehat{\operatorname{DoF}}(m)=1+\sum_{j=1}^m c_j \operatorname{trace}\left(\boldsymbol{K}^j\right)-\sum_{l, j=1}^m \boldsymbol{t}_l^{\prime} \mathbf{K}^j \boldsymbol{t}_l \\
+&amp;amp; ~~~~~~~~~~~~~~~~~~~~~~+\left(\boldsymbol{y}-\hat{\boldsymbol{y}}_m\right)^{\prime} \sum_{j=1}^m \boldsymbol{K}^j \boldsymbol{v}_j+m
+\end{aligned}
+$$
+where $\boldsymbol{K}=\boldsymbol{X} \boldsymbol{X}^{\prime}, c_j$ are elements of the vector $\boldsymbol{c}=\boldsymbol{B}^{-1} \boldsymbol{T} \boldsymbol{y}, \boldsymbol{B}$ is a Krylov basis decomposition, $\boldsymbol{T}$ is the matrix of PLS factor estimate vectors $\boldsymbol{t}_j$, and $\boldsymbol{v}_j$ are columns of the matrix $\boldsymbol{T}\left(\boldsymbol{B}^{-1}\right)^{\prime}$. The BIC is then calculated as
+$$\sum_t\left(y_t-\hat{y}_{m, t}\right)^2 / T+\log (T) \hat{\sigma}^2 \widehat{D o F}(m) / T$$
+where $\hat{\sigma}=\sqrt{\sum_t\left(y_t-\hat{y}_{m, t}\right)^2 /(T-D o F(m))}$.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;3-related-procedures&#34;&gt;3. Related procedures&lt;/h2&gt;
 &lt;h3 id=&#34;31-constrained-least-squares&#34;&gt;3.1. Constrained least squares&lt;/h3&gt;
+&lt;p&gt;&lt;font color=&#34;red&#34;&gt;&lt;strong&gt;Theorem 8.&lt;/strong&gt;&lt;/font&gt; The three-pass regression filter&amp;rsquo;s implied $N$-dimensional predictive coefficient, $\hat{\alpha}$, is the solution to
+$$
+\begin{aligned}
+&amp;amp; \arg \min _{\alpha_0, \boldsymbol{\alpha}}\left\|\boldsymbol{y}-\alpha_0-\boldsymbol{X} \boldsymbol{\alpha}\right\| \\
+&amp;amp; \text { subject to } \quad\left(\boldsymbol{I}-\boldsymbol{W}_{X Z}\left(\boldsymbol{S}_{X Z}^{\prime} \boldsymbol{W}_{X Z}\right)^{-1} \boldsymbol{W}_{X Z}\right) \boldsymbol{\alpha}=\mathbf{0} .\quad (5)
+\end{aligned}
+$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The 3PRF&amp;rsquo;s answer is to impose the constraint in Eq. (5), which exploits the proxies and has an intuitive interpretation.&lt;/li&gt;
+&lt;li&gt;Premultiplying both sides of the equation by $\boldsymbol{J}_T \boldsymbol{X}$, we can rewrite the constraint as $\left(\boldsymbol{J}_T \boldsymbol{X}-\boldsymbol{J}_T \hat{\boldsymbol{F}} \hat{\boldsymbol{\Phi}}^{\prime}\right) \boldsymbol{\alpha}=$ 0. For large $N$ and $T$,
+$$
+\boldsymbol{J}_T \boldsymbol{X}-\boldsymbol{J}_T \hat{\boldsymbol{F}} \hat{\boldsymbol{\Phi}}^{\prime} \approx \boldsymbol{\varepsilon}+(\boldsymbol{F}-\boldsymbol{\mu})\left(\boldsymbol{I}-\boldsymbol{S}_{K_f}\right) \boldsymbol{\Phi}^{\prime}
+$$&lt;/li&gt;
+&lt;li&gt;Because the covariance between $\boldsymbol{\alpha}$ and $\varepsilon$ is zero by the assumptions of the model, the constraint simply imposes that &lt;mark&gt;the product of $\alpha$ and the target-irrelevant common component of $\boldsymbol{X}$ is equal to zero&lt;/mark&gt;.&lt;/li&gt;
+&lt;li&gt;This is because the matrix $\boldsymbol{I}-\boldsymbol{S}_{K_f}$ selects only the terms in the total common component $\boldsymbol{F} \boldsymbol{\Phi}^{\prime}$ that &lt;mark&gt;are associated with irrelevant factors&lt;/mark&gt;.&lt;/li&gt;
+&lt;li&gt;This constraint is important because it ensures that &lt;mark&gt;factors irrelevant to $\boldsymbol{y}$ drop out of the 3PRF forecast&lt;/mark&gt;. It also ensures that $\hat{\boldsymbol{\alpha}}$ is consistent for the factor model&amp;rsquo;s population projection coefficient of $y_{t+1}$ on $\boldsymbol{x}_t$.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;32-partial-least-squares&#34;&gt;3.2. Partial least squares&lt;/h3&gt;
+&lt;details class=&#34;spoiler &#34;  id=&#34;spoiler-7&#34;&gt;
+  &lt;summary&gt;PLS&lt;/summary&gt;
+  &lt;p&gt;&lt;ul&gt;
+&lt;li&gt;partial least squares (PLS) constructs forecasting indices as linear combinations of the underlying predictors.&lt;/li&gt;
+&lt;li&gt;These predictive indices are referred to as &amp;ldquo;directions&amp;rdquo; in the language of PLS.&lt;/li&gt;
+&lt;li&gt;The PLS forecast based on the first $K$ PLS directions, $\hat{\boldsymbol{y}}^{(k)}$, is constructed according to the following algorithm (as stated in Hastie et al. (2009)):
+&lt;ol&gt;
+&lt;li&gt;Standardize each $\mathbf{x}_i$ to have mean zero and variance one by setting $\tilde{\mathbf{x}}_i=\frac{\mathbf{x}_i-\hat{\mathbb{E}}\left[\mathrm{x}_{i t}\right]}{\hat{\sigma}\left(\mathrm{x}_{i t}\right)}, i=1, \ldots, N$&lt;/li&gt;
+&lt;li&gt;Set $\hat{\boldsymbol{y}}^{(0)}=\bar{y}$, and $\mathbf{x}_i^{(0)}=\tilde{\mathbf{x}}_i, i=1, \ldots, N$&lt;/li&gt;
+&lt;li&gt;For $k=1,2, \ldots, K$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;$\boldsymbol{u}_k=\sum_{i=1}^N \hat{\phi}_{k i} \mathbf{x}_i^{(k-1)}$, where $\hat{\phi}_{k i}=\widehat{\operatorname{Cov}}\left(\mathbf{x}_i^{(k-1)}, \boldsymbol{y}\right)$&lt;/li&gt;
+&lt;li&gt;$\hat{\beta}_k=\widehat{\operatorname{Cov}}\left(\boldsymbol{u}_k, \boldsymbol{y}\right) / \widehat{\operatorname{Var}}\left(\boldsymbol{u}_k\right)$&lt;/li&gt;
+&lt;li&gt;$\hat{\boldsymbol{y}}^{(k)}=\hat{\boldsymbol{y}}^{(k-1)}+\hat{\beta}_k \boldsymbol{u}_k$&lt;/li&gt;
+&lt;li&gt;Orthogonalize each $\mathbf{x}_i^{(k-1)}$ with respect to $\boldsymbol{u}_k$ :
+$$
+\begin{aligned}
+\mathbf{x}_i^{(k)} &amp;amp; =\mathbf{x}_i^{(k-1)}-\left(\widehat{\operatorname{Cov}}\left(\boldsymbol{u}_k, \mathbf{x}_i^{(k-1)}\right) / \widehat{\operatorname{Var}}\left(\boldsymbol{u}_k\right)\right) \boldsymbol{u}_k, \\
+i &amp;amp; =1,2, \ldots, N .
+\end{aligned}
+$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/p&gt;
+&lt;/details&gt;
+&lt;ul&gt;
+&lt;li&gt;partial least squares forecasts are identical to those from the 3PRF when
+&lt;ol&gt;
+&lt;li&gt;the predictors are demeaned and variance-standardized in a preliminary step&lt;/li&gt;
+&lt;li&gt;the first two regression passes are run without constant terms&lt;/li&gt;
+&lt;li&gt;proxies are automatically selected.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Consider the case where a single predictive index is constructed from the partial least squares algorithm.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Assume, for the time being, that each predictor has been previously standardized to have mean zero and variance one. Following the construction of the PLS forecast given above, we have&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;Set $\hat{\phi}_i=x_i^{\prime} y$, and $\hat{\boldsymbol{\Phi}}=\left(\hat{\phi}_1, \ldots, \hat{\phi}_N\right)^{\prime}$.&lt;/li&gt;
+&lt;li&gt;Set $\hat{u}_t=\boldsymbol{x}_t^{\prime} \hat{\Phi}$, and $\hat{\boldsymbol{u}}=\left(\hat{u}_1, \ldots, \hat{u}_T\right)^{\prime}$.&lt;/li&gt;
+&lt;li&gt;Run a predictive regression of $\boldsymbol{y}$ on $\hat{\boldsymbol{u}}$.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Constructing the forecast in this manner may be represented as a one-step estimator
+$$
+\hat{\boldsymbol{y}}^{\mathrm{PLS}}=\boldsymbol{X} \boldsymbol{X}^{\prime} \boldsymbol{y}\left(\boldsymbol{y}^{\prime} \boldsymbol{X} \boldsymbol{X}^{\prime} \boldsymbol{X} \boldsymbol{X}^{\prime} \boldsymbol{y}\right)^{-1} \boldsymbol{y}^{\prime} \boldsymbol{X} \boldsymbol{X}^{\prime} \boldsymbol{y}
+$$&lt;/li&gt;
+&lt;li&gt;&lt;font color=&#34;red&#34;&gt;which upon inspection is identical to the 1-automatic-proxy 3PRF forecast when constants are omitted from the first and second passes. &lt;/font&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;4-simulation-evidence&#34;&gt;4. Simulation evidence&lt;/h2&gt;
-&lt;h3 id=&#34;41-comparison-against-alternatives&#34;&gt;4.1. Comparison against alternatives&lt;/h3&gt;
-&lt;h3 id=&#34;42-information-criteria&#34;&gt;4.2. Information criteria&lt;/h3&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;5-empirical-evidence&#34;&gt;5. Empirical evidence&lt;/h2&gt;
-&lt;h3 id=&#34;51-forecasting-macroeconomic-aggregates&#34;&gt;5.1. Forecasting macroeconomic aggregates&lt;/h3&gt;
-&lt;h3 id=&#34;52-forecasting-market-returns&#34;&gt;5.2. Forecasting market returns&lt;/h3&gt;
-&lt;h3 id=&#34;53-examples-of-theory-proxies-for-macroeconomic-forecasts&#34;&gt;5.3. Examples of theory proxies for macroeconomic forecasts&lt;/h3&gt;
+&lt;h2 id=&#34;4-empirical-evidence&#34;&gt;4. Empirical evidence&lt;/h2&gt;
+&lt;h3 id=&#34;41-forecasting-macroeconomic-aggregates&#34;&gt;4.1. Forecasting macroeconomic aggregates&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Quarterly data from Stock and Watson (2012) for the sample 1959:I-2009:IV&lt;/li&gt;
+&lt;li&gt;Take as our predictors a set of 108 macroeconomic variables compiled by Stock and Watson (2012)&lt;/li&gt;
+&lt;li&gt;Out-of-sample $R^2$ of one quarter ahead forecasts, in percentage.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;3PRF1&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;PCR1&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;PCLAR&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;PCLAS&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;10LAR&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;FA1&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;GDP&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;30.12&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$35.18^{\mathrm{a}}$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;29.70&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;29.51&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;26.38&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;20.11&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Consumption&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$23.20^{\mathrm{a},{ }^*}$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;7.06&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;9.12&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;7.32&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-14.85&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2.72&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Investment&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$38.88^{\mathrm{a}}$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;37.37&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;36.81&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;36.30&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;24.01&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;34.35&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Exports&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$16.75^{\mathrm{a}}$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;13.25&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-11.58&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-9.42&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-61.36&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;16.44&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Imports&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$37.18^a$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;36.50&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;18.46&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;16.93&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;22.77&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;36.58&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Industrial Production&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$16.56^{\mathrm{a},{ }^*}$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;8.92&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;5.67&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;5.71&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;11.04&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;12.04&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Capacity Utilization&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;54.32&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;54.79&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;53.77&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;54.85&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$64.69^{a,{}^*}$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;55.58&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Total Hours&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$53.81^{\mathrm{a}}$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;50.47&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;48.58&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;47.39&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;39.56&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;42.53&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Total Employment&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$48.84^a$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;47.27&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;38.14&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;37.16&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;18.91&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;41.73&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Average Hours&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$20.12^{\mathrm{a}}$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;10.12&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;18.52&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;13.89&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;17.55&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;15.84&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Housing Starts&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;26.97&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-0.14&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;31.54&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;29.66&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$46.89^a$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0.13&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;GDP Inflation&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0.64&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2.05&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-0.94&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1.38&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-5.89&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$2.80^{\mathrm{a}}$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;PCE Inflation&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-1.29&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-3.73&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;10.60&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;9.82&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$12.22^{\mathrm{a}}$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-2.50&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;42-forecasting-market-returns&#34;&gt;4.2. Forecasting market returns&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;We estimate the extent of market return predictability using 25 log price-dividend ratios of portfolios sorted by market equity and book-to-market ratio.&lt;/li&gt;
+&lt;li&gt;The data is annual over the post-war period 1945-2010 (following Fama and French (1992)).&lt;/li&gt;
+&lt;li&gt;We assume that the predictors take
+&lt;ul&gt;
+&lt;li&gt;the form $p d_{i, t}=\phi_{i, 0}+\boldsymbol{\phi}_i^{\prime} \boldsymbol{F}_t+\varepsilon_{i, t}$&lt;/li&gt;
+&lt;li&gt;the target takes the form $r_{t+1}=\beta_0^r+\boldsymbol{F}_t^{\prime} \boldsymbol{\beta}^r+\eta_{t+1}^r$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;3PRF1&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;3PRF2&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;3PRF-IC&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;PC1&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Return $R^2$ &lt;br&gt; # of factors&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;27.63&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$36.34^{\mathrm{a}}$&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;31.15 &lt;br&gt; 1.36&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-10.45&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;strong&gt;PC2&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;strong&gt;PC-IC&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;strong&gt;10LAR&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;strong&gt;FA1&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;Return $R^2$ &lt;br&gt; # of factors&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-8.89&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;27.00 &lt;br&gt; 4.58&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;13.28&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-10.08&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 </description>
     </item>
     
     <item>
       <title>Notes on &#39;&#39;On factor models with random missing: EM estimation, inference, and cross validation&#39;&#39;</title>
-      <link>https://example.com/notes/factor-model/</link>
+      <link>https://ikerlz.github.io/notes/factor-model/</link>
       <pubDate>Tue, 14 Nov 2023 22:16:45 +0800</pubDate>
-      <guid>https://example.com/notes/factor-model/</guid>
+      <guid>https://ikerlz.github.io/notes/factor-model/</guid>
       <description>
 
 &lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
@@ -287,7 +706,7 @@ $$&lt;/p&gt;
                /media/notes/factor-model/paper_intro_hu1fc2d9e7412cda710028560e51ff3652_53793_21d412abc8825e11623e78b70c39680f.webp 400w,
                /media/notes/factor-model/paper_intro_hu1fc2d9e7412cda710028560e51ff3652_53793_c705a68ddc94c1a3588600831f692041.webp 760w,
                /media/notes/factor-model/paper_intro_hu1fc2d9e7412cda710028560e51ff3652_53793_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://example.com/media/notes/factor-model/paper_intro_hu1fc2d9e7412cda710028560e51ff3652_53793_21d412abc8825e11623e78b70c39680f.webp&#34;
+               src=&#34;https://ikerlz.github.io/media/notes/factor-model/paper_intro_hu1fc2d9e7412cda710028560e51ff3652_53793_21d412abc8825e11623e78b70c39680f.webp&#34;
                width=&#34;670&#34;
                height=&#34;260&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -309,9 +728,9 @@ $$&lt;/p&gt;
     
     <item>
       <title>Notes on &#39;&#39;One-step Estimators and Pathwise Derivatives&#39;&#39;</title>
-      <link>https://example.com/notes/path-dev/</link>
+      <link>https://ikerlz.github.io/notes/path-dev/</link>
       <pubDate>Sun, 05 Nov 2023 22:16:45 +0800</pubDate>
-      <guid>https://example.com/notes/path-dev/</guid>
+      <guid>https://ikerlz.github.io/notes/path-dev/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;You can locate the original blog post on &lt;a href=&#34;https://observablehq.com/@herbps10/one-step-estimators-and-pathwise-derivatives&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;observablehq.com&lt;/a&gt;, written by &lt;strong&gt;Herb Susmann&lt;/strong&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -364,7 +783,7 @@ However, we don&amp;rsquo;t know the true data generating distribution and we ne
                /media/posts/path-dev/toy_dist_est_hu6b57dde35fb621b2e402235d9ae3ac15_48832_7a60d827413f043c5240737d8c770d91.webp 400w,
                /media/posts/path-dev/toy_dist_est_hu6b57dde35fb621b2e402235d9ae3ac15_48832_cb656030e87868ac2edbf9006a565a23.webp 760w,
                /media/posts/path-dev/toy_dist_est_hu6b57dde35fb621b2e402235d9ae3ac15_48832_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://example.com/media/posts/path-dev/toy_dist_est_hu6b57dde35fb621b2e402235d9ae3ac15_48832_7a60d827413f043c5240737d8c770d91.webp&#34;
+               src=&#34;https://ikerlz.github.io/media/posts/path-dev/toy_dist_est_hu6b57dde35fb621b2e402235d9ae3ac15_48832_7a60d827413f043c5240737d8c770d91.webp&#34;
                width=&#34;760&#34;
                height=&#34;227&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -404,7 +823,7 @@ where $\epsilon\in[0,1]$. For every value of $\epsilon$ we can compute a corresp
                /media/posts/path-dev/tp_vary_eps_hu645d32e7b6c2b6ffa7e1d579f7af0927_23355_81adf42d1864c024aaccc18ab5094087.webp 400w,
                /media/posts/path-dev/tp_vary_eps_hu645d32e7b6c2b6ffa7e1d579f7af0927_23355_1df5b8d059878a83c8bd590c38f0a9ba.webp 760w,
                /media/posts/path-dev/tp_vary_eps_hu645d32e7b6c2b6ffa7e1d579f7af0927_23355_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://example.com/media/posts/path-dev/tp_vary_eps_hu645d32e7b6c2b6ffa7e1d579f7af0927_23355_81adf42d1864c024aaccc18ab5094087.webp&#34;
+               src=&#34;https://ikerlz.github.io/media/posts/path-dev/tp_vary_eps_hu645d32e7b6c2b6ffa7e1d579f7af0927_23355_81adf42d1864c024aaccc18ab5094087.webp&#34;
                width=&#34;564&#34;
                height=&#34;342&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -442,7 +861,7 @@ where $\epsilon\in[0,1]$. For every value of $\epsilon$ we can compute a corresp
                /media/posts/path-dev/tp_pathwise_hucf546d1153bd73be506196aa75dac6e3_23792_1f63684b021986fdd75ad0d58ad77dce.webp 400w,
                /media/posts/path-dev/tp_pathwise_hucf546d1153bd73be506196aa75dac6e3_23792_9338c322d3fc09c44791e6cfda45d745.webp 760w,
                /media/posts/path-dev/tp_pathwise_hucf546d1153bd73be506196aa75dac6e3_23792_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://example.com/media/posts/path-dev/tp_pathwise_hucf546d1153bd73be506196aa75dac6e3_23792_1f63684b021986fdd75ad0d58ad77dce.webp&#34;
+               src=&#34;https://ikerlz.github.io/media/posts/path-dev/tp_pathwise_hucf546d1153bd73be506196aa75dac6e3_23792_1f63684b021986fdd75ad0d58ad77dce.webp&#34;
                width=&#34;564&#34;
                height=&#34;342&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -478,7 +897,7 @@ where $\epsilon\in[0,1]$. For every value of $\epsilon$ we can compute a corresp
                /media/posts/path-dev/tp_onestep_hu546b4e2afde3a6ef21b949680015f560_27062_e2ce109324cc8f37c662df42b0d70b9b.webp 400w,
                /media/posts/path-dev/tp_onestep_hu546b4e2afde3a6ef21b949680015f560_27062_03de0ad093fa116efaceff309222b7e4.webp 760w,
                /media/posts/path-dev/tp_onestep_hu546b4e2afde3a6ef21b949680015f560_27062_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://example.com/media/posts/path-dev/tp_onestep_hu546b4e2afde3a6ef21b949680015f560_27062_e2ce109324cc8f37c662df42b0d70b9b.webp&#34;
+               src=&#34;https://ikerlz.github.io/media/posts/path-dev/tp_onestep_hu546b4e2afde3a6ef21b949680015f560_27062_e2ce109324cc8f37c662df42b0d70b9b.webp&#34;
                width=&#34;564&#34;
                height=&#34;342&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -546,7 +965,7 @@ where $\epsilon\in[0,1]$. For every value of $\epsilon$ we can compute a corresp
                /media/posts/path-dev/TF_density_example_huba61f51cfb0925473f4e859d3bd8a8e8_18949_9244cdc563a13689237c9296df953988.webp 400w,
                /media/posts/path-dev/TF_density_example_huba61f51cfb0925473f4e859d3bd8a8e8_18949_3c869501e1da317d601867c331ff7e0c.webp 760w,
                /media/posts/path-dev/TF_density_example_huba61f51cfb0925473f4e859d3bd8a8e8_18949_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://example.com/media/posts/path-dev/TF_density_example_huba61f51cfb0925473f4e859d3bd8a8e8_18949_9244cdc563a13689237c9296df953988.webp&#34;
+               src=&#34;https://ikerlz.github.io/media/posts/path-dev/TF_density_example_huba61f51cfb0925473f4e859d3bd8a8e8_18949_9244cdc563a13689237c9296df953988.webp&#34;
                width=&#34;659&#34;
                height=&#34;259&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -659,9 +1078,9 @@ $$&lt;/p&gt;
     
     <item>
       <title>Notes on &#39;&#39;The Asymptotic Variance of Semiparametric Estimators&#39;&#39;</title>
-      <link>https://example.com/notes/var-semiparam/</link>
+      <link>https://ikerlz.github.io/notes/var-semiparam/</link>
       <pubDate>Sun, 05 Nov 2023 22:16:45 +0800</pubDate>
-      <guid>https://example.com/notes/var-semiparam/</guid>
+      <guid>https://ikerlz.github.io/notes/var-semiparam/</guid>
       <description>
 
 &lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
@@ -770,7 +1189,7 @@ $$&lt;/p&gt;
 
 &lt;h2 id=&#34;2-the-pathwise-derivative-formula-for-the-asymptotic-variance&#34;&gt;2. The Pathwise Derivative Formula For the Asymptotic Variance&lt;/h2&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Preliminary: &lt;a href=&#34;https://example.com/notes/path-dev/&#34;&gt;one-step estimators and pathwise derivatives&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Preliminary: &lt;a href=&#34;https://ikerlz.github.io/notes/path-dev/&#34;&gt;one-step estimators and pathwise derivatives&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;The formula is based on the observation that &lt;font color=&#34;red&#34;&gt;$\sqrt{n}$-consistent&lt;/font&gt; &lt;strong&gt;nonparametric&lt;/strong&gt; estimators are often efficient.&lt;/p&gt;
 &lt;blockquote&gt;
@@ -1066,9 +1485,9 @@ $$&lt;/li&gt;
     
     <item>
       <title>混合高斯模型的代码实现</title>
-      <link>https://example.com/post/gmm/</link>
+      <link>https://ikerlz.github.io/post/gmm/</link>
       <pubDate>Thu, 02 Nov 2023 00:39:27 +0800</pubDate>
-      <guid>https://example.com/post/gmm/</guid>
+      <guid>https://ikerlz.github.io/post/gmm/</guid>
       <description>
 
 &lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
@@ -1264,7 +1683,7 @@ $$&lt;/p&gt;
                /media/posts/gmm/%E6%88%AA%E5%B1%8F2021-09-10_%E4%B8%8B%E5%8D%883.03.05_huac7b4589a068f84ddc9e0bbdc94a3032_125835_774ebaa6eae3826fbe2da6c37a5c8ece.webp 400w,
                /media/posts/gmm/%E6%88%AA%E5%B1%8F2021-09-10_%E4%B8%8B%E5%8D%883.03.05_huac7b4589a068f84ddc9e0bbdc94a3032_125835_10ba755b7b6fc40a17238a0d363bd3f1.webp 760w,
                /media/posts/gmm/%E6%88%AA%E5%B1%8F2021-09-10_%E4%B8%8B%E5%8D%883.03.05_huac7b4589a068f84ddc9e0bbdc94a3032_125835_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://example.com/media/posts/gmm/%E6%88%AA%E5%B1%8F2021-09-10_%E4%B8%8B%E5%8D%883.03.05_huac7b4589a068f84ddc9e0bbdc94a3032_125835_774ebaa6eae3826fbe2da6c37a5c8ece.webp&#34;
+               src=&#34;https://ikerlz.github.io/media/posts/gmm/%E6%88%AA%E5%B1%8F2021-09-10_%E4%B8%8B%E5%8D%883.03.05_huac7b4589a068f84ddc9e0bbdc94a3032_125835_774ebaa6eae3826fbe2da6c37a5c8ece.webp&#34;
                width=&#34;445&#34;
                height=&#34;291&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -1505,8 +1924,8 @@ $$&lt;/p&gt;
   
   
   &lt;div class=&#34;gallery-item gallery-item--medium&#34;&gt;
-    &lt;a data-fancybox=&#34;gallery-/posts/gmm/gmm_python&#34; href=&#34;https://example.com/media/albums/posts/gmm/gmm_python/2021-09-10-16-19-25.jpg&#34; &gt;
-      &lt;img src=&#34;https://example.com/media/albums/posts/gmm/gmm_python/2021-09-10-16-19-25_hu1ac5e3310b62caec945caa8ce12c7549_1229090_750x750_fit_q75_h2_lanczos.webp&#34; loading=&#34;lazy&#34; alt=&#34;2021-09-10-16-19-25.jpg&#34; width=&#34;640&#34; height=&#34;480&#34;&gt;
+    &lt;a data-fancybox=&#34;gallery-/posts/gmm/gmm_python&#34; href=&#34;https://ikerlz.github.io/media/albums/posts/gmm/gmm_python/2021-09-10-16-19-25.jpg&#34; &gt;
+      &lt;img src=&#34;https://ikerlz.github.io/media/albums/posts/gmm/gmm_python/2021-09-10-16-19-25_hu1ac5e3310b62caec945caa8ce12c7549_1229090_750x750_fit_q75_h2_lanczos.webp&#34; loading=&#34;lazy&#34; alt=&#34;2021-09-10-16-19-25.jpg&#34; width=&#34;640&#34; height=&#34;480&#34;&gt;
     &lt;/a&gt;
   &lt;/div&gt;
   
@@ -1518,8 +1937,8 @@ $$&lt;/p&gt;
   
   
   &lt;div class=&#34;gallery-item gallery-item--medium&#34;&gt;
-    &lt;a data-fancybox=&#34;gallery-/posts/gmm/gmm_python&#34; href=&#34;https://example.com/media/albums/posts/gmm/gmm_python/2021-09-10-16-19-31.jpg&#34; &gt;
-      &lt;img src=&#34;https://example.com/media/albums/posts/gmm/gmm_python/2021-09-10-16-19-31_hu1ac5e3310b62caec945caa8ce12c7549_1229090_750x750_fit_q75_h2_lanczos.webp&#34; loading=&#34;lazy&#34; alt=&#34;2021-09-10-16-19-31.jpg&#34; width=&#34;640&#34; height=&#34;480&#34;&gt;
+    &lt;a data-fancybox=&#34;gallery-/posts/gmm/gmm_python&#34; href=&#34;https://ikerlz.github.io/media/albums/posts/gmm/gmm_python/2021-09-10-16-19-31.jpg&#34; &gt;
+      &lt;img src=&#34;https://ikerlz.github.io/media/albums/posts/gmm/gmm_python/2021-09-10-16-19-31_hu1ac5e3310b62caec945caa8ce12c7549_1229090_750x750_fit_q75_h2_lanczos.webp&#34; loading=&#34;lazy&#34; alt=&#34;2021-09-10-16-19-31.jpg&#34; width=&#34;640&#34; height=&#34;480&#34;&gt;
     &lt;/a&gt;
   &lt;/div&gt;
   
@@ -1531,8 +1950,8 @@ $$&lt;/p&gt;
   
   
   &lt;div class=&#34;gallery-item gallery-item--medium&#34;&gt;
-    &lt;a data-fancybox=&#34;gallery-/posts/gmm/gmm_python&#34; href=&#34;https://example.com/media/albums/posts/gmm/gmm_python/2021-09-10-16-19-36.jpg&#34; &gt;
-      &lt;img src=&#34;https://example.com/media/albums/posts/gmm/gmm_python/2021-09-10-16-19-36_hu1ac5e3310b62caec945caa8ce12c7549_1229090_750x750_fit_q75_h2_lanczos.webp&#34; loading=&#34;lazy&#34; alt=&#34;2021-09-10-16-19-36.jpg&#34; width=&#34;640&#34; height=&#34;480&#34;&gt;
+    &lt;a data-fancybox=&#34;gallery-/posts/gmm/gmm_python&#34; href=&#34;https://ikerlz.github.io/media/albums/posts/gmm/gmm_python/2021-09-10-16-19-36.jpg&#34; &gt;
+      &lt;img src=&#34;https://ikerlz.github.io/media/albums/posts/gmm/gmm_python/2021-09-10-16-19-36_hu1ac5e3310b62caec945caa8ce12c7549_1229090_750x750_fit_q75_h2_lanczos.webp&#34; loading=&#34;lazy&#34; alt=&#34;2021-09-10-16-19-36.jpg&#34; width=&#34;640&#34; height=&#34;480&#34;&gt;
     &lt;/a&gt;
   &lt;/div&gt;
   
@@ -1574,8 +1993,8 @@ $$&lt;/p&gt;
   
   
   &lt;div class=&#34;gallery-item gallery-item--medium&#34;&gt;
-    &lt;a data-fancybox=&#34;gallery-/posts/gmm/gmm_R&#34; href=&#34;https://example.com/media/albums/posts/gmm/gmm_r/2021-09-10-23-45-01.jpg&#34; &gt;
-      &lt;img src=&#34;https://example.com/media/albums/posts/gmm/gmm_r/2021-09-10-23-45-01_hu197cdcdf1f6d9a29a4ee3537d8c5a9d8_1374858_750x750_fit_q75_h2_lanczos.webp&#34; loading=&#34;lazy&#34; alt=&#34;2021-09-10-23-45-01.jpg&#34; width=&#34;710&#34; height=&#34;484&#34;&gt;
+    &lt;a data-fancybox=&#34;gallery-/posts/gmm/gmm_R&#34; href=&#34;https://ikerlz.github.io/media/albums/posts/gmm/gmm_r/2021-09-10-23-45-01.jpg&#34; &gt;
+      &lt;img src=&#34;https://ikerlz.github.io/media/albums/posts/gmm/gmm_r/2021-09-10-23-45-01_hu197cdcdf1f6d9a29a4ee3537d8c5a9d8_1374858_750x750_fit_q75_h2_lanczos.webp&#34; loading=&#34;lazy&#34; alt=&#34;2021-09-10-23-45-01.jpg&#34; width=&#34;710&#34; height=&#34;484&#34;&gt;
     &lt;/a&gt;
   &lt;/div&gt;
   
@@ -1587,8 +2006,8 @@ $$&lt;/p&gt;
   
   
   &lt;div class=&#34;gallery-item gallery-item--medium&#34;&gt;
-    &lt;a data-fancybox=&#34;gallery-/posts/gmm/gmm_R&#34; href=&#34;https://example.com/media/albums/posts/gmm/gmm_r/2021-09-10-23-45-24.jpg&#34; &gt;
-      &lt;img src=&#34;https://example.com/media/albums/posts/gmm/gmm_r/2021-09-10-23-45-24_hu197cdcdf1f6d9a29a4ee3537d8c5a9d8_1374858_750x750_fit_q75_h2_lanczos.webp&#34; loading=&#34;lazy&#34; alt=&#34;2021-09-10-23-45-24.jpg&#34; width=&#34;710&#34; height=&#34;484&#34;&gt;
+    &lt;a data-fancybox=&#34;gallery-/posts/gmm/gmm_R&#34; href=&#34;https://ikerlz.github.io/media/albums/posts/gmm/gmm_r/2021-09-10-23-45-24.jpg&#34; &gt;
+      &lt;img src=&#34;https://ikerlz.github.io/media/albums/posts/gmm/gmm_r/2021-09-10-23-45-24_hu197cdcdf1f6d9a29a4ee3537d8c5a9d8_1374858_750x750_fit_q75_h2_lanczos.webp&#34; loading=&#34;lazy&#34; alt=&#34;2021-09-10-23-45-24.jpg&#34; width=&#34;710&#34; height=&#34;484&#34;&gt;
     &lt;/a&gt;
   &lt;/div&gt;
   
@@ -1600,8 +2019,8 @@ $$&lt;/p&gt;
   
   
   &lt;div class=&#34;gallery-item gallery-item--medium&#34;&gt;
-    &lt;a data-fancybox=&#34;gallery-/posts/gmm/gmm_R&#34; href=&#34;https://example.com/media/albums/posts/gmm/gmm_r/2021-09-10-23-45-53.jpg&#34; &gt;
-      &lt;img src=&#34;https://example.com/media/albums/posts/gmm/gmm_r/2021-09-10-23-45-53_hu197cdcdf1f6d9a29a4ee3537d8c5a9d8_1374858_750x750_fit_q75_h2_lanczos.webp&#34; loading=&#34;lazy&#34; alt=&#34;2021-09-10-23-45-53.jpg&#34; width=&#34;710&#34; height=&#34;484&#34;&gt;
+    &lt;a data-fancybox=&#34;gallery-/posts/gmm/gmm_R&#34; href=&#34;https://ikerlz.github.io/media/albums/posts/gmm/gmm_r/2021-09-10-23-45-53.jpg&#34; &gt;
+      &lt;img src=&#34;https://ikerlz.github.io/media/albums/posts/gmm/gmm_r/2021-09-10-23-45-53_hu197cdcdf1f6d9a29a4ee3537d8c5a9d8_1374858_750x750_fit_q75_h2_lanczos.webp&#34; loading=&#34;lazy&#34; alt=&#34;2021-09-10-23-45-53.jpg&#34; width=&#34;710&#34; height=&#34;484&#34;&gt;
     &lt;/a&gt;
   &lt;/div&gt;
   
@@ -1619,454 +2038,10 @@ $$&lt;/p&gt;
     </item>
     
     <item>
-      <title>Using the Propensity Score in Regressions for Causal Effects</title>
-      <link>https://example.com/slides/causalinferencechapter14/</link>
-      <pubDate>Sun, 29 Oct 2023 00:00:00 +0000</pubDate>
-      <guid>https://example.com/slides/causalinferencechapter14/</guid>
-      <description>
-&lt;section data-noprocess data-shortcode-slide
-  
-      
-      data-background-image=&#34;ZIBIN.jpg&#34;
-  &gt;
-
-&lt;h1 id=&#34;using-the-propensity-score-in-regressions-for-causal-effects&#34;&gt;Using the Propensity Score in Regressions for Causal Effects&lt;/h1&gt;
-&lt;p&gt;$$
-\begin{aligned}
-\
-\end{aligned}
-$$&lt;/p&gt;
-&lt;center&gt; Li Zhe &lt;center&gt;
-&lt;p&gt;$$$$&lt;/p&gt;
-&lt;center&gt;School of Data Science, Fudan University &lt;center&gt; 
-&lt;p&gt;$$$$&lt;/p&gt;
-&lt;center&gt;November 1, 2023&lt;center&gt;
-&lt;hr&gt;
-
-&lt;section data-noprocess data-shortcode-slide
-  
-      
-      data-background-image=&#34;body1.jpg&#34;
-  &gt;
-
-&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;This chapter discusses two simple methods to use the propensity score:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;the propensity score as a covariate in regressions&lt;/li&gt;
-&lt;li&gt;running regressions weighted by the inverse of the propensity score&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Reasons&lt;/strong&gt;:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;they are easy to implement, which involve only standard statistical software packages for regressions;&lt;/li&gt;
-&lt;li&gt;their properties are comparable to many more complex methods;&lt;/li&gt;
-&lt;li&gt;they can be easily extended to allow for flexible statistical models including machine learning algorithms.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-
-&lt;section data-noprocess data-shortcode-slide
-  
-      
-      data-background-image=&#34;body1.jpg&#34;
-  &gt;
-
-&lt;h3 id=&#34;outline&#34;&gt;Outline&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Regressions with the propensity score as a covariate
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Theorem 14.1&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;Proposition 14.1&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;$$$$&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Regressions weighted by the inverse of the propensity score
-&lt;ul&gt;
-&lt;li&gt;Average causal effect
-&lt;ul&gt;
-&lt;li&gt;Theorem 14.2&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Average causal effect on the treated units
-&lt;ul&gt;
-&lt;li&gt;Table 14.1&lt;/li&gt;
-&lt;li&gt;Proposition 14.2&lt;/li&gt;
-&lt;li&gt;Theorem 14.3&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-
-&lt;section data-noprocess data-shortcode-slide
-  
-      
-      data-background-image=&#34;body1.jpg&#34;
-  &gt;
-
-&lt;h3 id=&#34;regressions-with-the-propensity-score-as-a-covariate&#34;&gt;Regressions with the propensity score as a covariate&lt;/h3&gt;
-&lt;p&gt;$$
-\text { Theorem 11.1 If } Z \perp\!\!\!\perp\{Y(1), Y(0)\} \mid X \text {, then } {\color{red}Z \perp\!\!\!\perp\{Y(1), Y(0)\} \mid e(X)} \text {. }
-$$&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;By Theorem 11.1, if unconfoundedness holds conditioning on $X$, then it also holds conditioning on $e(X)$: $\color{red}{Z \perp\!\!\!\perp\{Y(1), Y(0)\} \mid e(X) }.$&lt;/li&gt;
-&lt;li&gt;Analogous to (10.5), $\tau$ is also &lt;mark&gt;nonparametrically&lt;/mark&gt; identified by
-$$
-\tau=E[E\{Y \mid Z=1, e(X)\}-E\{Y \mid Z=0, e(X)\}],
-$$&lt;/li&gt;
-&lt;li&gt;$\Rightarrow$ The simplest regression specification is the OLS fit of $Y$ on $\{1, Z, e(X)\}$, with the coefficient of $Z$ as an estimator, denoted by $\tau_e$:
-$$
-\arg \min _{a, b, c} E\{Y-a-b Z-c e(X)\}^2
-$$&lt;/li&gt;
-&lt;li&gt;$\tau_e$ defined as the coefficient of $Z$.&lt;/li&gt;
-&lt;li&gt;It is consistent for $\tau$ if
-&lt;ul&gt;
-&lt;li&gt;have a correct propensity score model&lt;/li&gt;
-&lt;li&gt;the outcome model is indeed linear in $Z$ and $e(X)$&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;$\tau_e$ estimates $\tau_{\mathrm{O}}$ if we have a correct propensity score model even if the outcome model is &lt;mark&gt;completely misspecified&lt;/mark&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-
-&lt;section data-noprocess data-shortcode-slide
-  
-      
-      data-background-image=&#34;body1.jpg&#34;
-  &gt;
-
-&lt;h3 id=&#34;regressions-with-the-propensity-score-as-a-covariate-1&#34;&gt;Regressions with the propensity score as a covariate&lt;/h3&gt;
-&lt;p&gt;&lt;mark&gt;Theorem 14.1&lt;/mark&gt; If $Z \perp\!\!\!\perp\{Y(1), Y(0)\} \mid X$, then the coefficient of $Z$ in the OLS fit of $Y$ on $\{1, Z, e(X)\}$ equals
-$$
-\tau_e=\tau_{\mathrm{O}}=\frac{E\left\{h_{\mathrm{O}}(X) \tau(X)\right\}}{E\left\{h_{\mathrm{O}}(X)\right\}},
-$$
-recalling that $h_{\mathrm{O}}(X)=e(X)\{1-e(X)\}$ and $\tau(X)=E\{Y(1)-Y(0) \mid X\}$.&lt;/p&gt;
-&lt;p&gt;$$
-\begin{aligned}
-\
-\
-\end{aligned}
-$$&lt;/p&gt;
-&lt;p&gt;&lt;mark&gt;Corollary 14.1&lt;/mark&gt; If $Z \perp\!\!\!\perp\{Y(1), Y(0)\} \mid X$, then&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;the coefficient of $Z-e(X)$ in the OLS fit of $Y$ on $Z-e(X)$ or $\{1, Z-e(X)\}$ equals $\tau_{\mathrm{O}}$;&lt;/li&gt;
-&lt;li&gt;the coefficient of $Z$ in the OLS fit of $Y$ on $\{1, Z, e(X), X\}$ equals $\tau_{\mathrm{O}}$.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-
-&lt;section data-noprocess data-shortcode-slide
-  
-      
-      data-background-image=&#34;body1.jpg&#34;
-  &gt;
-
-&lt;h3 id=&#34;regressions-with-the-propensity-score-as-a-covariate-2&#34;&gt;Regressions with the propensity score as a covariate&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;An unusual feature of Theorem 14.1 is that &lt;strong&gt;the overlap condition&lt;/strong&gt; ($0 &amp;lt; e(x) &amp;lt; 1$) is not needed any more.&lt;/li&gt;
-&lt;li&gt;Even if some units have propensity score $e(X)$ equaling 0 or 1, their associate weight $e(X)\{1-e(X)\}$ is zero so that they do not contribute anything to the final parameter $\tau_O$.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-
-&lt;section data-noprocess data-shortcode-slide
-  
-      
-      data-background-image=&#34;body1.jpg&#34;
-  &gt;
-
-&lt;h2 id=&#34;frischwaughlovell-theorem&#34;&gt;Frisch–Waugh–Lovell Theorem&lt;/h2&gt;
-&lt;p&gt;The Frisch–Waugh–Lovell (FWL) theorem reduces multivariate OLS to univariate OLS and therefore facilitate the understanding and calculation of the OLS coefficients.&lt;/p&gt;
-&lt;p&gt;&lt;mark&gt;Theorem A2.2 (sample FWL)&lt;/mark&gt; With data $\left(Y, X_1, X_2, \ldots, X_p\right)$ containing column vectors, the coefficient of $X_1$ equals the coefficient of $\tilde{X}_1$ in the OLS fit of $Y$ or $\tilde{Y}$ on $\tilde{X}_1$, where&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;$\tilde{Y}$ is the residual vector from the OLS fit of $Y$ on $\left(X_2, \ldots, X_p\right)$&lt;/li&gt;
-&lt;li&gt;$\tilde{X}_1$ is the residual from the OLS fit of $X_1$ on $\left(X_2, \ldots, X_p\right)$.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;$$$$&lt;/p&gt;
-&lt;p&gt;Based on the FWL theorem, we can obtain $\tau_e$ in two steps:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;first, we obtain the residual $\tilde{Z}$ from the OLS fit of $Z$ on ${1, e(X)}$;&lt;/li&gt;
-&lt;li&gt;then, we obtain $\tau_e$ from the OLS fit of $Y$ on $\tilde{Z}$.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-
-&lt;section data-noprocess data-shortcode-slide
-  
-      
-      data-background-image=&#34;body1.jpg&#34;
-  &gt;
-
-&lt;h3 id=&#34;proof-of-theorem-141&#34;&gt;Proof of Theorem 14.1&lt;/h3&gt;
-&lt;p&gt;The coefficient of $e(X)$ in the OLS fit of $Z$ on $\{1, e(X)\}$ is
-$$
-\begin{aligned}
-\frac{\operatorname{cov}\{Z, e(X)\}}{\operatorname{var}\{e(X)\}} &amp;amp; =\frac{E[\operatorname{cov}\{Z, e(X) \mid X\}]+\operatorname{cov}\{E(Z \mid X), e(X)\}}{\operatorname{var}\{e(X)\}} \\ &amp;amp;=\frac{0+\operatorname{var}\{e(X)\}}{\operatorname{var}\{e(X)\}}=1,
-\end{aligned}
-$$&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;the intercept is $E(Z)-E\{e(X)\}=0$&lt;/li&gt;
-&lt;li&gt;the residual is $\tilde{Z}=Z-e(X)$ (This makes sense since $Z-e(X)$ is uncorrelated with any function of $X$).&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Therefore, we can obtain $\tau_e$ from the univariate OLS fit of $Y$ on $Z-e(X)$ :
-$$\small{\tau_e=\frac{\operatorname{cov}\{Z-e(X), Y\}}{\operatorname{var}\{Z-e(X)\}}}$$
-The denominator simplifies to
-$$
-\begin{aligned}
-\operatorname{var}\{Z-e(X)\} &amp;amp; =E\{Z-e(X)\}^2 =e(X)+e(X)^2-2 e(X)^2=h_{\mathrm{O}}(X)
-\end{aligned}
-$$&lt;/p&gt;
-&lt;hr&gt;
-
-&lt;section data-noprocess data-shortcode-slide
-  
-      
-      data-background-image=&#34;body1.jpg&#34;
-  &gt;
-
-&lt;h3 id=&#34;proof-of-theorem-141-1&#34;&gt;Proof of Theorem 14.1&lt;/h3&gt;
-&lt;p&gt;The numerator simplifies to
-$$
-\begin{aligned}
-&amp;amp; \operatorname{cov}\{Z-e(X), Y\} \\
-= &amp;amp; E[\{Z-e(X)\} Y] \\
-= &amp;amp; E[\{Z-e(X)\} Z Y(1)]+E[\{Z-e(X)\}(1-Z) Y(0)] \\
-&amp;amp; \quad \quad \quad{\color{red}(\text { since } Y=Z Y(1)+(1-Z) Y(0))} \\
-= &amp;amp; E[\{Z-Z e(X)\} Y(1)]-E[e(X)(1-Z) Y(0)] \\
-= &amp;amp; E[Z\{1-e(X)\} Y(1)]-E[e(X)(1-Z) Y(0)] \\
-= &amp;amp; E\left[e(X)\{1-e(X)\} \mu_1(X)\right]-E\left[e(X)\{1-e(X)\} \mu_0(X)\right] \\
-&amp;amp; \quad \quad \quad\text { {\color{red}(tower property and ignorability)} } \\
-= &amp;amp; E\left\{h_{\mathrm{O}}(X) \tau(X)\right\} .
-\end{aligned}
-$$&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;From the proof of Theorem 14.1, we can simply run the OLS of $Y$ on the centered treatment $\tilde{Z} = Z - e(X)$.&lt;/li&gt;
-&lt;li&gt;Moreover, we can also include $X$ in the OLS fit which may improve efficiency in finite sample.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-
-&lt;section data-noprocess data-shortcode-slide
-  
-      
-      data-background-image=&#34;body1.jpg&#34;
-  &gt;
-
-&lt;h3 id=&#34;comments-of-theorem-141-and-corollary-141&#34;&gt;Comments of Theorem 14.1 and Corollary 14.1&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Theorem 14.1 motivates a two-step estimator for $\tau_{\mathrm{O}}$:
-&lt;ul&gt;
-&lt;li&gt;first, fit a propensity score model to obtain $\hat{e}\left(X_i\right)$;&lt;/li&gt;
-&lt;li&gt;second, run OLS of $Y_i$ on $\left(1, X_i, \hat{e}\left(X_i\right)\right)$ to obtain the coefficient of $Z_i$.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Corollary 14.1 motivates another two-step estimator for $\tau_{\mathrm{O}}$:
-&lt;ul&gt;
-&lt;li&gt;first, fit a propensity score model to obtain $\hat{e}\left(X_i\right)$;&lt;/li&gt;
-&lt;li&gt;second, run OLS of $Y_i$ on $Z_i-\hat{e}\left(X_i\right)$ to obtain the coefficient of $Z_i$.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;Remark&lt;/strong&gt;: OLS is convenient for obtaining point estimators, the corresponding standard errors are incorrect due to &lt;mark&gt;the uncertainty in the first step estimation of the propensity score&lt;/mark&gt;. We can use the bootstrap to approximate the standard errors.&lt;/p&gt;
-&lt;hr&gt;
-
-&lt;section data-noprocess data-shortcode-slide
-  
-      
-      data-background-image=&#34;body1.jpg&#34;
-  &gt;
-
-&lt;h4 id=&#34;regressions-weighted-by-the-inverse-of-the-propensity-score&#34;&gt;Regressions weighted by the inverse of the propensity score&lt;/h4&gt;
-&lt;p&gt;We first re-examine the Hajek estimator of $\tau$ :
-$$
-\hat{\tau}^{\text {hajek }}=\frac{\sum_{i=1}^n \frac{Z_i Y_i}{\hat{e}\left(X_i\right)}}{\sum_{i=1}^n \frac{Z_i}{\hat{e}\left(X_i\right)}}-\frac{\sum_{i=1}^n \frac{\left(1-Z_i\right) Y_i}{1-\hat{e}\left(X_i\right)}}{\sum_{i=1}^n \frac{1-Z_i}{1-\hat{e}\left(X_i\right)}},
-$$&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;which equals the difference between the weighted means of the outcomes in the treatment and control groups.&lt;/li&gt;
-&lt;li&gt;Numerically, it is identical to the coefficient of $Z_i$ in the following weighted least squares (WLS) of $Y_i$ on $\left(1, Z_i\right)$.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;mark&gt;Proposition 14.1&lt;/mark&gt; $\hat{\tau}^{\text {hajek }}$ equals $\hat{\beta}$ from the following $WLS$ :&lt;/p&gt;
-&lt;p&gt;$$
-(\hat{\alpha}, \hat{\beta})=\arg \min_{\alpha, \beta} \sum_{i=1}^n w_i\left(Y_i-\alpha-\beta Z_i\right)^2
-$$&lt;/p&gt;
-&lt;p&gt;with weights
-$$
-w_i=\frac{Z_i}{\hat{e}\left(X_i\right)}+\frac{1-Z_i}{1-\hat{e}\left(X_i\right)}= \begin{cases}\frac{1}{\hat{e}\left(X_i\right)} &amp;amp; \text { if } Z_i=1 \\ \frac{1}{1-\hat{e}\left(X_i\right)} &amp;amp; \text { if } Z_i=0\end{cases}
-$$&lt;/p&gt;
-&lt;hr&gt;
-
-&lt;section data-noprocess data-shortcode-slide
-  
-      
-      data-background-image=&#34;body1.jpg&#34;
-  &gt;
-
-&lt;h3 id=&#34;average-causal-effect&#34;&gt;Average causal effect&lt;/h3&gt;
-&lt;ul style=&#34;color: black&#34;&gt;
-&lt;li&gt;By Proposition 14.1, it is convenient to obtain $\hat{\tau}^{\text {hajek }}$ based on WLS.&lt;/li&gt;
-&lt;li&gt;However, due to the uncertainty in the estimated propensity score, the standard error &lt;mark&gt;reported by WLS is incorrect&lt;/mark&gt; for the true standard error $\Rightarrow$ &lt;strong&gt;bootstrap&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul style=&#34;color: red&#34;&gt;
-&lt;li&gt;Why does the WLS give a consistent estimator for $\tau$ ?&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul&gt;
-&lt;li&gt;Recall that in the CRE with a constant propensity score, we can simply use the coefficient of $Z_i$ in the OLS fit of $Y_i$ on $(1, Z_i)$ to estimate $\tau$.&lt;/li&gt;
-&lt;li&gt;In observational studies, units have different probabilities of receiving the treatment and control, respectively.&lt;/li&gt;
-&lt;li&gt;If we weight the treated units by $1 / e(X_i)$ and the control units by $1 /\{1-e(X_i)\}$, then they can represent the whole population and we effectively have &lt;strong&gt;a pseudo randomized experiment&lt;/strong&gt;.&lt;/li&gt;
-&lt;li&gt;Consequently, the difference between the weighted means are consistent for $\tau$.&lt;/li&gt;
-&lt;li&gt;The numerical equivalence of $\hat{\tau}^{\text {hajek }}$ and WLS is not only a fun numerical fact itself but also useful for motivation more complex estimator with covariate adjustment.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-
-&lt;section data-noprocess data-shortcode-slide
-  
-      
-      data-background-image=&#34;body1.jpg&#34;
-  &gt;
-
-&lt;h3 id=&#34;an-extension-to-a-more-complex-estimator&#34;&gt;An extension to a more complex estimator&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;In the CRE, we can use the coefficient of $Z_i$ in the OLS fit of $Y_i$ on $(1, Z_i, X_i, Z_i X_i)$ to estimate $\tau$, where the covariates are centered with $\bar{X}=0$.&lt;/li&gt;
-&lt;li&gt;This is Lin (2013)&amp;rsquo;s estimator which uses covariates to improve efficiency.&lt;/li&gt;
-&lt;li&gt;A natural extension to observational studies is to estimate $\tau$ using the coefficient of $Z_i$ in the WLS fit of $Y_i$ on $\left(1, Z_i, X_i, Z_i X_i\right)$ with weights defined in (14.1).&lt;/li&gt;
-&lt;li&gt;If the linear models
-$$
-E(Y \mid Z=1, X)=\beta_{10}+\beta_{1 x}^{\top} X, \quad E(Y \mid Z=0, X)=\beta_{00}+\beta_{0 x}^{\top} X,
-$$
-are correctly specified, then &lt;mark&gt;both OLS and WLS give consistent estimators for the coefficients&lt;/mark&gt; and the estimators of the coefficient of $Z$ is consistent for $\tau$.&lt;/li&gt;
-&lt;li&gt;More interestingly, the estimator of the coefficient of $Z$ based on WLS is also consistent for $\tau$ if &lt;strong&gt;the propensity score model is correct and the outcome model is incorrect&lt;/strong&gt;. $\Rightarrow$ the estimator based on WLS is &lt;strong&gt;doubly robust&lt;/strong&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-
-&lt;section data-noprocess data-shortcode-slide
-  
-      
-      data-background-image=&#34;body1.jpg&#34;
-  &gt;
-
-&lt;h3 id=&#34;a-doubly-robust-estimator&#34;&gt;A doubly robust estimator&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Let $\hat{e}(X_i)$ be the fitted propensity score and $(\mu_1(X_i, \hat{\beta}_1), \mu_0(X_i, \hat{\beta}_0))$ be the fitted values of the outcome means based on the WLS.&lt;/li&gt;
-&lt;li&gt;The outcome regression estimator is&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;$$
-\hat{\tau}_{\mathrm{wls}}^{\mathrm{reg}}= \frac{1}{n}\sum_{i=1}^n\mu_1\left(X_i, \hat{\beta}_1\right)-\frac{1}{n} \sum_{i=1}^n \mu_0\left(X_i, \hat{\beta}_0\right)
-$$&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;The doubly robust estimator for $\tau$ is&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;$$
-\hat{\tau}_{\mathrm{wls}}^{\mathrm{dr}}=\hat{\tau}_{\mathrm{wls}}^{\mathrm{reg}}+\frac{1}{n} \sum_{i=1}^n \frac{Z_i\left\{Y_i-\mu_1\left(X_i, \hat{\beta}_1\right)\right\}}{\hat{e}\left(X_i\right)}-\frac{1}{n} \sum_{i=1}^n \frac{\left(1-Z_i\right)\left\{Y_i-\mu_0\left(X_i, \hat{\beta}_0\right)\right\}}{1-\hat{e}\left(X_i\right)} .
-$$&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;An interesting result is that this doubly robust estimator equals the outcome regression estimator, which reduces to the coefficient of $Z_i$ in the WLS fit of $Y_i$ on $\left(1, Z_i, X_i, Z_i X_i\right)$ if we use weights (14.1).&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-
-&lt;section data-noprocess data-shortcode-slide
-  
-      
-      data-background-image=&#34;body1.jpg&#34;
-  &gt;
-
-&lt;h3 id=&#34;theorem-142&#34;&gt;Theorem 14.2&lt;/h3&gt;
-&lt;p style=&#34;color: blue&#34;&gt;If $\bar{X}=0$ and $(\mu_1(X_i, \hat{\beta}_1), \mu_0(X_i, \hat{\beta}_0))=(\hat{\beta}_{10}+\hat{\beta}_{1 x}^{\top} X_i, \hat{\beta}_{00}+\hat{\beta}_{0 x}^{\top} X_i)$ based on the WLS fit of $Y_i$ on $\left(1, Z_i, X_i, Z_i X_i\right)$ with weights (14.1), then&lt;/p&gt;
-&lt;p style=&#34;color: blue&#34;&gt;$$
-\hat{\tau}_{\mathrm{wls}}^{\mathrm{dr}}=\hat{\tau}_{\mathrm{wls}}^{\mathrm{reg}}=\hat{\beta}_{10}-\hat{\beta}_{00},
-$$&lt;/p&gt;
-&lt;p style=&#34;color: blue&#34;&gt;which is the coefficient of $Z_i$ in the WLS fit.&lt;/p&gt;
-&lt;p&gt;$$$$&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Freedman and Berk (2008) showed that when the outcome model is correct, the WLS estimator is worse than the OLS estimator&lt;/li&gt;
-&lt;li&gt;When the errors have variance proportional to the inverse of the propensity scores, the WLS estimator will be more effcient than the OLS estimator.&lt;/li&gt;
-&lt;li&gt;The estimated standard error based on the WLS fit is not consistent for the true standard error because it &lt;strong&gt;ignores the uncertainty in the estimated propensity score&lt;/strong&gt;.&lt;/li&gt;
-&lt;li&gt;This can be easily fixed by using the bootstrap to approximate the variance of the WLS estimator.&lt;/li&gt;
-&lt;li&gt;Nevertheless, they found that &amp;ldquo;weighting may help under some circumstances&amp;rdquo; because when the outcome model is incorrect, the
-WLS estimator is still consistent if the propensity score model is correct.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-
-&lt;section data-noprocess data-shortcode-slide
-  
-      
-      data-background-image=&#34;body1.jpg&#34;
-  &gt;
-
-&lt;h3 id=&#34;average-causal-effect-on-the-treated-units&#34;&gt;Average causal effect on the treated units&lt;/h3&gt;
-&lt;p&gt;&lt;mark&gt;Proposition 14.2&lt;/mark&gt; $\hat{\tau}_{\mathrm{T}}^{\text {hajek }}$ is numerically identical to $\hat{\beta}$ in the following WLS:
-$$
-(\hat{\alpha}, \hat{\beta})=\arg \min_{\alpha, \beta} \sum_{i=1}^n w_{\mathrm{T} i}\left(Y_i-\alpha-\beta Z_i\right)^2
-$$
-with weights
-$$
-w_{\mathrm{T} i}=Z_i+\left(1-Z_i\right) \hat{o}\left(X_i\right)= \begin{cases}1 &amp;amp; \text { if } Z_i=1 \\ \hat{o}\left(X_i\right) &amp;amp; \text { if } Z_i=0\end{cases}
-$$
-where $\hat{o}\left(X_i\right)=\hat{e}\left(X_i\right) /\{1-\hat{e}\left(X_i\right)\}$&lt;/p&gt;
-&lt;hr&gt;
-
-&lt;section data-noprocess data-shortcode-slide
-  
-      
-      data-background-image=&#34;body1.jpg&#34;
-  &gt;
-
-&lt;h3 id=&#34;regression-estimators&#34;&gt;Regression estimators&lt;/h3&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;&lt;/th&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;CRE&lt;/th&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;unconfounded observational studies&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;without $X$&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;$Y_i \sim Z_i$&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;$Y_i \sim Z_i$ with weights $w_i$&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;with $X$&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;$Y_i \sim\left(Z_i, X_i, Z_i X_i\right)$&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;$Y_i \sim\left(Z_i, X_i, Z_i X_i\right)$ with weights $w_i$&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;hr&gt;
-
-&lt;section data-noprocess data-shortcode-slide
-  
-      
-      data-background-image=&#34;body1.jpg&#34;
-  &gt;
-
-&lt;h3 id=&#34;average-causal-effect-on-the-treated-units-1&#34;&gt;Average causal effect on the treated units&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;If we center covariates with $\hat{X}(1)=0$, then we can estimate $\tau_{\mathrm{T}}$ using the coefficient of $Z_i$ in the WLS fit of $Y_i$ on $\left(1, Z_i, X_i, Z_i X_i\right)$ with weights defined in (14.2). Similarly, this estimator equals the regression estimator&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;$$
-\hat{\tau}_{\mathrm{T}, \mathrm{wls}}^{\mathrm{reg}}=\hat{\bar{Y}}(1)-\frac{1}{n_1} \sum_{i=1}^n Z_i \mu_0\left(X_i, \hat{\beta}_0\right)
-$$&lt;/p&gt;
-&lt;p&gt;which also equals the doubly robust estimator&lt;/p&gt;
-&lt;p&gt;$$
-\hat{\tau}_{\mathrm{T}, \mathrm{wls}}^{\mathrm{dr}}=\hat{\tau}_{\mathrm{T}, \mathrm{wls}}^{\mathrm{reg}}-\frac{1}{n_1} \sum_{i=1}^n \hat{o}\left(X_i\right)\left(1-Z_i\right)\left\{Y_i-\mu_0\left(X_i, \hat{\beta}_0\right)\right\}.
-$$&lt;/p&gt;
-&lt;p&gt;&lt;mark&gt;Theorem 14.3&lt;/mark&gt; If $\hat{\bar{X}}(1)=0$ and $\mu_0(X_i, \hat{\beta}_0)=\hat{\beta}_{00}+\hat{\beta}_{0x}^{\top} X_i$ based on the WLS fit of $Y_i$ on $(1, Z_i, X_i, Z_i X_i)$ with weights (14.2), then&lt;/p&gt;
-&lt;p&gt;$$
-\hat{\tau}_{\mathrm{T}, \mathrm{wls}}^{\mathrm{dr}}=\hat{\tau}_{\mathrm{T}, \mathrm{wls}}^{\mathrm{reg}}=\hat{\beta}_{10}-\hat{\beta}_{00},
-$$&lt;/p&gt;
-&lt;p&gt;which is the coefficient of $Z_i$ in the $W L S$ fit.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>A Distributed Community Detection Algorithm for Large Scale Networks Under Stochastic Block Models</title>
-      <link>https://example.com/publication/dcd/</link>
+      <link>https://ikerlz.github.io/publication/dcd/</link>
       <pubDate>Sat, 27 May 2023 00:00:00 +0000</pubDate>
-      <guid>https://example.com/publication/dcd/</guid>
+      <guid>https://ikerlz.github.io/publication/dcd/</guid>
       <description>&lt;!-- 
 
 &lt;div class=&#34;alert alert-note&#34;&gt;
@@ -2091,9 +2066,9 @@ Supplementary notes can be added here, including [code, math, and images](https:
     
     <item>
       <title></title>
-      <link>https://example.com/admin/config.yml</link>
+      <link>https://ikerlz.github.io/admin/config.yml</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://example.com/admin/config.yml</guid>
+      <guid>https://ikerlz.github.io/admin/config.yml</guid>
       <description></description>
     </item>
     

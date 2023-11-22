@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Code | Li Zhe</title>
-    <link>https://example.com/tag/code/</link>
-      <atom:link href="https://example.com/tag/code/index.xml" rel="self" type="application/rss+xml" />
+    <title>Code | Zhe Li</title>
+    <link>https://ikerlz.github.io/tag/code/</link>
+      <atom:link href="https://ikerlz.github.io/tag/code/index.xml" rel="self" type="application/rss+xml" />
     <description>Code</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 02 Nov 2023 00:39:27 +0800</lastBuildDate>
     <image>
-      <url>https://example.com/media/icon_hu9ccd2acdcd774e20fa34966445b706a8_6997380_512x512_fill_lanczos_center_3.png</url>
+      <url>https://ikerlz.github.io/media/icon_hu9ccd2acdcd774e20fa34966445b706a8_6997380_512x512_fill_lanczos_center_3.png</url>
       <title>Code</title>
-      <link>https://example.com/tag/code/</link>
+      <link>https://ikerlz.github.io/tag/code/</link>
     </image>
     
     <item>
       <title>混合高斯模型的代码实现</title>
-      <link>https://example.com/post/gmm/</link>
+      <link>https://ikerlz.github.io/post/gmm/</link>
       <pubDate>Thu, 02 Nov 2023 00:39:27 +0800</pubDate>
-      <guid>https://example.com/post/gmm/</guid>
+      <guid>https://ikerlz.github.io/post/gmm/</guid>
       <description>
 
 &lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
@@ -212,7 +212,7 @@ $$&lt;/p&gt;
                /media/posts/gmm/%E6%88%AA%E5%B1%8F2021-09-10_%E4%B8%8B%E5%8D%883.03.05_huac7b4589a068f84ddc9e0bbdc94a3032_125835_774ebaa6eae3826fbe2da6c37a5c8ece.webp 400w,
                /media/posts/gmm/%E6%88%AA%E5%B1%8F2021-09-10_%E4%B8%8B%E5%8D%883.03.05_huac7b4589a068f84ddc9e0bbdc94a3032_125835_10ba755b7b6fc40a17238a0d363bd3f1.webp 760w,
                /media/posts/gmm/%E6%88%AA%E5%B1%8F2021-09-10_%E4%B8%8B%E5%8D%883.03.05_huac7b4589a068f84ddc9e0bbdc94a3032_125835_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://example.com/media/posts/gmm/%E6%88%AA%E5%B1%8F2021-09-10_%E4%B8%8B%E5%8D%883.03.05_huac7b4589a068f84ddc9e0bbdc94a3032_125835_774ebaa6eae3826fbe2da6c37a5c8ece.webp&#34;
+               src=&#34;https://ikerlz.github.io/media/posts/gmm/%E6%88%AA%E5%B1%8F2021-09-10_%E4%B8%8B%E5%8D%883.03.05_huac7b4589a068f84ddc9e0bbdc94a3032_125835_774ebaa6eae3826fbe2da6c37a5c8ece.webp&#34;
                width=&#34;445&#34;
                height=&#34;291&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -453,8 +453,8 @@ $$&lt;/p&gt;
   
   
   &lt;div class=&#34;gallery-item gallery-item--medium&#34;&gt;
-    &lt;a data-fancybox=&#34;gallery-/posts/gmm/gmm_python&#34; href=&#34;https://example.com/media/albums/posts/gmm/gmm_python/2021-09-10-16-19-25.jpg&#34; &gt;
-      &lt;img src=&#34;https://example.com/media/albums/posts/gmm/gmm_python/2021-09-10-16-19-25_hu1ac5e3310b62caec945caa8ce12c7549_1229090_750x750_fit_q75_h2_lanczos.webp&#34; loading=&#34;lazy&#34; alt=&#34;2021-09-10-16-19-25.jpg&#34; width=&#34;640&#34; height=&#34;480&#34;&gt;
+    &lt;a data-fancybox=&#34;gallery-/posts/gmm/gmm_python&#34; href=&#34;https://ikerlz.github.io/media/albums/posts/gmm/gmm_python/2021-09-10-16-19-25.jpg&#34; &gt;
+      &lt;img src=&#34;https://ikerlz.github.io/media/albums/posts/gmm/gmm_python/2021-09-10-16-19-25_hu1ac5e3310b62caec945caa8ce12c7549_1229090_750x750_fit_q75_h2_lanczos.webp&#34; loading=&#34;lazy&#34; alt=&#34;2021-09-10-16-19-25.jpg&#34; width=&#34;640&#34; height=&#34;480&#34;&gt;
     &lt;/a&gt;
   &lt;/div&gt;
   
@@ -466,8 +466,8 @@ $$&lt;/p&gt;
   
   
   &lt;div class=&#34;gallery-item gallery-item--medium&#34;&gt;
-    &lt;a data-fancybox=&#34;gallery-/posts/gmm/gmm_python&#34; href=&#34;https://example.com/media/albums/posts/gmm/gmm_python/2021-09-10-16-19-31.jpg&#34; &gt;
-      &lt;img src=&#34;https://example.com/media/albums/posts/gmm/gmm_python/2021-09-10-16-19-31_hu1ac5e3310b62caec945caa8ce12c7549_1229090_750x750_fit_q75_h2_lanczos.webp&#34; loading=&#34;lazy&#34; alt=&#34;2021-09-10-16-19-31.jpg&#34; width=&#34;640&#34; height=&#34;480&#34;&gt;
+    &lt;a data-fancybox=&#34;gallery-/posts/gmm/gmm_python&#34; href=&#34;https://ikerlz.github.io/media/albums/posts/gmm/gmm_python/2021-09-10-16-19-31.jpg&#34; &gt;
+      &lt;img src=&#34;https://ikerlz.github.io/media/albums/posts/gmm/gmm_python/2021-09-10-16-19-31_hu1ac5e3310b62caec945caa8ce12c7549_1229090_750x750_fit_q75_h2_lanczos.webp&#34; loading=&#34;lazy&#34; alt=&#34;2021-09-10-16-19-31.jpg&#34; width=&#34;640&#34; height=&#34;480&#34;&gt;
     &lt;/a&gt;
   &lt;/div&gt;
   
@@ -479,8 +479,8 @@ $$&lt;/p&gt;
   
   
   &lt;div class=&#34;gallery-item gallery-item--medium&#34;&gt;
-    &lt;a data-fancybox=&#34;gallery-/posts/gmm/gmm_python&#34; href=&#34;https://example.com/media/albums/posts/gmm/gmm_python/2021-09-10-16-19-36.jpg&#34; &gt;
-      &lt;img src=&#34;https://example.com/media/albums/posts/gmm/gmm_python/2021-09-10-16-19-36_hu1ac5e3310b62caec945caa8ce12c7549_1229090_750x750_fit_q75_h2_lanczos.webp&#34; loading=&#34;lazy&#34; alt=&#34;2021-09-10-16-19-36.jpg&#34; width=&#34;640&#34; height=&#34;480&#34;&gt;
+    &lt;a data-fancybox=&#34;gallery-/posts/gmm/gmm_python&#34; href=&#34;https://ikerlz.github.io/media/albums/posts/gmm/gmm_python/2021-09-10-16-19-36.jpg&#34; &gt;
+      &lt;img src=&#34;https://ikerlz.github.io/media/albums/posts/gmm/gmm_python/2021-09-10-16-19-36_hu1ac5e3310b62caec945caa8ce12c7549_1229090_750x750_fit_q75_h2_lanczos.webp&#34; loading=&#34;lazy&#34; alt=&#34;2021-09-10-16-19-36.jpg&#34; width=&#34;640&#34; height=&#34;480&#34;&gt;
     &lt;/a&gt;
   &lt;/div&gt;
   
@@ -522,8 +522,8 @@ $$&lt;/p&gt;
   
   
   &lt;div class=&#34;gallery-item gallery-item--medium&#34;&gt;
-    &lt;a data-fancybox=&#34;gallery-/posts/gmm/gmm_R&#34; href=&#34;https://example.com/media/albums/posts/gmm/gmm_r/2021-09-10-23-45-01.jpg&#34; &gt;
-      &lt;img src=&#34;https://example.com/media/albums/posts/gmm/gmm_r/2021-09-10-23-45-01_hu197cdcdf1f6d9a29a4ee3537d8c5a9d8_1374858_750x750_fit_q75_h2_lanczos.webp&#34; loading=&#34;lazy&#34; alt=&#34;2021-09-10-23-45-01.jpg&#34; width=&#34;710&#34; height=&#34;484&#34;&gt;
+    &lt;a data-fancybox=&#34;gallery-/posts/gmm/gmm_R&#34; href=&#34;https://ikerlz.github.io/media/albums/posts/gmm/gmm_r/2021-09-10-23-45-01.jpg&#34; &gt;
+      &lt;img src=&#34;https://ikerlz.github.io/media/albums/posts/gmm/gmm_r/2021-09-10-23-45-01_hu197cdcdf1f6d9a29a4ee3537d8c5a9d8_1374858_750x750_fit_q75_h2_lanczos.webp&#34; loading=&#34;lazy&#34; alt=&#34;2021-09-10-23-45-01.jpg&#34; width=&#34;710&#34; height=&#34;484&#34;&gt;
     &lt;/a&gt;
   &lt;/div&gt;
   
@@ -535,8 +535,8 @@ $$&lt;/p&gt;
   
   
   &lt;div class=&#34;gallery-item gallery-item--medium&#34;&gt;
-    &lt;a data-fancybox=&#34;gallery-/posts/gmm/gmm_R&#34; href=&#34;https://example.com/media/albums/posts/gmm/gmm_r/2021-09-10-23-45-24.jpg&#34; &gt;
-      &lt;img src=&#34;https://example.com/media/albums/posts/gmm/gmm_r/2021-09-10-23-45-24_hu197cdcdf1f6d9a29a4ee3537d8c5a9d8_1374858_750x750_fit_q75_h2_lanczos.webp&#34; loading=&#34;lazy&#34; alt=&#34;2021-09-10-23-45-24.jpg&#34; width=&#34;710&#34; height=&#34;484&#34;&gt;
+    &lt;a data-fancybox=&#34;gallery-/posts/gmm/gmm_R&#34; href=&#34;https://ikerlz.github.io/media/albums/posts/gmm/gmm_r/2021-09-10-23-45-24.jpg&#34; &gt;
+      &lt;img src=&#34;https://ikerlz.github.io/media/albums/posts/gmm/gmm_r/2021-09-10-23-45-24_hu197cdcdf1f6d9a29a4ee3537d8c5a9d8_1374858_750x750_fit_q75_h2_lanczos.webp&#34; loading=&#34;lazy&#34; alt=&#34;2021-09-10-23-45-24.jpg&#34; width=&#34;710&#34; height=&#34;484&#34;&gt;
     &lt;/a&gt;
   &lt;/div&gt;
   
@@ -548,8 +548,8 @@ $$&lt;/p&gt;
   
   
   &lt;div class=&#34;gallery-item gallery-item--medium&#34;&gt;
-    &lt;a data-fancybox=&#34;gallery-/posts/gmm/gmm_R&#34; href=&#34;https://example.com/media/albums/posts/gmm/gmm_r/2021-09-10-23-45-53.jpg&#34; &gt;
-      &lt;img src=&#34;https://example.com/media/albums/posts/gmm/gmm_r/2021-09-10-23-45-53_hu197cdcdf1f6d9a29a4ee3537d8c5a9d8_1374858_750x750_fit_q75_h2_lanczos.webp&#34; loading=&#34;lazy&#34; alt=&#34;2021-09-10-23-45-53.jpg&#34; width=&#34;710&#34; height=&#34;484&#34;&gt;
+    &lt;a data-fancybox=&#34;gallery-/posts/gmm/gmm_R&#34; href=&#34;https://ikerlz.github.io/media/albums/posts/gmm/gmm_r/2021-09-10-23-45-53.jpg&#34; &gt;
+      &lt;img src=&#34;https://ikerlz.github.io/media/albums/posts/gmm/gmm_r/2021-09-10-23-45-53_hu197cdcdf1f6d9a29a4ee3537d8c5a9d8_1374858_750x750_fit_q75_h2_lanczos.webp&#34; loading=&#34;lazy&#34; alt=&#34;2021-09-10-23-45-53.jpg&#34; width=&#34;710&#34; height=&#34;484&#34;&gt;
     &lt;/a&gt;
   &lt;/div&gt;
   

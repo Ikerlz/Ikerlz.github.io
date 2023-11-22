@@ -2,102 +2,97 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://example.com/categories/</loc>
+    <loc>https://ikerlz.github.io/categories/</loc>
     <lastmod>2023-11-20T22:16:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/category/factor-model/</loc>
+    <loc>https://ikerlz.github.io/category/factor-model/</loc>
     <lastmod>2023-11-20T22:16:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/notes/</loc>
+    <loc>https://ikerlz.github.io/notes/</loc>
     <lastmod>2023-11-20T22:16:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/notes/3prf/</loc>
+    <loc>https://ikerlz.github.io/notes/3prf/</loc>
     <lastmod>2023-11-20T22:16:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/notes/factor-model/</loc>
+    <loc>https://ikerlz.github.io/notes/factor-model/</loc>
     <lastmod>2023-11-14T22:16:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/category/causal-inference/</loc>
+    <loc>https://ikerlz.github.io/category/causal-inference/</loc>
     <lastmod>2023-11-05T22:16:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/notes/path-dev/</loc>
+    <loc>https://ikerlz.github.io/notes/path-dev/</loc>
     <lastmod>2023-11-05T22:16:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/notes/var-semiparam/</loc>
+    <loc>https://ikerlz.github.io/notes/var-semiparam/</loc>
     <lastmod>2023-11-05T22:16:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/category/classical-statistics/</loc>
+    <loc>https://ikerlz.github.io/category/classical-statistics/</loc>
     <lastmod>2023-11-02T00:39:27+08:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tag/code/</loc>
+    <loc>https://ikerlz.github.io/tag/code/</loc>
     <lastmod>2023-11-02T00:39:27+08:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tag/gmm/</loc>
+    <loc>https://ikerlz.github.io/tag/gmm/</loc>
     <lastmod>2023-11-02T00:39:27+08:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/post/</loc>
+    <loc>https://ikerlz.github.io/post/</loc>
     <lastmod>2023-11-02T00:39:27+08:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tag/python/</loc>
+    <loc>https://ikerlz.github.io/tag/python/</loc>
     <lastmod>2023-11-02T00:39:27+08:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tag/r/</loc>
+    <loc>https://ikerlz.github.io/tag/r/</loc>
     <lastmod>2023-11-02T00:39:27+08:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/tags/</loc>
+    <loc>https://ikerlz.github.io/tags/</loc>
     <lastmod>2023-11-02T00:39:27+08:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/post/gmm/</loc>
+    <loc>https://ikerlz.github.io/post/gmm/</loc>
     <lastmod>2023-11-02T00:39:27+08:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/slides/</loc>
-    <lastmod>2023-10-29T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>https://example.com/slides/causalinferencechapter14/</loc>
-    <lastmod>2023-10-29T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-  </url><url>
-    <loc>https://example.com/publication-type/2/</loc>
+    <loc>https://ikerlz.github.io/publication-type/2/</loc>
     <lastmod>2023-05-27T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/publication/dcd/</loc>
+    <loc>https://ikerlz.github.io/publication/dcd/</loc>
     <lastmod>2023-05-27T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/publication_types/</loc>
+    <loc>https://ikerlz.github.io/publication_types/</loc>
     <lastmod>2023-05-27T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/publication/</loc>
+    <loc>https://ikerlz.github.io/publication/</loc>
     <lastmod>2023-05-27T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/</loc>
+    <loc>https://ikerlz.github.io/</loc>
     <lastmod>2022-10-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/admin/</loc>
+    <loc>https://ikerlz.github.io/admin/</loc>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/event/</loc>
+    <loc>https://ikerlz.github.io/event/</loc>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>https://ikerlz.github.io/slides/</loc>
     <changefreq>weekly</changefreq>
   </url>
 </urlset>
