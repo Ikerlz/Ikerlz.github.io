@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!-- This site was created with Wowchemy. https://www.wowchemy.com -->
-<!-- Last Published: November 22, 2023 --><html lang="en-us" >
+<!-- This site was created with Hugo Blox. https://hugoblox.com -->
+<!-- Last Published: November 27, 2023 --><html lang="en-us" >
 
 
 <head>
@@ -10,7 +10,7 @@
   
   
   
-    <meta name="generator" content="Wowchemy 5.7.0 for Hugo" />
+    <meta name="generator" content="Hugo Blox Builder 5.9.6" />
   
 
   
@@ -80,7 +80,7 @@
   
     
     
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.2/css/academicons.min.css" integrity="sha512-KlJCpRsLf+KKu2VQa5vmRuClRFjxc5lXO03ixZt82HZUk41+1I0bD8KBSA0fY290ayMfWYI9udIqeOWSu1/uZg==" crossorigin="anonymous" media="print" onload="this.media='all'">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.4/css/academicons.min.css" integrity="sha512-IW0nhlW5MgNydsXJO40En2EoCkTTjZhI3yuODrZIc8cQ4h1XcF53PsqDHa09NqnkXuIe0Oiyyj171BqZFwISBw==" crossorigin="anonymous" media="print" onload="this.media='all'">
     
 
     
@@ -219,7 +219,7 @@
   
   
   
-  <link rel="stylesheet" href="/css/wowchemy.042e26407c9e383d96a1f26d6787c686.css" />
+  <link rel="stylesheet" href="/css/wowchemy.32e2e32cf1a4c1ea152e519f8b1fda79.css" />
 
   
   
@@ -240,6 +240,7 @@
 
   
   
+
 
 
 
@@ -324,6 +325,12 @@ $$ P(y \mid \theta)=\sum_{k=1}^{K} \alpha_{k} \phi\left(y \mid \theta_{k}\right)
   <meta property="twitter:site" content="@wowchemy" />
   <meta property="twitter:creator" content="@wowchemy" />
 <meta property="twitter:image" content="https://ikerlz.github.io/post/gmm/featured.png" />
+
+
+
+  
+
+<meta property="og:type" content="article" />
 <meta property="og:site_name" content="Zhe Li" />
 <meta property="og:url" content="https://ikerlz.github.io/post/gmm/" />
 <meta property="og:title" content="混合高斯模型的代码实现 | Zhe Li" />
@@ -441,7 +448,7 @@ $$ P(y \mid \theta)=\sum_{k=1}^{K} \alpha_{k} \phi\left(y \mid \theta_{k}\right)
   
   
   
-  <script src="/js/wowchemy-init.min.ec9d49ca50e4b80bdb08f0417a28ed84.js"></script>
+  <script src="/js/wowchemy-init.min.3a6bdbdff5d8a89d6e651adb3deec035.js"></script>
 
   
 
@@ -837,6 +844,7 @@ $$ P(y \mid \theta)=\sum_{k=1}^{K} \alpha_{k} \phi\left(y \mid \theta_{k}\right)
   
 
 
+
 <div class="article-container pt-3">
   <h1>混合高斯模型的代码实现</h1>
 
@@ -906,7 +914,7 @@ $$ P(y \mid \theta)=\sum_{k=1}^{K} \alpha_{k} \phi\left(y \mid \theta_{k}\right)
 
 <div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 650px; max-height: 267px;">
   <div style="position: relative">
-    <img src="/post/gmm/featured_hu0b516eca28bc88a1a3679d6047fc857c_145260_720x2500_fit_q75_h2_lanczos_3.webp" width="650" height="267" alt="" class="featured-image">
+    <img src="/post/gmm/featured_hu0b516eca28bc88a1a3679d6047fc857c_145260_24dbfb8ca25f8307dd7a9dbaa7728c92.webp" width="650" height="267" alt="" class="featured-image">
     
   </div>
 </div>
@@ -1018,19 +1026,19 @@ $$</p>
 </span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">X_mat</span>
 </span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">y_vec</span> <span class="o">=</span> <span class="n">y_vec</span>
 </span></span></code></pre></div><h3 id="3r实现">3、R实现</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">generate_gmm_data</span> <span class="o">&lt;-</span> <span class="nf">function </span><span class="p">(</span><span class="n">params_list</span><span class="o">=</span><span class="kc">NULL</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">generate_gmm_data</span> <span class="o">&lt;-</span> <span class="kr">function</span> <span class="p">(</span><span class="n">params_list</span><span class="o">=</span><span class="kc">NULL</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="c1"># params_list是一个list类型，应当包含以下几个数据</span>
 </span></span><span class="line"><span class="cl">  <span class="c1"># total_num: 需要生成数据的数量</span>
 </span></span><span class="line"><span class="cl">  <span class="c1"># weight_vec: 各类别的权重</span>
 </span></span><span class="line"><span class="cl">  <span class="c1"># mean_list: 均值列表</span>
 </span></span><span class="line"><span class="cl">  <span class="c1"># cov_mat_list: 协方差矩阵列表</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">if </span><span class="p">(</span><span class="nf">is.list</span><span class="p">(</span><span class="n">params_list</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">if</span> <span class="p">(</span><span class="nf">is.list</span><span class="p">(</span><span class="n">params_list</span><span class="p">))</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">weight_vec</span> <span class="o">&lt;-</span> <span class="n">params_list</span><span class="o">$</span><span class="n">weight_vec</span>
 </span></span><span class="line"><span class="cl">    <span class="n">total_num</span> <span class="o">&lt;-</span> <span class="n">params_list</span><span class="o">$</span><span class="n">total_num</span>
 </span></span><span class="line"><span class="cl">    <span class="n">mean_list</span> <span class="o">&lt;-</span> <span class="n">params_list</span><span class="o">$</span><span class="n">mean_list</span>
 </span></span><span class="line"><span class="cl">    <span class="n">cov_mat_list</span> <span class="o">&lt;-</span> <span class="n">params_list</span><span class="o">$</span><span class="n">cov_mat_list</span>
 </span></span><span class="line"><span class="cl">    <span class="n">cluster_num</span> <span class="o">&lt;-</span> <span class="nf">length</span><span class="p">(</span><span class="n">weight_vec</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="n">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="kr">else</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1"># 如果没有给定参数列表，则使用默认设置</span>
 </span></span><span class="line"><span class="cl">    <span class="n">weight_vec</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">0.3</span><span class="p">,</span> <span class="m">0.3</span><span class="p">,</span> <span class="m">0.4</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="n">total_num</span> <span class="o">&lt;-</span> <span class="m">100</span>
@@ -1040,44 +1048,44 @@ $$</p>
 </span></span><span class="line"><span class="cl">    <span class="nf">print</span><span class="p">(</span><span class="s">&#34;hhh&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="c1"># 判断cluster数量与mean_list和cov_mat_list中元素个数是否相等</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">if </span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">weight_vec</span><span class="p">)</span> <span class="o">!=</span> <span class="n">cluster_num</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">if</span> <span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">weight_vec</span><span class="p">)</span> <span class="o">!=</span> <span class="n">cluster_num</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">stop</span><span class="p">(</span><span class="s">&#34;The length of weight vector is not equal to number of cluster&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">if </span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">mean_list</span><span class="p">)</span> <span class="o">!=</span> <span class="n">cluster_num</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">if</span> <span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">mean_list</span><span class="p">)</span> <span class="o">!=</span> <span class="n">cluster_num</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">stop</span><span class="p">(</span><span class="s">&#34;The length of mean list is not equal to number of cluster&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">if </span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">cov_mat_list</span><span class="p">)</span> <span class="o">!=</span> <span class="n">cluster_num</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">if</span> <span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">cov_mat_list</span><span class="p">)</span> <span class="o">!=</span> <span class="n">cluster_num</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">stop</span><span class="p">(</span><span class="s">&#34;The length of covariance matrix list is not equal to number of cluster&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="c1"># 各类别的数量</span>
 </span></span><span class="line"><span class="cl">  <span class="n">num_before_k</span> <span class="o">&lt;-</span> <span class="m">0</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">for </span><span class="p">(</span><span class="n">k</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">cluster_num</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">if </span><span class="p">(</span><span class="n">k</span> <span class="o">&lt;</span> <span class="n">cluster_num</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">for</span> <span class="p">(</span><span class="n">k</span> <span class="kr">in</span> <span class="m">1</span><span class="o">:</span><span class="n">cluster_num</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">if</span> <span class="p">(</span><span class="n">k</span> <span class="o">&lt;</span> <span class="n">cluster_num</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">      <span class="n">num_k</span> <span class="o">&lt;-</span> <span class="nf">floor</span><span class="p">(</span><span class="n">weight_vec[k]</span> <span class="o">*</span> <span class="n">total_num</span><span class="p">)</span> <span class="c1"># 采用向下取整的策略，并在最后一组做处理</span>
 </span></span><span class="line"><span class="cl">      <span class="n">num_before_k</span> <span class="o">&lt;-</span> <span class="n">num_before_k</span> <span class="o">+</span> <span class="n">num_k</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="n">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="kr">else</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">      <span class="n">num_k</span> <span class="o">&lt;-</span> <span class="n">total_num</span> <span class="o">-</span> <span class="n">num_before_k</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="n">X_mat_k</span> <span class="o">&lt;-</span> <span class="nf">rmvnorm</span><span class="p">(</span><span class="n">num_k</span><span class="p">,</span> <span class="n">mean_list[[k]]</span><span class="p">,</span> <span class="n">cov_mat_list[[k]]</span><span class="p">)</span> <span class="c1"># 生成一个num_k * p 维的matrix</span>
 </span></span><span class="line"><span class="cl">    <span class="n">y_vec_k</span> <span class="o">&lt;-</span> <span class="nf">rep</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">num_k</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">if </span><span class="p">(</span><span class="n">k</span> <span class="o">==</span> <span class="m">1</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">if</span> <span class="p">(</span><span class="n">k</span> <span class="o">==</span> <span class="m">1</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">      <span class="n">X_mat</span> <span class="o">&lt;-</span> <span class="n">X_mat_k</span>
 </span></span><span class="line"><span class="cl">      <span class="n">y_vec</span> <span class="o">&lt;-</span> <span class="n">y_vec_k</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="n">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="kr">else</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">      <span class="c1"># 纵向合并</span>
 </span></span><span class="line"><span class="cl">      <span class="n">X_mat</span> <span class="o">&lt;-</span> <span class="nf">rbind</span><span class="p">(</span><span class="n">X_mat</span><span class="p">,</span> <span class="n">X_mat_k</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">      <span class="n">y_vec</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="n">y_vec</span><span class="p">,</span> <span class="n">y_vec_k</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="c1"># shuffle</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">if </span><span class="p">(</span><span class="n">shuffle</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">if</span> <span class="p">(</span><span class="n">shuffle</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">shuffle_index</span> <span class="o">&lt;-</span> <span class="nf">sample</span><span class="p">(</span><span class="n">total_num</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="n">X_mat</span> <span class="o">&lt;-</span> <span class="n">X_mat[shuffle_index</span><span class="p">,</span> <span class="n">]</span>
 </span></span><span class="line"><span class="cl">    <span class="n">y_vec</span> <span class="o">&lt;-</span> <span class="n">y_vec[shuffle_index]</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="c1"># 构造返回结果</span>
 </span></span><span class="line"><span class="cl">  <span class="n">res</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">(</span><span class="n">X_mat</span><span class="o">=</span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">X_mat</span><span class="p">),</span> <span class="n">y_vec</span><span class="o">=</span><span class="n">y_vec</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">return</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">return</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><blockquote>
 <p>由于GMM类似于聚类模型，因此可以使用Python中Sklearn库中的<code>make_blobs</code>函数快速生成数据</p>
@@ -1222,7 +1230,7 @@ $$</p>
 </span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">cov_mat_prediction</span> <span class="o">=</span> <span class="n">cov_mat_list</span>
 </span></span><span class="line"><span class="cl">    <span class="bp">self</span><span class="o">.</span><span class="n">pi_prediction</span> <span class="o">=</span> <span class="n">pi_list</span>
 </span></span></code></pre></div><h3 id="3r实现-1">3、R实现</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">gmm_em_algorithm</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">num_clusters</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="m">1e-3</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="m">100</span><span class="p">,</span> <span class="n">print_log</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">){</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">gmm_em_algorithm</span> <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">num_clusters</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="m">1e-3</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="m">100</span><span class="p">,</span> <span class="n">print_log</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">){</span>
 </span></span><span class="line"><span class="cl">  <span class="c1"># 实现混合高斯的EM算法</span>
 </span></span><span class="line"><span class="cl">  <span class="c1"># data: N * p维的一个matrix或者dataframe</span>
 </span></span><span class="line"><span class="cl">  <span class="c1"># num_clusters: 类别数</span>
@@ -1240,7 +1248,7 @@ $$</p>
 </span></span><span class="line"><span class="cl">  <span class="n">mean_mat</span> <span class="o">&lt;-</span> <span class="n">data[initial_index</span><span class="p">,</span> <span class="n">]</span> <span class="c1"># 是一个num_clusters * dimension的矩阵</span>
 </span></span><span class="line"><span class="cl">  <span class="n">cov_mat_list</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">  <span class="n">init_cov_mat</span> <span class="o">&lt;-</span> <span class="nf">cov</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">num_clusters</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">for</span> <span class="p">(</span><span class="n">i</span> <span class="kr">in</span> <span class="m">1</span><span class="o">:</span><span class="n">num_clusters</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">cov_mat_list[[i]]</span> <span class="o">&lt;-</span> <span class="n">init_cov_mat</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="c1"># 其他</span>
@@ -1251,10 +1259,10 @@ $$</p>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">  <span class="c1"># 迭代求解</span>
 </span></span><span class="line"><span class="cl">  <span class="n">step</span> <span class="o">&lt;-</span> <span class="m">0</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">while </span><span class="p">((</span><span class="nf">abs</span><span class="p">(</span><span class="n">diff_loglikelihood</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">eps</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">step</span> <span class="o">&lt;</span> <span class="n">max_iter</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">while</span> <span class="p">((</span><span class="nf">abs</span><span class="p">(</span><span class="n">diff_loglikelihood</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">eps</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">step</span> <span class="o">&lt;</span> <span class="n">max_iter</span><span class="p">))</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1"># E-Step</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">for </span><span class="p">(</span><span class="n">index</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">total_num</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nf">for </span><span class="p">(</span><span class="n">k</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">num_clusters</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">for</span> <span class="p">(</span><span class="n">index</span> <span class="kr">in</span> <span class="m">1</span><span class="o">:</span><span class="n">total_num</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="kr">for</span> <span class="p">(</span><span class="n">k</span> <span class="kr">in</span> <span class="m">1</span><span class="o">:</span><span class="n">num_clusters</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="c1"># 计算第index个个体属于第k个类别的概率</span>
 </span></span><span class="line"><span class="cl">        <span class="n">gamma_mat[index</span><span class="p">,</span> <span class="n">k]</span> <span class="o">&lt;-</span> <span class="n">pi_vec[k]</span> <span class="o">*</span> <span class="nf">dmvnorm</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">data[index</span><span class="p">,</span> <span class="n">]</span><span class="p">,</span> <span class="n">mean</span> <span class="o">=</span> <span class="n">mean_mat[k</span><span class="p">,</span> <span class="n">]</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">cov_mat_list[[k]]</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">      <span class="p">}</span>
@@ -1263,7 +1271,7 @@ $$</p>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="c1"># M-Step</span>
 </span></span><span class="line"><span class="cl">    <span class="n">gamma_k_vec</span> <span class="o">&lt;-</span> <span class="nf">colSums</span><span class="p">(</span><span class="n">gamma_mat</span><span class="p">)</span> <span class="c1"># 列求和, 得到每个组的gamma求和, size=cluster_num</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">for </span><span class="p">(</span><span class="n">k</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">num_clusters</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">for</span> <span class="p">(</span><span class="n">k</span> <span class="kr">in</span> <span class="m">1</span><span class="o">:</span><span class="n">num_clusters</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">      <span class="c1"># 更新均值</span>
 </span></span><span class="line"><span class="cl">      <span class="n">mean_mat[k</span><span class="p">,</span> <span class="n">]</span> <span class="o">&lt;-</span> <span class="nf">colSums</span><span class="p">(</span><span class="n">data</span> <span class="o">*</span> <span class="n">gamma_mat[</span><span class="p">,</span> <span class="n">k]</span><span class="p">)</span> <span class="o">/</span> <span class="n">gamma_k_vec[k]</span>
 </span></span><span class="line"><span class="cl">      <span class="c1"># 更新协方差矩阵</span>
@@ -1275,7 +1283,7 @@ $$</p>
 </span></span><span class="line"><span class="cl">    <span class="c1"># 计算对数似然</span>
 </span></span><span class="line"><span class="cl">    <span class="n">part1</span> <span class="o">&lt;-</span> <span class="n">total_num</span> <span class="o">*</span> <span class="nf">sum</span><span class="p">(</span><span class="n">pi_vec</span> <span class="o">*</span> <span class="nf">log</span><span class="p">(</span><span class="n">pi_vec</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">    <span class="n">part2</span> <span class="o">&lt;-</span> <span class="m">0</span>
-</span></span><span class="line"><span class="cl">    <span class="nf">for </span><span class="p">(</span><span class="n">k</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">num_clusters</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">for</span> <span class="p">(</span><span class="n">k</span> <span class="kr">in</span> <span class="m">1</span><span class="o">:</span><span class="n">num_clusters</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">      <span class="c1"># print(cov_mat_list[[k]])</span>
 </span></span><span class="line"><span class="cl">      <span class="n">part2</span> <span class="o">&lt;-</span> <span class="n">part2</span> <span class="o">+</span> <span class="nf">sum</span><span class="p">(</span><span class="n">gamma_mat[</span><span class="p">,</span> <span class="n">k]</span> <span class="o">*</span> <span class="nf">dmvnorm</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">mean_mat[k</span><span class="p">,</span> <span class="n">]</span><span class="p">,</span> <span class="n">cov_mat_list[[k]]</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
@@ -1284,13 +1292,13 @@ $$</p>
 </span></span><span class="line"><span class="cl">      <span class="n">step</span> <span class="o">&lt;-</span> <span class="n">step</span> <span class="o">+</span> <span class="m">1</span>
 </span></span><span class="line"><span class="cl">      <span class="n">diff_loglikelihood</span> <span class="o">&lt;-</span> <span class="n">loglikelihood_new</span> <span class="o">-</span> <span class="n">loglikelihood_old</span>
 </span></span><span class="line"><span class="cl">      <span class="n">loglikelihood_old</span> <span class="o">&lt;-</span> <span class="n">loglikelihood_new</span>
-</span></span><span class="line"><span class="cl">      <span class="nf">if </span><span class="p">(</span><span class="n">print_log</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="kr">if</span> <span class="p">(</span><span class="n">print_log</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nf">print</span><span class="p">(</span><span class="s">&#34;-----------------------------------------------&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="nf">print</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&#34;Iteration: &#34;</span><span class="p">,</span> <span class="nf">as.character</span><span class="p">(</span><span class="n">step</span><span class="p">)))</span>
 </span></span><span class="line"><span class="cl">        <span class="nf">print</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&#34;Loglikehood Diff: &#34;</span><span class="p">,</span> <span class="nf">as.character</span><span class="p">(</span><span class="n">diff_loglikelihood</span><span class="p">)))</span>
 </span></span><span class="line"><span class="cl">      <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="nf">if </span><span class="p">(</span><span class="n">print_log</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">if</span> <span class="p">(</span><span class="n">print_log</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">print</span><span class="p">(</span><span class="s">&#34;============================================&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">print</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&#34;Total Iteration: &#34;</span><span class="p">,</span> <span class="nf">as.character</span><span class="p">(</span><span class="n">step</span><span class="p">)))</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
@@ -1300,7 +1308,7 @@ $$</p>
 </span></span><span class="line"><span class="cl">    <span class="n">weight_pred</span> <span class="o">=</span> <span class="n">pi_vec</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="n">mean_pred</span> <span class="o">=</span> <span class="n">mean_mat</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="n">cov_mat_pred</span> <span class="o">=</span> <span class="n">cov_mat_list</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="n">label_pred</span> <span class="o">=</span> <span class="nf">as.numeric</span><span class="p">(</span><span class="nf">apply</span><span class="p">(</span><span class="n">gamma_mat</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="nf">function</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="nf">colnames</span><span class="p">(</span><span class="n">gamma_mat</span><span class="p">)</span><span class="nf">[which.max</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="n">]</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">label_pred</span> <span class="o">=</span> <span class="nf">as.numeric</span><span class="p">(</span><span class="nf">apply</span><span class="p">(</span><span class="n">gamma_mat</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="kr">function</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="nf">colnames</span><span class="p">(</span><span class="n">gamma_mat</span><span class="p">)</span><span class="nf">[which.max</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="n">]</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">  <span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><h3 id="4第三方工具库">4、第三方工具库</h3>
@@ -1717,7 +1725,7 @@ $$</p>
       
       
       
-      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-themes" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+      Published with <a href="https://hugoblox.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Hugo Blox Builder</a> — the free, <a href="https://github.com/HugoBlox/hugo-blox-builder" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
     
   </p>
 </footer>
@@ -1729,7 +1737,7 @@ $$</p>
   
 
 
-<script src="/js/vendor-bundle.min.b5622475b4b8e8dd4f17b274b09af356.js"></script>
+<script src="/js/vendor-bundle.min.938a3a7554cd9f6602290411f64d2617.js"></script>
 
 
 
@@ -1797,8 +1805,17 @@ $$</p>
 
 
 
-<script id="page-data" type="application/json">{"use_headroom":true}</script>
 
+
+
+
+
+
+
+
+
+
+<script id="page-data" type="application/json">{"use_headroom":true}</script>
 
 
   <script src="/js/wowchemy-headroom.db4755770454eb63685f8de785c0a172.js" type="module"></script>
@@ -1815,7 +1832,7 @@ $$</p>
   
 
 
-<script src="/en/js/wowchemy.min.59eaa25b822e34224debaefcbad91f7a.js"></script>
+<script src="/en/js/wowchemy.min.62586ca65ca61821fe707eb9fa6268b7.js"></script>
 
 
 
@@ -1851,7 +1868,7 @@ $$</p>
 </div>
 
 
-  <script src="/js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
+  <script src="/js/wowchemy-publication.9137013a66774049159934c29c3f0205.js" type="module"></script>
 
 
 

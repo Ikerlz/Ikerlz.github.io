@@ -5,7 +5,7 @@
     <link>https://ikerlz.github.io/notes/</link>
       <atom:link href="https://ikerlz.github.io/notes/index.xml" rel="self" type="application/rss+xml" />
     <description>Notes</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 20 Nov 2023 22:16:45 +0800</lastBuildDate>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 20 Nov 2023 22:16:45 +0800</lastBuildDate>
     <image>
       <url>https://ikerlz.github.io/media/icon_hu9ccd2acdcd774e20fa34966445b706a8_6997380_512x512_fill_lanczos_center_3.png</url>
       <title>Notes</title>
@@ -767,6 +767,7 @@ $$&lt;/li&gt;
 &lt;h2 id=&#34;3-determining-the-number-of-factors-via-cross-validation&#34;&gt;3. Determining the number of factors via cross validation&lt;/h2&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;4-monte-carlo-simulations&#34;&gt;4. Monte Carlo simulations&lt;/h2&gt;
+&lt;p&gt;sss&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;5-empirical-application-forecasting-macroeconomic-variables&#34;&gt;5. Empirical application: Forecasting macroeconomic variables&lt;/h2&gt;
 </description>
