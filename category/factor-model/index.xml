@@ -231,6 +231,401 @@ where $\Omega_{\perp}=\{(i, t) \in[N] \times[T]:(i, t) \notin \Omega\}$.&lt;/li&
 ~\\\
 ~\\\
 $$&lt;/p&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h2 id=&#34;asymptotic-properties-of-the-initial-estimators&#34;&gt;Asymptotic properties of the initial estimators&lt;/h2&gt;
+&lt;p&gt;&lt;font color=&#34;blue&#34;&gt;&lt;strong&gt;Theorem 2.1.&lt;/strong&gt;&lt;/font&gt; Suppose some assumptions hold. Then
+$$\frac{1}{T}\Big\|\hat{F}^{(0)}-F^0 \hat{H}^{(0)}\Big\|_F^2=O_P\left({\color{red}\delta_{N T}^{-2}}\right)$$
+where $\delta_{N T}=\sqrt{N} \wedge \sqrt{T}$.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$\hat{H}^{(0)}$ is defined as
+$$
+\hat{H}^{(0)}=\left(N^{-1} \Lambda^{0 \prime} \Lambda^0\right) T^{-1} F^{0 \prime} \hat{F}^{(0)}\left(\hat{D}^{(0)}\right)^{-1},
+$$
+where $\hat{D}^{(0)}$ is asymptotically nonsingular by Lemma A.1.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h2 id=&#34;asymptotic-distributions&#34;&gt;Asymptotic distributions&lt;/h2&gt;
+&lt;p&gt;&lt;font color=&#34;blue&#34;&gt;&lt;strong&gt;Theorem 2.2.&lt;/strong&gt;&lt;/font&gt; Suppose some assumptions hold. Suppose that $\left(T^{1 / 2}+N^{1 / 2}\right) \delta_{N T}^{-2}=o(1)$. Let $\hat{\Pi}_{t N}^{(0)}=\sqrt{N}\Big(\hat{F}_t^{(0)}-\hat{H}^{(0) \prime} F_t^0\Big)$ and $\hat{\Pi}_{i T}^{(0)}=\sqrt{T}\Big(\hat{\lambda}_i^{(0)}-(\hat{H}^{(0)})^{-1} \lambda_i^0\Big)$. Then as $(N, T) \rightarrow \infty$&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;$\hat{\Pi}_{t N}^{(0)}=\Big(\hat{D}^{(0)}\Big)^{-1} \frac{1}{T} \hat{F}^{(0) t} F^0 \frac{1}{\sqrt{N} q} \sum_{i=1}^N \lambda_i^0 \xi_{i t}+O_P\Big(N^{1 / 2} \delta_{N T}^{-2}\Big) \rightarrow N\Big(0, D^{-1} Q \Gamma_{g, t}(q) Q^{\prime} D^{-1}\Big) \mathcal{G}^t$-stably,&lt;/li&gt;
+&lt;li&gt;$\hat{\Pi}_{i T}^{(0)}=\hat{H}^{(0) \prime} \frac{1}{\sqrt{T} q} \sum_{t=1}^T F_t^0 \xi_{i t}+O_P\left(T^{1 / 2} \delta_{N T}^{-2}\right) \rightarrow N\left(0,\left(Q^{\prime}\right)^{-1} \Phi_{g, i}(q) Q^{-1}\right) \mathcal{G}^i$-stably,&lt;/li&gt;
+&lt;li&gt;$\Big(\frac{1}{N} \Sigma_{F, i t}^{(0)}(q)+\frac{1}{T} \Sigma_{\Lambda, i t}^{(0)}(q)\Big)^{-1 / 2}\Big(\hat{C}_{i t}^{(0)}-C_{i t}^0\Big) \stackrel{d}{\rightarrow} N(0,1)$,&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h2 id=&#34;asymptotic-properties-of-the-iterated-estimators&#34;&gt;Asymptotic properties of the iterated estimators&lt;/h2&gt;
+&lt;p&gt;&lt;font color=&#34;blue&#34;&gt;&lt;strong&gt;Theorem 2.3.&lt;/strong&gt;&lt;/font&gt; Suppose some assumptions hold. Then
+$$\frac{1}{T}\Big\|\hat{F}^{(\ell)}-F^0 \hat{H}^{(\ell)}\Big\|^2=O_P\left(\delta_{N T}^{-2}\right)$$
+for each $\ell$, where $\hat{H}^{(\ell)}$ is defined as
+$$
+\hat{H}^{(\ell)}=\left(N^{-1} \Lambda^{0 \prime} \Lambda^0\right) T^{-1} F^{0 \prime} \hat{F}^{(\ell)}\Big(\hat{D}^{(\ell)}\Big)^{-1},
+$$&lt;/p&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h2 id=&#34;asymptotic-distributions-1&#34;&gt;Asymptotic distributions&lt;/h2&gt;
+&lt;p&gt;&lt;font color=&#34;blue&#34;&gt;&lt;strong&gt;Theorem 2.4.&lt;/strong&gt;&lt;/font&gt; Suppose some assumptions hold. Suppose that &lt;mark&gt;$\sqrt{N}\big(T^{\gamma_1 / 4} \delta_{N T}^{-2} \ln T+T^{-1+3 \gamma_1 / 4}\big)=o(1)$&lt;/mark&gt; and &lt;mark&gt;$\sqrt{T}\big(N^{\gamma_2 / 4} \delta_{N T}^{-2} \ln N+N^{-1+3 \gamma_2 / 4}\big)=o(1)$&lt;/mark&gt;. Let $\hat{\Pi}_{t N}^{(\ell)}=\sqrt{N}\Big(\hat{F}_t^{(\ell)}-\hat{H}^{(\ell) \prime} F_t^0\Big)$ and $\hat{\Pi}_{i T}^{(\ell)}=\sqrt{T}\Big(\hat{\lambda}_i^{(\ell)}-\hat{H}^{(\ell)-1} \lambda_i^0\Big)$. Then&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$\hat{\Pi}_{t N}^{(\ell)}=D^{-1} Q \frac{1}{\sqrt{N}} \sum_{i=1}^N \lambda_i^0 \varepsilon_{i t} g_{i t}+(1-q) \hat{\Pi}_{t N}^{(\ell-1)}+o_P(1)$ uniformly in $t$ and
+$$
+\hat{\Pi}_{t N}^{(\ell)} \stackrel{d}{\rightarrow} N\left(0, D^{-1} Q {\color{red}\Gamma_{1 g, t}(q)} Q^{\prime} D^{-1}\right) \text { as }(\ell, N, T) \rightarrow \infty
+$$&lt;/li&gt;
+&lt;li&gt;$\hat{\Pi}_{i T}^{(\ell)}=\left(Q^{\prime}\right)^{-1} \frac{1}{\sqrt{T}} \sum_{t=1}^T F_t^0 \varepsilon_{i t} g_{i t}+(1-q) \hat{\Pi}_{i T}^{(\ell-1)}+o_P(1)$ uniformly in $i$ and
+$$
+\hat{\Pi}_{i T} \stackrel{d}{\rightarrow} N\left(0,\left(Q^{\prime}\right)^{-1} {\color{red}\Phi_{1 g, i}(q)} Q^{-1}\right) \text { as }(\ell, N, T) \rightarrow \infty,
+$$&lt;/li&gt;
+&lt;li&gt;$\left(\frac{1}{N} \Sigma_{1 F, i t}+\frac{1}{T} \Sigma_{1 \Lambda, i t}\right)^{-1 / 2}\left(\hat{C}_{i t}^{(\ell)}-C_{i t}^0\right) \stackrel{d}{\rightarrow} N(0,1)$ as $(\ell, N, T) \rightarrow \infty$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h2 id=&#34;determining-the-number-of-factors-via-cv&#34;&gt;Determining the number of factors via CV&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Given the $T \times N$ matrix of observations $X$:
+&lt;ul&gt;
+&lt;li&gt;randomly sample elements in $X$ with a fixed probability $p \in(0,1)$&lt;/li&gt;
+&lt;li&gt;leave the rest $(1-p)$-proportion of observations as held-out entries for the out-of-sample evaluation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Let $\Omega^\star \subset[N] \times[T]$ be the index set of the training entries and $\Omega_{\perp}^\star$ the index set of the held-out entries.&lt;/li&gt;
+&lt;li&gt;Define the operator $P_{\Omega^\star}: \mathbb{R}^{T \times N} \rightarrow \mathbb{R}^{T \times N}$ by
+$$
+\left(P_{\Omega^\star} X\right)_{t i}=X_{i t} g_{i t}^\star=X_{i t} \mathbf{1}\left\{(i, t) \in \Omega^\star\right\},
+$$
+where $g_{i t}^\star=\mathbf{1}\left\{(i, t) \in \Omega^\star\right\}$.&lt;/li&gt;
+&lt;li&gt;Let $G^\star$ denote a $T \times N$ matrix with $(t, i)$ th element given by $g_{i t}^\star$.&lt;/li&gt;
+&lt;li&gt;Now we can regard $P_{\Omega^\star} X$ as the $T \times N$ data matrix with missing values replaced by zeros.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h2 id=&#34;determining-the-number-of-factors-via-cv-1&#34;&gt;Determining the number of factors via CV&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Given $P_{\Omega^\star} X$, we apply the proposed EM algorithm to recover the data via estimating the common component matrix $C$ for any given number of factors.&lt;/li&gt;
+&lt;li&gt;To proceed, we consider the full singular value decomposition (SVD) for $\frac{1}{p} P_{\Omega^\star} X$:
+$$
+\frac{1}{p} P_{\Omega^\star} X=\tilde{U} \tilde{\Sigma} \tilde{V}^{\prime}=\sum_{r=1}^{T \wedge N} \tilde{u}_r \tilde{v}_r^{\prime} \tilde{\sigma}_r,
+$$
+&lt;ul&gt;
+&lt;li&gt;$\tilde{U}\in\mathbb{R}^{T \times T}=\left(\tilde{u}_1, \ldots, \tilde{u}_T\right)$&lt;/li&gt;
+&lt;li&gt;$\tilde{V}\in\mathbb{R}^{N \times N}=\left(\tilde{v}_1, \ldots, \tilde{v}_N\right)$&lt;/li&gt;
+&lt;li&gt;$\tilde{\Sigma}\in\mathbb{R}^{T \times N}$ is the diagonal matrix that contains the singular values, $\tilde{\sigma}_1, \tilde{\sigma}_2, \ldots, \tilde{\sigma}_{T \wedge N}$, arranged in descending order along the main diagonal line.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Given any $R \leq T \wedge N$ and the training entries in $P_{\Omega^\star} X$, we can estimate the common component $C$ by the singular value thresholding procedure:
+$$
+\tilde{C}_R=S_H\left(\frac{1}{p} P_{\Omega^\star} X, R\right)=\tilde{U}_R \tilde{\Sigma}_R \tilde{V}_R^{\prime}=\sum_{r=1}^R \tilde{u}_r \tilde{v}_r^{\prime} \tilde{\sigma}_r,
+$$
+where $S_H(\cdot, R)$ is the rank-R truncated SVD of $\cdot$, t&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h2 id=&#34;determining-the-number-of-factors-via-cv-2&#34;&gt;Determining the number of factors via CV&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Let $\tilde{C}_{R, i t}$ denote the $(t, i)$ th element of $\tilde{C}_R$ for $R \geq 1$.&lt;/li&gt;
+&lt;li&gt;We propose to choose $R$ to minimize the following CV criterion function
+$$
+{\color{red}\widetilde{C V}(R)=\frac{1}{N T} \sum_{(i, t) \in \Omega_{\perp}^\star}\left[X_{i t}-\tilde{C}_{R, i t}\right]^2.}
+$$&lt;/li&gt;
+&lt;li&gt;Let $\tilde{R}=\arg \min _{0 \leq R \leq R_{\max }} \widetilde{C V}(R)$ where $R_{\max }$ is a fixed integer that is no less than $R_0$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;$$
+~\\\
+~\\\
+~\\\
+~\\\
+~\\\
+$$&lt;/p&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h2 id=&#34;a-more-efficient-method&#34;&gt;A more efficient method&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;font color=&#34;red&#34;&gt; Can we use the $\ell$-step estimator $\hat C_{R,it}^{(\ell)}$ ?&lt;/font&gt;&lt;/li&gt;
+&lt;li&gt;Suppose that we have obtained the estimates $\hat{C}_{R, i t}^{(\ell-1)}$. In step $\ell$, we can replace the zero elements in $X^\star \equiv P_{\Omega^\star} X$ with the estimated common components $\hat{C}_{R_{\max }, i t}^{(\ell-1)}$&lt;/li&gt;
+&lt;li&gt;Define the $T \times N$ matrix $\hat{X}^{\star(\ell)}$ with its $(t, i)$ th element given by
+$$
+\hat{X}_{i t}^{\star(\ell)}= \begin{cases}X_{i t} &amp;amp; \text { if }(i, t) \in \Omega^\star \\ \hat{C}_{R_{\max }^{(\ell-1)}}, &amp;amp; \text { if }(i, t) \in \Omega_{\perp}^\star, \ell \geq 1,\end{cases}
+$$
+where $\Omega_{\perp}^\star=\big\{(i, t) \in[N] \times[T]:(i, t) \notin \Omega^\star\big\}$&lt;/li&gt;
+&lt;li&gt;Conduct the singular value thresholding procedure:
+$$
+\hat{C}_R^{(\ell)}=S_H\big(\hat{X}^{*(\ell)}, R\big)=\hat{U}_R^{(\ell)} \hat{\Sigma}_R^{(\ell)} \hat{V}_R^{(\ell) \prime},
+$$&lt;/li&gt;
+&lt;li&gt;repeating the above procedure for $\ell=1, \ldots, \ell^\star \equiv\left\lfloor\ln \left(\epsilon_{N T}\right) / \log (p)\right\rfloor$&lt;/li&gt;
+&lt;li&gt;Let $\hat{C}_R=\hat{C}_R^{(\ell^\star)}$ and &lt;font color=&#34;blue&#34;&gt;$\hat{R}=\arg \min _{0 \leq R \leq R_{\max }} \widehat{C V}(R)$&lt;/font&gt;, where
+$$
+\widehat{C V}(R)=\frac{1}{N T} \sum_{(i, t) \in \Omega_{\perp}^\star}\left[X_{i t}-\hat{C}_{R, i t}\right]^2
+$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h2 id=&#34;the-consistency-of-the-cv-method&#34;&gt;The consistency of the CV method&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Assumption A.7.&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;For $r=R_{0+1}, \ldots, R_{\max }, \\ P\Big(\big\|\tilde{u}_r\big\|_{\infty}\big\|\tilde{v}_r\big\|_{\infty} \leq 1 /\big(c_0 \sqrt{(N+T) \log (N+T)}\big)\Big) \rightarrow 1$
+for some fixed $c_0&amp;lt;\infty$ as $(N, T) \rightarrow \infty$, $\left\|\tilde{u}_r\right\|_{\infty}=o_P(1)$, and $\left\|\tilde{v}_r\right\|_{\infty}=o_P(1)$&lt;/li&gt;
+&lt;li&gt;$\max _{(i, t) \in \Omega_{\perp}^\star} \sum_{(j, s) \in \Omega_{\perp}^\star}\left|E\left[\varepsilon_{i t} \varepsilon_{j s} \mid P_{\Omega^\star} X, \Omega^\star\right]\right|=o_P\left(\delta_{N T}^2\right)$.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;font color=&#34;blue&#34;&gt; &lt;strong&gt;Theorem 3.1.&lt;/strong&gt; &lt;/font&gt; Suppose some assumptions hold. Then $P\left(\tilde{R}&amp;lt;R_0\right) \rightarrow 0$ as $(N, T) \rightarrow \infty$. If Assumption A.7 also holds, then $P\left(\tilde{R}&amp;gt;R_0\right) \rightarrow 0$ as $(N, T) \rightarrow \infty$.&lt;/p&gt;
+&lt;p&gt;&lt;font color=&#34;blue&#34;&gt; &lt;strong&gt;Theorem 3.2.&lt;/strong&gt; &lt;/font&gt; Suppose some assumptions hold. Then $P\left(\hat{R}&amp;lt;R_0\right) \rightarrow 0$ as $(N, T) \rightarrow \infty$. If Assumption A.7 also holds, then $P\left(\hat{R}&amp;gt;R_0\right) \rightarrow 0$ as $(N, T) \rightarrow \infty$.&lt;/p&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h2 id=&#34;cv-in-the-presence-of-random-missing&#34;&gt;CV in the presence of random missing&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Consider the SVD for $\frac{1}{p \tilde{q}} P_{\Omega^\star} P_{\Omega} X$ :
+$$
+\frac{1}{p \tilde{q}} P_{\Omega^\star} P_{\Omega} X=\tilde{U} \tilde{\Sigma} \tilde{V}^{\prime},
+$$&lt;/li&gt;
+&lt;li&gt;Then we estimate the common component $C$:
+$$
+\tilde{C}_R=S_H\left(\frac{1}{p \tilde{q}} P_{\Omega^\star} P_{\Omega} X, R\right)=\tilde{U}_R \tilde{\Sigma}_R \tilde{V}_R^{\prime},
+$$
+where $\tilde{U}_R, \tilde{V}_R$, and $\tilde{\Sigma}_R$ are defined as before. Let $\tilde{R} \in\big\{0,1,2, \ldots, R_{\max }\big\}$ minimize the following $\mathrm{CV}$ function
+$$
+\widetilde{C V}(R)=\frac{1}{N T} \sum_{(i, t) \in {\color{red}\Omega_{\perp}^\star \cap \Omega}}\left[X_{i t}-\tilde{C}_{R, i t}\right]^2,
+$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h2 id=&#34;simulation&#34;&gt;Simulation&lt;/h2&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;screen reader text&#34; srcset=&#34;
+               /slides/factormissing/res1_hud27e756e265fc0d2cb710f209c9d45db_107607_2f7cec5a10d7bfe6d412012a5ab9c0a5.webp 400w,
+               /slides/factormissing/res1_hud27e756e265fc0d2cb710f209c9d45db_107607_05f2bf9c31e512fe355ea8d1ef4f5611.webp 760w,
+               /slides/factormissing/res1_hud27e756e265fc0d2cb710f209c9d45db_107607_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://ikerlz.github.io/slides/factormissing/res1_hud27e756e265fc0d2cb710f209c9d45db_107607_2f7cec5a10d7bfe6d412012a5ab9c0a5.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;341&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h2 id=&#34;simulation-1&#34;&gt;Simulation&lt;/h2&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;screen reader text&#34; srcset=&#34;
+               /slides/factormissing/res2_hu23b46a819b33dded3f66308db50b25de_133888_88b57d810d199bbfeed191044ef9817f.webp 400w,
+               /slides/factormissing/res2_hu23b46a819b33dded3f66308db50b25de_133888_66fba2e54ad960eb84d5c21b2ad1b172.webp 760w,
+               /slides/factormissing/res2_hu23b46a819b33dded3f66308db50b25de_133888_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://ikerlz.github.io/slides/factormissing/res2_hu23b46a819b33dded3f66308db50b25de_133888_88b57d810d199bbfeed191044ef9817f.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;341&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h2 id=&#34;simulation-2&#34;&gt;Simulation&lt;/h2&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;screen reader text&#34; srcset=&#34;
+               /slides/factormissing/res3_hu7874055ca76ca648576350362febeb90_146809_05d4439d9d2a0dc25dcadca149a1e7c4.webp 400w,
+               /slides/factormissing/res3_hu7874055ca76ca648576350362febeb90_146809_f351b6581254c888c8fc99a8d24e00bc.webp 760w,
+               /slides/factormissing/res3_hu7874055ca76ca648576350362febeb90_146809_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://ikerlz.github.io/slides/factormissing/res3_hu7874055ca76ca648576350362febeb90_146809_05d4439d9d2a0dc25dcadca149a1e7c4.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;365&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h2 id=&#34;empirical-application-forecasting-macroeconomic-variables&#34;&gt;Empirical application: Forecasting macroeconomic variables&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;We use a panel dataset FRED-QD, which is an unbalanced panel at the quarterly frequency.&lt;/li&gt;
+&lt;li&gt;The dataset consists of 248 quarterly U.S. indicators from 1959Q1 to 2018Q2.&lt;/li&gt;
+&lt;li&gt;Use 125 time series to estimate the latent factors.&lt;/li&gt;
+&lt;li&gt;Consider the forecast based on the following factor-augmented autoregression (FA-AR) models:
+$$
+y_{t+h}^h=\phi_h^{(1)}+\phi_h^{(2)}(L) \hat{F}_t+\phi_h^{(3)}(L) y_t+\varepsilon_{t+h}^h, h=1,2,4,
+$$
+&lt;ul&gt;
+&lt;li&gt;$y_t$ is one of the four macro-variables (i.e., RGDP, GDP, IP, and RDPI)&lt;/li&gt;
+&lt;li&gt;$\hat{F}_t$ is the estimated vector of factors&lt;/li&gt;
+&lt;li&gt;$\phi_h^{(1)}$ is the intercept term, $L$ is the lag operator&lt;/li&gt;
+&lt;li&gt;$\phi_h^{(2)}(L)$ and $\phi_h^{(3)}(L)$ are finite-order polynomials of the lag operators&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h2 id=&#34;empirical-application-forecasting-macroeconomic-variables-1&#34;&gt;Empirical application: Forecasting macroeconomic variables&lt;/h2&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;screen reader text&#34; srcset=&#34;
+               /slides/factormissing/res4_hub014dcadc3f19bd2f11bc127b0f473cb_90038_1f791bf979cecda35c8f819415e4ea57.webp 400w,
+               /slides/factormissing/res4_hub014dcadc3f19bd2f11bc127b0f473cb_90038_9e51371ff9ad119475e615645fe18bd8.webp 760w,
+               /slides/factormissing/res4_hub014dcadc3f19bd2f11bc127b0f473cb_90038_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://ikerlz.github.io/slides/factormissing/res4_hub014dcadc3f19bd2f11bc127b0f473cb_90038_1f791bf979cecda35c8f819415e4ea57.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;234&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h1 id=&#34;thanks-&#34;&gt;Thanks !&lt;/h1&gt;
 </description>
     </item>
     

@@ -332,6 +332,513 @@ $$</p>
 
     
     
+    
+      
+
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="body1.jpg"
+  >
+
+<h2 id="asymptotic-properties-of-the-initial-estimators">Asymptotic properties of the initial estimators</h2>
+<p><font color="blue"><strong>Theorem 2.1.</strong></font> Suppose some assumptions hold. Then
+$$\frac{1}{T}\Big\|\hat{F}^{(0)}-F^0 \hat{H}^{(0)}\Big\|_F^2=O_P\left({\color{red}\delta_{N T}^{-2}}\right)$$
+where $\delta_{N T}=\sqrt{N} \wedge \sqrt{T}$.</p>
+<ul>
+<li>$\hat{H}^{(0)}$ is defined as
+$$
+\hat{H}^{(0)}=\left(N^{-1} \Lambda^{0 \prime} \Lambda^0\right) T^{-1} F^{0 \prime} \hat{F}^{(0)}\left(\hat{D}^{(0)}\right)^{-1},
+$$
+where $\hat{D}^{(0)}$ is asymptotically nonsingular by Lemma A.1.</li>
+</ul>
+
+    </section>
+    
+
+    
+    
+    
+      
+
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="body1.jpg"
+  >
+
+<h2 id="asymptotic-distributions">Asymptotic distributions</h2>
+<p><font color="blue"><strong>Theorem 2.2.</strong></font> Suppose some assumptions hold. Suppose that $\left(T^{1 / 2}+N^{1 / 2}\right) \delta_{N T}^{-2}=o(1)$. Let $\hat{\Pi}_{t N}^{(0)}=\sqrt{N}\Big(\hat{F}_t^{(0)}-\hat{H}^{(0) \prime} F_t^0\Big)$ and $\hat{\Pi}_{i T}^{(0)}=\sqrt{T}\Big(\hat{\lambda}_i^{(0)}-(\hat{H}^{(0)})^{-1} \lambda_i^0\Big)$. Then as $(N, T) \rightarrow \infty$</p>
+<ol>
+<li>$\hat{\Pi}_{t N}^{(0)}=\Big(\hat{D}^{(0)}\Big)^{-1} \frac{1}{T} \hat{F}^{(0) t} F^0 \frac{1}{\sqrt{N} q} \sum_{i=1}^N \lambda_i^0 \xi_{i t}+O_P\Big(N^{1 / 2} \delta_{N T}^{-2}\Big) \rightarrow N\Big(0, D^{-1} Q \Gamma_{g, t}(q) Q^{\prime} D^{-1}\Big) \mathcal{G}^t$-stably,</li>
+<li>$\hat{\Pi}_{i T}^{(0)}=\hat{H}^{(0) \prime} \frac{1}{\sqrt{T} q} \sum_{t=1}^T F_t^0 \xi_{i t}+O_P\left(T^{1 / 2} \delta_{N T}^{-2}\right) \rightarrow N\left(0,\left(Q^{\prime}\right)^{-1} \Phi_{g, i}(q) Q^{-1}\right) \mathcal{G}^i$-stably,</li>
+<li>$\Big(\frac{1}{N} \Sigma_{F, i t}^{(0)}(q)+\frac{1}{T} \Sigma_{\Lambda, i t}^{(0)}(q)\Big)^{-1 / 2}\Big(\hat{C}_{i t}^{(0)}-C_{i t}^0\Big) \stackrel{d}{\rightarrow} N(0,1)$,</li>
+</ol>
+
+    </section>
+    
+
+    
+    
+    
+      
+
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="body1.jpg"
+  >
+
+<h2 id="asymptotic-properties-of-the-iterated-estimators">Asymptotic properties of the iterated estimators</h2>
+<p><font color="blue"><strong>Theorem 2.3.</strong></font> Suppose some assumptions hold. Then
+$$\frac{1}{T}\Big\|\hat{F}^{(\ell)}-F^0 \hat{H}^{(\ell)}\Big\|^2=O_P\left(\delta_{N T}^{-2}\right)$$
+for each $\ell$, where $\hat{H}^{(\ell)}$ is defined as
+$$
+\hat{H}^{(\ell)}=\left(N^{-1} \Lambda^{0 \prime} \Lambda^0\right) T^{-1} F^{0 \prime} \hat{F}^{(\ell)}\Big(\hat{D}^{(\ell)}\Big)^{-1},
+$$</p>
+
+    </section>
+    
+
+    
+    
+    
+      
+
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="body1.jpg"
+  >
+
+<h2 id="asymptotic-distributions-1">Asymptotic distributions</h2>
+<p><font color="blue"><strong>Theorem 2.4.</strong></font> Suppose some assumptions hold. Suppose that <mark>$\sqrt{N}\big(T^{\gamma_1 / 4} \delta_{N T}^{-2} \ln T+T^{-1+3 \gamma_1 / 4}\big)=o(1)$</mark> and <mark>$\sqrt{T}\big(N^{\gamma_2 / 4} \delta_{N T}^{-2} \ln N+N^{-1+3 \gamma_2 / 4}\big)=o(1)$</mark>. Let $\hat{\Pi}_{t N}^{(\ell)}=\sqrt{N}\Big(\hat{F}_t^{(\ell)}-\hat{H}^{(\ell) \prime} F_t^0\Big)$ and $\hat{\Pi}_{i T}^{(\ell)}=\sqrt{T}\Big(\hat{\lambda}_i^{(\ell)}-\hat{H}^{(\ell)-1} \lambda_i^0\Big)$. Then</p>
+<ul>
+<li>$\hat{\Pi}_{t N}^{(\ell)}=D^{-1} Q \frac{1}{\sqrt{N}} \sum_{i=1}^N \lambda_i^0 \varepsilon_{i t} g_{i t}+(1-q) \hat{\Pi}_{t N}^{(\ell-1)}+o_P(1)$ uniformly in $t$ and
+$$
+\hat{\Pi}_{t N}^{(\ell)} \stackrel{d}{\rightarrow} N\left(0, D^{-1} Q {\color{red}\Gamma_{1 g, t}(q)} Q^{\prime} D^{-1}\right) \text { as }(\ell, N, T) \rightarrow \infty
+$$</li>
+<li>$\hat{\Pi}_{i T}^{(\ell)}=\left(Q^{\prime}\right)^{-1} \frac{1}{\sqrt{T}} \sum_{t=1}^T F_t^0 \varepsilon_{i t} g_{i t}+(1-q) \hat{\Pi}_{i T}^{(\ell-1)}+o_P(1)$ uniformly in $i$ and
+$$
+\hat{\Pi}_{i T} \stackrel{d}{\rightarrow} N\left(0,\left(Q^{\prime}\right)^{-1} {\color{red}\Phi_{1 g, i}(q)} Q^{-1}\right) \text { as }(\ell, N, T) \rightarrow \infty,
+$$</li>
+<li>$\left(\frac{1}{N} \Sigma_{1 F, i t}+\frac{1}{T} \Sigma_{1 \Lambda, i t}\right)^{-1 / 2}\left(\hat{C}_{i t}^{(\ell)}-C_{i t}^0\right) \stackrel{d}{\rightarrow} N(0,1)$ as $(\ell, N, T) \rightarrow \infty$.</li>
+</ul>
+
+    </section>
+    
+
+    
+    
+    
+      
+
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="body1.jpg"
+  >
+
+<h2 id="determining-the-number-of-factors-via-cv">Determining the number of factors via CV</h2>
+<ul>
+<li>Given the $T \times N$ matrix of observations $X$:
+<ul>
+<li>randomly sample elements in $X$ with a fixed probability $p \in(0,1)$</li>
+<li>leave the rest $(1-p)$-proportion of observations as held-out entries for the out-of-sample evaluation.</li>
+</ul>
+</li>
+<li>Let $\Omega^\star \subset[N] \times[T]$ be the index set of the training entries and $\Omega_{\perp}^\star$ the index set of the held-out entries.</li>
+<li>Define the operator $P_{\Omega^\star}: \mathbb{R}^{T \times N} \rightarrow \mathbb{R}^{T \times N}$ by
+$$
+\left(P_{\Omega^\star} X\right)_{t i}=X_{i t} g_{i t}^\star=X_{i t} \mathbf{1}\left\{(i, t) \in \Omega^\star\right\},
+$$
+where $g_{i t}^\star=\mathbf{1}\left\{(i, t) \in \Omega^\star\right\}$.</li>
+<li>Let $G^\star$ denote a $T \times N$ matrix with $(t, i)$ th element given by $g_{i t}^\star$.</li>
+<li>Now we can regard $P_{\Omega^\star} X$ as the $T \times N$ data matrix with missing values replaced by zeros.</li>
+</ul>
+
+    </section>
+    
+
+    
+    
+    
+      
+
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="body1.jpg"
+  >
+
+<h2 id="determining-the-number-of-factors-via-cv-1">Determining the number of factors via CV</h2>
+<ul>
+<li>Given $P_{\Omega^\star} X$, we apply the proposed EM algorithm to recover the data via estimating the common component matrix $C$ for any given number of factors.</li>
+<li>To proceed, we consider the full singular value decomposition (SVD) for $\frac{1}{p} P_{\Omega^\star} X$:
+$$
+\frac{1}{p} P_{\Omega^\star} X=\tilde{U} \tilde{\Sigma} \tilde{V}^{\prime}=\sum_{r=1}^{T \wedge N} \tilde{u}_r \tilde{v}_r^{\prime} \tilde{\sigma}_r,
+$$
+<ul>
+<li>$\tilde{U}\in\mathbb{R}^{T \times T}=\left(\tilde{u}_1, \ldots, \tilde{u}_T\right)$</li>
+<li>$\tilde{V}\in\mathbb{R}^{N \times N}=\left(\tilde{v}_1, \ldots, \tilde{v}_N\right)$</li>
+<li>$\tilde{\Sigma}\in\mathbb{R}^{T \times N}$ is the diagonal matrix that contains the singular values, $\tilde{\sigma}_1, \tilde{\sigma}_2, \ldots, \tilde{\sigma}_{T \wedge N}$, arranged in descending order along the main diagonal line.</li>
+</ul>
+</li>
+<li>Given any $R \leq T \wedge N$ and the training entries in $P_{\Omega^\star} X$, we can estimate the common component $C$ by the singular value thresholding procedure:
+$$
+\tilde{C}_R=S_H\left(\frac{1}{p} P_{\Omega^\star} X, R\right)=\tilde{U}_R \tilde{\Sigma}_R \tilde{V}_R^{\prime}=\sum_{r=1}^R \tilde{u}_r \tilde{v}_r^{\prime} \tilde{\sigma}_r,
+$$
+where $S_H(\cdot, R)$ is the rank-R truncated SVD of $\cdot$, t</li>
+</ul>
+
+    </section>
+    
+
+    
+    
+    
+      
+
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="body1.jpg"
+  >
+
+<h2 id="determining-the-number-of-factors-via-cv-2">Determining the number of factors via CV</h2>
+<ul>
+<li>Let $\tilde{C}_{R, i t}$ denote the $(t, i)$ th element of $\tilde{C}_R$ for $R \geq 1$.</li>
+<li>We propose to choose $R$ to minimize the following CV criterion function
+$$
+{\color{red}\widetilde{C V}(R)=\frac{1}{N T} \sum_{(i, t) \in \Omega_{\perp}^\star}\left[X_{i t}-\tilde{C}_{R, i t}\right]^2.}
+$$</li>
+<li>Let $\tilde{R}=\arg \min _{0 \leq R \leq R_{\max }} \widetilde{C V}(R)$ where $R_{\max }$ is a fixed integer that is no less than $R_0$</li>
+</ul>
+<p>$$
+~\\\
+~\\\
+~\\\
+~\\\
+~\\\
+$$</p>
+
+    </section>
+    
+
+    
+    
+    
+      
+
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="body1.jpg"
+  >
+
+<h2 id="a-more-efficient-method">A more efficient method</h2>
+<ul>
+<li><font color="red"> Can we use the $\ell$-step estimator $\hat C_{R,it}^{(\ell)}$ ?</font></li>
+<li>Suppose that we have obtained the estimates $\hat{C}_{R, i t}^{(\ell-1)}$. In step $\ell$, we can replace the zero elements in $X^\star \equiv P_{\Omega^\star} X$ with the estimated common components $\hat{C}_{R_{\max }, i t}^{(\ell-1)}$</li>
+<li>Define the $T \times N$ matrix $\hat{X}^{\star(\ell)}$ with its $(t, i)$ th element given by
+$$
+\hat{X}_{i t}^{\star(\ell)}= \begin{cases}X_{i t} &amp; \text { if }(i, t) \in \Omega^\star \\ \hat{C}_{R_{\max }^{(\ell-1)}}, &amp; \text { if }(i, t) \in \Omega_{\perp}^\star, \ell \geq 1,\end{cases}
+$$
+where $\Omega_{\perp}^\star=\big\{(i, t) \in[N] \times[T]:(i, t) \notin \Omega^\star\big\}$</li>
+<li>Conduct the singular value thresholding procedure:
+$$
+\hat{C}_R^{(\ell)}=S_H\big(\hat{X}^{*(\ell)}, R\big)=\hat{U}_R^{(\ell)} \hat{\Sigma}_R^{(\ell)} \hat{V}_R^{(\ell) \prime},
+$$</li>
+<li>repeating the above procedure for $\ell=1, \ldots, \ell^\star \equiv\left\lfloor\ln \left(\epsilon_{N T}\right) / \log (p)\right\rfloor$</li>
+<li>Let $\hat{C}_R=\hat{C}_R^{(\ell^\star)}$ and <font color="blue">$\hat{R}=\arg \min _{0 \leq R \leq R_{\max }} \widehat{C V}(R)$</font>, where
+$$
+\widehat{C V}(R)=\frac{1}{N T} \sum_{(i, t) \in \Omega_{\perp}^\star}\left[X_{i t}-\hat{C}_{R, i t}\right]^2
+$$</li>
+</ul>
+
+    </section>
+    
+
+    
+    
+    
+      
+
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="body1.jpg"
+  >
+
+<h2 id="the-consistency-of-the-cv-method">The consistency of the CV method</h2>
+<p><strong>Assumption A.7.</strong></p>
+<ol>
+<li>For $r=R_{0+1}, \ldots, R_{\max }, \\ P\Big(\big\|\tilde{u}_r\big\|_{\infty}\big\|\tilde{v}_r\big\|_{\infty} \leq 1 /\big(c_0 \sqrt{(N+T) \log (N+T)}\big)\Big) \rightarrow 1$
+for some fixed $c_0&lt;\infty$ as $(N, T) \rightarrow \infty$, $\left\|\tilde{u}_r\right\|_{\infty}=o_P(1)$, and $\left\|\tilde{v}_r\right\|_{\infty}=o_P(1)$</li>
+<li>$\max _{(i, t) \in \Omega_{\perp}^\star} \sum_{(j, s) \in \Omega_{\perp}^\star}\left|E\left[\varepsilon_{i t} \varepsilon_{j s} \mid P_{\Omega^\star} X, \Omega^\star\right]\right|=o_P\left(\delta_{N T}^2\right)$.</li>
+</ol>
+<p><font color="blue"> <strong>Theorem 3.1.</strong> </font> Suppose some assumptions hold. Then $P\left(\tilde{R}&lt;R_0\right) \rightarrow 0$ as $(N, T) \rightarrow \infty$. If Assumption A.7 also holds, then $P\left(\tilde{R}&gt;R_0\right) \rightarrow 0$ as $(N, T) \rightarrow \infty$.</p>
+<p><font color="blue"> <strong>Theorem 3.2.</strong> </font> Suppose some assumptions hold. Then $P\left(\hat{R}&lt;R_0\right) \rightarrow 0$ as $(N, T) \rightarrow \infty$. If Assumption A.7 also holds, then $P\left(\hat{R}&gt;R_0\right) \rightarrow 0$ as $(N, T) \rightarrow \infty$.</p>
+
+    </section>
+    
+
+    
+    
+    
+      
+
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="body1.jpg"
+  >
+
+<h2 id="cv-in-the-presence-of-random-missing">CV in the presence of random missing</h2>
+<ul>
+<li>Consider the SVD for $\frac{1}{p \tilde{q}} P_{\Omega^\star} P_{\Omega} X$ :
+$$
+\frac{1}{p \tilde{q}} P_{\Omega^\star} P_{\Omega} X=\tilde{U} \tilde{\Sigma} \tilde{V}^{\prime},
+$$</li>
+<li>Then we estimate the common component $C$:
+$$
+\tilde{C}_R=S_H\left(\frac{1}{p \tilde{q}} P_{\Omega^\star} P_{\Omega} X, R\right)=\tilde{U}_R \tilde{\Sigma}_R \tilde{V}_R^{\prime},
+$$
+where $\tilde{U}_R, \tilde{V}_R$, and $\tilde{\Sigma}_R$ are defined as before. Let $\tilde{R} \in\big\{0,1,2, \ldots, R_{\max }\big\}$ minimize the following $\mathrm{CV}$ function
+$$
+\widetilde{C V}(R)=\frac{1}{N T} \sum_{(i, t) \in {\color{red}\Omega_{\perp}^\star \cap \Omega}}\left[X_{i t}-\tilde{C}_{R, i t}\right]^2,
+$$</li>
+</ul>
+
+    </section>
+    
+
+    
+    
+    
+      
+
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="body1.jpg"
+  >
+
+<h2 id="simulation">Simulation</h2>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="screen reader text" srcset="
+               /slides/factormissing/res1_hud27e756e265fc0d2cb710f209c9d45db_107607_2f7cec5a10d7bfe6d412012a5ab9c0a5.webp 400w,
+               /slides/factormissing/res1_hud27e756e265fc0d2cb710f209c9d45db_107607_05f2bf9c31e512fe355ea8d1ef4f5611.webp 760w,
+               /slides/factormissing/res1_hud27e756e265fc0d2cb710f209c9d45db_107607_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/slides/factormissing/res1_hud27e756e265fc0d2cb710f209c9d45db_107607_2f7cec5a10d7bfe6d412012a5ab9c0a5.webp"
+               width="760"
+               height="341"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+
+    </section>
+    
+
+    
+    
+    
+      
+
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="body1.jpg"
+  >
+
+<h2 id="simulation-1">Simulation</h2>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="screen reader text" srcset="
+               /slides/factormissing/res2_hu23b46a819b33dded3f66308db50b25de_133888_88b57d810d199bbfeed191044ef9817f.webp 400w,
+               /slides/factormissing/res2_hu23b46a819b33dded3f66308db50b25de_133888_66fba2e54ad960eb84d5c21b2ad1b172.webp 760w,
+               /slides/factormissing/res2_hu23b46a819b33dded3f66308db50b25de_133888_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/slides/factormissing/res2_hu23b46a819b33dded3f66308db50b25de_133888_88b57d810d199bbfeed191044ef9817f.webp"
+               width="760"
+               height="341"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+
+    </section>
+    
+
+    
+    
+    
+      
+
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="body1.jpg"
+  >
+
+<h2 id="simulation-2">Simulation</h2>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="screen reader text" srcset="
+               /slides/factormissing/res3_hu7874055ca76ca648576350362febeb90_146809_05d4439d9d2a0dc25dcadca149a1e7c4.webp 400w,
+               /slides/factormissing/res3_hu7874055ca76ca648576350362febeb90_146809_f351b6581254c888c8fc99a8d24e00bc.webp 760w,
+               /slides/factormissing/res3_hu7874055ca76ca648576350362febeb90_146809_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/slides/factormissing/res3_hu7874055ca76ca648576350362febeb90_146809_05d4439d9d2a0dc25dcadca149a1e7c4.webp"
+               width="760"
+               height="365"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+
+    </section>
+    
+
+    
+    
+    
+      
+
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="body1.jpg"
+  >
+
+<h2 id="empirical-application-forecasting-macroeconomic-variables">Empirical application: Forecasting macroeconomic variables</h2>
+<ul>
+<li>We use a panel dataset FRED-QD, which is an unbalanced panel at the quarterly frequency.</li>
+<li>The dataset consists of 248 quarterly U.S. indicators from 1959Q1 to 2018Q2.</li>
+<li>Use 125 time series to estimate the latent factors.</li>
+<li>Consider the forecast based on the following factor-augmented autoregression (FA-AR) models:
+$$
+y_{t+h}^h=\phi_h^{(1)}+\phi_h^{(2)}(L) \hat{F}_t+\phi_h^{(3)}(L) y_t+\varepsilon_{t+h}^h, h=1,2,4,
+$$
+<ul>
+<li>$y_t$ is one of the four macro-variables (i.e., RGDP, GDP, IP, and RDPI)</li>
+<li>$\hat{F}_t$ is the estimated vector of factors</li>
+<li>$\phi_h^{(1)}$ is the intercept term, $L$ is the lag operator</li>
+<li>$\phi_h^{(2)}(L)$ and $\phi_h^{(3)}(L)$ are finite-order polynomials of the lag operators</li>
+</ul>
+</li>
+</ul>
+
+    </section>
+    
+
+    
+    
+    
+      
+
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="body1.jpg"
+  >
+
+<h2 id="empirical-application-forecasting-macroeconomic-variables-1">Empirical application: Forecasting macroeconomic variables</h2>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="screen reader text" srcset="
+               /slides/factormissing/res4_hub014dcadc3f19bd2f11bc127b0f473cb_90038_1f791bf979cecda35c8f819415e4ea57.webp 400w,
+               /slides/factormissing/res4_hub014dcadc3f19bd2f11bc127b0f473cb_90038_9e51371ff9ad119475e615645fe18bd8.webp 760w,
+               /slides/factormissing/res4_hub014dcadc3f19bd2f11bc127b0f473cb_90038_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/slides/factormissing/res4_hub014dcadc3f19bd2f11bc127b0f473cb_90038_1f791bf979cecda35c8f819415e4ea57.webp"
+               width="760"
+               height="234"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+
+    </section>
+    
+
+    
+    
+    
+      
+
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="body1.jpg"
+  >
+
+<h1 id="thanks-">Thanks !</h1>
+
+    </section>
+    
+
+    
+    
   </div>
 </div>
 
