@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  
+  
+  
+  
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Hugo Blox Builder 5.9.6">
+
+  
+    <link rel="manifest" href="/manifest.webmanifest">
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hu9ccd2acdcd774e20fa34966445b706a8_6997380_32x32_fill_lanczos_center_3.png">
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu9ccd2acdcd774e20fa34966445b706a8_6997380_192x192_fill_lanczos_center_3.png">
+
+  <link rel="canonical" href="https://ikerlz.github.io/slides/factormissing/">
+
+  <title>On factor models with random missing： EM estimation, inference, and cross validation | Zhe Li</title>
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/theme/black.min.css">
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="/css/libs/chroma/dracula.min.css">
+  
+
+  
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/reveal_custom.min.css">
+  
+</head>
+<body>
+
+  
+<div class="reveal">
+  <div class="slides">
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+      
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="ZIBIN.jpg"
+  >
+
+<h1 id="on-factor-models-with-random-missing-em-estimation-inference-and-cross-validation">On factor models with random missing: EM estimation, inference, and cross validation</h1>
+<p>$$
+\begin{aligned}
+\
+\end{aligned}
+$$</p>
+<center> Li Zhe <center>
+<p>$$$$</p>
+<center>School of Data Science, Fudan University <center> 
+<p>$$$$</p>
+<center>November 30, 2023<center>
+
+    </section>
+    
+
+    
+    
+    
+      
+
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="body1.jpg"
+  >
+
+<h2 id="outline">Outline</h2>
+<ul>
+<li>Background: <strong>factor model</strong></li>
+<li>Motivation</li>
+<li>Factor models with random missing:
+<ul>
+<li><font color="red">EM estimator</font></li>
+<li><font color="red">Asymptotic properties</font></li>
+<li>Determining the number of factors</li>
+</ul>
+</li>
+<li>Simulation</li>
+<li>Empirical application</li>
+</ul>
+
+    </section>
+    
+
+    
+    
+    
+      
+
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="body1.jpg"
+  >
+
+<h2 id="background-factor-model">Background: factor model</h2>
+<p>$$
+\begin{aligned}
+x_{i t} &amp; =\lambda_i f_t+e_{i t} \\
+\boldsymbol{X} &amp;= \boldsymbol{\Lambda} \boldsymbol{F}^\top + \boldsymbol{E}
+\end{aligned}
+$$</p>
+<ul>
+<li>
+<p>$\boldsymbol{X}=(\boldsymbol{x}_{\cdot 1},\ldots,\boldsymbol{x}_{\cdot T})\in\mathbb{R}^{N\times T}$</p>
+</li>
+<li>
+<p>$\boldsymbol{\Lambda}\in\mathbb{R}^{N\times R}$: factor loadings</p>
+</li>
+<li>
+<p>$\boldsymbol{F}\in\mathbb{R}^{T\times R}$: common factors (latent, unobserved)</p>
+</li>
+<li>
+<p>$\boldsymbol{E}\in\mathbb{R}^{N\times T}$: idiosyncratic (or error) component</p>
+<ul>
+<li>${e_{it}}$ can exhibit both cross-sectional and temporal dependence.</li>
+</ul>
+</li>
+<li>
+<p>Given the factor number $k$, we can estimate the factors and factor loadings by
+$$
+\Big\{\widehat{\boldsymbol{\Lambda}}^k, \widehat{\boldsymbol{F}}^k\Big\}=\arg\min_{\boldsymbol{\Lambda}^k,\boldsymbol{F}^k}\frac{1}{NT}\Big\|\boldsymbol{X}- \boldsymbol{\Lambda}^k{\boldsymbol{F}^k}^\top\Big\|_F^2
+$$
+where $\boldsymbol{\Lambda}^k\in\mathbb{R}^{N\times k}$ and $\boldsymbol{F}^k\in\mathbb{R}^{T\times k}$.</p>
+</li>
+</ul>
+
+    </section>
+    
+
+    
+    
+    
+      
+
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="body1.jpg"
+  >
+
+<h2 id="motivation">Motivation</h2>
+<ul>
+<li>Factor model in balanced panel has been thoroughly investigated.
+$$$$</li>
+<li>How to handle the missing data problem in factor models?
+$$$$
+<ul>
+<li>the expectation–maximization (EM) algorithm
+$$$$</li>
+<li>the Kalman filter (KF)
+$$$$</li>
+</ul>
+</li>
+<li>There is no formal study of the <strong>asymptotic properties</strong> for the EM estimators of the factors and factor loadings for the PC estimation with <mark>missing observations</mark></li>
+</ul>
+
+    </section>
+    
+
+    
+    
+    
+      
+
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="body1.jpg"
+  >
+
+<h2 id="notations">Notations</h2>
+<ul>
+<li>
+<p>consider the factor model
+$$
+\boldsymbol{X} =  \boldsymbol{F}\boldsymbol{\Lambda}^\top + \varepsilon
+$$</p>
+<ul>
+<li>$\boldsymbol{X}=(X_1,\ldots,X_N)$ where $X_i \equiv\left(X_{i 1}, \ldots, X_{i T}\right)^{\prime}$ and $X_{it}$ are <font color=red> <strong>missing at random</strong> </font></li>
+<li>$\varepsilon=\left(\varepsilon_1, \ldots, \varepsilon_N\right)$ and $\varepsilon_i \equiv\left(\varepsilon_{i 1}, \ldots, \varepsilon_{i T}\right)^{\prime}$ for $i=1, \ldots, N$.</li>
+<li>$F=\left(F_1, \ldots, F_T\right)^{\prime}$ and $\Lambda=\left(\lambda_1, \ldots, \lambda_N\right)^{\prime}$ where $F_t$ and $\lambda_i$ are $R \times 1$ vectors of factors and factor loadings</li>
+</ul>
+</li>
+<li>
+<p>$F^0=\left(F_1^0, \ldots, F_T^0\right)^{\prime}$ and $\Lambda^0=\left(\lambda_1^0, \ldots, \lambda_N^0\right)^{\prime}$ are the true values of $F$ and $\Lambda$</p>
+</li>
+<li>
+<p>$\Omega \subset[N] \times[T]$ be the index set of the observations that are observed. That is,
+$$
+\Omega=\Big\{(i, t) \in[N] \times[T]: X_{i t} \text { is observed }\Big\}.
+$$</p>
+</li>
+<li>
+<p>Let $G$ denote a $T \times N$ matrix with $(t, i)$ th element given by $g_{i t}=\mathbf{1}\{(i, t) \in \Omega\}$ and is <mark>independent of $X, F^0, \Lambda^0$ and $\varepsilon$</mark></p>
+</li>
+</ul>
+
+    </section>
+    
+
+    
+    
+    
+      
+
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="body1.jpg"
+  >
+
+<h2 id="the-initial-estimates">The initial estimates</h2>
+<ul>
+<li>
+<p>Let $\tilde{X}=X \circ G$ and $\tilde{X}_{i t}=X_{i t} g_{i t}$.</p>
+</li>
+<li>
+<p>The common component $C^0 \equiv F^0 \Lambda^0$ is <mark>a low rank matrix</mark> $\Rightarrow$ it is possible to recover $C^0$ even when a large proportion of elements in $X$ are missing at random.</p>
+</li>
+<li>
+<p>Under the standard condition that $E\left(\varepsilon_{i t} \mid F_t^0, \lambda_i^0\right)=0$, we can verify that $E\left(\frac{1}{q} \tilde{X} \mid F^0, \Lambda^0\right)=F^0 \Lambda^{0 \prime}$ $\Rightarrow$ consider the following least squares objective function
+$$
+\mathcal{L}_{N T}^0(F, \Lambda) \equiv \frac{1}{N T} \operatorname{tr}\left[\left(\frac{1}{\tilde{q}} \tilde{X}-F \Lambda^{\prime}\right)\left(\frac{1}{\tilde{q}} \tilde{X}-F \Lambda^{\prime}\right)^{\prime}\right]
+$$
+<strong>identification restrictions</strong>: $F^{\prime} F / T=I_R$ and $\Lambda^{\prime} \Lambda$ is a diagonal matrix.</p>
+</li>
+<li>
+<p>By concentrating out $\Lambda$ and using the normalization that $F^{\prime} F / T=I_R$ $\Rightarrow$ identical to maximizing $\tilde{q}^{-2} \operatorname{tr}\Big\{F^{\prime} \tilde{X} \tilde{X}^{\prime} F\Big\}$</p>
+</li>
+</ul>
+
+    </section>
+    
+
+    
+    
+    
+      
+
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="body1.jpg"
+  >
+
+<h2 id="the-initial-estimates-1">The initial estimates</h2>
+<ul>
+<li>The estimated factor matrix, denoted by $\hat{F}^{(0)}$ is $\sqrt{T}$ times the eigenvectors corresponding to the $R$ largest eigenvalues of the $T \times T$ matrix $\frac{1}{N T \tilde{q}^2} \tilde{X} \tilde{X}^{\prime}:$
+$$
+\frac{1}{N T \tilde{q}^2} \tilde{X} \tilde{X}^{\prime} \hat{F}^{(0)}=\hat{F}^{(0)} \hat{D}^{(0)},
+$$
+<ul>
+<li>$\hat{D}^{(0)}$ is an $R \times R$ diagonal matrix consisting of the $R$ largest eigenvalues of $\left(N T \tilde{q}^2\right)^{-1} \tilde{X} \tilde{X}^{\prime}$, arranged in descending order along its diagonal line.</li>
+</ul>
+</li>
+<li>The estimator of $\Lambda^{\prime}$ is given by
+$$
+\hat{\Lambda}^{(0) \prime}=\frac{1}{\tilde{q}}\left(\hat{F}^{(0) \prime} \hat{F}^{(0)}\right)^{-1} \hat{F}^{(0) \prime} \tilde{X}=\frac{1}{T \tilde{q}} \hat{F}^{(0) \prime} \tilde{X} .
+$$</li>
+<li>We can obtain an initial estimate of the $(t, i)$ th element, $C_{i t}^0$, of $C^0$ by $\hat{C}_{i t}^{(0)}=\hat{\lambda}_i^{(0)\prime} \hat{F}_t^{(0)}$.</li>
+<li>The initial estimators $\hat{F}_t^{(0)}, \hat{\lambda}_i^{(0)}$ and $\hat{C}_{i t}^{(0)}$ are consistent and follow mixture normal distributions under some standard conditions.</li>
+</ul>
+
+    </section>
+    
+
+    
+    
+    
+      
+
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="body1.jpg"
+  >
+
+<h2 id="the-iterated-estimates">The iterated estimates</h2>
+<ul>
+<li>The initial estimators: consistency but <mark>not asymptotically efficient</mark> $\Rightarrow$ <strong>iterative estimators</strong></li>
+<li>In step $\ell$, we can <mark> replace the missing values $\left(X_{i t}\right)$ in the matrix $X$ with the estimated common components $\hat{C}_{i t}^{(\ell-1)}$</mark>. Define the $T \times N$ matrix $\hat{X}^{(\ell)}$ with its $(t, i)$ th element given by
+$$
+\hat{X}_{i t}^{(\ell)}=\left\{\begin{array}{ll}
+X_{i t} &amp; \text { if }(i, t) \in \Omega \\
+\hat{C}_{i t}^{(\ell-1)} &amp; \text { if }(i, t) \in \Omega_{\perp}
+\end{array}, \ell \geq 1,\right.
+$$
+where $\Omega_{\perp}=\{(i, t) \in[N] \times[T]:(i, t) \notin \Omega\}$.</li>
+<li>Then we can conduct the PC analysis based on $\hat{X}^{(\ell)}$ and obtain $\hat{F}^{(\ell) \prime}$ and $\hat{\Lambda}^{(\ell)}$.</li>
+<li>We will study the asymptotic properties of $\hat{F}_t^{(\ell)}, \hat{\lambda}_i^{(\ell)}$ and $\hat{C}_{i t}^{\left(\ell^{\ell}\right)}, \ell=1,2, \ldots$</li>
+</ul>
+<p>$$
+~\\\
+~\\\
+$$</p>
+
+    </section>
+    
+
+    
+    
+  </div>
+</div>
+
+
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/markdown/markdown.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/notes/notes.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/search/search.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/math/math.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/zoom/zoom.min.js" crossorigin="anonymous"></script>
+
+  
+  
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js-menu@2.1.0/plugin.js" integrity="sha256-M6JwAjnRAWmi+sbXURR/yAhWZKYhAw7YXnnLvIxrdGs=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js-menu@2.1.0/menu.js" integrity="sha256-l14dklFcW5mWar6w/9KaW0fWVerf3mYr7Wt0+rXzFAA=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js-menu@2.1.0/menu.css" integrity="sha256-0fU8HKLaTjgzfaV9CgSqbsN8ilA3zo6zK1M6rlgULd8=" crossorigin="anonymous">
+  
+
+  
+  
+
+  
+  
+  <script src="/js/wowchemy-slides.js"></script>
+
+</body>
+</html>

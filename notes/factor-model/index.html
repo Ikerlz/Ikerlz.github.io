@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- This site was created with Hugo Blox. https://hugoblox.com -->
-<!-- Last Published: November 27, 2023 --><html lang="en-us" >
+<!-- Last Published: November 28, 2023 --><html lang="en-us" >
 
 
 <head>
@@ -280,7 +280,7 @@
 
   
 
-<meta name="description" content="Table of Contents 1. Introduction 2. Large dimensional factor models with random missing 2.1. EM estimation 3. Determining the number of factors via cross validation 4. Monte Carlo simulations 5." />
+<meta name="description" content="Table of Contents 0. Background 1. Introduction 2. Large dimensional factor models with random missing 2.1. EM estimation 3. Determining the number of factors via cross validation 4. Monte Carlo simulations 5." />
 
 
 
@@ -328,7 +328,7 @@
 <meta property="og:site_name" content="Zhe Li" />
 <meta property="og:url" content="https://ikerlz.github.io/notes/factor-model/" />
 <meta property="og:title" content="Notes on &#39;&#39;On factor models with random missing: EM estimation, inference, and cross validation&#39;&#39; | Zhe Li" />
-<meta property="og:description" content="Table of Contents 1. Introduction 2. Large dimensional factor models with random missing 2.1. EM estimation 3. Determining the number of factors via cross validation 4. Monte Carlo simulations 5." /><meta property="og:image" content="https://ikerlz.github.io/notes/factor-model/featured.jpg" /><meta property="og:locale" content="en-us" />
+<meta property="og:description" content="Table of Contents 0. Background 1. Introduction 2. Large dimensional factor models with random missing 2.1. EM estimation 3. Determining the number of factors via cross validation 4. Monte Carlo simulations 5." /><meta property="og:image" content="https://ikerlz.github.io/notes/factor-model/featured.jpg" /><meta property="og:locale" content="en-us" />
 
   
     <meta
@@ -858,6 +858,7 @@
   <summary class="font-weight-bold">Table of Contents</summary>
   <nav id="TableOfContents">
   <ul>
+    <li><a href="#0-background">0. Background</a></li>
     <li><a href="#1-introduction">1. Introduction</a></li>
     <li><a href="#2-large-dimensional-factor-models-with-random-missing">2. Large dimensional factor models with random missing</a>
       <ul>
@@ -903,7 +904,19 @@
   </div></figure>
 
 <hr>
+<h2 id="0-background">0. Background</h2>
+<hr>
 <h2 id="1-introduction">1. Introduction</h2>
+<ul>
+<li>Factor model in balanced panel has been thoroughly investigated.</li>
+<li>How to handle the missing data problem in factor models ?
+<ul>
+<li>the expectation–maximization (EM) algorithm</li>
+<li>the Kalman filter (KF)</li>
+</ul>
+</li>
+<li>There is no formal study of the <strong>asymptotic properties</strong> for the EM estimators of the factors and factor loadings for the PC estimation with <mark>missing observations</mark></li>
+</ul>
 <hr>
 <h2 id="2-large-dimensional-factor-models-with-random-missing">2. Large dimensional factor models with random missing</h2>
 <h3 id="21-em-estimation">2.1. EM estimation</h3>
@@ -911,7 +924,6 @@
 <h2 id="3-determining-the-number-of-factors-via-cross-validation">3. Determining the number of factors via cross validation</h2>
 <hr>
 <h2 id="4-monte-carlo-simulations">4. Monte Carlo simulations</h2>
-<p>sss</p>
 <hr>
 <h2 id="5-empirical-application-forecasting-macroeconomic-variables">5. Empirical application: Forecasting macroeconomic variables</h2>
 

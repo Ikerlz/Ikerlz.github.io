@@ -5,7 +5,229 @@
     <link>https://ikerlz.github.io/slides/</link>
       <atom:link href="https://ikerlz.github.io/slides/index.xml" rel="self" type="application/rss+xml" />
     <description>Slides</description>
-    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sun, 29 Oct 2023 00:00:00 +0000</lastBuildDate>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 27 Nov 2023 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>On factor models with random missing： EM estimation, inference, and cross validation</title>
+      <link>https://ikerlz.github.io/slides/factormissing/</link>
+      <pubDate>Mon, 27 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://ikerlz.github.io/slides/factormissing/</guid>
+      <description>
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;ZIBIN.jpg&#34;
+  &gt;
+
+&lt;h1 id=&#34;on-factor-models-with-random-missing-em-estimation-inference-and-cross-validation&#34;&gt;On factor models with random missing: EM estimation, inference, and cross validation&lt;/h1&gt;
+&lt;p&gt;$$
+\begin{aligned}
+\
+\end{aligned}
+$$&lt;/p&gt;
+&lt;center&gt; Li Zhe &lt;center&gt;
+&lt;p&gt;$$$$&lt;/p&gt;
+&lt;center&gt;School of Data Science, Fudan University &lt;center&gt; 
+&lt;p&gt;$$$$&lt;/p&gt;
+&lt;center&gt;November 30, 2023&lt;center&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h2 id=&#34;outline&#34;&gt;Outline&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Background: &lt;strong&gt;factor model&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Motivation&lt;/li&gt;
+&lt;li&gt;Factor models with random missing:
+&lt;ul&gt;
+&lt;li&gt;&lt;font color=&#34;red&#34;&gt;EM estimator&lt;/font&gt;&lt;/li&gt;
+&lt;li&gt;&lt;font color=&#34;red&#34;&gt;Asymptotic properties&lt;/font&gt;&lt;/li&gt;
+&lt;li&gt;Determining the number of factors&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Simulation&lt;/li&gt;
+&lt;li&gt;Empirical application&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h2 id=&#34;background-factor-model&#34;&gt;Background: factor model&lt;/h2&gt;
+&lt;p&gt;$$
+\begin{aligned}
+x_{i t} &amp;amp; =\lambda_i f_t+e_{i t} \\
+\boldsymbol{X} &amp;amp;= \boldsymbol{\Lambda} \boldsymbol{F}^\top + \boldsymbol{E}
+\end{aligned}
+$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;$\boldsymbol{X}=(\boldsymbol{x}_{\cdot 1},\ldots,\boldsymbol{x}_{\cdot T})\in\mathbb{R}^{N\times T}$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$\boldsymbol{\Lambda}\in\mathbb{R}^{N\times R}$: factor loadings&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$\boldsymbol{F}\in\mathbb{R}^{T\times R}$: common factors (latent, unobserved)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$\boldsymbol{E}\in\mathbb{R}^{N\times T}$: idiosyncratic (or error) component&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;${e_{it}}$ can exhibit both cross-sectional and temporal dependence.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Given the factor number $k$, we can estimate the factors and factor loadings by
+$$
+\Big\{\widehat{\boldsymbol{\Lambda}}^k, \widehat{\boldsymbol{F}}^k\Big\}=\arg\min_{\boldsymbol{\Lambda}^k,\boldsymbol{F}^k}\frac{1}{NT}\Big\|\boldsymbol{X}- \boldsymbol{\Lambda}^k{\boldsymbol{F}^k}^\top\Big\|_F^2
+$$
+where $\boldsymbol{\Lambda}^k\in\mathbb{R}^{N\times k}$ and $\boldsymbol{F}^k\in\mathbb{R}^{T\times k}$.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Factor model in balanced panel has been thoroughly investigated.
+$$$$&lt;/li&gt;
+&lt;li&gt;How to handle the missing data problem in factor models?
+$$$$
+&lt;ul&gt;
+&lt;li&gt;the expectation–maximization (EM) algorithm
+$$$$&lt;/li&gt;
+&lt;li&gt;the Kalman filter (KF)
+$$$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;There is no formal study of the &lt;strong&gt;asymptotic properties&lt;/strong&gt; for the EM estimators of the factors and factor loadings for the PC estimation with &lt;mark&gt;missing observations&lt;/mark&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h2 id=&#34;notations&#34;&gt;Notations&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;consider the factor model
+$$
+\boldsymbol{X} =  \boldsymbol{F}\boldsymbol{\Lambda}^\top + \varepsilon
+$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$\boldsymbol{X}=(X_1,\ldots,X_N)$ where $X_i \equiv\left(X_{i 1}, \ldots, X_{i T}\right)^{\prime}$ and $X_{it}$ are &lt;font color=red&gt; &lt;strong&gt;missing at random&lt;/strong&gt; &lt;/font&gt;&lt;/li&gt;
+&lt;li&gt;$\varepsilon=\left(\varepsilon_1, \ldots, \varepsilon_N\right)$ and $\varepsilon_i \equiv\left(\varepsilon_{i 1}, \ldots, \varepsilon_{i T}\right)^{\prime}$ for $i=1, \ldots, N$.&lt;/li&gt;
+&lt;li&gt;$F=\left(F_1, \ldots, F_T\right)^{\prime}$ and $\Lambda=\left(\lambda_1, \ldots, \lambda_N\right)^{\prime}$ where $F_t$ and $\lambda_i$ are $R \times 1$ vectors of factors and factor loadings&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$F^0=\left(F_1^0, \ldots, F_T^0\right)^{\prime}$ and $\Lambda^0=\left(\lambda_1^0, \ldots, \lambda_N^0\right)^{\prime}$ are the true values of $F$ and $\Lambda$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$\Omega \subset[N] \times[T]$ be the index set of the observations that are observed. That is,
+$$
+\Omega=\Big\{(i, t) \in[N] \times[T]: X_{i t} \text { is observed }\Big\}.
+$$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Let $G$ denote a $T \times N$ matrix with $(t, i)$ th element given by $g_{i t}=\mathbf{1}\{(i, t) \in \Omega\}$ and is &lt;mark&gt;independent of $X, F^0, \Lambda^0$ and $\varepsilon$&lt;/mark&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h2 id=&#34;the-initial-estimates&#34;&gt;The initial estimates&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Let $\tilde{X}=X \circ G$ and $\tilde{X}_{i t}=X_{i t} g_{i t}$.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The common component $C^0 \equiv F^0 \Lambda^0$ is &lt;mark&gt;a low rank matrix&lt;/mark&gt; $\Rightarrow$ it is possible to recover $C^0$ even when a large proportion of elements in $X$ are missing at random.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Under the standard condition that $E\left(\varepsilon_{i t} \mid F_t^0, \lambda_i^0\right)=0$, we can verify that $E\left(\frac{1}{q} \tilde{X} \mid F^0, \Lambda^0\right)=F^0 \Lambda^{0 \prime}$ $\Rightarrow$ consider the following least squares objective function
+$$
+\mathcal{L}_{N T}^0(F, \Lambda) \equiv \frac{1}{N T} \operatorname{tr}\left[\left(\frac{1}{\tilde{q}} \tilde{X}-F \Lambda^{\prime}\right)\left(\frac{1}{\tilde{q}} \tilde{X}-F \Lambda^{\prime}\right)^{\prime}\right]
+$$
+&lt;strong&gt;identification restrictions&lt;/strong&gt;: $F^{\prime} F / T=I_R$ and $\Lambda^{\prime} \Lambda$ is a diagonal matrix.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;By concentrating out $\Lambda$ and using the normalization that $F^{\prime} F / T=I_R$ $\Rightarrow$ identical to maximizing $\tilde{q}^{-2} \operatorname{tr}\Big\{F^{\prime} \tilde{X} \tilde{X}^{\prime} F\Big\}$&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h2 id=&#34;the-initial-estimates-1&#34;&gt;The initial estimates&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;The estimated factor matrix, denoted by $\hat{F}^{(0)}$ is $\sqrt{T}$ times the eigenvectors corresponding to the $R$ largest eigenvalues of the $T \times T$ matrix $\frac{1}{N T \tilde{q}^2} \tilde{X} \tilde{X}^{\prime}:$
+$$
+\frac{1}{N T \tilde{q}^2} \tilde{X} \tilde{X}^{\prime} \hat{F}^{(0)}=\hat{F}^{(0)} \hat{D}^{(0)},
+$$
+&lt;ul&gt;
+&lt;li&gt;$\hat{D}^{(0)}$ is an $R \times R$ diagonal matrix consisting of the $R$ largest eigenvalues of $\left(N T \tilde{q}^2\right)^{-1} \tilde{X} \tilde{X}^{\prime}$, arranged in descending order along its diagonal line.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;The estimator of $\Lambda^{\prime}$ is given by
+$$
+\hat{\Lambda}^{(0) \prime}=\frac{1}{\tilde{q}}\left(\hat{F}^{(0) \prime} \hat{F}^{(0)}\right)^{-1} \hat{F}^{(0) \prime} \tilde{X}=\frac{1}{T \tilde{q}} \hat{F}^{(0) \prime} \tilde{X} .
+$$&lt;/li&gt;
+&lt;li&gt;We can obtain an initial estimate of the $(t, i)$ th element, $C_{i t}^0$, of $C^0$ by $\hat{C}_{i t}^{(0)}=\hat{\lambda}_i^{(0)\prime} \hat{F}_t^{(0)}$.&lt;/li&gt;
+&lt;li&gt;The initial estimators $\hat{F}_t^{(0)}, \hat{\lambda}_i^{(0)}$ and $\hat{C}_{i t}^{(0)}$ are consistent and follow mixture normal distributions under some standard conditions.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+
+&lt;section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image=&#34;body1.jpg&#34;
+  &gt;
+
+&lt;h2 id=&#34;the-iterated-estimates&#34;&gt;The iterated estimates&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;The initial estimators: consistency but &lt;mark&gt;not asymptotically efficient&lt;/mark&gt; $\Rightarrow$ &lt;strong&gt;iterative estimators&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;In step $\ell$, we can &lt;mark&gt; replace the missing values $\left(X_{i t}\right)$ in the matrix $X$ with the estimated common components $\hat{C}_{i t}^{(\ell-1)}$&lt;/mark&gt;. Define the $T \times N$ matrix $\hat{X}^{(\ell)}$ with its $(t, i)$ th element given by
+$$
+\hat{X}_{i t}^{(\ell)}=\left\{\begin{array}{ll}
+X_{i t} &amp;amp; \text { if }(i, t) \in \Omega \\
+\hat{C}_{i t}^{(\ell-1)} &amp;amp; \text { if }(i, t) \in \Omega_{\perp}
+\end{array}, \ell \geq 1,\right.
+$$
+where $\Omega_{\perp}=\{(i, t) \in[N] \times[T]:(i, t) \notin \Omega\}$.&lt;/li&gt;
+&lt;li&gt;Then we can conduct the PC analysis based on $\hat{X}^{(\ell)}$ and obtain $\hat{F}^{(\ell) \prime}$ and $\hat{\Lambda}^{(\ell)}$.&lt;/li&gt;
+&lt;li&gt;We will study the asymptotic properties of $\hat{F}_t^{(\ell)}, \hat{\lambda}_i^{(\ell)}$ and $\hat{C}_{i t}^{\left(\ell^{\ell}\right)}, \ell=1,2, \ldots$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;$$
+~\\\
+~\\\
+$$&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>Using the Propensity Score in Regressions for Causal Effects</title>
       <link>https://ikerlz.github.io/slides/causalinferencechapter14/</link>

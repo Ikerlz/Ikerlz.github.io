@@ -714,6 +714,7 @@ $$&lt;/li&gt;
   &lt;summary class=&#34;font-weight-bold&#34;&gt;Table of Contents&lt;/summary&gt;
   &lt;nav id=&#34;TableOfContents&#34;&gt;
   &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#0-background&#34;&gt;0. Background&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&#34;#1-introduction&#34;&gt;1. Introduction&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&#34;#2-large-dimensional-factor-models-with-random-missing&#34;&gt;2. Large dimensional factor models with random missing&lt;/a&gt;
       &lt;ul&gt;
@@ -759,7 +760,19 @@ $$&lt;/li&gt;
   &lt;/div&gt;&lt;/figure&gt;
 
 &lt;hr&gt;
+&lt;h2 id=&#34;0-background&#34;&gt;0. Background&lt;/h2&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;1-introduction&#34;&gt;1. Introduction&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Factor model in balanced panel has been thoroughly investigated.&lt;/li&gt;
+&lt;li&gt;How to handle the missing data problem in factor models ?
+&lt;ul&gt;
+&lt;li&gt;the expectation–maximization (EM) algorithm&lt;/li&gt;
+&lt;li&gt;the Kalman filter (KF)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;There is no formal study of the &lt;strong&gt;asymptotic properties&lt;/strong&gt; for the EM estimators of the factors and factor loadings for the PC estimation with &lt;mark&gt;missing observations&lt;/mark&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;2-large-dimensional-factor-models-with-random-missing&#34;&gt;2. Large dimensional factor models with random missing&lt;/h2&gt;
 &lt;h3 id=&#34;21-em-estimation&#34;&gt;2.1. EM estimation&lt;/h3&gt;
@@ -767,7 +780,6 @@ $$&lt;/li&gt;
 &lt;h2 id=&#34;3-determining-the-number-of-factors-via-cross-validation&#34;&gt;3. Determining the number of factors via cross validation&lt;/h2&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;4-monte-carlo-simulations&#34;&gt;4. Monte Carlo simulations&lt;/h2&gt;
-&lt;p&gt;sss&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;5-empirical-application-forecasting-macroeconomic-variables&#34;&gt;5. Empirical application: Forecasting macroeconomic variables&lt;/h2&gt;
 </description>
