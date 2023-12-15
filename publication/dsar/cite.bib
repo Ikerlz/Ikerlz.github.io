@@ -1,6 +1,14 @@
-@article{ren2022distributed,
-  title={Distributed Estimation and Inference for Spatial Autoregression Model with Large Scale Networks},
-  author={Ren, Yimeng and Li, Zhe and Zhu, Xuening and Gao, Yuan and Wang, Hansheng},
-  journal={arXiv preprint arXiv:2210.16634},
-  year={2022}
+@article{REN2024105629,
+title = {Distributed estimation and inference for spatial autoregression model with large scale networks},
+journal = {Journal of Econometrics},
+volume = {238},
+number = {2},
+pages = {105629},
+year = {2024},
+issn = {0304-4076},
+doi = {https://doi.org/10.1016/j.jeconom.2023.105629},
+url = {https://www.sciencedirect.com/science/article/pii/S0304407623003457},
+author = {Yimeng Ren and Zhe Li and Xuening Zhu and Yuan Gao and Hansheng Wang},
+keywords = {Spatial autoregression, Large-scale network data, Distributed system, Least squares approximation, Random projection},
+abstract = {The rapid growth of online network platforms generates large-scale network data and it poses great challenges for statistical analysis using the spatial autoregression (SAR) model. In this work, we develop a novel distributed estimation and statistical inference framework for the SAR model on a distributed system. We first propose a distributed network least squares approximation (DNLSA) method. This enables us to obtain a one-step estimator by taking a weighted average of local estimators on each worker. Afterwards, a refined two-step estimation is designed to further reduce the estimation bias. For statistical inference, we utilize a random projection method to reduce the expensive communication cost. Theoretically, we show the consistency and asymptotic normality of both the one-step and two-step estimators. In addition, we provide theoretical guarantee of the distributed statistical inference procedure. The theoretical findings and computational advantages are validated by several numerical simulations implemented on the Spark system. Lastly, an experiment on the Yelp dataset further illustrates the usefulness of the proposed methodology.}
 }
