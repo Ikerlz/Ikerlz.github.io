@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  
+  
+  
+  
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Hugo Blox Builder 5.9.6">
+
+  
+    <link rel="manifest" href="/manifest.webmanifest">
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hu9ccd2acdcd774e20fa34966445b706a8_6997380_32x32_fill_lanczos_center_3.png">
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu9ccd2acdcd774e20fa34966445b706a8_6997380_192x192_fill_lanczos_center_3.png">
+
+  <link rel="canonical" href="https://ikerlz.github.io/slides/causalinferencechapter22/">
+
+  <title>Disentangle Mixture Distributions and Instrumental Variable Inequalities | Zhe Li</title>
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/theme/black.min.css">
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="/css/libs/chroma/dracula.min.css">
+  
+
+  
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/reveal_custom.min.css">
+  
+</head>
+<body>
+
+  
+<div class="reveal">
+  <div class="slides">
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+      
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="ZIBIN.jpg"
+  >
+
+<h1 id="disentangle-mixture-distributions-and-instrumental-variable-inequalities">Disentangle Mixture Distributions and Instrumental Variable Inequalities</h1>
+<p>$$
+\begin{aligned}
+\
+\end{aligned}
+$$</p>
+<center> Li Zhe <center>
+<p>$$$$</p>
+<center>School of Data Science, Fudan University <center> 
+<p>$$$$</p>
+<center>January 3, 2024<center>
+
+    </section>
+    
+
+    
+    
+    
+      
+
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="body1.jpg"
+  >
+
+<h2 id="introduction">Introduction</h2>
+<ul>
+<li>
+<p>The IV model in last chapter imposes three assumptions</p>
+<ul>
+<li>(<mark>randomization</mark>) $Z \perp\!\!\!\perp\{D(1), D(0), Y(1), Y(0)\}$</li>
+<li>(<mark>monotonicity</mark>) $\operatorname{pr}(U=\mathrm{d})=0$ or $D_i(1)\geq D_i(0)$</li>
+<li>(<mark>exclusionrestriction</mark>) $Y(1)=Y(0) \text { for } U=\mathrm{a} \text { or } \mathrm{n}$</li>
+</ul>
+</li>
+</ul>
+<p>$$
+{\tiny
+U_i= \begin{cases}
+a, &amp; \text { if } D_i(1)=1 \text { and } D_i(0)=1 \\
+c, &amp; \text { if } D_i(1)=1 \text { and } D_i(0)=0 \\
+d, &amp; \text { if } D_i(1)=0 \text { and } D_i(0)=1 \\
+n, &amp; \text { if } D_i(1)=0 \text { and } D_i(0)=0
+\end{cases}
+}
+$$</p>
+<ul>
+<li>Observed groups and latent groups under the assumptions</li>
+</ul>
+<p>$$
+{\small
+\begin{array}{cccl}
+Z=1 &amp; D=1 &amp; D(1)=1 &amp; U=\mathrm{c} \text { or a } \\
+Z=1 &amp; D=0 &amp; D(1)=0 &amp; U=\mathrm{n} \\
+Z=0 &amp; D=1 &amp; D(0)=1 &amp; U=\mathrm{a} \\
+Z=0 &amp; D=0 &amp; D(0)=0 &amp; U=\mathrm{c} \text { or } \mathrm{n}
+\end{array}
+}
+$$</p>
+<ul>
+<li>Interestingly, the assumptions have some <mark><strong>testable implications</strong></mark>. Balke and Pearl (1997) called them the <mark><strong>instrumental variable inequalities</strong></mark>.</li>
+</ul>
+
+    </section>
+    
+
+    
+    
+    
+      
+
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="body1.jpg"
+  >
+
+<h3 id="outline">Outline</h3>
+<ul>
+<li>
+<p>Disentangle Mixture Distributions and Instrumental Variable Inequalities</p>
+</li>
+<li>
+<p>Testable implications</p>
+</li>
+<li>
+<p>Examples</p>
+</li>
+</ul>
+
+    </section>
+    
+
+    
+    
+    
+      
+
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="body1.jpg"
+  >
+
+<h3 id="disentangle-mixture-distributions-and-iv-inequalities">Disentangle Mixture Distributions and IV Inequalities</h3>
+<ul>
+<li>Recall $\pi_u$ as the proportion of type $U=u$, and define</li>
+</ul>
+<p>$$
+\mu_{z u}=E\{Y(z) \mid U=u\}, \quad(z=0,1 ; u=\mathrm{a}, \mathrm{n}, \mathrm{c}) .
+$$</p>
+<p><mark><strong>Theorem 22.1</strong></mark> Under the three assumptions, we can identify the proportions of the latent types by
+$$
+\begin{aligned}
+&amp; \pi_{\mathrm{n}}=\operatorname{pr}(D=0 \mid Z=1), \\
+&amp; \pi_{\mathrm{a}}=\operatorname{pr}(D=1 \mid Z=0), \\
+&amp; \pi_{\mathrm{c}}=E(D \mid Z=1)-E(D \mid Z=0),
+\end{aligned}
+$$
+and the type-specific means of the potential outcomes by
+$$
+\begin{aligned}
+\mu_{1 \mathrm{n}}=\mu_{0 \mathrm{n}} \equiv \mu_{\mathrm{n}} &amp; =E(Y \mid Z=1, D=0) \\
+\mu_{1 \mathrm{a}}=\mu_{0 \mathrm{a}} \equiv \mu_{\mathrm{a}} &amp; =E(Y \mid Z=0, D=1) \\
+\mu_{1 \mathrm{c}} &amp; =\pi_{\mathrm{c}}^{-1}\{E(D Y \mid Z=1)-E(D Y \mid Z=0)\} \\
+\mu_{0 \mathrm{c}} &amp; =\pi_{\mathrm{c}}^{-1}[E\{(1-D) Y \mid Z=0\}-E\{(1-D) Y \mid Z=1\}]
+\end{aligned}
+$$</p>
+
+    </section>
+    
+
+    
+    
+    
+      
+
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="body1.jpg"
+  >
+
+<h3 id="proof-of-theorem-221-part-i">Proof of Theorem 22.1 (Part I)</h3>
+<ul>
+<li>We can identify the proportion of the <em>never takers</em> by</li>
+</ul>
+<p>$$
+\begin{aligned}
+\operatorname{pr}(D=0 \mid Z=1) &amp; =\operatorname{pr}(U=\mathrm{n} \mid Z=1)=\operatorname{pr}(U=\mathrm{n})=\pi_{\mathrm{n}},
+\end{aligned}
+$$</p>
+<ul>
+<li>the proportion of the <em>always takers</em> by</li>
+</ul>
+<p>$$
+\begin{aligned}
+\operatorname{pr}(D=1 \mid Z=0) &amp; =\operatorname{pr}(U=\mathrm{a} \mid Z=0)=\operatorname{pr}(U=\mathrm{a})=\pi_{\mathrm{a}} .
+\end{aligned}
+$$</p>
+<ul>
+<li>the proportion of compliers is</li>
+</ul>
+<p>$$
+\begin{aligned}
+\pi_{\mathrm{c}} &amp; =\operatorname{pr}(U=\mathrm{c})=1-\pi_{\mathrm{n}}-\pi_{\mathrm{a}} \\
+&amp; =1-\operatorname{pr}(D=0 \mid Z=1)-\operatorname{pr}(D=1 \mid Z=0) \\
+&amp; =E(D \mid Z=1)-E(D \mid Z=0)=\tau_D,
+\end{aligned}
+$$</p>
+<p><strong>Remark:</strong> Although we do not know individual latent compliance types for all units, we can identify the proportions of never takers, always takers, and compliers.</p>
+
+    </section>
+    
+
+    
+    
+    
+      
+
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="body1.jpg"
+  >
+
+<h3 id="proof-of-theorem-221-part-ii">Proof of Theorem 22.1 (Part II)</h3>
+<p>Under the three assumptions, we have</p>
+<p>$$
+\mu_{1 \mathrm{a}}=\mu_{0 \mathrm{a}} \equiv \mu_{\mathrm{a}}, \quad \mu_{1 \mathrm{n}}=\mu_{0 \mathrm{n}} \equiv \mu_{\mathrm{n}} .
+$$</p>
+<ul>
+<li>The observed group $(Z=1, D=0)$ only has never takers, so</li>
+</ul>
+<p>$$
+E(Y \mid Z=1, D=0)=E{Y(1) \mid Z=1, U=\mathrm{n}}=E{Y(1) \mid U=\mathrm{n}}=\mu_{\mathrm{n}} .
+$$</p>
+<ul>
+<li>The observed group $(Z=0, D=1)$ only has always takers, so</li>
+</ul>
+<p>$$
+E(Y \mid Z=0, D=1)=E{Y(0) \mid Z=0, U=\mathrm{a}}=E{Y(0) \mid U=\mathrm{a}}=\mu_{\mathrm{a}}
+$$</p>
+<p>$$~~$$</p>
+<p><font color="red">How about the observed groups $(Z=1, D=1)$ and $(Z=0, D=0)$ ?</font></p>
+
+    </section>
+    
+
+    
+    
+    
+      
+
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="body1.jpg"
+  >
+
+<h4 id="the-observed-group-z1-d1">The Observed Group $(Z=1, D=1)$</h4>
+<p>The observed group $(Z=1, D=1)$ has both <em>compliers</em> and <em>always takers</em>, so
+$$
+\small
+\begin{aligned}
+E(Y \mid Z=1, D=1)= &amp; E\{Y(1) \mid Z=1, D(1)=1\} \\
+= &amp; E\{Y(1) \mid D(1)=1\} \\
+= &amp; \operatorname{pr}\{D(0)=1 \mid D(1)=1\} E\{Y(1) \mid D(1)=1, D(0)=1\} \\
+&amp; +\operatorname{pr}\{D(0)=0 \mid D(1)=1\} E\{Y(1) \mid D(1)=1, D(0)=0\} \\
+= &amp; \frac{\pi_{\mathrm{c}}}{\pi_{\mathrm{c}}+\pi_{\mathrm{a}}} \mu_{1 \mathrm{c}}+\frac{\pi_{\mathrm{a}}}{\pi_{\mathrm{c}}+\pi_{\mathrm{a}}} \mu_{\mathrm{a}} .
+\end{aligned}
+$$</p>
+<p>Solve the linear equation above to obtain
+$$
+\small
+\begin{aligned}
+\mu_{1 \mathrm{c}}= &amp; \pi_{\mathrm{c}}^{-1}\left\{\left(\pi_{\mathrm{c}}+\pi_{\mathrm{a}}\right) E(Y \mid Z=1, D=1)-\pi_{\mathrm{a}} E(Y \mid Z=0, D=1)\right\} \\
+= &amp; \pi_{\mathrm{c}}^{-1}\{\operatorname{pr}(D=1 \mid Z=1) E(Y \mid Z=1, D=1) \\
+&amp; \quad-\operatorname{pr}(D=1 \mid Z=0) E(Y \mid Z=0, D=1)\} \\
+= &amp; \pi_{\mathrm{c}}^{-1}\{E(D Y \mid Z=1)-E(D Y \mid Z=0)\} .
+\end{aligned}
+$$</p>
+<p>Based on the formulas of $\mu_{1 \mathrm{c}}$ and $\mu_{0 \mathrm{c}}$ in Theorem 22.1, we have</p>
+<p>$$
+\tau_{\mathrm{c}}=\mu_{1 \mathrm{c}}-\mu_{0 \mathrm{c}}={E(Y \mid Z=1)-E(Y \mid Z=0)} / \pi_{\mathrm{c}}.
+$$</p>
+
+    </section>
+    
+
+    
+    
+    
+      
+
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="body1.jpg"
+  >
+
+<h2 id="testable-implications">Testable implications</h2>
+<ul>
+<li>Is there any additional value of the this detour for deriving the formula of $\tau_c$ ?</li>
+<li>For binary outcome, the following inequalities must be true:</li>
+</ul>
+<p>$$
+0 \leq \mu_{1 \mathrm{c}} \leq 1, \quad 0 \leq \mu_{0 \mathrm{c}} \leq 1,
+$$</p>
+<ul>
+<li>It implies four inequalities</li>
+</ul>
+<p>$$
+\small
+\begin{aligned}
+E(D Y \mid Z=1)-E(D Y \mid Z=0) &amp; \geq 0, \\
+E(D Y \mid Z=1)-E(D Y \mid Z=0) &amp; \leq E(D \mid Z=1)-E(D \mid Z=0), \\
+E\{(1-D) Y \mid Z=0\}-E\{(1-D) Y \mid Z=1\} &amp; \geq 0, \\
+E\{(1-D) Y \mid Z=0\}-E\{(1-D) Y \mid Z=1\} &amp; \leq E(D \mid Z=1)-E(D \mid Z=0) .
+\end{aligned}
+$$</p>
+<p><mark><strong>Theorem 22.2 (Instrumental Variable Inequalities)</strong></mark> With a binary outcome $Y$, the three assumptions imply</p>
+<p>$$
+E(Q \mid Z=1)-E(Q \mid Z=0) \geq 0,
+$$</p>
+<p>where $Q=D Y, D(1-Y),(D-1) Y$ and $D+Y-D Y$.</p>
+
+    </section>
+    
+
+    
+    
+    
+      
+
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="body1.jpg"
+  >
+
+<h3 id="remarks">Remarks</h3>
+<ul>
+<li>
+<p>Under the three assumptions, the difference in means for $Q=$ $D Y, D(1-Y),(D-1) Y$ and $D+Y-D Y$ must all be non-negative.</p>
+</li>
+<li>
+<p>Importantly, these implications only involve the distribution of the <strong>observed</strong> variables.</p>
+</li>
+<li>
+<p>Rejection of the IV inequalities leads to rejection of the IV assumptions.</p>
+</li>
+<li>
+<p>Balke and Pearl (1997) derived more general IV inequalities without assuming monotonicity.</p>
+</li>
+</ul>
+
+    </section>
+    
+
+    
+    
+    
+      
+
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="body1.jpg"
+  >
+
+<h3 id="eample-1">Eample 1.</h3>
+<ul>
+<li>Investigators et al. (2014) assess the effectiveness of the <em>emergency endovascular</em> versus <em>the open surgical repair strategies</em> for patients with a clinical diagnosis of ruptured aortic aneurism.</li>
+<li>Patients are randomized to either the emergency endovascular or the open repair strategy.</li>
+<li>The primary outcome is the survival status after 30 days</li>
+<li>Let $Z$ be the treatment assigned, with $Z=1$ for the endovascular strategy and $Z=0$ for the open repair.</li>
+<li>Let $D$ be the treatment received.</li>
+<li>Let $Y$ be the survival status, with $Y=1$ for dead, and $Y=0$ for alive.</li>
+<li>The estimate of $\tau_{\mathrm{c}}$ is 0.131 with $95 \%$ confidence interval $(-0.036,0.298)$ including 0 .</li>
+<li>Using the function &ldquo;<code>IVbinary</code>&rdquo; above, we can obtain $\hat\mu_{1c}=0.708$ and $\hat\mu_{0c}=0.629$</li>
+<li>There is no evidence of violating the IV assumptions.</li>
+</ul>
+
+    </section>
+    
+
+    
+    
+    
+      
+
+<section data-noprocess data-shortcode-slide
+  
+      
+      data-background-image="body1.jpg"
+  >
+
+<h3 id="example-2">Example 2.</h3>
+<ul>
+<li>In Hirano et al. (2000), physicians are randomly selected to receive a letter encouraging them to inoculate patients at risk for flu.</li>
+<li>The treatment is the actual flu shot, and the outcome is an indicator for flu-related hospital visits.</li>
+<li>However, some patients do not comply with their assignments. Let $Z_i$ be the indicator of encouragement to receive the flu shot, with $Z=1$ if the physician receives the encouragement letter, and $Z=0$ otherwise.</li>
+<li>Let $D$ be the treatment received.</li>
+<li>Let $Y$ be the outcome, with $Y=0$ if for a flu-related hospitalization during the winter, and $Y=1$ otherwise.</li>
+<li>The estimate of $\tau_{\mathrm{c}}$ is 0.116 with $95 %$ confidence interval $(-0.061,0.293)$ including 0 .</li>
+<li>Using the function above, we can obtain $\hat\mu_{1c}=-0.0045$ and $\hat\mu_{0c}=0.1200$</li>
+<li>Since $\hat\mu_{1c}&lt;0$, there is evidence of violating the IV assumptions.</li>
+</ul>
+
+    </section>
+    
+
+    
+    
+  </div>
+</div>
+
+
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/markdown/markdown.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/notes/notes.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/search/search.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/math/math.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/zoom/zoom.min.js" crossorigin="anonymous"></script>
+
+  
+  
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js-menu@2.1.0/plugin.js" integrity="sha256-M6JwAjnRAWmi+sbXURR/yAhWZKYhAw7YXnnLvIxrdGs=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js-menu@2.1.0/menu.js" integrity="sha256-l14dklFcW5mWar6w/9KaW0fWVerf3mYr7Wt0+rXzFAA=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js-menu@2.1.0/menu.css" integrity="sha256-0fU8HKLaTjgzfaV9CgSqbsN8ilA3zo6zK1M6rlgULd8=" crossorigin="anonymous">
+  
+
+  
+  
+
+  
+  
+  <script src="/js/wowchemy-slides.js"></script>
+
+</body>
+</html>
