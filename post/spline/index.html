@@ -1,0 +1,2118 @@
+<!DOCTYPE html>
+<!-- This site was created with Hugo Blox. https://hugoblox.com -->
+<!-- Last Published: March 6, 2024 --><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Hugo Blox Builder 5.9.6" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.047268c6dd09ad74ba54a0ba71837064.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.4/css/academicons.min.css" integrity="sha512-IW0nhlW5MgNydsXJO40En2EoCkTTjZhI3yuODrZIc8cQ4h1XcF53PsqDHa09NqnkXuIe0Oiyyj171BqZFwISBw==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.32e2e32cf1a4c1ea152e519f8b1fda79.css" />
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/libs/chroma/github-light.min.css" title="hl-light" media="print" onload="this.media='all'" >
+    <link rel="stylesheet" href="/css/libs/chroma/github-dark.min.css" title="hl-dark" media="print" onload="this.media='all'" disabled>
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+
+
+  <meta name="author" content="Li Zhe" />
+
+
+
+
+
+  
+
+<meta name="description" content="Table of Contents 一、Lagrange插值法 二、（Bezier）贝塞尔曲线与B-Splines 1、（Bezier）贝塞尔曲线 2、B-Splines 三、样条估计 四、拟合样条对深度学习中的双下降（Double Decent）现象的解释 一、Lagrange插值法 已知若干点，如何得到光滑曲线？是否可以通过在原有数据点上进行点的填充生成曲线？
+首先，可以考虑两个点的插值： 考虑$P_0$和$P_1$之间的任意一点$P_x$，可表示为： $$P_x=P_0&#43;\left(P_1-P_0\right) t=(1-t) P_0&#43;t P_1$$ 其中$t={(P_0 P_x)}/{(P_0 P_1)}$。直观上，我们可以把$P_0$和$P_1$视为控制点，$(1-t)$和$t$视作基函数。【思考：两点如何推广到多个点？】
+如果知道三个点: $P_0, P_1, P_2$, 如何确定一条曲线 ? 想法: 将$P_0, P_1$ 进行连接，然后将$P_1, P_2$ 进行连接,。但是这样的一个曲线并不光滑 注意到，直线可以由2个点确定， 而二次曲线由三个点即可确定，推广到一般情况， $n-1$ 阶曲线可以由$n$个点确定 这本质上就是Lagrange插值法的思想 (必须经过所有点) 一般来说，如果我们有 $n$ 个点 $\left(x_1, y_1\right), \ldots,\left(x_n, y_n\right)$ ，各 $x_i$ 互不相同。对于 1 到 $\mathrm{n}$ 之间的每个 $k$, 定义 $n-1$ 次多项式 $$ L_k(x)=\frac{\left(x-x_1\right) \ldots\left(x-x_{k-1}\right)\left(x-x_{k&#43;1}\right) \ldots\left(x-x_n\right)}{\left(x_k-x_1\right) \ldots\left(x_k-x_{k-1}\right)\left(x_k-x_{k&#43;1}\right) \ldots\left(x_k-x_n\right)} $$ $L_k(x)$ 具有有趣的性质: $L_k\left(x_k\right)=1, L_k\left(x_j\right)=0, j \neq k$." />
+
+
+
+<link rel="alternate" hreflang="en-us" href="https://ikerlz.github.io/post/spline/" />
+<link rel="canonical" href="https://ikerlz.github.io/post/spline/" />
+
+
+
+  <link rel="manifest" href="/manifest.webmanifest" />
+
+
+
+<link rel="icon" type="image/png" href="/media/icon_hu9ccd2acdcd774e20fa34966445b706a8_6997380_32x32_fill_lanczos_center_3.png" />
+<link rel="apple-touch-icon" type="image/png" href="/media/icon_hu9ccd2acdcd774e20fa34966445b706a8_6997380_180x180_fill_lanczos_center_3.png" />
+
+<meta name="theme-color" content="#1565c0" />
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<meta property="twitter:card" content="summary_large_image" />
+
+  <meta property="twitter:site" content="@wowchemy" />
+  <meta property="twitter:creator" content="@wowchemy" />
+<meta property="twitter:image" content="https://ikerlz.github.io/post/spline/featured.png" />
+
+
+
+  
+
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Zhe Li" />
+<meta property="og:url" content="https://ikerlz.github.io/post/spline/" />
+<meta property="og:title" content="B样条（B-Splines) | Zhe Li" />
+<meta property="og:description" content="Table of Contents 一、Lagrange插值法 二、（Bezier）贝塞尔曲线与B-Splines 1、（Bezier）贝塞尔曲线 2、B-Splines 三、样条估计 四、拟合样条对深度学习中的双下降（Double Decent）现象的解释 一、Lagrange插值法 已知若干点，如何得到光滑曲线？是否可以通过在原有数据点上进行点的填充生成曲线？
+首先，可以考虑两个点的插值： 考虑$P_0$和$P_1$之间的任意一点$P_x$，可表示为： $$P_x=P_0&#43;\left(P_1-P_0\right) t=(1-t) P_0&#43;t P_1$$ 其中$t={(P_0 P_x)}/{(P_0 P_1)}$。直观上，我们可以把$P_0$和$P_1$视为控制点，$(1-t)$和$t$视作基函数。【思考：两点如何推广到多个点？】
+如果知道三个点: $P_0, P_1, P_2$, 如何确定一条曲线 ? 想法: 将$P_0, P_1$ 进行连接，然后将$P_1, P_2$ 进行连接,。但是这样的一个曲线并不光滑 注意到，直线可以由2个点确定， 而二次曲线由三个点即可确定，推广到一般情况， $n-1$ 阶曲线可以由$n$个点确定 这本质上就是Lagrange插值法的思想 (必须经过所有点) 一般来说，如果我们有 $n$ 个点 $\left(x_1, y_1\right), \ldots,\left(x_n, y_n\right)$ ，各 $x_i$ 互不相同。对于 1 到 $\mathrm{n}$ 之间的每个 $k$, 定义 $n-1$ 次多项式 $$ L_k(x)=\frac{\left(x-x_1\right) \ldots\left(x-x_{k-1}\right)\left(x-x_{k&#43;1}\right) \ldots\left(x-x_n\right)}{\left(x_k-x_1\right) \ldots\left(x_k-x_{k-1}\right)\left(x_k-x_{k&#43;1}\right) \ldots\left(x_k-x_n\right)} $$ $L_k(x)$ 具有有趣的性质: $L_k\left(x_k\right)=1, L_k\left(x_j\right)=0, j \neq k$." /><meta property="og:image" content="https://ikerlz.github.io/post/spline/featured.png" /><meta property="og:locale" content="en-us" />
+
+  
+    <meta
+      property="article:published_time"
+      content="2024-03-05T00:39:27&#43;08:00"
+    />
+  
+  
+    <meta property="article:modified_time" content="2024-03-05T00:39:27&#43;08:00">
+  
+
+
+
+
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://ikerlz.github.io/post/spline/"
+  },
+  "headline": "B样条（B-Splines)",
+  
+  "image": [
+    "https://ikerlz.github.io/post/spline/featured.png"
+  ],
+  
+  "datePublished": "2024-03-05T00:39:27+08:00",
+  "dateModified": "2024-03-05T00:39:27+08:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Zhe Li"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Zhe Li",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://ikerlz.github.io/media/icon_hu9ccd2acdcd774e20fa34966445b706a8_6997380_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "Table of Contents 一、Lagrange插值法 二、（Bezier）贝塞尔曲线与B-Splines 1、（Bezier）贝塞尔曲线 2、B-Splines 三、样条估计 四、拟合样条对深度学习中的双下降（Double Decent）现象的解释 一、Lagrange插值法 已知若干点，如何得到光滑曲线？是否可以通过在原有数据点上进行点的填充生成曲线？\n首先，可以考虑两个点的插值： 考虑$P_0$和$P_1$之间的任意一点$P_x$，可表示为： $$P_x=P_0+\\left(P_1-P_0\\right) t=(1-t) P_0+t P_1$$ 其中$t={(P_0 P_x)}/{(P_0 P_1)}$。直观上，我们可以把$P_0$和$P_1$视为控制点，$(1-t)$和$t$视作基函数。【思考：两点如何推广到多个点？】\n如果知道三个点: $P_0, P_1, P_2$, 如何确定一条曲线 ? 想法: 将$P_0, P_1$ 进行连接，然后将$P_1, P_2$ 进行连接,。但是这样的一个曲线并不光滑 注意到，直线可以由2个点确定， 而二次曲线由三个点即可确定，推广到一般情况， $n-1$ 阶曲线可以由$n$个点确定 这本质上就是Lagrange插值法的思想 (必须经过所有点) 一般来说，如果我们有 $n$ 个点 $\\left(x_1, y_1\\right), \\ldots,\\left(x_n, y_n\\right)$ ，各 $x_i$ 互不相同。对于 1 到 $\\mathrm{n}$ 之间的每个 $k$, 定义 $n-1$ 次多项式 $$ L_k(x)=\\frac{\\left(x-x_1\\right) \\ldots\\left(x-x_{k-1}\\right)\\left(x-x_{k+1}\\right) \\ldots\\left(x-x_n\\right)}{\\left(x_k-x_1\\right) \\ldots\\left(x_k-x_{k-1}\\right)\\left(x_k-x_{k+1}\\right) \\ldots\\left(x_k-x_n\\right)} $$ $L_k(x)$ 具有有趣的性质: $L_k\\left(x_k\\right)=1, L_k\\left(x_j\\right)=0, j \\neq k$."
+}
+</script>
+
+  
+
+  
+
+
+
+
+  
+  
+  
+
+  
+  
+
+  
+
+
+  
+  <title>B样条（B-Splines) | Zhe Li</title>
+
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="4b9a037dd38b01138183d35b6350727a" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.3a6bdbdff5d8a89d6e651adb3deec035.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header header--fixed">
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">Zhe Li</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">Zhe Li</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#about"><span>Home</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#publications"><span>Publications</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#slides"><span>Slides</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#posts"><span>Posts</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#contact"><span>Contact</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/uploads/resume.pdf"><span>CV</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+<div class="article-container pt-3">
+  <h1>B样条（B-Splines)</h1>
+
+  
+
+  
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+  <span >
+      Zhe Li</span>
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Mar 5, 2024
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    4 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/classical-statistics/">Classical Statistics</a></span>
+  
+
+</div>
+
+  
+
+
+
+
+
+</div>
+
+
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 300px; max-height: 170px;">
+  <div style="position: relative">
+    <img src="/post/spline/featured_hu92c2506b45d6b176f091660cd2a1b501_21800_4bc6558c2c285f6616e13da7e365d6ac.webp" width="300" height="170" alt="" class="featured-image">
+    
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<details class="toc-inpage d-print-none  " open>
+  <summary class="font-weight-bold">Table of Contents</summary>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一lagrange插值法">一、Lagrange插值法</a></li>
+    <li><a href="#二bezier贝塞尔曲线与b-splines">二、（Bezier）贝塞尔曲线与B-Splines</a>
+      <ul>
+        <li><a href="#1bezier贝塞尔曲线">1、（Bezier）贝塞尔曲线</a></li>
+        <li><a href="#2b-splines">2、B-Splines</a></li>
+      </ul>
+    </li>
+    <li><a href="#三样条估计">三、样条估计</a></li>
+    <li><a href="#四拟合样条对深度学习中的双下降double-decent现象的解释">四、拟合样条对深度学习中的双下降（Double Decent）现象的解释</a></li>
+  </ul>
+</nav>
+</details>
+
+<h2 id="一lagrange插值法">一、Lagrange插值法</h2>
+<p>已知若干点，如何得到<strong>光滑</strong>曲线？是否可以通过在原有数据点上进行点的填充生成曲线？</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /media/posts/spline/fig1_hu56ed4bdc945701bcbc543a02d841351a_5272_0999ba0256e004e76caddbc2a1bb6fe9.webp 400w,
+               /media/posts/spline/fig1_hu56ed4bdc945701bcbc543a02d841351a_5272_451087a27e071e66517027cbbe5b8df0.webp 760w,
+               /media/posts/spline/fig1_hu56ed4bdc945701bcbc543a02d841351a_5272_1200x1200_fit_q75_h2_lanczos_2.webp 1200w"
+               src="/media/posts/spline/fig1_hu56ed4bdc945701bcbc543a02d841351a_5272_0999ba0256e004e76caddbc2a1bb6fe9.webp"
+               width="695"
+               height="520"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+首先，可以考虑两个点的插值：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /media/posts/spline/fig2_hucb27f28971e8e84fa66a03f8e6b729f2_167146_21e1a0b2130ca6ce3a046ad3810e3d70.webp 400w,
+               /media/posts/spline/fig2_hucb27f28971e8e84fa66a03f8e6b729f2_167146_22543dd06a9ae9464ecb074f3452c76c.webp 760w,
+               /media/posts/spline/fig2_hucb27f28971e8e84fa66a03f8e6b729f2_167146_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/media/posts/spline/fig2_hucb27f28971e8e84fa66a03f8e6b729f2_167146_21e1a0b2130ca6ce3a046ad3810e3d70.webp"
+               width="760"
+               height="459"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+考虑$P_0$和$P_1$之间的任意一点$P_x$，可表示为：
+$$P_x=P_0+\left(P_1-P_0\right) t=(1-t) P_0+t P_1$$
+其中$t={(P_0 P_x)}/{(P_0 P_1)}$。直观上，我们可以把$P_0$和$P_1$视为<strong>控制点</strong>，$(1-t)$和$t$视作<strong>基函数</strong>。【思考：两点如何推广到多个点？】</p>
+<ul>
+<li>如果知道三个点: $P_0, P_1, P_2$, 如何确定一条曲线 ?
+<ul>
+<li>想法: 将$P_0, P_1$ 进行连接，然后将$P_1, P_2$ 进行连接,。但是这样的一个曲线并不光滑</li>
+</ul>
+</li>
+<li>注意到，直线可以由2个点确定， 而二次曲线由三个点即可确定，推广到一般情况， $n-1$ 阶曲线可以由$n$个点确定</li>
+<li>这本质上就是Lagrange插值法的思想 (必须经过所有点)</li>
+<li>一般来说，如果我们有 $n$ 个点 $\left(x_1, y_1\right), \ldots,\left(x_n, y_n\right)$ ，各 $x_i$ 互不相同。对于 1 到 $\mathrm{n}$ 之间的每个 $k$, 定义 $n-1$ 次多项式
+$$
+L_k(x)=\frac{\left(x-x_1\right) \ldots\left(x-x_{k-1}\right)\left(x-x_{k+1}\right) \ldots\left(x-x_n\right)}{\left(x_k-x_1\right) \ldots\left(x_k-x_{k-1}\right)\left(x_k-x_{k+1}\right) \ldots\left(x_k-x_n\right)}
+$$</li>
+<li>$L_k(x)$ 具有有趣的性质: $L_k\left(x_k\right)=1, L_k\left(x_j\right)=0, j \neq k$. 然后定义一个 $n-1$ 次多项式
+$$
+P_{n-1}(x)=y_1 L_1(x)+\ldots+y_n L_n(x)=\sum_{i=1}^ny_iL_i(x) .
+$$
+这样的多项式 $P_{n-1}(x)$ 满足 $P_{n-1}\left(x_i\right)=y_i, i=1,2, \ldots, n$. 因此必过控制点$\{(x_i,y_i)\mid i=1,\ldots,n\}$；这就是著名的拉格朗日插值多项式！</li>
+<li>我们可以把$L_1(x),\ldots,L_n(x)$看作基函数，而Lagrange插值本质上就是一组基的线性组合！</li>
+</ul>
+<details class="spoiler "  id="spoiler-1">
+  <summary><strong>Lagrange插值法例子</strong></summary>
+  <p><ul>
+<li>已知区间 $[-1,1]$ 上函数 $f(x)=[1+(5 x)^2]^{-1}$。取等距节点
+$$
+x_i=-1+\frac{i}{5}, \quad i=0,1,2, \cdots, 10
+$$</li>
+<li>作Lagrange插值多项式
+$$
+P_{10}(x)=\sum_{i=0}^{10} f\left(x_i\right) L_i(x) .
+$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /media/posts/spline/fig3_hu351a4dfac429a8bfc34629108fccb8d0_313529_b39fcffe26d86e1b2adc956e889c9840.webp 400w,
+               /media/posts/spline/fig3_hu351a4dfac429a8bfc34629108fccb8d0_313529_fa8cf5705a5f81531403c612ecdb2c6f.webp 760w,
+               /media/posts/spline/fig3_hu351a4dfac429a8bfc34629108fccb8d0_313529_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/media/posts/spline/fig3_hu351a4dfac429a8bfc34629108fccb8d0_313529_b39fcffe26d86e1b2adc956e889c9840.webp"
+               width="760"
+               height="752"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+从图中可以看出, 在 $x=0$ 附近, $P_{10}(x)$ 能较好地逼近 $f(x)$, 但在有些地方, 如在 $[-1,-0.8]$ 和 $[0.8,1]$ 之间, $P_{10}(x)$ 与 $f(x)$ 差异很大，这种现象被称为<a href="https://en.wikipedia.org/wiki/Runge%27s_phenomenon" target="_blank" rel="noopener">Runge现象</a>。</li>
+</ul>
+<p><font color="red">Runge现象出现的原因是在因为在进行Lagrange插值时要求必须要过控制点，因此可以考虑不过控制点进行插值，这样就能避免Runge现象</font></p>
+</details>
+<ul>
+<li>插值法因为要求经过所有节点, 所以导致这种结果, 因此在此基础上提出了拟合的概念:
+<ul>
+<li>依据原有数据点，通过参数调整设置，使得生成曲线与原有点差距最小 (最小二乘), 因此曲线未必会经过原有数据点</li>
+<li>样条曲线 (Spline curves): 是给定一系列控制点而得到的一条曲线，曲线形状由这些控制点控制。一般分为<strong>插值样条</strong>和<strong>拟合样条</strong>。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /media/posts/spline/fig4_hucbdfa747d9f91d6fc6936cd9674c23cd_415381_68d77011d27a4ae149ee5a14f56f24ef.webp 400w,
+               /media/posts/spline/fig4_hucbdfa747d9f91d6fc6936cd9674c23cd_415381_6b4d894436fa7d9c9cf0995c04506441.webp 760w,
+               /media/posts/spline/fig4_hucbdfa747d9f91d6fc6936cd9674c23cd_415381_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/media/posts/spline/fig4_hucbdfa747d9f91d6fc6936cd9674c23cd_415381_68d77011d27a4ae149ee5a14f56f24ef.webp"
+               width="760"
+               height="269"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="二bezier贝塞尔曲线与b-splines">二、（Bezier）贝塞尔曲线与B-Splines</h2>
+<ul>
+<li>均匀节点意义下的一元 B 样条 (B-splines, Basis Splines 缩写)是在 1946 年由 1.J.Schoenberg 提出</li>
+<li>1962 年, 法国数学家 Pierre Bezier 研究了一种曲线, 即 Bezier 曲线</li>
+<li>1972 年, de Boor 与 cox 分别独立提出了计算 B 样条基函数的公式这个公式对 B 样条作为计算机辅助几何设计 (CAGD)重要工具起到了至关重要的作用，称之为 de Boor-Cox 公式，即著名的 de Boor 算法</li>
+</ul>
+<h3 id="1bezier贝塞尔曲线">1、（Bezier）贝塞尔曲线</h3>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /media/posts/spline/fig5_huabbb1fb5b7a7d33de92e8051846b5338_223478_23a9b790d673d55e7733b0d73f59b597.webp 400w,
+               /media/posts/spline/fig5_huabbb1fb5b7a7d33de92e8051846b5338_223478_a6c07ad37a250b75791e7eed75cdbff3.webp 760w,
+               /media/posts/spline/fig5_huabbb1fb5b7a7d33de92e8051846b5338_223478_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/media/posts/spline/fig5_huabbb1fb5b7a7d33de92e8051846b5338_223478_23a9b790d673d55e7733b0d73f59b597.webp"
+               width="760"
+               height="504"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<ul>
+<li>不过 $P_1$ :
+$$
+\begin{gathered}
+P_i&amp;=(1-t) P_0+t P_1 ;\\
+P_j&amp;=(1-t) P_1+t P_2 ; \\
+P_x&amp;=(1-t) P_i+t P_j.
+\end{gathered}
+$$
+其中，
+$$
+\frac{P_0 P_i}{P_0 P_1}=\frac{P_1 P_j}{P_1 P_2}=\frac{P_j P_x}{P_i P_j}=t
+$$</li>
+<li>因此我们可以得到：$P_x=\left(1-t^2\right) P_0+2 t(1-t) P_1+t^2 P_2$</li>
+<li>我们可以把$P_0,P_1,P_2$看作控制点，把$(1-t^2)$，$2t(1-t)$和$t^2$看作是<strong>基函数</strong></li>
+<li>推广到一般情况，假设一共有 $n+1$ 个点, 就可以确定了$n$次的贝塞尔曲线
+$$
+B(t)=\sum_{i=0}^n C_n^i(1-t)^{n-i} t^i P_i, \quad t \in[0,1]
+$$</li>
+<li>或者写成这样
+$$
+B(t)=W_{t, n}^0 P_0+W_{t, n}^1 P_1+\cdots+W_{t, n}^n P_n
+$$</li>
+<li>可以理解为以$W$为基, $P$为系数的线性组合；其中$W_i=C_n^i(1-t)^{n-i} t^i$</li>
+</ul>
+<p><font color="red">注：当有$n+1$个点, 有$n+1$个基函数, 确定$n$阶函数曲线</font></p>
+<ul>
+<li>
+<p>$W_{t, n}^i$为$P_i$的系数, 是最高幂次为$n$的关于$t$的多项式。当 $t$确定后, 该值就为定值。</p>
+</li>
+<li>
+<p>因此整个式子可以理解为$B(t)$插值点是这$n+1$个点施加各自的权重$W$后累加得到的。这也是为什么改变其中一个控制点, 整个贝塞尔曲线都会受到影响。</p>
+</li>
+<li>
+<p>其实对于样条曲线的生成，本质上就对于各个控制点施加权重</p>
+</li>
+<li>
+<p>$n$阶贝塞尔曲线$B^n(t)$可以由<strong>前$n$个点</strong>决定的$n-1$次贝塞尔曲线$B^{n-1}\left(t \mid P_0, \cdots, P_{n-1}\right)$与<strong>后$n$个点</strong>决定的$n-1$次贝塞尔曲线$B^{n-1}\left(t \mid P_1, \cdots, P_n\right)$线性组合递推而来，即
+$$
+{\color{red}
+\begin{aligned}
+&amp; B^n\left(t \mid P_0, P_1, \cdots, P_n\right)= \\
+&amp; (1-t) B^{n-1}\left(t \mid P_0, P_1, \cdots, P_{n-1}\right)+t B^{n-1}\left(t \mid P_1, P_2, \cdots, P_n\right)
+\end{aligned}
+}
+$$</p>
+</li>
+</ul>
+<h3 id="2b-splines">2、B-Splines</h3>
+<ul>
+<li>我们比较好奇的是对于B样条，怎么得到各控制点前的权重（基函数）</li>
+<li>B-Splines的一些重要定义：
+<ul>
+<li><strong>控制点</strong>: 控制曲线的点, 等价于贝塞尔函数的控制点, 通过控制点可以控制曲线形状。假设有 $n+1$ 个控制点 $P_0, P_1, \ldots, P_n$ 。</li>
+<li><strong>节点</strong>: 与控制点无关，是人为地将目标曲线分为若干个部分,其目的就是尽量使得各个部分有所影响但也有一定独立性,这也是为什么 $\mathrm{B}$ 样条中, 有时一个控制点的改变, 不会很大影响到整条曲线，而只影响到局部的原因，这区别于贝塞尔曲线。
+<ul>
+<li>节点划分影响权重计算，假设我们划分 $m+1$ 个节点 $t_0, t_1, \ldots, t_m$ ，将曲线分成了 $m$ 段。</li>
+</ul>
+</li>
+<li><strong>次 (degree) 与阶 (order)</strong>: 次的概念是贝塞尔中次的概念, 即权重中$t$的最高幂次。阶 (order) $=$ 次 (degree) +1 。通常我们用 $k$ 表示次。</li>
+</ul>
+</li>
+<li>注意到：
+$$
+B(t)=\sum_{i=0}^n W_i P_i=\sum_{i=0}^n B_{i, k}(t) P_i
+$$
+我们需要获得$W_i$即可。$W_i$是关于$t$的函数, 最高幂次为$k$。$B$样条中通常记为$B_{i, k}(t)$, 即表示第$i$点的权重, 是关于$t$的函数，且最高幂次为$k$。而这个权重函数$B_{i, k}(t)$，在 B样条里叫做<font color="red">$k$次B样条基函数</font></li>
+<li>$B_{i, k}(t)$ 满足如下递推式 (<strong>de Boor 递推式</strong>)
+$$
+{\color{blue}
+\begin{gathered}
+k=0, \quad B_{i, 0}(t)= \begin{cases}1, &amp; t \in\left[t_i, t_{i+1}\right] \\
+0, &amp; \text { Otherwise }\end{cases} \\
+k&gt;0, \quad B_{i, k}(t)=\frac{t-t_i}{t_{i+k}-t_i} B_{i, k-1}(t)+\frac{t_{i+k+1}-t}{t_{i+k+1}-t_{i+1}} B_{i+1, k-1}(t)
+\end{gathered}
+}
+$$</li>
+</ul>
+<details class="spoiler "  id="spoiler-2">
+  <summary><strong>节点数、控制点数与次数的关系</strong></summary>
+  <p><ul>
+<li>控制点有$n+1=5$个, $n=4$ ，即 $P_0, P_1, P_2, P_3, P_4$</li>
+<li>节点规定为 $m+1=10$ 个, $m=9$ ，即 $t_0, t_1, \cdots, t_9$ ，该节点将要生成的目标曲线分为了 9 份，
+<ul>
+<li>这里的 $t$ 取值一般为 $0-1$的一系列非递减数。 $t_0, t_1, \cdots, t_9$ 组成的序列，叫做节点表，如等分的节点表 $\{0, \frac{1}{9}, \frac{2}{9}, \frac{3}{9}, \frac{4}{9}, \frac{5}{9}, \frac{6}{9}, \frac{7}{9}, \frac{8}{9}, 1\}$</li>
+</ul>
+</li>
+<li>次为$k$。</li>
+<li>三者有个必须要满足的关系式为
+$$m=n+k+1$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /media/posts/spline/fig6_hucd6f327c77bf5a6fc4a28977e78830fc_176036_012920d9f148516a7338cadaefd3e72a.webp 400w,
+               /media/posts/spline/fig6_hucd6f327c77bf5a6fc4a28977e78830fc_176036_57bab267a8b45ca588e8544a47519cb2.webp 760w,
+               /media/posts/spline/fig6_hucd6f327c77bf5a6fc4a28977e78830fc_176036_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/media/posts/spline/fig6_hucd6f327c77bf5a6fc4a28977e78830fc_176036_012920d9f148516a7338cadaefd3e72a.webp"
+               width="760"
+               height="335"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</li>
+<li>为什么满足$m=n+k+1$？
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /media/posts/spline/fig7_hu92917b485e74823b486796e8abf1aa8a_473303_58d0af72851220d14450ad8366b7d7cf.webp 400w,
+               /media/posts/spline/fig7_hu92917b485e74823b486796e8abf1aa8a_473303_452e0e3c04f767e91fdfd73e2fb45c3d.webp 760w,
+               /media/posts/spline/fig7_hu92917b485e74823b486796e8abf1aa8a_473303_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/media/posts/spline/fig7_hu92917b485e74823b486796e8abf1aa8a_473303_58d0af72851220d14450ad8366b7d7cf.webp"
+               width="760"
+               height="528"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</li>
+</ul>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /media/posts/spline/fig8_hu7f6ecb8edaf2c7d073ed44b848a97cde_1515393_655f6831d05368bc3f90a98e463b1c82.webp 400w,
+               /media/posts/spline/fig8_hu7f6ecb8edaf2c7d073ed44b848a97cde_1515393_bc3691af10c0f5a95686060ec641411a.webp 760w,
+               /media/posts/spline/fig8_hu7f6ecb8edaf2c7d073ed44b848a97cde_1515393_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/media/posts/spline/fig8_hu7f6ecb8edaf2c7d073ed44b848a97cde_1515393_655f6831d05368bc3f90a98e463b1c82.webp"
+               width="760"
+               height="605"
+               loading="lazy" data-zoomable /></div>
+  </div></figure></p>
+</details>
+<details class="spoiler "  id="spoiler-3">
+  <summary><strong>实例计算</strong></summary>
+  <p><ul>
+<li>节点设置：
+<ul>
+<li>节点向量: $x=0,0.25,0.5,0.75,1$</li>
+<li>节点数: $m+1=5(m=4)$</li>
+<li>节点: $x_0=0, x_1=0.25, x_2=0.5, x_3=0.75, x_4=1$</li>
+<li>节点区间： $\left[x_0, x_1\right),\left[x_1, x_2\right),\left[x_2, x_3\right),\left[x_3, x_4\right)$</li>
+</ul>
+</li>
+<li>0 次 (degree) 基函数为:
+$$
+\begin{aligned}
+&amp; B_{0,0}(x)=\left\{\begin{array}{lcc}
+1 &amp; \text { if } &amp; x_0 \leq x&lt;x_1 \\
+0 &amp; &amp; \text{ other }
+\end{array}\right. \\
+&amp; B_{1,0}(x)=\left\{\begin{array}{ccc}
+1 &amp; \text { if } &amp; x_1 \leq x&lt;x_2 \\
+0 &amp; &amp; \text{ other }
+\end{array}\right.\\
+&amp; B_{2,0}(x)=\left\{\begin{array}{ccc}
+1 &amp; \text { if } &amp; x_2 \leq x&lt;x_3 \\
+0 &amp; &amp; \text{ other }
+\end{array}\right.\\
+&amp; B_{3,0}(x)=\left\{\begin{array}{ccc}
+1 &amp; \text { if } &amp; x_3 \leq x&lt;x_4 \\
+0 &amp; &amp; \text{ other }
+\end{array}\right.\\
+&amp; B_{4,0}(x)=\left\{\begin{array}{ccc}
+1 &amp; \text { if } &amp; x_4 \leq x&lt;x_5 \\
+0 &amp; &amp; \text{ other }
+\end{array}\right.
+\end{aligned}
+$$</li>
+<li>因此由上可知, 0次(degree)基函数均是分段函数</li>
+<li>基函数的迭代公式：
+$$
+\begin{aligned}
+&amp; B_{i, k}(x)=\frac{x-x_i}{x_{i+k}-x_i} B_{i, k-1}(x)+\frac{x_{i+k+1}-x}{x_{i+k+1}-x_{i+1}} B_{i+1, k-1}(x)
+\end{aligned}
+$$</li>
+<li>$k=1, i=0$时, 一次基函数
+$$
+\begin{aligned}
+B_{0,1}(x)&amp;=\frac{x-x_0}{x_1-x_0} B_{0,0}(x)+\frac{x_2-x}{x_2-x_1} B_{1,0}(x)\\
+&amp;=4 x B_{0,0}(x)+(2-4 x) B_{1,0}(x) \\
+B_{0,1}(x)&amp;=\left\{\begin{array}{cc}
+4 x &amp; 0 \leq x&lt;0.25 \\
+2-4 x &amp; 0.25 \leq x&lt;0.5 \\
+0 &amp; \text { other }
+\end{array}\right.
+\end{aligned}
+$$</li>
+<li>若 $m=4, n=2, k=1$ 基函数 $n+1=3$ 个，基函数次数为 $k=1$</li>
+<li>若 $m=4, n=1, k=2$ 基函数 $n+1=2$ 个, 基函数次数为 $k=2$</li>
+</ul>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /media/posts/spline/fig9_hu4029514fea627bd19700d5211331b497_340604_943b0dabef251ac38c3eff5975a54aff.webp 400w,
+               /media/posts/spline/fig9_hu4029514fea627bd19700d5211331b497_340604_2f1e57cf81a50e716c60f257a907007a.webp 760w,
+               /media/posts/spline/fig9_hu4029514fea627bd19700d5211331b497_340604_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/media/posts/spline/fig9_hu4029514fea627bd19700d5211331b497_340604_943b0dabef251ac38c3eff5975a54aff.webp"
+               width="760"
+               height="533"
+               loading="lazy" data-zoomable /></div>
+  </div></figure></p>
+</details>
+<h2 id="三样条估计">三、样条估计</h2>
+<ul>
+<li>对于多元线性回归，我们有$\widehat{Y}=\mathbf{H}Y$，其中$\mathbf{H}$为帽子矩阵（hat matrix），定义为$\mathbf{H}=X(X^\top X)^{-1}X^\top$</li>
+<li>对于样条估计，假设模型形式为：
+$$
+\begin{aligned}
+y&amp;=\beta+\sum_{i=0}^n B_{i, k}(x) \beta_i\\
+&amp;=\beta+\beta_0 B_{0, k}(x)+\ldots+\beta_{m-k-1} B_{m-k-1, k}(x)
+\end{aligned}
+$$
+其中 $\beta_i$ 是待估参数, $B_{i, k}(x)$ 为样条基函数，此时模型中的基函数个数为 $n=m-k-1$</li>
+<li>设计矩阵: 设计矩阵 $k=1, n=2, m=4$ ：(矩阵的列对应节点区间，相应的区间位置，填入相应的基函数)
+$$
+X=\left[\begin{array}{llll}
+1 &amp; B_{01} &amp; B_{11} &amp; B_{21} \\
+1 &amp; B_{01} &amp; B_{11} &amp; B_{21} \\
+1 &amp; B_{01} &amp; B_{11} &amp; B_{21} \\
+1 &amp; B_{01} &amp; B_{11} &amp; B_{21}
+\end{array}\right]=\left[\begin{array}{cccc}
+1 &amp; 4 x &amp; B_{11} &amp; B_{21} \\
+1 &amp; 2-4 x &amp; B_{11} &amp; B_{21} \\
+1 &amp; 0 &amp; B_{11} &amp; B_{21} \\
+1 &amp; 0 &amp; B_{11} &amp; B_{21}
+\end{array}\right]
+$$</li>
+<li>帽子矩阵: $H=X\left(X^T X\right)^{-1} X^T$, 样条估计为: $\hat{y}=H y$</li>
+</ul>
+<h2 id="四拟合样条对深度学习中的双下降double-decent现象的解释">四、拟合样条对深度学习中的双下降（Double Decent）现象的解释</h2>
+<p><a href="https://threadreaderapp.com/thread/1292293102103748609.html" target="_blank" rel="noopener">参考 Prof. Daniela Witten发在Twitter上的文章</a></p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /media/posts/spline/fig10_hu0ca6d9fa5e692adffadf293007778908_458298_a4029f5373d721ecf5c08e73cfa6ca57.webp 400w,
+               /media/posts/spline/fig10_hu0ca6d9fa5e692adffadf293007778908_458298_62698b2655eb5636044058c534368b3d.webp 760w,
+               /media/posts/spline/fig10_hu0ca6d9fa5e692adffadf293007778908_458298_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/media/posts/spline/fig10_hu0ca6d9fa5e692adffadf293007778908_458298_a4029f5373d721ecf5c08e73cfa6ca57.webp"
+               width="742"
+               height="760"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<ul>
+<li>Bias-Variance Trade-off ?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /media/posts/spline/fig11_hue0e5b97ed47da14796153e2957ee5fc4_173808_1810da45f1282d81a74a297175e82142.webp 400w,
+               /media/posts/spline/fig11_hue0e5b97ed47da14796153e2957ee5fc4_173808_62796b489d601067ca50d513b6324c67.webp 760w,
+               /media/posts/spline/fig11_hue0e5b97ed47da14796153e2957ee5fc4_173808_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/media/posts/spline/fig11_hue0e5b97ed47da14796153e2957ee5fc4_173808_1810da45f1282d81a74a297175e82142.webp"
+               width="760"
+               height="403"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+<ul>
+<li>$\mathrm{U}$型测试误差曲线基于以下公式：
+$$\text{Exp. Pred. Error} = \text{Irreducible Error}+\operatorname{Bias}^2+ \text{Var}$$</li>
+<li>随着灵活性的增加, (平方) 偏差减少, 方差增加。sweet spot需要权衡偏差和方差, 即具有中等程度灵活性的模型。</li>
+</ul>
+</li>
+<li>过去的几年中，尤其是在深度学习领域，已经出现双下降现象。当你继续拟合越来越灵活且对训练数据进行插值处理的模型时，测试误差会再次减小！
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /media/posts/spline/fig12_hu787ed22831ed752e51031e26be985eac_102739_999fa01a39d5393a2cd0514abb2bf696.webp 400w,
+               /media/posts/spline/fig12_hu787ed22831ed752e51031e26be985eac_102739_51cc0a311ce3c3ce9deea09dbcbaf19d.webp 760w,
+               /media/posts/spline/fig12_hu787ed22831ed752e51031e26be985eac_102739_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/media/posts/spline/fig12_hu787ed22831ed752e51031e26be985eac_102739_999fa01a39d5393a2cd0514abb2bf696.webp"
+               width="702"
+               height="461"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</li>
+<li>考虑自然三次样条曲线（natural cubic spline），拟合模型为$Y=f(x)+\epsilon$，所用基函数的数量与样条曲线的自由度（degrees of freedom, DF）相同。基函数基本形式如下：
+$$
+\left(X-\psi_1\right)_{+}^3,\quad \ldots,\quad\left(X-\psi_K\right)_{+}^3
+$$</li>
+<li>我们首先生成$n=20$组$(X,Y)$数据，首先拟合一个$df=4$的样条曲线【$n=20$ 时的观测值为灰色小圆点，$f(x)=\sin(x)$ 为黑色曲线，拟合函数为浅蓝色曲线。】
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /media/posts/spline/fig13_hu9c3226fce5e0df57ecb32b8fa1875fdf_58494_04ba877d0672e38e0d11b787d844f1c8.webp 400w,
+               /media/posts/spline/fig13_hu9c3226fce5e0df57ecb32b8fa1875fdf_58494_1bba8e95ecb048c93ad0d8276220fd58.webp 760w,
+               /media/posts/spline/fig13_hu9c3226fce5e0df57ecb32b8fa1875fdf_58494_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/media/posts/spline/fig13_hu9c3226fce5e0df57ecb32b8fa1875fdf_58494_04ba877d0672e38e0d11b787d844f1c8.webp"
+               width="676"
+               height="364"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</li>
+<li>然后分别拟合$df=6$和$df=20$的样条曲线
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /media/posts/spline/fig14_hu33ef8ba9e1ea428490d24ba3846b3659_54374_4b36f4b7451a33a0fdc2133d00823f1c.webp 400w,
+               /media/posts/spline/fig14_hu33ef8ba9e1ea428490d24ba3846b3659_54374_40cc56b6bc7bfd4635493fb1b2fffb47.webp 760w,
+               /media/posts/spline/fig14_hu33ef8ba9e1ea428490d24ba3846b3659_54374_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/media/posts/spline/fig14_hu33ef8ba9e1ea428490d24ba3846b3659_54374_4b36f4b7451a33a0fdc2133d00823f1c.webp"
+               width="681"
+               height="359"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /media/posts/spline/fig15_hu76ae5e1e118b955f2590ebd220748f58_69288_ad22bef83805e44276f0bb2e91ba13ff.webp 400w,
+               /media/posts/spline/fig15_hu76ae5e1e118b955f2590ebd220748f58_69288_d42be289742ae241cf457b9bf846a982.webp 760w,
+               /media/posts/spline/fig15_hu76ae5e1e118b955f2590ebd220748f58_69288_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/media/posts/spline/fig15_hu76ae5e1e118b955f2590ebd220748f58_69288_ad22bef83805e44276f0bb2e91ba13ff.webp"
+               width="681"
+               height="351"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+注意到：为了拟合$df=20$的样条曲线，需要用20个数据点来运行最小二乘法！结果显示在训练集上零误差，但在测试集上误差非常大！这些糟糕的结果也非常符合偏差-方差权衡</li>
+<li>如果继续拟合$df=36$（$p&gt;n$）的样条曲线，由于解是不唯一的，为了在无穷多个解中进行选择，可以选择范数拟合：系数平方和最小的那个（利用SVD计算）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /media/posts/spline/fig16_hu4fb763d4e7cf60838a1e8b720bc87b4b_65565_6c8487bde5350335be1c7de1d691398f.webp 400w,
+               /media/posts/spline/fig16_hu4fb763d4e7cf60838a1e8b720bc87b4b_65565_d0452b852ec123a043e5615418ddd971.webp 760w,
+               /media/posts/spline/fig16_hu4fb763d4e7cf60838a1e8b720bc87b4b_65565_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/media/posts/spline/fig16_hu4fb763d4e7cf60838a1e8b720bc87b4b_65565_6c8487bde5350335be1c7de1d691398f.webp"
+               width="688"
+               height="365"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</li>
+<li>对比了$df=20$和$df=36$的结果，可见$df=36$的结果比$df=20$要好一点。这是什么原因呢？
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /media/posts/spline/fig17_hu4f65f573c3a188111c745770ec28ca50_49933_29b53c5b66c02d7cefc506f4b519674b.webp 400w,
+               /media/posts/spline/fig17_hu4f65f573c3a188111c745770ec28ca50_49933_7c580ee94b25688ff51b6101faa52f56.webp 760w,
+               /media/posts/spline/fig17_hu4f65f573c3a188111c745770ec28ca50_49933_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/media/posts/spline/fig17_hu4f65f573c3a188111c745770ec28ca50_49933_29b53c5b66c02d7cefc506f4b519674b.webp"
+               width="700"
+               height="179"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</li>
+<li>下图是训练误差和测试误差曲线，两者的变化曲线差别非常大。以虚线为分界线，当$p&gt;n$时，为什么测试误差（暂时）减少？
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /media/posts/spline/fig18_hu4c909df76bd900404e830bcee74a1f31_49763_932b9018425816608cb52012588da024.webp 400w,
+               /media/posts/spline/fig18_hu4c909df76bd900404e830bcee74a1f31_49763_cc7f2bf6b30ca26f29e7d25fe338e1ce.webp 760w,
+               /media/posts/spline/fig18_hu4c909df76bd900404e830bcee74a1f31_49763_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/media/posts/spline/fig18_hu4c909df76bd900404e830bcee74a1f31_49763_932b9018425816608cb52012588da024.webp"
+               width="706"
+               height="428"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</li>
+<li>一个合理的解释为：关键在于当$df=20$，即$df=n$时，只有一个最小二乘拟合的训练误差为零。这种拟合会出现大量的振荡。</li>
+<li>但是当增加自由度，使得$p&gt;n$时，则会出现大量的插值最小二乘拟合。最小范数的最小二乘拟合是这无数多个拟合中振荡最小的，甚至比$p=n$时的拟合更稳定。</li>
+<li>所以，选择最小范数最小二乘拟合实际上意味着$df=36$的样条曲线比$df=20$ 的样条曲线的灵活性差。</li>
+<li>如果在拟合样条曲线时使用了ridge penalty，而不是最小二乘，结果会怎么样呢？这时将不会有插值训练集，也不会看到双下降，而且会得到更好的测试误差</li>
+<li>所以，这些与深度学习有何关系？当使用（随机）梯度下降法来拟合神经网络时，实际上是在挑选最小范数解！因此，样条曲线示例非常类似于神经网络双下降时发生的情况。</li>
+<li>换种说法，当模型能力恰好能够产生零训练误差时，该现象导致测试误差达到峰值。但是，峰值不会出现在多层网络中，因为多层网络在优化时存在<strong>隐式正则化</strong>的现象</li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/b%E6%A0%B7%E6%9D%A1/">B样条</a>
+  
+  <a class="badge badge-light" href="/tag/lagrange%E6%8F%92%E5%80%BC/">Lagrange插值</a>
+  
+  <a class="badge badge-light" href="/tag/%E8%B4%9D%E5%A1%9E%E5%B0%94%E6%9B%B2%E7%BA%BF/">贝塞尔曲线</a>
+  
+</div>
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fikerlz.github.io%2Fpost%2Fspline%2F&amp;text=B%E6%A0%B7%E6%9D%A1%EF%BC%88B-Splines%29" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fikerlz.github.io%2Fpost%2Fspline%2F&amp;t=B%E6%A0%B7%E6%9D%A1%EF%BC%88B-Splines%29" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a href="mailto:?subject=B%E6%A0%B7%E6%9D%A1%EF%BC%88B-Splines%29&amp;body=https%3A%2F%2Fikerlz.github.io%2Fpost%2Fspline%2F" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fikerlz.github.io%2Fpost%2Fspline%2F&amp;title=B%E6%A0%B7%E6%9D%A1%EF%BC%88B-Splines%29" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=B%E6%A0%B7%E6%9D%A1%EF%BC%88B-Splines%29%20https%3A%2F%2Fikerlz.github.io%2Fpost%2Fspline%2F" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fikerlz.github.io%2Fpost%2Fspline%2F&amp;title=B%E6%A0%B7%E6%9D%A1%EF%BC%88B-Splines%29" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2024 Me. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://hugoblox.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Hugo Blox Builder</a> — the free, <a href="https://github.com/HugoBlox/hugo-blox-builder" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+
+
+<script src="/js/vendor-bundle.min.938a3a7554cd9f6602290411f64d2617.js"></script>
+
+
+
+
+  
+
+  
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script id="search-hit-fuse-template" type="text/x-template">
+    <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+    </div>
+  </script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+
+  <script src="/js/wowchemy-headroom.db4755770454eb63685f8de785c0a172.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+<script src="/en/js/wowchemy.min.62586ca65ca61821fe707eb9fa6268b7.js"></script>
+
+
+
+
+
+
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <pre><code></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <script src="/js/wowchemy-publication.9137013a66774049159934c29c3f0205.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

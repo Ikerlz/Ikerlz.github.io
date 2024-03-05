@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- This site was created with Hugo Blox. https://hugoblox.com -->
-<!-- Last Published: January 3, 2024 --><html lang="en-us" >
+<!-- Last Published: March 6, 2024 --><html lang="en-us" >
 
 
 <head>
@@ -332,7 +332,7 @@
 <meta property="og:description" content="A highly-customizable Hugo academic resume theme powered by Wowchemy website builder." /><meta property="og:image" content="https://ikerlz.github.io/media/icon_hu9ccd2acdcd774e20fa34966445b706a8_6997380_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
 
   
-    <meta property="og:updated_time" content="2023-11-02T00:39:27&#43;08:00" />
+    <meta property="og:updated_time" content="2024-03-05T00:39:27&#43;08:00" />
   
 
 
@@ -793,6 +793,116 @@
   
 
   
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="media stream-item view-compact">
+  <div class="media-body">
+
+    <div class="section-subheading article-title mb-0 mt-0">
+      <a href="/post/spline/" >B样条（B-Splines)</a>
+    </div>
+
+    
+    <a href="/post/spline/"  class="summary-link">
+      <div class="article-style">
+        Table of Contents 一、Lagrange插值法 二、（Bezier）贝塞尔曲线与B-Splines 1、（Bezier）贝塞尔曲线 2、B-Splines 三、样条估计 四、拟合样条对深度学习中的双下降（Double Decent）现象的解释 一、Lagrange插值法 已知若干点，如何得到光滑曲线？是否可以通过在原有数据点上进行点的填充生成曲线？
+首先，可以考虑两个点的插值： 考虑$P_0$和$P_1$之间的任意一点$P_x$，可表示为： $$P_x=P_0+\left(P_1-P_0\right) t=(1-t) P_0+t P_1$$ 其中$t={(P_0 P_x)}/{(P_0 P_1)}$。直观上，我们可以把$P_0$和$P_1$视为控制点，$(1-t)$和$t$视作基函数。【思考：两点如何推广到多个点？】
+如果知道三个点: $P_0, P_1, P_2$, 如何确定一条曲线 ? 想法: 将$P_0, P_1$ 进行连接，然后将$P_1, P_2$ 进行连接,。但是这样的一个曲线并不光滑 注意到，直线可以由2个点确定， 而二次曲线由三个点即可确定，推广到一般情况， $n-1$ 阶曲线可以由$n$个点确定 这本质上就是Lagrange插值法的思想 (必须经过所有点) 一般来说，如果我们有 $n$ 个点 $\left(x_1, y_1\right), \ldots,\left(x_n, y_n\right)$ ，各 $x_i$ 互不相同。对于 1 到 $\mathrm{n}$ 之间的每个 $k$, 定义 $n-1$ 次多项式 $$ L_k(x)=\frac{\left(x-x_1\right) \ldots\left(x-x_{k-1}\right)\left(x-x_{k+1}\right) \ldots\left(x-x_n\right)}{\left(x_k-x_1\right) \ldots\left(x_k-x_{k-1}\right)\left(x_k-x_{k+1}\right) \ldots\left(x_k-x_n\right)} $$ $L_k(x)$ 具有有趣的性质: $L_k\left(x_k\right)=1, L_k\left(x_j\right)=0, j \neq k$.
+      </div>
+    </a>
+    
+
+    <div class="stream-meta article-metadata">
+
+      
+
+      
+        
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+  <span >
+      Zhe Li</span>
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Mar 5, 2024
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    4 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/classical-statistics/">Classical Statistics</a></span>
+  
+
+</div>
+
+      
+    </div>
+
+    
+
+  </div>
+  <div class="ml-3">
+    
+    
+      
+      
+      <a href="/post/spline/" >
+        <img src="/post/spline/featured_hu92c2506b45d6b176f091660cd2a1b501_21800_33ca0c30cab88a6252a619ad1b44449b.webp" height="85" width="150"
+            alt="B样条（B-Splines)" loading="lazy">
+      </a>
+    
+  </div>
+</div>
+
   
     
 
