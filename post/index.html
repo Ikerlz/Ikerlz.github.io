@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- This site was created with Hugo Blox. https://hugoblox.com -->
-<!-- Last Published: March 6, 2024 --><html lang="en-us" >
+<!-- Last Published: April 17, 2024 --><html lang="en-us" >
 
 
 <head>
@@ -332,7 +332,7 @@
 <meta property="og:description" content="A highly-customizable Hugo academic resume theme powered by Wowchemy website builder." /><meta property="og:image" content="https://ikerlz.github.io/media/icon_hu9ccd2acdcd774e20fa34966445b706a8_6997380_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
 
   
-    <meta property="og:updated_time" content="2024-03-05T00:39:27&#43;08:00" />
+    <meta property="og:updated_time" content="2024-04-05T00:39:27&#43;08:00" />
   
 
 
@@ -791,6 +791,119 @@
   
 
   
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="media stream-item view-compact">
+  <div class="media-body">
+
+    <div class="section-subheading article-title mb-0 mt-0">
+      <a href="/post/ddpm/" >扩散模型（Diffusion Model）</a>
+    </div>
+
+    
+    <a href="/post/ddpm/"  class="summary-link">
+      <div class="article-style">
+        主要针对扩散模型的一些经典文章写一些个人理解，博采众长，参考了很多博客、文章，详细信息见参考文献
+Table of Contents 0、文生图片模型 1、几种生成模型的对比 2、扩散模型（DDPM） 3 、基于分数的生成模型（Score-based generative models） 参考文献 0、文生图片模型 DALL·E 3 扩散模型的大火始于2020年所提出的DDPM（&ldquo;Denoising Diffusion Probabilistic Models&rdquo;）。当前最先进的两个文本生成图像——OpenAI的DALL·E 3和Google的Imagen 2，都是基于扩散模型来完成的。
+1、几种生成模型的对比 GAN（生成对抗网络）：GAN是由两部分组成，一个生成器和一个判别器。生成器的目标是创建足够真实的数据，以至于判别器不能区分生成的数据和真实数据。判别器的目标是正确区分真实数据和生成器生成的假数据。这两部分在训练过程中相互竞争，推动彼此的进步，因此称为对抗网络。GAN在图像生成方面尤其出色。
+VAE（变分自编码器）：VAE采用不同的方法来生成数据。它通过编码器将数据映射到一个分布上，并从这个分布中采样来构造一个解码器用于数据重建。它是一种通过概率方法生成新数据的模型，通常用于生成遵循特定统计分布的图片。
+Flow-based Models（基于流的模型）：这类模型使用可逆变换来学习数据的分布，这意味着它们可以精确地计算生成数据的概率。它们可以生成高质量的数据，并且给定新数据，也可以确定其概率。这种特性在密度估计和无损压缩方面特别有用。
+Diffusion Models（扩散模型）：Diffusion Models 的灵感来自non-equilibrium thermodynamics （非平衡热力学）。理论首先定义扩散步骤的马尔可夫链，以缓慢地将随机噪声添加到数据中，然后学习逆向扩散过程以从噪声中构造所需的数据样本。与 VAE 或流模型不同，扩散模型是通过固定过程学习，并且隐空间具有比较高的维度。
+      </div>
+    </a>
+    
+
+    <div class="stream-meta article-metadata">
+
+      
+
+      
+        
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+  <span >
+      Zhe Li</span>
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Apr 5, 2024
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    9 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/deep-learning/">Deep Learning</a></span>
+  
+
+</div>
+
+      
+    </div>
+
+    
+
+  </div>
+  <div class="ml-3">
+    
+    
+      
+      
+      <a href="/post/ddpm/" >
+        <img src="/post/ddpm/featured_hueb9b4963c2a48ef8eda9c604b41e6325_5525242_92ba5e7d68e44b45cc8dfb93a7ce9d9c.webp" height="86" width="150"
+            alt="扩散模型（Diffusion Model）" loading="lazy">
+      </a>
+    
+  </div>
+</div>
+
   
     
 
