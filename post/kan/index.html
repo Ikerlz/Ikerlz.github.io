@@ -1,0 +1,1779 @@
+<!DOCTYPE html>
+<!-- This site was created with Hugo Blox. https://hugoblox.com -->
+<!-- Last Published: May 15, 2024 --><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Hugo Blox Builder 5.9.6" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.047268c6dd09ad74ba54a0ba71837064.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.4/css/academicons.min.css" integrity="sha512-IW0nhlW5MgNydsXJO40En2EoCkTTjZhI3yuODrZIc8cQ4h1XcF53PsqDHa09NqnkXuIe0Oiyyj171BqZFwISBw==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.32e2e32cf1a4c1ea152e519f8b1fda79.css" />
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/libs/chroma/github-light.min.css" title="hl-light" media="print" onload="this.media='all'" >
+    <link rel="stylesheet" href="/css/libs/chroma/github-dark.min.css" title="hl-dark" media="print" onload="this.media='all'" disabled>
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+
+
+  <meta name="author" content="Li Zhe" />
+
+
+
+
+
+  
+
+<meta name="description" content="Table of Contents 0、MLP 一、Kolmogorov–Arnold Networks 1. Kolmogorov-Arnold Representation theorem 2. KAN Architecture 3. KAN&rsquo;s Approximation Abilities and Scaling Laws 4. For Interpretability: Simplifying KANs and Making them interactive 二、KAN 的一些问题 参考文献 0、MLP 感知机最早由Rosenblatt于1957年提出，由于其简单的结构而得到快速的发展，下图是一个MLP的示意图 我们可以把上面这个 MLP 表示为： $$ f_{\mathrm{MLP}}(\mathbf{x})=\mathbf{W}_4 \boldsymbol{\sigma}\left(\mathbf{W}_3 \boldsymbol{\sigma}\left(\mathbf{W}_2 \boldsymbol{\sigma}\left(\mathbf{W}_1 \mathbf{x}&#43;\mathbf{b}_1\right)&#43;\mathbf{b}_2\right)&#43;\mathbf{b}_3\right)&#43;\mathbf{b}_4, $$ 可以看出，在 MLP 中，激活函数$\boldsymbol{\sigma}(\cdot)$是作用在节点（node）上的，而边（edge）的连接没有附带任何信息，唯一的作用就是把两层中的所有节点连接起来。" />
+
+
+
+<link rel="alternate" hreflang="en-us" href="https://ikerlz.github.io/post/kan/" />
+<link rel="canonical" href="https://ikerlz.github.io/post/kan/" />
+
+
+
+  <link rel="manifest" href="/manifest.webmanifest" />
+
+
+
+<link rel="icon" type="image/png" href="/media/icon_hu9ccd2acdcd774e20fa34966445b706a8_6997380_32x32_fill_lanczos_center_3.png" />
+<link rel="apple-touch-icon" type="image/png" href="/media/icon_hu9ccd2acdcd774e20fa34966445b706a8_6997380_180x180_fill_lanczos_center_3.png" />
+
+<meta name="theme-color" content="#1565c0" />
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<meta property="twitter:card" content="summary_large_image" />
+
+  <meta property="twitter:site" content="@wowchemy" />
+  <meta property="twitter:creator" content="@wowchemy" />
+<meta property="twitter:image" content="https://ikerlz.github.io/post/kan/featured.png" />
+
+
+
+  
+
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Zhe Li" />
+<meta property="og:url" content="https://ikerlz.github.io/post/kan/" />
+<meta property="og:title" content="KAN: Kolmogorov–Arnold Networks | Zhe Li" />
+<meta property="og:description" content="Table of Contents 0、MLP 一、Kolmogorov–Arnold Networks 1. Kolmogorov-Arnold Representation theorem 2. KAN Architecture 3. KAN&rsquo;s Approximation Abilities and Scaling Laws 4. For Interpretability: Simplifying KANs and Making them interactive 二、KAN 的一些问题 参考文献 0、MLP 感知机最早由Rosenblatt于1957年提出，由于其简单的结构而得到快速的发展，下图是一个MLP的示意图 我们可以把上面这个 MLP 表示为： $$ f_{\mathrm{MLP}}(\mathbf{x})=\mathbf{W}_4 \boldsymbol{\sigma}\left(\mathbf{W}_3 \boldsymbol{\sigma}\left(\mathbf{W}_2 \boldsymbol{\sigma}\left(\mathbf{W}_1 \mathbf{x}&#43;\mathbf{b}_1\right)&#43;\mathbf{b}_2\right)&#43;\mathbf{b}_3\right)&#43;\mathbf{b}_4, $$ 可以看出，在 MLP 中，激活函数$\boldsymbol{\sigma}(\cdot)$是作用在节点（node）上的，而边（edge）的连接没有附带任何信息，唯一的作用就是把两层中的所有节点连接起来。" /><meta property="og:image" content="https://ikerlz.github.io/post/kan/featured.png" /><meta property="og:locale" content="en-us" />
+
+  
+    <meta
+      property="article:published_time"
+      content="2024-05-12T00:39:27&#43;08:00"
+    />
+  
+  
+    <meta property="article:modified_time" content="2024-05-12T00:39:27&#43;08:00">
+  
+
+
+
+
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://ikerlz.github.io/post/kan/"
+  },
+  "headline": "KAN: Kolmogorov–Arnold Networks",
+  
+  "image": [
+    "https://ikerlz.github.io/post/kan/featured.png"
+  ],
+  
+  "datePublished": "2024-05-12T00:39:27+08:00",
+  "dateModified": "2024-05-12T00:39:27+08:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Zhe Li"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Zhe Li",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://ikerlz.github.io/media/icon_hu9ccd2acdcd774e20fa34966445b706a8_6997380_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "Table of Contents 0、MLP 一、Kolmogorov–Arnold Networks 1. Kolmogorov-Arnold Representation theorem 2. KAN Architecture 3. KAN\u0026rsquo;s Approximation Abilities and Scaling Laws 4. For Interpretability: Simplifying KANs and Making them interactive 二、KAN 的一些问题 参考文献 0、MLP 感知机最早由Rosenblatt于1957年提出，由于其简单的结构而得到快速的发展，下图是一个MLP的示意图 我们可以把上面这个 MLP 表示为： $$ f_{\\mathrm{MLP}}(\\mathbf{x})=\\mathbf{W}_4 \\boldsymbol{\\sigma}\\left(\\mathbf{W}_3 \\boldsymbol{\\sigma}\\left(\\mathbf{W}_2 \\boldsymbol{\\sigma}\\left(\\mathbf{W}_1 \\mathbf{x}+\\mathbf{b}_1\\right)+\\mathbf{b}_2\\right)+\\mathbf{b}_3\\right)+\\mathbf{b}_4, $$ 可以看出，在 MLP 中，激活函数$\\boldsymbol{\\sigma}(\\cdot)$是作用在节点（node）上的，而边（edge）的连接没有附带任何信息，唯一的作用就是把两层中的所有节点连接起来。"
+}
+</script>
+
+  
+
+  
+
+
+
+
+  
+  
+  
+
+  
+  
+
+  
+
+
+  
+  <title>KAN: Kolmogorov–Arnold Networks | Zhe Li</title>
+
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="dd7d7c36dceb499b7158fb43a2455d93" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.3a6bdbdff5d8a89d6e651adb3deec035.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header header--fixed">
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">Zhe Li</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">Zhe Li</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#about"><span>Home</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#publications"><span>Publications</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#slides"><span>Slides</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#posts"><span>Posts</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#contact"><span>Contact</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/uploads/resume.pdf"><span>CV</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+<div class="article-container pt-3">
+  <h1>KAN: Kolmogorov–Arnold Networks</h1>
+
+  
+
+  
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+  <span >
+      Zhe Li</span>
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    May 12, 2024
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    3 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/neural-network/">Neural Network</a></span>
+  
+
+</div>
+
+  
+
+
+
+
+
+</div>
+
+
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 413px;">
+  <div style="position: relative">
+    <img src="/post/kan/featured_hue5f6d80a88d9fc59893a33ee7400df97_121294_5af42d295f930c8fef8eb52799add402.webp" width="720" height="413" alt="" class="featured-image">
+    
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<details class="toc-inpage d-print-none  " open>
+  <summary class="font-weight-bold">Table of Contents</summary>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#0mlp">0、MLP</a></li>
+    <li><a href="#一kolmogorovarnold-networks">一、Kolmogorov–Arnold Networks</a>
+      <ul>
+        <li><a href="#1-kolmogorov-arnold-representation-theorem">1. Kolmogorov-Arnold Representation theorem</a></li>
+        <li><a href="#2-kan-architecture">2. KAN Architecture</a></li>
+        <li><a href="#3-kans-approximation-abilities-and-scaling-laws">3. KAN&rsquo;s Approximation Abilities and Scaling Laws</a></li>
+        <li><a href="#4-for-interpretability-simplifying-kans-and-making-them-interactive">4. For Interpretability: Simplifying KANs and Making them interactive</a></li>
+      </ul>
+    </li>
+    <li><a href="#二kan-的一些问题">二、KAN 的一些问题</a>
+      <ul>
+        <li><a href="#参考文献">参考文献</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</details>
+
+<h2 id="0mlp">0、MLP</h2>
+<p>感知机最早由Rosenblatt于1957年提出，由于其简单的结构而得到快速的发展，下图是一个MLP的示意图
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /media/posts/kan/MLP_fig_hu0087d83c60502258822faa8253c30ecd_296541_cc4a74d6b8bf3c465250cde822bc8145.webp 400w,
+               /media/posts/kan/MLP_fig_hu0087d83c60502258822faa8253c30ecd_296541_b7b0e57353b50be120789d9cd27b4dda.webp 760w,
+               /media/posts/kan/MLP_fig_hu0087d83c60502258822faa8253c30ecd_296541_1200x1200_fit_q75_h2_lanczos.webp 1200w"
+               src="/media/posts/kan/MLP_fig_hu0087d83c60502258822faa8253c30ecd_296541_cc4a74d6b8bf3c465250cde822bc8145.webp"
+               width="760"
+               height="381"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>我们可以把上面这个 MLP 表示为：
+$$
+f_{\mathrm{MLP}}(\mathbf{x})=\mathbf{W}_4 \boldsymbol{\sigma}\left(\mathbf{W}_3 \boldsymbol{\sigma}\left(\mathbf{W}_2 \boldsymbol{\sigma}\left(\mathbf{W}_1 \mathbf{x}+\mathbf{b}_1\right)+\mathbf{b}_2\right)+\mathbf{b}_3\right)+\mathbf{b}_4,
+$$
+可以看出，在 MLP 中，激活函数$\boldsymbol{\sigma}(\cdot)$是作用在<strong>节点</strong>（node）上的，而<strong>边</strong>（edge）的连接没有附带任何信息，唯一的作用就是把两层中的所有节点连接起来。</p>
+<p>MLP具有很强的拟合能力，常见的连续非线性函数都可以用MLP来近似
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /media/posts/kan/fig1_hu639b401a7fefeab6de19635bd0f7128d_179933_111c8d2d86f002692e94673f1941516d.webp 400w,
+               /media/posts/kan/fig1_hu639b401a7fefeab6de19635bd0f7128d_179933_d12ecc66e59562635215eaec3fcb7e58.webp 760w,
+               /media/posts/kan/fig1_hu639b401a7fefeab6de19635bd0f7128d_179933_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/media/posts/kan/fig1_hu639b401a7fefeab6de19635bd0f7128d_179933_111c8d2d86f002692e94673f1941516d.webp"
+               width="760"
+               height="510"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p><strong>但是，我们是否可以把非线性的激活函数放到边上呢？这就是 KAN 的基本思想</strong></p>
+<hr>
+<h2 id="一kolmogorovarnold-networks">一、Kolmogorov–Arnold Networks</h2>
+<h3 id="1-kolmogorov-arnold-representation-theorem">1. Kolmogorov-Arnold Representation theorem</h3>
+<p>Vladimir Arnold与Andrey Kolmogorov证明：如果$f: [0,1]^n \rightarrow \mathbb{R}$是一个多元连续函数，则$f$可以被写成单变量连续函数和加法的有限组合。具体而言，
+$$
+f(\mathbf{x})=f\left(x_1, \ldots, x_n\right)=\sum_{q=1}^{2 n+1} \Phi_q\left(\sum_{p=1}^n \phi_{q, p}\left(x_p\right)\right) .
+$$
+其中，$\phi_{q, p}:[0,1] \rightarrow \mathbb{R}$，$\Phi_q: \mathbb{R} \rightarrow \mathbb{R}$。</p>
+<p>似乎这个理论告诉我们学习一个高维函数归结为学习多项式个一维函数。然而，这些一维函数可能是<strong>非光滑</strong>甚至是<strong>分形</strong>的，因此在实践中可能无法学习到。由于这种<strong>病态行为</strong>，KA表示定理在机器学习中基本上被判了死刑，被认为<strong>在理论上是正确的但在实践中无用</strong></p>
+<h3 id="2-kan-architecture">2. KAN Architecture</h3>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /media/posts/kan/fig2_huc050d1ac306643ad1ef18b4106826310_164533_561f46db569a0264b5a74457c4fa8eb6.webp 400w,
+               /media/posts/kan/fig2_huc050d1ac306643ad1ef18b4106826310_164533_f82b157fd070e5c32e57c76a93b19793.webp 760w,
+               /media/posts/kan/fig2_huc050d1ac306643ad1ef18b4106826310_164533_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/media/posts/kan/fig2_huc050d1ac306643ad1ef18b4106826310_164533_561f46db569a0264b5a74457c4fa8eb6.webp"
+               width="760"
+               height="359"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>根据KA表示定理，我们只需要找到合适的$\phi_{p,q}$和$\Phi_q$函数，因此可以设计上图这样的一个神经网络，其中$\phi_{p,q}$和$\Phi_q$均为B样条函数。</p>
+<ul>
+<li>
+<p>所以本质上，KA表示定理其实就是一个两层的KAN，但是如何才能像MLP一样把KAN也做深一些呢？</p>
+</li>
+<li>
+<p>我们首先用$n_i$表示第$i$层的节点数量，定义第$l$层的第$i$个节点的激活值为$x_{l,i}$，在第$l$层与$l+1$层共有$n_ln_{l+1}$个激活函数，我们定义连接$(l,i)$这个节点与$(l+1,j)$这个节点的激活函数为
+$$
+\phi_{l, j, i}, \quad l=0, \cdots, L-1, \quad i=1, \cdots, n_l, \quad j=1, \cdots, n_{l+1} .
+$$
+这样就有
+$$
+\mathbf{x}_{l+1}\in\mathbb{R}^{n_{l+1}}=\underbrace{\left(\begin{array}{cccc}
+\phi_{l, 1,1}(\cdot) &amp; \phi_{l, 1,2}(\cdot) &amp; \cdots &amp; \phi_{l, 1, n_l}(\cdot) \\
+\phi_{l, 2,1}(\cdot) &amp; \phi_{l, 2,2}(\cdot) &amp; \cdots &amp; \phi_{l, 2, n_l}(\cdot) \\
+\vdots &amp; \vdots &amp; &amp; \vdots \\
+\phi_{l, n_{l+1}, 1}(\cdot) &amp; \phi_{l, n_{l+1}, 2}(\cdot) &amp; \cdots &amp; \phi_{l, n_{l+1}, n_l}(\cdot)
+\end{array}\right)}_{\boldsymbol{\Phi}_l\in\mathbb{R}^{n_{l+1}\times n_l}} \mathbf{x}_l \in \mathbb{R}^{n_l},
+$$
+$\boldsymbol{\Phi}_l$相当于是第$l$层 KAN 的函数矩阵，因此一个$L$层的KAN就可以表示为</p>
+</li>
+</ul>
+<p>$$
+\operatorname{KAN}(\mathbf{x})=\left(\boldsymbol{\Phi}_{L-1} \circ \boldsymbol{\Phi}_{L-2} \circ \cdots \circ \boldsymbol{\Phi}_1 \circ \boldsymbol{\Phi}_0\right) \mathbf{x}
+$$
+对比 MLP：
+$$
+\operatorname{MLP}(\mathbf{x})=\left(\mathbf{W}_{L-1} \circ \sigma \circ \mathbf{W}_{L-2} \circ \sigma \circ \cdots \circ \mathbf{W}_1 \circ \sigma \circ \mathbf{W}_0\right) \mathbf{x} .
+$$
+可以看出，MLP将线性变换与非线性激活分别用$\mathbf{W}$和$\sigma$实现，而KAN直接在$\boldsymbol{\Phi}_l$中实现了线性变换和非线性激活</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /media/posts/kan/fig3_hu5c92866393955c20e581765d7ba34ed5_289391_a4ca7ab8752c47d5b68365e981967ce9.webp 400w,
+               /media/posts/kan/fig3_hu5c92866393955c20e581765d7ba34ed5_289391_88d55528293d2f11e0bd5732df2ada73.webp 760w,
+               /media/posts/kan/fig3_hu5c92866393955c20e581765d7ba34ed5_289391_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/media/posts/kan/fig3_hu5c92866393955c20e581765d7ba34ed5_289391_a4ca7ab8752c47d5b68365e981967ce9.webp"
+               width="760"
+               height="474"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h3 id="3-kans-approximation-abilities-and-scaling-laws">3. KAN&rsquo;s Approximation Abilities and Scaling Laws</h3>
+<p><strong>Theorem 2.1 (Approximation theory, KAT).</strong> Let $\mathbf{x}=\left(x_1, x_2, \cdots, x_n\right)$. Suppose that a function $f(\mathbf{x})$ admits a representation
+$$
+f=\left(\boldsymbol{\Phi}_{L-1} \circ \boldsymbol{\Phi}_{L-2} \circ \cdots \circ \boldsymbol{\Phi}_1 \circ \boldsymbol{\Phi}_0\right) \mathbf{x}
+$$
+as in Eq. (2.7), where each one of the $\Phi_{l, i, j}$ are $(k+1)$-times continuously differentiable. Then there exists a constant $C$ depending on $f$ and its representation, such that we have the following approximation bound in terms of the grid size $G$ : there exist $k$-th order $B$-spline functions $\Phi_{l, i, j}^G$ such that for any $0 \leq m \leq k$, we have the bound
+$$
+\left\|f-\left(\boldsymbol{\Phi}_{L-1}^G \circ \boldsymbol{\Phi}_{L-2}^G \circ \cdots \circ \boldsymbol{\Phi}_1^G \circ \boldsymbol{\Phi}_0^G\right) \mathbf{x}\right\|_{C^m} \leq C G^{-k-1+m} .
+$$</p>
+<p>Here we adopt the notation of $C^m$-norm measuring the magnitude of derivatives up to order $m$ :
+$$
+\|g\|_{C^m}=\max _{|\beta| \leq m} \sup _{x \in[0,1]^n}\left|D^\beta g(x)\right| .
+$$</p>
+<p>从结果来看，KAN的 upper bound 与维度$n$无关，破除了“维数诅咒”，从统计的角度开本质上就是引入了``可加结构&rsquo;&rsquo;，使得每个节点类似于一维的速度</p>
+<ul>
+<li><strong>Neural scaling laws: comparison to other theories</strong>：神经缩放定律描述了测试损失随着模型参数增加而减少的现象，即 $\ell \propto N^{-\alpha}$，其中 $\ell$ 表示测试均方根误差 (RMSE)，$N$ 为参数数量，$\alpha$ 为缩放指数。较大的 $\alpha$意味着通过简单地扩展模型可以获得更多的改进
+<ul>
+<li>
+<p>Sharma 和 Kaplan 提出$\alpha$与输入流形维度$d$相关，如果模型函数类是阶数为$k$的分段多项式（对于 ReLU，$k=1$），那么标准逼近理论暗示$\alpha = \frac{k+1}{d}$。这一界限受限于维度诅咒。Michaud 等人考虑了仅涉及一元（例如，平方、正弦、指数）和二元（加法和乘法）运算的计算图，发现 $\alpha = \frac{k+1}{d^*} = \frac{k+1}{2}$，其中 $d^* = 2$ 是最大元数。</p>
+</li>
+<li>
+<p>KAN假设存在平滑的 Kolmogorov-Arnold 表示，将高维函数分解为若干一维函数，得出 $\alpha = k+1$（其中 $k$ 是分段多项式样条的阶数）。如果选择 $k=3$ 的三次样条，因此 $\alpha=4$。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /media/posts/kan/fig5_huee43b5f00266f0bc1e48bf7f6f88cea1_119679_05e097bbc07e056a4c6a379670b4c96b.webp 400w,
+               /media/posts/kan/fig5_huee43b5f00266f0bc1e48bf7f6f88cea1_119679_7b08db614904234f598664a255c4b3d9.webp 760w,
+               /media/posts/kan/fig5_huee43b5f00266f0bc1e48bf7f6f88cea1_119679_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/media/posts/kan/fig5_huee43b5f00266f0bc1e48bf7f6f88cea1_119679_05e097bbc07e056a4c6a379670b4c96b.webp"
+               width="760"
+               height="159"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<ul>
+<li><strong>Comparison between KAT and UAT</strong>：全连接神经网络的强大功能由<strong>普适逼近定理</strong>（Universal Approximation Theorem, UAT）证明，该定理表明，给定一个函数和误差容忍度 $\epsilon &gt; 0$，一个具有 $k &gt; N(\epsilon)$ 个神经元的两层网络可以在误差 $\epsilon$ 范围内逼近该函数。然而，UAT 并未保证 $N(\epsilon)$ 如何随 $\epsilon$ 缩放的界限。实际上，它受制于维度诅咒（COD），并且在某些情况下 $N$ 被证明会随着 $d$ 指数级增长 [15]。KAT 和 UAT 之间的区别在于，KANs 利用了函数的内在低维表示，而 MLPs 则没有。</li>
+</ul>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /media/posts/kan/fig6_hud680800eab81a61bd2a8c28caacc360c_113409_468484747b9922db218e4e2311474236.webp 400w,
+               /media/posts/kan/fig6_hud680800eab81a61bd2a8c28caacc360c_113409_a121f9e73a9c2243e48411b5bc69769e.webp 760w,
+               /media/posts/kan/fig6_hud680800eab81a61bd2a8c28caacc360c_113409_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/media/posts/kan/fig6_hud680800eab81a61bd2a8c28caacc360c_113409_468484747b9922db218e4e2311474236.webp"
+               width="760"
+               height="366"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h3 id="4-for-interpretability-simplifying-kans-and-making-them-interactive">4. For Interpretability: Simplifying KANs and Making them interactive</h3>
+<p>如果我们需要拟合函数$f(x,y)=\exp\big(\sin(\pi x)+y^2\big)$，那么用$[2,1,1]$这个结构的 KAN 是最合适的，但是我们无法提前知道函数的形式，应该如何与 KAN 交互得到我们想要的结构呢？</p>
+<p>首先定义一个有$N_p$输入的激活函数$\phi$的$L_1$范数：</p>
+<p>$$
+|\phi|_1 \equiv \frac{1}{N_p} \sum_{s=1}^{N_p}\left|\phi\left(x^{(s)}\right)\right| .
+$$</p>
+<p>因此，对于一个$n_{\text {in }}$输入$n_{\text {out }}$输出的 KAN 层，定义$L_1$范数为</p>
+<p>$$
+|\boldsymbol{\Phi}|_1 \equiv \sum_{i=1}^{n_{\text {in }}} \sum_{j=1}^{n_{\text {out }}}\left|\phi_{i, j}\right|_1
+$$</p>
+<p>定义$\Phi$的交叉熵为</p>
+<p>$$
+S(\boldsymbol{\Phi}) \equiv-\sum_{i=1}^{n_{\text {in }}} \sum_{j=1}^{n_{\text {out }}} \frac{\left|\phi_{i, j}\right|_1}{|\boldsymbol{\Phi}|_1} \log \left(\frac{\left|\phi_{i, j}\right|_1}{|\boldsymbol{\Phi}|_1}\right)
+$$</p>
+<p>因此，损失函数$\ell_{\text {total }}$表示为：</p>
+<p>$$
+\ell_{\text {total }}=\ell_{\text {pred }}+\lambda\left(\mu_1 \sum_{l=0}^{L-1}\left|\boldsymbol{\Phi}_l\right|_1+\mu_2 \sum_{l=0}^{L-1} S\left(\boldsymbol{\Phi}_l\right)\right),
+$$</p>
+<hr>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /media/posts/kan/fig4_hu4c1eb9caa99cdf0c7662a90e5dfa868c_155173_edfb07896bed9e2566893bca645e171b.webp 400w,
+               /media/posts/kan/fig4_hu4c1eb9caa99cdf0c7662a90e5dfa868c_155173_fa8ce302a4b7c6570772d27eb2b6d6c9.webp 760w,
+               /media/posts/kan/fig4_hu4c1eb9caa99cdf0c7662a90e5dfa868c_155173_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/media/posts/kan/fig4_hu4c1eb9caa99cdf0c7662a90e5dfa868c_155173_edfb07896bed9e2566893bca645e171b.webp"
+               width="760"
+               height="385"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p><strong>Continual Learning</strong></p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /media/posts/kan/fig7_hu7a7e27415d00c1525e5c07d0180c8525_56524_9b752d9860902e8058c8a70d9a86cfd3.webp 400w,
+               /media/posts/kan/fig7_hu7a7e27415d00c1525e5c07d0180c8525_56524_60fdb5cc7ccf711bb8c5ba42f142e39b.webp 760w,
+               /media/posts/kan/fig7_hu7a7e27415d00c1525e5c07d0180c8525_56524_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/media/posts/kan/fig7_hu7a7e27415d00c1525e5c07d0180c8525_56524_9b752d9860902e8058c8a70d9a86cfd3.webp"
+               width="760"
+               height="327"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>KAN具有局部可塑性，并且通过利用样条的局部性可以避免<strong>灾难性遗忘</strong>。原因是由于样条基是局部的，一个样本只会影响附近的几个样条系数，远处的系数则保持不变。相反，由于 MLPs 通常使用全局激活函数，例如 ReLU/Tanh/SiLU 等，任何局部变化都可能不受控制地传播到远离的区域，破坏那里存储的信息</p>
+<p><strong>Application</strong></p>
+<p>结不变量是用来描述和区分不同结的性质的量，它们是结论中的一种重要概念。结不变量是指那些在结变形时保持不变的特征或量，它们可以帮助我们确定两个结是否同构或等价。结不变量可以是几何特征、代数特征或拓扑特征，常见的包括但不限于Jones多项式、Jones多项式的变种、Alexander多项式、交错数、三色定理等。</p>
+<p>在结论中，&ldquo;signature&rdquo;（签名）是一个结不变量，它是由代数结论家 John Milnor 在1957年提出的。签名是结的一个数字特征，可以通过对结进行某种标准操作（如连接和平移）得到。签名的概念在结论中有着广泛的应用，并在理解结的性质和关系方面提供了重要的见解。</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /media/posts/kan/fig8_hu6be06e4c13b52058d29fd8a36875b2f7_296548_2ebd66a3834974bdf9f7a22b67eec705.webp 400w,
+               /media/posts/kan/fig8_hu6be06e4c13b52058d29fd8a36875b2f7_296548_ff269228f808e657924694c3baae9e94.webp 760w,
+               /media/posts/kan/fig8_hu6be06e4c13b52058d29fd8a36875b2f7_296548_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/media/posts/kan/fig8_hu6be06e4c13b52058d29fd8a36875b2f7_296548_2ebd66a3834974bdf9f7a22b67eec705.webp"
+               width="760"
+               height="520"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p><strong>符号主义 or 连接主义？</strong></p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /media/posts/kan/fig10_hu4699fb8dd9ced5f8af9ca21271a8a011_485038_12e5d7d80b69e108488b82a09347e9bc.webp 400w,
+               /media/posts/kan/fig10_hu4699fb8dd9ced5f8af9ca21271a8a011_485038_7af8d044cec929a174e3c3e88f498a50.webp 760w,
+               /media/posts/kan/fig10_hu4699fb8dd9ced5f8af9ca21271a8a011_485038_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/media/posts/kan/fig10_hu4699fb8dd9ced5f8af9ca21271a8a011_485038_12e5d7d80b69e108488b82a09347e9bc.webp"
+               width="760"
+               height="456"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>KAN 介于符号主义与连接主义之间</p>
+<p><strong>MLP 与 KAN 如何选择？</strong></p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="" srcset="
+               /media/posts/kan/fig9_hu0ba5239902d77b59e6e91a501d847e5b_118614_8f2e0903ff6111426ad558ec2ed1c7d9.webp 400w,
+               /media/posts/kan/fig9_hu0ba5239902d77b59e6e91a501d847e5b_118614_d690d639c3468258f25af454b7b28d99.webp 760w,
+               /media/posts/kan/fig9_hu0ba5239902d77b59e6e91a501d847e5b_118614_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+               src="/media/posts/kan/fig9_hu0ba5239902d77b59e6e91a501d847e5b_118614_8f2e0903ff6111426ad558ec2ed1c7d9.webp"
+               width="760"
+               height="371"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<h2 id="二kan-的一些问题">二、KAN 的一些问题</h2>
+<ul>
+<li>目前在图片分类任务上（例如MNIST数据集）的表现不如MLP</li>
+<li>KAN的训练速度比 MLP 慢很多</li>
+<li>短期看KAN还很难取代MLP，主要原因还是因为KAN的训练算力要求明显高于MLP，想做大模型会有很高的算力壁垒。但是作者强调 KAN 更适用于 AI4Science 的任务，在这样的任务中，不需要这么大的模型，而是更关心收敛的速度</li>
+</ul>
+<hr>
+<h3 id="参考文献">参考文献</h3>
+<ul>
+<li>Poggio, T., Banburski, A., &amp; Liao, Q. (2020). <a href="https://cbmm.mit.edu/sites/default/files/publications/PNASlast.pdf" target="_blank" rel="noopener">Theoretical issues in deep networks</a>. Proceedings of the National Academy of Sciences, 117(48), 30039-30045.</li>
+</ul>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/b%E6%A0%B7%E6%9D%A1/">B样条</a>
+  
+  <a class="badge badge-light" href="/tag/lagrange%E6%8F%92%E5%80%BC/">Lagrange插值</a>
+  
+  <a class="badge badge-light" href="/tag/%E8%B4%9D%E5%A1%9E%E5%B0%94%E6%9B%B2%E7%BA%BF/">贝塞尔曲线</a>
+  
+</div>
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fikerlz.github.io%2Fpost%2Fkan%2F&amp;text=KAN%3A&#43;Kolmogorov%E2%80%93Arnold&#43;Networks" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fikerlz.github.io%2Fpost%2Fkan%2F&amp;t=KAN%3A&#43;Kolmogorov%E2%80%93Arnold&#43;Networks" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a href="mailto:?subject=KAN%3A%20Kolmogorov%E2%80%93Arnold%20Networks&amp;body=https%3A%2F%2Fikerlz.github.io%2Fpost%2Fkan%2F" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fikerlz.github.io%2Fpost%2Fkan%2F&amp;title=KAN%3A&#43;Kolmogorov%E2%80%93Arnold&#43;Networks" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=KAN%3A&#43;Kolmogorov%E2%80%93Arnold&#43;Networks%20https%3A%2F%2Fikerlz.github.io%2Fpost%2Fkan%2F" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Fikerlz.github.io%2Fpost%2Fkan%2F&amp;title=KAN%3A&#43;Kolmogorov%E2%80%93Arnold&#43;Networks" target="_blank" rel="noopener" class="share-btn-weibo" aria-label="weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2024 Me. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://hugoblox.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Hugo Blox Builder</a> — the free, <a href="https://github.com/HugoBlox/hugo-blox-builder" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+
+
+<script src="/js/vendor-bundle.min.938a3a7554cd9f6602290411f64d2617.js"></script>
+
+
+
+
+  
+
+  
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script id="search-hit-fuse-template" type="text/x-template">
+    <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+    </div>
+  </script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+
+  <script src="/js/wowchemy-headroom.db4755770454eb63685f8de785c0a172.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+<script src="/en/js/wowchemy.min.62586ca65ca61821fe707eb9fa6268b7.js"></script>
+
+
+
+
+
+
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <pre><code></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <script src="/js/wowchemy-publication.9137013a66774049159934c29c3f0205.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -5,12 +5,468 @@
     <link>https://ikerlz.github.io/post/</link>
       <atom:link href="https://ikerlz.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Fri, 05 Apr 2024 00:39:27 +0800</lastBuildDate>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sun, 12 May 2024 00:39:27 +0800</lastBuildDate>
     <image>
       <url>https://ikerlz.github.io/media/icon_hu9ccd2acdcd774e20fa34966445b706a8_6997380_512x512_fill_lanczos_center_3.png</url>
       <title>Posts</title>
       <link>https://ikerlz.github.io/post/</link>
     </image>
+    
+    <item>
+      <title>KAN: Kolmogorov–Arnold Networks</title>
+      <link>https://ikerlz.github.io/post/kan/</link>
+      <pubDate>Sun, 12 May 2024 00:39:27 +0800</pubDate>
+      <guid>https://ikerlz.github.io/post/kan/</guid>
+      <description>
+
+&lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
+  &lt;summary class=&#34;font-weight-bold&#34;&gt;Table of Contents&lt;/summary&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#0mlp&#34;&gt;0、MLP&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#一kolmogorovarnold-networks&#34;&gt;一、Kolmogorov–Arnold Networks&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#1-kolmogorov-arnold-representation-theorem&#34;&gt;1. Kolmogorov-Arnold Representation theorem&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#2-kan-architecture&#34;&gt;2. KAN Architecture&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#3-kans-approximation-abilities-and-scaling-laws&#34;&gt;3. KAN&amp;rsquo;s Approximation Abilities and Scaling Laws&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#4-for-interpretability-simplifying-kans-and-making-them-interactive&#34;&gt;4. For Interpretability: Simplifying KANs and Making them interactive&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#二kan-的一些问题&#34;&gt;二、KAN 的一些问题&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#参考文献&#34;&gt;参考文献&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/details&gt;
+
+&lt;h2 id=&#34;0mlp&#34;&gt;0、MLP&lt;/h2&gt;
+&lt;p&gt;感知机最早由Rosenblatt于1957年提出，由于其简单的结构而得到快速的发展，下图是一个MLP的示意图
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /media/posts/kan/MLP_fig_hu0087d83c60502258822faa8253c30ecd_296541_cc4a74d6b8bf3c465250cde822bc8145.webp 400w,
+               /media/posts/kan/MLP_fig_hu0087d83c60502258822faa8253c30ecd_296541_b7b0e57353b50be120789d9cd27b4dda.webp 760w,
+               /media/posts/kan/MLP_fig_hu0087d83c60502258822faa8253c30ecd_296541_1200x1200_fit_q75_h2_lanczos.webp 1200w&#34;
+               src=&#34;https://ikerlz.github.io/media/posts/kan/MLP_fig_hu0087d83c60502258822faa8253c30ecd_296541_cc4a74d6b8bf3c465250cde822bc8145.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;381&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;我们可以把上面这个 MLP 表示为：
+$$
+f_{\mathrm{MLP}}(\mathbf{x})=\mathbf{W}_4 \boldsymbol{\sigma}\left(\mathbf{W}_3 \boldsymbol{\sigma}\left(\mathbf{W}_2 \boldsymbol{\sigma}\left(\mathbf{W}_1 \mathbf{x}+\mathbf{b}_1\right)+\mathbf{b}_2\right)+\mathbf{b}_3\right)+\mathbf{b}_4,
+$$
+可以看出，在 MLP 中，激活函数$\boldsymbol{\sigma}(\cdot)$是作用在&lt;strong&gt;节点&lt;/strong&gt;（node）上的，而&lt;strong&gt;边&lt;/strong&gt;（edge）的连接没有附带任何信息，唯一的作用就是把两层中的所有节点连接起来。&lt;/p&gt;
+&lt;p&gt;MLP具有很强的拟合能力，常见的连续非线性函数都可以用MLP来近似
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /media/posts/kan/fig1_hu639b401a7fefeab6de19635bd0f7128d_179933_111c8d2d86f002692e94673f1941516d.webp 400w,
+               /media/posts/kan/fig1_hu639b401a7fefeab6de19635bd0f7128d_179933_d12ecc66e59562635215eaec3fcb7e58.webp 760w,
+               /media/posts/kan/fig1_hu639b401a7fefeab6de19635bd0f7128d_179933_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://ikerlz.github.io/media/posts/kan/fig1_hu639b401a7fefeab6de19635bd0f7128d_179933_111c8d2d86f002692e94673f1941516d.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;510&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;但是，我们是否可以把非线性的激活函数放到边上呢？这就是 KAN 的基本思想&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;一kolmogorovarnold-networks&#34;&gt;一、Kolmogorov–Arnold Networks&lt;/h2&gt;
+&lt;h3 id=&#34;1-kolmogorov-arnold-representation-theorem&#34;&gt;1. Kolmogorov-Arnold Representation theorem&lt;/h3&gt;
+&lt;p&gt;Vladimir Arnold与Andrey Kolmogorov证明：如果$f: [0,1]^n \rightarrow \mathbb{R}$是一个多元连续函数，则$f$可以被写成单变量连续函数和加法的有限组合。具体而言，
+$$
+f(\mathbf{x})=f\left(x_1, \ldots, x_n\right)=\sum_{q=1}^{2 n+1} \Phi_q\left(\sum_{p=1}^n \phi_{q, p}\left(x_p\right)\right) .
+$$
+其中，$\phi_{q, p}:[0,1] \rightarrow \mathbb{R}$，$\Phi_q: \mathbb{R} \rightarrow \mathbb{R}$。&lt;/p&gt;
+&lt;p&gt;似乎这个理论告诉我们学习一个高维函数归结为学习多项式个一维函数。然而，这些一维函数可能是&lt;strong&gt;非光滑&lt;/strong&gt;甚至是&lt;strong&gt;分形&lt;/strong&gt;的，因此在实践中可能无法学习到。由于这种&lt;strong&gt;病态行为&lt;/strong&gt;，KA表示定理在机器学习中基本上被判了死刑，被认为&lt;strong&gt;在理论上是正确的但在实践中无用&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2-kan-architecture&#34;&gt;2. KAN Architecture&lt;/h3&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /media/posts/kan/fig2_huc050d1ac306643ad1ef18b4106826310_164533_561f46db569a0264b5a74457c4fa8eb6.webp 400w,
+               /media/posts/kan/fig2_huc050d1ac306643ad1ef18b4106826310_164533_f82b157fd070e5c32e57c76a93b19793.webp 760w,
+               /media/posts/kan/fig2_huc050d1ac306643ad1ef18b4106826310_164533_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://ikerlz.github.io/media/posts/kan/fig2_huc050d1ac306643ad1ef18b4106826310_164533_561f46db569a0264b5a74457c4fa8eb6.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;359&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;根据KA表示定理，我们只需要找到合适的$\phi_{p,q}$和$\Phi_q$函数，因此可以设计上图这样的一个神经网络，其中$\phi_{p,q}$和$\Phi_q$均为B样条函数。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;所以本质上，KA表示定理其实就是一个两层的KAN，但是如何才能像MLP一样把KAN也做深一些呢？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;我们首先用$n_i$表示第$i$层的节点数量，定义第$l$层的第$i$个节点的激活值为$x_{l,i}$，在第$l$层与$l+1$层共有$n_ln_{l+1}$个激活函数，我们定义连接$(l,i)$这个节点与$(l+1,j)$这个节点的激活函数为
+$$
+\phi_{l, j, i}, \quad l=0, \cdots, L-1, \quad i=1, \cdots, n_l, \quad j=1, \cdots, n_{l+1} .
+$$
+这样就有
+$$
+\mathbf{x}_{l+1}\in\mathbb{R}^{n_{l+1}}=\underbrace{\left(\begin{array}{cccc}
+\phi_{l, 1,1}(\cdot) &amp;amp; \phi_{l, 1,2}(\cdot) &amp;amp; \cdots &amp;amp; \phi_{l, 1, n_l}(\cdot) \\
+\phi_{l, 2,1}(\cdot) &amp;amp; \phi_{l, 2,2}(\cdot) &amp;amp; \cdots &amp;amp; \phi_{l, 2, n_l}(\cdot) \\
+\vdots &amp;amp; \vdots &amp;amp; &amp;amp; \vdots \\
+\phi_{l, n_{l+1}, 1}(\cdot) &amp;amp; \phi_{l, n_{l+1}, 2}(\cdot) &amp;amp; \cdots &amp;amp; \phi_{l, n_{l+1}, n_l}(\cdot)
+\end{array}\right)}_{\boldsymbol{\Phi}_l\in\mathbb{R}^{n_{l+1}\times n_l}} \mathbf{x}_l \in \mathbb{R}^{n_l},
+$$
+$\boldsymbol{\Phi}_l$相当于是第$l$层 KAN 的函数矩阵，因此一个$L$层的KAN就可以表示为&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;$$
+\operatorname{KAN}(\mathbf{x})=\left(\boldsymbol{\Phi}_{L-1} \circ \boldsymbol{\Phi}_{L-2} \circ \cdots \circ \boldsymbol{\Phi}_1 \circ \boldsymbol{\Phi}_0\right) \mathbf{x}
+$$
+对比 MLP：
+$$
+\operatorname{MLP}(\mathbf{x})=\left(\mathbf{W}_{L-1} \circ \sigma \circ \mathbf{W}_{L-2} \circ \sigma \circ \cdots \circ \mathbf{W}_1 \circ \sigma \circ \mathbf{W}_0\right) \mathbf{x} .
+$$
+可以看出，MLP将线性变换与非线性激活分别用$\mathbf{W}$和$\sigma$实现，而KAN直接在$\boldsymbol{\Phi}_l$中实现了线性变换和非线性激活&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /media/posts/kan/fig3_hu5c92866393955c20e581765d7ba34ed5_289391_a4ca7ab8752c47d5b68365e981967ce9.webp 400w,
+               /media/posts/kan/fig3_hu5c92866393955c20e581765d7ba34ed5_289391_88d55528293d2f11e0bd5732df2ada73.webp 760w,
+               /media/posts/kan/fig3_hu5c92866393955c20e581765d7ba34ed5_289391_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://ikerlz.github.io/media/posts/kan/fig3_hu5c92866393955c20e581765d7ba34ed5_289391_a4ca7ab8752c47d5b68365e981967ce9.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;474&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;3-kans-approximation-abilities-and-scaling-laws&#34;&gt;3. KAN&amp;rsquo;s Approximation Abilities and Scaling Laws&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Theorem 2.1 (Approximation theory, KAT).&lt;/strong&gt; Let $\mathbf{x}=\left(x_1, x_2, \cdots, x_n\right)$. Suppose that a function $f(\mathbf{x})$ admits a representation
+$$
+f=\left(\boldsymbol{\Phi}_{L-1} \circ \boldsymbol{\Phi}_{L-2} \circ \cdots \circ \boldsymbol{\Phi}_1 \circ \boldsymbol{\Phi}_0\right) \mathbf{x}
+$$
+as in Eq. (2.7), where each one of the $\Phi_{l, i, j}$ are $(k+1)$-times continuously differentiable. Then there exists a constant $C$ depending on $f$ and its representation, such that we have the following approximation bound in terms of the grid size $G$ : there exist $k$-th order $B$-spline functions $\Phi_{l, i, j}^G$ such that for any $0 \leq m \leq k$, we have the bound
+$$
+\left\|f-\left(\boldsymbol{\Phi}_{L-1}^G \circ \boldsymbol{\Phi}_{L-2}^G \circ \cdots \circ \boldsymbol{\Phi}_1^G \circ \boldsymbol{\Phi}_0^G\right) \mathbf{x}\right\|_{C^m} \leq C G^{-k-1+m} .
+$$&lt;/p&gt;
+&lt;p&gt;Here we adopt the notation of $C^m$-norm measuring the magnitude of derivatives up to order $m$ :
+$$
+\|g\|_{C^m}=\max _{|\beta| \leq m} \sup _{x \in[0,1]^n}\left|D^\beta g(x)\right| .
+$$&lt;/p&gt;
+&lt;p&gt;从结果来看，KAN的 upper bound 与维度$n$无关，破除了“维数诅咒”，从统计的角度开本质上就是引入了``可加结构&amp;rsquo;&amp;rsquo;，使得每个节点类似于一维的速度&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Neural scaling laws: comparison to other theories&lt;/strong&gt;：神经缩放定律描述了测试损失随着模型参数增加而减少的现象，即 $\ell \propto N^{-\alpha}$，其中 $\ell$ 表示测试均方根误差 (RMSE)，$N$ 为参数数量，$\alpha$ 为缩放指数。较大的 $\alpha$意味着通过简单地扩展模型可以获得更多的改进
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Sharma 和 Kaplan 提出$\alpha$与输入流形维度$d$相关，如果模型函数类是阶数为$k$的分段多项式（对于 ReLU，$k=1$），那么标准逼近理论暗示$\alpha = \frac{k+1}{d}$。这一界限受限于维度诅咒。Michaud 等人考虑了仅涉及一元（例如，平方、正弦、指数）和二元（加法和乘法）运算的计算图，发现 $\alpha = \frac{k+1}{d^*} = \frac{k+1}{2}$，其中 $d^* = 2$ 是最大元数。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;KAN假设存在平滑的 Kolmogorov-Arnold 表示，将高维函数分解为若干一维函数，得出 $\alpha = k+1$（其中 $k$ 是分段多项式样条的阶数）。如果选择 $k=3$ 的三次样条，因此 $\alpha=4$。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /media/posts/kan/fig5_huee43b5f00266f0bc1e48bf7f6f88cea1_119679_05e097bbc07e056a4c6a379670b4c96b.webp 400w,
+               /media/posts/kan/fig5_huee43b5f00266f0bc1e48bf7f6f88cea1_119679_7b08db614904234f598664a255c4b3d9.webp 760w,
+               /media/posts/kan/fig5_huee43b5f00266f0bc1e48bf7f6f88cea1_119679_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://ikerlz.github.io/media/posts/kan/fig5_huee43b5f00266f0bc1e48bf7f6f88cea1_119679_05e097bbc07e056a4c6a379670b4c96b.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;159&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Comparison between KAT and UAT&lt;/strong&gt;：全连接神经网络的强大功能由&lt;strong&gt;普适逼近定理&lt;/strong&gt;（Universal Approximation Theorem, UAT）证明，该定理表明，给定一个函数和误差容忍度 $\epsilon &amp;gt; 0$，一个具有 $k &amp;gt; N(\epsilon)$ 个神经元的两层网络可以在误差 $\epsilon$ 范围内逼近该函数。然而，UAT 并未保证 $N(\epsilon)$ 如何随 $\epsilon$ 缩放的界限。实际上，它受制于维度诅咒（COD），并且在某些情况下 $N$ 被证明会随着 $d$ 指数级增长 [15]。KAT 和 UAT 之间的区别在于，KANs 利用了函数的内在低维表示，而 MLPs 则没有。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /media/posts/kan/fig6_hud680800eab81a61bd2a8c28caacc360c_113409_468484747b9922db218e4e2311474236.webp 400w,
+               /media/posts/kan/fig6_hud680800eab81a61bd2a8c28caacc360c_113409_a121f9e73a9c2243e48411b5bc69769e.webp 760w,
+               /media/posts/kan/fig6_hud680800eab81a61bd2a8c28caacc360c_113409_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://ikerlz.github.io/media/posts/kan/fig6_hud680800eab81a61bd2a8c28caacc360c_113409_468484747b9922db218e4e2311474236.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;366&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;4-for-interpretability-simplifying-kans-and-making-them-interactive&#34;&gt;4. For Interpretability: Simplifying KANs and Making them interactive&lt;/h3&gt;
+&lt;p&gt;如果我们需要拟合函数$f(x,y)=\exp\big(\sin(\pi x)+y^2\big)$，那么用$[2,1,1]$这个结构的 KAN 是最合适的，但是我们无法提前知道函数的形式，应该如何与 KAN 交互得到我们想要的结构呢？&lt;/p&gt;
+&lt;p&gt;首先定义一个有$N_p$输入的激活函数$\phi$的$L_1$范数：&lt;/p&gt;
+&lt;p&gt;$$
+|\phi|_1 \equiv \frac{1}{N_p} \sum_{s=1}^{N_p}\left|\phi\left(x^{(s)}\right)\right| .
+$$&lt;/p&gt;
+&lt;p&gt;因此，对于一个$n_{\text {in }}$输入$n_{\text {out }}$输出的 KAN 层，定义$L_1$范数为&lt;/p&gt;
+&lt;p&gt;$$
+|\boldsymbol{\Phi}|_1 \equiv \sum_{i=1}^{n_{\text {in }}} \sum_{j=1}^{n_{\text {out }}}\left|\phi_{i, j}\right|_1
+$$&lt;/p&gt;
+&lt;p&gt;定义$\Phi$的交叉熵为&lt;/p&gt;
+&lt;p&gt;$$
+S(\boldsymbol{\Phi}) \equiv-\sum_{i=1}^{n_{\text {in }}} \sum_{j=1}^{n_{\text {out }}} \frac{\left|\phi_{i, j}\right|_1}{|\boldsymbol{\Phi}|_1} \log \left(\frac{\left|\phi_{i, j}\right|_1}{|\boldsymbol{\Phi}|_1}\right)
+$$&lt;/p&gt;
+&lt;p&gt;因此，损失函数$\ell_{\text {total }}$表示为：&lt;/p&gt;
+&lt;p&gt;$$
+\ell_{\text {total }}=\ell_{\text {pred }}+\lambda\left(\mu_1 \sum_{l=0}^{L-1}\left|\boldsymbol{\Phi}_l\right|_1+\mu_2 \sum_{l=0}^{L-1} S\left(\boldsymbol{\Phi}_l\right)\right),
+$$&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /media/posts/kan/fig4_hu4c1eb9caa99cdf0c7662a90e5dfa868c_155173_edfb07896bed9e2566893bca645e171b.webp 400w,
+               /media/posts/kan/fig4_hu4c1eb9caa99cdf0c7662a90e5dfa868c_155173_fa8ce302a4b7c6570772d27eb2b6d6c9.webp 760w,
+               /media/posts/kan/fig4_hu4c1eb9caa99cdf0c7662a90e5dfa868c_155173_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://ikerlz.github.io/media/posts/kan/fig4_hu4c1eb9caa99cdf0c7662a90e5dfa868c_155173_edfb07896bed9e2566893bca645e171b.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;385&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Continual Learning&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /media/posts/kan/fig7_hu7a7e27415d00c1525e5c07d0180c8525_56524_9b752d9860902e8058c8a70d9a86cfd3.webp 400w,
+               /media/posts/kan/fig7_hu7a7e27415d00c1525e5c07d0180c8525_56524_60fdb5cc7ccf711bb8c5ba42f142e39b.webp 760w,
+               /media/posts/kan/fig7_hu7a7e27415d00c1525e5c07d0180c8525_56524_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://ikerlz.github.io/media/posts/kan/fig7_hu7a7e27415d00c1525e5c07d0180c8525_56524_9b752d9860902e8058c8a70d9a86cfd3.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;327&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;KAN具有局部可塑性，并且通过利用样条的局部性可以避免&lt;strong&gt;灾难性遗忘&lt;/strong&gt;。原因是由于样条基是局部的，一个样本只会影响附近的几个样条系数，远处的系数则保持不变。相反，由于 MLPs 通常使用全局激活函数，例如 ReLU/Tanh/SiLU 等，任何局部变化都可能不受控制地传播到远离的区域，破坏那里存储的信息&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Application&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;结不变量是用来描述和区分不同结的性质的量，它们是结论中的一种重要概念。结不变量是指那些在结变形时保持不变的特征或量，它们可以帮助我们确定两个结是否同构或等价。结不变量可以是几何特征、代数特征或拓扑特征，常见的包括但不限于Jones多项式、Jones多项式的变种、Alexander多项式、交错数、三色定理等。&lt;/p&gt;
+&lt;p&gt;在结论中，&amp;ldquo;signature&amp;rdquo;（签名）是一个结不变量，它是由代数结论家 John Milnor 在1957年提出的。签名是结的一个数字特征，可以通过对结进行某种标准操作（如连接和平移）得到。签名的概念在结论中有着广泛的应用，并在理解结的性质和关系方面提供了重要的见解。&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /media/posts/kan/fig8_hu6be06e4c13b52058d29fd8a36875b2f7_296548_2ebd66a3834974bdf9f7a22b67eec705.webp 400w,
+               /media/posts/kan/fig8_hu6be06e4c13b52058d29fd8a36875b2f7_296548_ff269228f808e657924694c3baae9e94.webp 760w,
+               /media/posts/kan/fig8_hu6be06e4c13b52058d29fd8a36875b2f7_296548_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://ikerlz.github.io/media/posts/kan/fig8_hu6be06e4c13b52058d29fd8a36875b2f7_296548_2ebd66a3834974bdf9f7a22b67eec705.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;520&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;符号主义 or 连接主义？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /media/posts/kan/fig10_hu4699fb8dd9ced5f8af9ca21271a8a011_485038_12e5d7d80b69e108488b82a09347e9bc.webp 400w,
+               /media/posts/kan/fig10_hu4699fb8dd9ced5f8af9ca21271a8a011_485038_7af8d044cec929a174e3c3e88f498a50.webp 760w,
+               /media/posts/kan/fig10_hu4699fb8dd9ced5f8af9ca21271a8a011_485038_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://ikerlz.github.io/media/posts/kan/fig10_hu4699fb8dd9ced5f8af9ca21271a8a011_485038_12e5d7d80b69e108488b82a09347e9bc.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;456&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;KAN 介于符号主义与连接主义之间&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;MLP 与 KAN 如何选择？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
+               /media/posts/kan/fig9_hu0ba5239902d77b59e6e91a501d847e5b_118614_8f2e0903ff6111426ad558ec2ed1c7d9.webp 400w,
+               /media/posts/kan/fig9_hu0ba5239902d77b59e6e91a501d847e5b_118614_d690d639c3468258f25af454b7b28d99.webp 760w,
+               /media/posts/kan/fig9_hu0ba5239902d77b59e6e91a501d847e5b_118614_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://ikerlz.github.io/media/posts/kan/fig9_hu0ba5239902d77b59e6e91a501d847e5b_118614_8f2e0903ff6111426ad558ec2ed1c7d9.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;371&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;二kan-的一些问题&#34;&gt;二、KAN 的一些问题&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;目前在图片分类任务上（例如MNIST数据集）的表现不如MLP&lt;/li&gt;
+&lt;li&gt;KAN的训练速度比 MLP 慢很多&lt;/li&gt;
+&lt;li&gt;短期看KAN还很难取代MLP，主要原因还是因为KAN的训练算力要求明显高于MLP，想做大模型会有很高的算力壁垒。但是作者强调 KAN 更适用于 AI4Science 的任务，在这样的任务中，不需要这么大的模型，而是更关心收敛的速度&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;参考文献&#34;&gt;参考文献&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Poggio, T., Banburski, A., &amp;amp; Liao, Q. (2020). &lt;a href=&#34;https://cbmm.mit.edu/sites/default/files/publications/PNASlast.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Theoretical issues in deep networks&lt;/a&gt;. Proceedings of the National Academy of Sciences, 117(48), 30039-30045.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>扩散模型（Diffusion Model）</title>
@@ -265,10 +721,10 @@
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /media/posts/ddpm/fig25_hub27644e6e15658d60eb80af72eb8a3ba_82961_a431166f893a36fca0446b0f9a5059df.webp 400w,
+               /media/posts/ddpm/fig25_hub27644e6e15658d60eb80af72eb8a3ba_82961_70d9ad2cca2e81dad3cfa2cc3a4e0027.webp 400w,
                /media/posts/ddpm/fig25_hub27644e6e15658d60eb80af72eb8a3ba_82961_f5cf4e8c3068d0466d3d34b6c726cec0.webp 760w,
                /media/posts/ddpm/fig25_hub27644e6e15658d60eb80af72eb8a3ba_82961_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://ikerlz.github.io/media/posts/ddpm/fig25_hub27644e6e15658d60eb80af72eb8a3ba_82961_a431166f893a36fca0446b0f9a5059df.webp&#34;
+               src=&#34;https://ikerlz.github.io/media/posts/ddpm/fig25_hub27644e6e15658d60eb80af72eb8a3ba_82961_70d9ad2cca2e81dad3cfa2cc3a4e0027.webp&#34;
                width=&#34;760&#34;
                height=&#34;182&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -693,10 +1149,10 @@ $$
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /media/posts/ddpm/fig18_hu2ad81eb2a30207fc03d0722a4d476e66_693698_a1a2f9b2302e5bab199d3c17301c9792.webp 400w,
+               /media/posts/ddpm/fig18_hu2ad81eb2a30207fc03d0722a4d476e66_693698_bf42de8eca1531801932d4f820ac6a6b.webp 400w,
                /media/posts/ddpm/fig18_hu2ad81eb2a30207fc03d0722a4d476e66_693698_439fd90de5246b7a6ce5b8bc313e2349.webp 760w,
                /media/posts/ddpm/fig18_hu2ad81eb2a30207fc03d0722a4d476e66_693698_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://ikerlz.github.io/media/posts/ddpm/fig18_hu2ad81eb2a30207fc03d0722a4d476e66_693698_a1a2f9b2302e5bab199d3c17301c9792.webp&#34;
+               src=&#34;https://ikerlz.github.io/media/posts/ddpm/fig18_hu2ad81eb2a30207fc03d0722a4d476e66_693698_bf42de8eca1531801932d4f820ac6a6b.webp&#34;
                width=&#34;760&#34;
                height=&#34;265&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -729,10 +1185,10 @@ $$
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /media/posts/ddpm/fig19_hu4002690b8a073c8e34ccfaa35295ed29_158246_50c285e334fca80464909573ea6dc4cb.webp 400w,
+               /media/posts/ddpm/fig19_hu4002690b8a073c8e34ccfaa35295ed29_158246_e55fbeabc1b83bda88ae8a1bf7a776eb.webp 400w,
                /media/posts/ddpm/fig19_hu4002690b8a073c8e34ccfaa35295ed29_158246_743269468c38b38d2fa64dab9f3d187c.webp 760w,
                /media/posts/ddpm/fig19_hu4002690b8a073c8e34ccfaa35295ed29_158246_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://ikerlz.github.io/media/posts/ddpm/fig19_hu4002690b8a073c8e34ccfaa35295ed29_158246_50c285e334fca80464909573ea6dc4cb.webp&#34;
+               src=&#34;https://ikerlz.github.io/media/posts/ddpm/fig19_hu4002690b8a073c8e34ccfaa35295ed29_158246_e55fbeabc1b83bda88ae8a1bf7a776eb.webp&#34;
                width=&#34;760&#34;
                height=&#34;721&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -772,10 +1228,10 @@ $$&lt;/p&gt;
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /media/posts/ddpm/fig20_hu8ace829d78d9a17233afe6a958d29f16_189358_e0907363747884fea102a9ed0297476c.webp 400w,
+               /media/posts/ddpm/fig20_hu8ace829d78d9a17233afe6a958d29f16_189358_c08539eca563fdf6d13ac365cfd50cf6.webp 400w,
                /media/posts/ddpm/fig20_hu8ace829d78d9a17233afe6a958d29f16_189358_3115d3e08111d8f466a68ac116a669a7.webp 760w,
                /media/posts/ddpm/fig20_hu8ace829d78d9a17233afe6a958d29f16_189358_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://ikerlz.github.io/media/posts/ddpm/fig20_hu8ace829d78d9a17233afe6a958d29f16_189358_e0907363747884fea102a9ed0297476c.webp&#34;
+               src=&#34;https://ikerlz.github.io/media/posts/ddpm/fig20_hu8ace829d78d9a17233afe6a958d29f16_189358_c08539eca563fdf6d13ac365cfd50cf6.webp&#34;
                width=&#34;760&#34;
                height=&#34;261&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -803,10 +1259,10 @@ $$\frac{\sqrt{\bar{\alpha}_{t-1}} \beta_t x_0+\sqrt{\alpha_t}\left(1-\bar{\alpha
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /media/posts/ddpm/fig21_hud1a3113e8657a3e31ed4c25722cba978_414492_17dea1a90cd4a421d508b085361fb3be.webp 400w,
+               /media/posts/ddpm/fig21_hud1a3113e8657a3e31ed4c25722cba978_414492_65e3b56f739c95eb7c67ea4ea03b47bf.webp 400w,
                /media/posts/ddpm/fig21_hud1a3113e8657a3e31ed4c25722cba978_414492_3dc3a380cc85c19e83d1abef24e000ba.webp 760w,
                /media/posts/ddpm/fig21_hud1a3113e8657a3e31ed4c25722cba978_414492_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://ikerlz.github.io/media/posts/ddpm/fig21_hud1a3113e8657a3e31ed4c25722cba978_414492_17dea1a90cd4a421d508b085361fb3be.webp&#34;
+               src=&#34;https://ikerlz.github.io/media/posts/ddpm/fig21_hud1a3113e8657a3e31ed4c25722cba978_414492_65e3b56f739c95eb7c67ea4ea03b47bf.webp&#34;
                width=&#34;760&#34;
                height=&#34;259&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -840,10 +1296,10 @@ $$
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /media/posts/ddpm/fig22_hua43fd0105d76fafc2612dc6af5cc8746_1716234_b16a240fe91b898049fc1219005795bf.webp 400w,
+               /media/posts/ddpm/fig22_hua43fd0105d76fafc2612dc6af5cc8746_1716234_839a2eee19b2b4dce83f2bb5b517f0be.webp 400w,
                /media/posts/ddpm/fig22_hua43fd0105d76fafc2612dc6af5cc8746_1716234_958e01c67abcdea11a34be303a87a9bb.webp 760w,
                /media/posts/ddpm/fig22_hua43fd0105d76fafc2612dc6af5cc8746_1716234_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://ikerlz.github.io/media/posts/ddpm/fig22_hua43fd0105d76fafc2612dc6af5cc8746_1716234_b16a240fe91b898049fc1219005795bf.webp&#34;
+               src=&#34;https://ikerlz.github.io/media/posts/ddpm/fig22_hua43fd0105d76fafc2612dc6af5cc8746_1716234_839a2eee19b2b4dce83f2bb5b517f0be.webp&#34;
                width=&#34;760&#34;
                height=&#34;414&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -875,10 +1331,10 @@ $$
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /media/posts/ddpm/fig23_hua8c1ba845f0f004c323ccee4fe3e673a_495081_df5d176c32e63415c42782c9851a4200.webp 400w,
+               /media/posts/ddpm/fig23_hua8c1ba845f0f004c323ccee4fe3e673a_495081_287831ba93e26c60ae473c59818adf0f.webp 400w,
                /media/posts/ddpm/fig23_hua8c1ba845f0f004c323ccee4fe3e673a_495081_c581bf530ab1e3d52d3f8685e06e2a30.webp 760w,
                /media/posts/ddpm/fig23_hua8c1ba845f0f004c323ccee4fe3e673a_495081_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://ikerlz.github.io/media/posts/ddpm/fig23_hua8c1ba845f0f004c323ccee4fe3e673a_495081_df5d176c32e63415c42782c9851a4200.webp&#34;
+               src=&#34;https://ikerlz.github.io/media/posts/ddpm/fig23_hua8c1ba845f0f004c323ccee4fe3e673a_495081_287831ba93e26c60ae473c59818adf0f.webp&#34;
                width=&#34;760&#34;
                height=&#34;274&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -904,10 +1360,10 @@ $$
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /media/posts/ddpm/fig24_hue9f0741a07e9627ab62f60e2b9ad96fd_248159_1768d4d92dad2e7cfa9dab2e204dd1c9.webp 400w,
+               /media/posts/ddpm/fig24_hue9f0741a07e9627ab62f60e2b9ad96fd_248159_ecc3bcd8bf472c91ab1dcca873da91c8.webp 400w,
                /media/posts/ddpm/fig24_hue9f0741a07e9627ab62f60e2b9ad96fd_248159_a5e693a5e8d6613bb62a6291e24018bc.webp 760w,
                /media/posts/ddpm/fig24_hue9f0741a07e9627ab62f60e2b9ad96fd_248159_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://ikerlz.github.io/media/posts/ddpm/fig24_hue9f0741a07e9627ab62f60e2b9ad96fd_248159_1768d4d92dad2e7cfa9dab2e204dd1c9.webp&#34;
+               src=&#34;https://ikerlz.github.io/media/posts/ddpm/fig24_hue9f0741a07e9627ab62f60e2b9ad96fd_248159_ecc3bcd8bf472c91ab1dcca873da91c8.webp&#34;
                width=&#34;760&#34;
                height=&#34;232&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -937,10 +1393,10 @@ $$
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /media/posts/ddpm/fig26_hu501c0461d78f3f7a70fc142ea2efff13_234389_d71db7717eee8131dab0145c5697c46c.webp 400w,
+               /media/posts/ddpm/fig26_hu501c0461d78f3f7a70fc142ea2efff13_234389_3acabb8e171af549273a827a36531b73.webp 400w,
                /media/posts/ddpm/fig26_hu501c0461d78f3f7a70fc142ea2efff13_234389_a8edb9d058d3254a6f6efa060a2eaadc.webp 760w,
                /media/posts/ddpm/fig26_hu501c0461d78f3f7a70fc142ea2efff13_234389_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://ikerlz.github.io/media/posts/ddpm/fig26_hu501c0461d78f3f7a70fc142ea2efff13_234389_d71db7717eee8131dab0145c5697c46c.webp&#34;
+               src=&#34;https://ikerlz.github.io/media/posts/ddpm/fig26_hu501c0461d78f3f7a70fc142ea2efff13_234389_3acabb8e171af549273a827a36531b73.webp&#34;
                width=&#34;760&#34;
                height=&#34;365&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -998,10 +1454,10 @@ $$
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /media/posts/ddpm/fig27_hufc1161ab624693f27e78c03c5b6f41a0_80090_a9967b1b253f9642e60c6c81fbcc92e1.webp 400w,
+               /media/posts/ddpm/fig27_hufc1161ab624693f27e78c03c5b6f41a0_80090_9464ea5c7c000a5927a667edeeb8bc1b.webp 400w,
                /media/posts/ddpm/fig27_hufc1161ab624693f27e78c03c5b6f41a0_80090_e8079b7e03987991a7faf5e1ba12dade.webp 760w,
                /media/posts/ddpm/fig27_hufc1161ab624693f27e78c03c5b6f41a0_80090_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://ikerlz.github.io/media/posts/ddpm/fig27_hufc1161ab624693f27e78c03c5b6f41a0_80090_a9967b1b253f9642e60c6c81fbcc92e1.webp&#34;
+               src=&#34;https://ikerlz.github.io/media/posts/ddpm/fig27_hufc1161ab624693f27e78c03c5b6f41a0_80090_9464ea5c7c000a5927a667edeeb8bc1b.webp&#34;
                width=&#34;609&#34;
                height=&#34;194&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -1097,10 +1553,10 @@ $$
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /media/posts/ddpm/fig28_hu7286c9ac5bf0aa19bace7cf1b394c7e5_144845_08b5c01d6da1558f6d4006087982f4f3.webp 400w,
+               /media/posts/ddpm/fig28_hu7286c9ac5bf0aa19bace7cf1b394c7e5_144845_b10ce21489b9384e930175f8ac0265d5.webp 400w,
                /media/posts/ddpm/fig28_hu7286c9ac5bf0aa19bace7cf1b394c7e5_144845_42fc343f9b0fa297dbac8b5cdd200420.webp 760w,
                /media/posts/ddpm/fig28_hu7286c9ac5bf0aa19bace7cf1b394c7e5_144845_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://ikerlz.github.io/media/posts/ddpm/fig28_hu7286c9ac5bf0aa19bace7cf1b394c7e5_144845_08b5c01d6da1558f6d4006087982f4f3.webp&#34;
+               src=&#34;https://ikerlz.github.io/media/posts/ddpm/fig28_hu7286c9ac5bf0aa19bace7cf1b394c7e5_144845_b10ce21489b9384e930175f8ac0265d5.webp&#34;
                width=&#34;760&#34;
                height=&#34;519&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -1129,10 +1585,10 @@ $$
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /media/posts/ddpm/fig29_hu09258e34174ea97a35a1ef313b2075b4_387253_514056df9b00b083a110f795542957f5.webp 400w,
+               /media/posts/ddpm/fig29_hu09258e34174ea97a35a1ef313b2075b4_387253_eaa0179f17567a3dbd680e44f5d3d0ab.webp 400w,
                /media/posts/ddpm/fig29_hu09258e34174ea97a35a1ef313b2075b4_387253_fe06a8c5e7df64051cc290ac4a700077.webp 760w,
                /media/posts/ddpm/fig29_hu09258e34174ea97a35a1ef313b2075b4_387253_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://ikerlz.github.io/media/posts/ddpm/fig29_hu09258e34174ea97a35a1ef313b2075b4_387253_514056df9b00b083a110f795542957f5.webp&#34;
+               src=&#34;https://ikerlz.github.io/media/posts/ddpm/fig29_hu09258e34174ea97a35a1ef313b2075b4_387253_eaa0179f17567a3dbd680e44f5d3d0ab.webp&#34;
                width=&#34;760&#34;
                height=&#34;384&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -1164,10 +1620,10 @@ $$
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /media/posts/ddpm/fig30_hu8d7b30ba1bdb4710aadb838d3d066d89_104834_15c44ed3255a034d6f4d8a1792462bfd.webp 400w,
+               /media/posts/ddpm/fig30_hu8d7b30ba1bdb4710aadb838d3d066d89_104834_2ef838e509c1aa0c15b3972e273bf501.webp 400w,
                /media/posts/ddpm/fig30_hu8d7b30ba1bdb4710aadb838d3d066d89_104834_f8685c455fbc8e513429cb053651d9fc.webp 760w,
                /media/posts/ddpm/fig30_hu8d7b30ba1bdb4710aadb838d3d066d89_104834_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://ikerlz.github.io/media/posts/ddpm/fig30_hu8d7b30ba1bdb4710aadb838d3d066d89_104834_15c44ed3255a034d6f4d8a1792462bfd.webp&#34;
+               src=&#34;https://ikerlz.github.io/media/posts/ddpm/fig30_hu8d7b30ba1bdb4710aadb838d3d066d89_104834_2ef838e509c1aa0c15b3972e273bf501.webp&#34;
                width=&#34;760&#34;
                height=&#34;396&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -1213,10 +1669,10 @@ $$&lt;/p&gt;
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /media/posts/ddpm/fig32_hu0fc04be8cd1fa824eba1dce915f5ad53_105719_5f588bbbf23c1e26dfe4f3e922cad89a.webp 400w,
+               /media/posts/ddpm/fig32_hu0fc04be8cd1fa824eba1dce915f5ad53_105719_1fcf05af3f397b7c8ccb988e62429f59.webp 400w,
                /media/posts/ddpm/fig32_hu0fc04be8cd1fa824eba1dce915f5ad53_105719_288206c3af785323e934def09898f52d.webp 760w,
                /media/posts/ddpm/fig32_hu0fc04be8cd1fa824eba1dce915f5ad53_105719_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://ikerlz.github.io/media/posts/ddpm/fig32_hu0fc04be8cd1fa824eba1dce915f5ad53_105719_5f588bbbf23c1e26dfe4f3e922cad89a.webp&#34;
+               src=&#34;https://ikerlz.github.io/media/posts/ddpm/fig32_hu0fc04be8cd1fa824eba1dce915f5ad53_105719_1fcf05af3f397b7c8ccb988e62429f59.webp&#34;
                width=&#34;601&#34;
                height=&#34;198&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -1241,10 +1697,10 @@ $$&lt;/p&gt;
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /media/posts/ddpm/fig31_hub1b5b87f3c8cf7064650129d5b3a546c_125078_18492912d35ee837883121582620b24c.webp 400w,
+               /media/posts/ddpm/fig31_hub1b5b87f3c8cf7064650129d5b3a546c_125078_f803fdab9c10b04744917cb14f14629f.webp 400w,
                /media/posts/ddpm/fig31_hub1b5b87f3c8cf7064650129d5b3a546c_125078_3bbbf4dc1e5300b8ed559646917705e5.webp 760w,
                /media/posts/ddpm/fig31_hub1b5b87f3c8cf7064650129d5b3a546c_125078_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://ikerlz.github.io/media/posts/ddpm/fig31_hub1b5b87f3c8cf7064650129d5b3a546c_125078_18492912d35ee837883121582620b24c.webp&#34;
+               src=&#34;https://ikerlz.github.io/media/posts/ddpm/fig31_hub1b5b87f3c8cf7064650129d5b3a546c_125078_f803fdab9c10b04744917cb14f14629f.webp&#34;
                width=&#34;613&#34;
                height=&#34;198&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -1273,10 +1729,10 @@ $$&lt;/p&gt;
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /media/posts/ddpm/fig33_hu795e947a51f957dc3b0e2b90fa41ca50_240501_ffd25fc4f9371bb85bd49ee0f7fa9af9.webp 400w,
+               /media/posts/ddpm/fig33_hu795e947a51f957dc3b0e2b90fa41ca50_240501_9d1ba9226b8d599fe762049c731c1e77.webp 400w,
                /media/posts/ddpm/fig33_hu795e947a51f957dc3b0e2b90fa41ca50_240501_54d0f1d3b396c50702b1007fcc1724df.webp 760w,
                /media/posts/ddpm/fig33_hu795e947a51f957dc3b0e2b90fa41ca50_240501_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://ikerlz.github.io/media/posts/ddpm/fig33_hu795e947a51f957dc3b0e2b90fa41ca50_240501_ffd25fc4f9371bb85bd49ee0f7fa9af9.webp&#34;
+               src=&#34;https://ikerlz.github.io/media/posts/ddpm/fig33_hu795e947a51f957dc3b0e2b90fa41ca50_240501_9d1ba9226b8d599fe762049c731c1e77.webp&#34;
                width=&#34;760&#34;
                height=&#34;256&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -1340,10 +1796,10 @@ $$&lt;/p&gt;
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /media/posts/ddpm/fig34_hucdb9a1a081a360198c3e428ced2ae1de_6576438_432c2a94551671b8749890297407a028.webp 400w,
+               /media/posts/ddpm/fig34_hucdb9a1a081a360198c3e428ced2ae1de_6576438_295594960ffd360ca5abfbbb54b4b22c.webp 400w,
                /media/posts/ddpm/fig34_hucdb9a1a081a360198c3e428ced2ae1de_6576438_7c1d57688336a816ad460a34f6ac7191.webp 760w,
                /media/posts/ddpm/fig34_hucdb9a1a081a360198c3e428ced2ae1de_6576438_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://ikerlz.github.io/media/posts/ddpm/fig34_hucdb9a1a081a360198c3e428ced2ae1de_6576438_432c2a94551671b8749890297407a028.webp&#34;
+               src=&#34;https://ikerlz.github.io/media/posts/ddpm/fig34_hucdb9a1a081a360198c3e428ced2ae1de_6576438_295594960ffd360ca5abfbbb54b4b22c.webp&#34;
                width=&#34;760&#34;
                height=&#34;325&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
@@ -1391,10 +1847,10 @@ $$&lt;/p&gt;
 &lt;figure  &gt;
   &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
     &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;&#34; srcset=&#34;
-               /media/posts/ddpm/fig35_hu0d963069b4bf10aaf1005687a845965a_243433_081861d959d8af5824b72dcfb178a110.webp 400w,
+               /media/posts/ddpm/fig35_hu0d963069b4bf10aaf1005687a845965a_243433_2e2983bfa1ffd94e153b75c2a68516ca.webp 400w,
                /media/posts/ddpm/fig35_hu0d963069b4bf10aaf1005687a845965a_243433_e4be07b8e471170364e700457e5b99c8.webp 760w,
                /media/posts/ddpm/fig35_hu0d963069b4bf10aaf1005687a845965a_243433_1200x1200_fit_q75_h2_lanczos_3.webp 1200w&#34;
-               src=&#34;https://ikerlz.github.io/media/posts/ddpm/fig35_hu0d963069b4bf10aaf1005687a845965a_243433_081861d959d8af5824b72dcfb178a110.webp&#34;
+               src=&#34;https://ikerlz.github.io/media/posts/ddpm/fig35_hu0d963069b4bf10aaf1005687a845965a_243433_2e2983bfa1ffd94e153b75c2a68516ca.webp&#34;
                width=&#34;720&#34;
                height=&#34;311&#34;
                loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
